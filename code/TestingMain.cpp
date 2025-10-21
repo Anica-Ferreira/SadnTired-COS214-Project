@@ -1,44 +1,44 @@
 #include <iostream>
-#include "ProductItem.h"
-#include "DecorativePot.h"
-#include "GiftWrapping.h"
+#include "ConcreteOrderBuilder.h"
+#include "OrderDirector.h"
 #include "ProductBundle.h"
 
 using namespace std;
 
 int main() {
+    OrderDirector director;
 
-    //create products
-    Product* cactus = new ProductItem("Cactus", 30.0);
-    Product* rose = new ProductItem("Rose", 25.0);
-    Product* lavender = new ProductItem("Lavender", 20.0);
+    ConcreteOrderBuilder valentinesBuilder;
+    ProductBundle* valentinesBundle = new ProductBundle("Valentine's Bundle");
+    director.makeValentinesBundle(valentinesBuilder);
+    valentinesBundle->add(valentinesBuilder.getProduct());
 
-    //decorate
-    Product* cactusInPot = new DecorativePot(cactus, DecorativePot::CLASSIC);
-    Product* roseWrapped = new GiftWrapping(rose, GiftWrapping::RED_BOW);
-    Product* lavenderWrappedPot = new DecorativePot(
-        new GiftWrapping(lavender, GiftWrapping::FLORAL_WRAP), 
-        DecorativePot::ROTUND
-    );
+    ConcreteOrderBuilder springBuilder;
+    ProductBundle* springBundle = new ProductBundle("Spring Bundle");
+    director.makeSpringBundle(springBuilder, springBundle);
 
-    //product bundles
-    ProductBundle* springBundle = new ProductBundle("Spring Special Bundle");
-    springBundle->add(cactusInPot);
-    springBundle->add(roseWrapped);
-    springBundle->add(lavenderWrappedPot);
-
-    //print
-    cout << "Individual Products:" << endl;
-    cactusInPot->printProduct();
-    roseWrapped->printProduct();
-    lavenderWrappedPot->printProduct();
+    cout << "Valentine's Bundle" << endl;
+    valentinesBundle->printProduct();
     cout << endl;
 
-    cout << "Bundle Details:" << endl;
+    cout << "Spring Bundle" << endl;
     springBundle->printProduct();
-    cout << "Total Price of Bundle: R" << springBundle->getPrice() << endl;
+    cout << endl;
 
+    //create custom products
+    ConcreteOrderBuilder customBuilder;
+    customBuilder.setPlant("Orchid", 40.0);
+    customBuilder.addPot(DecorativePot::ROTUND);
+    customBuilder.addWrapping(GiftWrapping::FLORAL_WRAP);
+    Product* customOrchid = customBuilder.getProduct();
+
+    cout << "Custom Order" << endl;
+    customOrchid->printProduct();
+    cout << endl;
+
+    delete valentinesBundle;
     delete springBundle;
-
+    delete customOrchid;
+    
     return 0;
 }

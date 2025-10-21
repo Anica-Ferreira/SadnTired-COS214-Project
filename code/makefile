@@ -1,5 +1,5 @@
 filesToDelete = main
-filesToCompile = Product.cpp ProductItem.cpp ProductDecorator.cpp DecorativePot.cpp GiftWrapping.cpp ProductBundle.cpp TestingMain.cpp
+filesToCompile = Product.cpp ProductItem.cpp ProductDecorator.cpp DecorativePot.cpp GiftWrapping.cpp ProductBundle.cpp TestingMain.cpp OrderDirector.cpp OrderBuilder.cpp ConcreteOrderBuilder.cpp
 filesInCoverageReport = main
 
 main: 
