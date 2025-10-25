@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Melancholy Nursery</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: rgb(240, 255, 248);
+                font-family: "Kumbh Sans";
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 100px;
+                color: rgb(1, 44, 37);
+            }
+
+            /*HEADER STYLING*/
+            header {
+                display: grid;
+                grid-template-columns: auto auto;
+                font-size: 64px;
+                background-color: rgb(91, 173, 148);
+                padding: 20px;
+            }
+
+            header a {
+                text-decoration: none;
+                color: aliceblue;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            header a:hover {
+                text-decoration: underline dashed;
+            }
+
+            #home {
+                text-align: left;
+            }
+
+            #staff {
+                text-align: right;
+            }
+
+            /*CARD STYLING*/
+
+            #cardBoxes {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 128px;
+            }
+
+            .cardItem {
+                border: solid 4px forestgreen;
+                border-radius: 20px;
+                padding: 32px;
+                margin: 32px;
+                display: grid;
+                grid-template-rows: repeat(5, auto);
+                justify-content: center;
+                text-align: center;
+                background-color: rgb(191, 243, 191);
+            }
+
+            .plantImg {
+                max-width: 300px;
+                max-height: 300px;
+                background-color: rgb(240, 255, 248);
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .buttonGroup {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+            }
+
+            .buttonGroup button {
+                margin: 10px;
+                padding: 10px;
+                font-size: 20px;
+                background-color: mediumseagreen;
+                border: none;
+                border-radius: 10px;
+                color: white;
+            }
+
+            /*FOOTER STYLING*/
+
+            footer {
+                display: grid;
+                grid-template-columns: 48% 2% 48%;
+                font-size: 64px;
+                background-color: rgb(91, 173, 148);
+                padding: 20px;
+            }
+
+            footer a {
+                text-decoration: none;
+                color: aliceblue;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            footer a:hover {
+                text-decoration: underline dashed;
+            }
+
+            #footer1 {
+                text-align: right;
+            }
+
+            #footer2 {
+                text-align: left;
+            }
+            
+            footer span {
+                text-align: center;
+                color: white
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" id="home">< Home</a>
+            <a href="staff.html" id="staff">Dashboard ></a>
+        </header>
+        <main>
+            <h1>Nursery</h1>
+
+            <div id="cardBoxes">
+                <div class="cardItem" id="plant01">
+                    <img src="media/Plant01.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water01">Water</button>
+                        <button id="check01">Check-up</button>
+                        <button id="store01">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant02">
+                    <img src="media/Plant02.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water02">Water</button>
+                        <button id="check02">Check-up</button>
+                        <button id="store02">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant03">
+                    <img src="media/Plant03.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water03">Water</button>
+                        <button id="check03">Check-up</button>
+                        <button id="store03">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant04">
+                    <img src="media/Plant04.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water04">Water</button>
+                        <button id="check04">Check-up</button>
+                        <button id="store04">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant05">
+                    <img src="media/Plant05.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water05">Water</button>
+                        <button id="check05">Check-up</button>
+                        <button id="store05">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant06">
+                    <img src="media/Plant06.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water06">Water</button>
+                        <button id="check06">Check-up</button>
+                        <button id="store06">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant07">
+                    <img src="media/Plant07.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water07">Water</button>
+                        <button id="check07">Check-up</button>
+                        <button id="store07">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant08">
+                    <img src="media/Plant08.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water08">Water</button>
+                        <button id="check08">Check-up</button>
+                        <button id="store08">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant09">
+                    <img src="media/Plant09.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water09">Water</button>
+                        <button id="check09">Check-up</button>
+                        <button id="store09">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant10">
+                    <img src="media/Plant10.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water10">Water</button>
+                        <button id="check10">Check-up</button>
+                        <button id="store10">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant11">
+                    <img src="media/Plant11.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water11">Water</button>
+                        <button id="check11">Check-up</button>
+                        <button id="store11">Add To Store</button>
+                    </div>
+                </div>
+
+                <div class="cardItem" id="plant12">
+                    <img src="media/Plant12.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water12">Water</button>
+                        <button id="check12">Check-up</button>
+                        <button id="store12">Add To Store</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <a href="about.html" id="footer1">About Us</a>
+            <span>|</span>
+            <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
+        </footer>
+    </body>
+</html>
