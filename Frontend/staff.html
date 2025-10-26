@@ -96,6 +96,16 @@
                 font-size: 28px;
             }
 
+            button {
+                margin: 10px;
+                padding: 10px;
+                font-size: 20px;
+                background-color: rebeccapurple;
+                border: none;
+                border-radius: 10px;
+                color: white;
+            }
+
             /*FOOTER STYLING*/
 
             footer {
@@ -142,12 +152,16 @@
             <div id="staffZone">
                 <div id="alerts">
                     <h2>New Notifications</h2>
-                    <ul>
+                    <ul id="notifList">
                         <li>
-                            This will be an auto-generated (from api) list of stuff
+                            <h3>Type : Status</h3>
+                            <p>Description</p>
+                            <button id="idVal">Mark Complete</button>
                         </li>
                         <li>
-                            Get Curt'ed, fool
+                            <h3>Type : Status</h3>
+                            <p>Description</p>
+                            <button id="idVal">Mark Complete</button>
                         </li>
                     </ul>
                 </div>
@@ -164,5 +178,7 @@
             <span>|</span>
             <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
         </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/staff.js"></script>
     </body>
 </html>
