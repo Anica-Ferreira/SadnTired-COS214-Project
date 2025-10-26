@@ -1,15 +1,19 @@
 #include "StaffManager.h"
 
-StaffManager::StaffManager(string name, Customer& customer): StaffMember(name, "Manager", customer) {}
+StaffManager::StaffManager(std::string name) : StaffMember(name, "Manager") {}
 
-void StaffManager::mainDuty() {
-    cout << "Manager " << this->getName() << " has led team of employees" << endl;
+std::string StaffManager::processRequest(std::string request)  {
+    return "Manager handling: " + request;
 }
 
-void StaffManager::subDuty() {
-    cout << "Manager: " << getName() << " has made reports and budget" << endl;
+void StaffManager::mainDuty()  {
+    std::cout << "  [Main] " << name_ << ": Overseeing operations" << std::endl;
 }
 
-void StaffManager::workDuty() {
-    cout << "Manager: " << getName() << " has worked in Greenhouse and made sure all plants are healthy" << endl;
+void StaffManager::workDuty()  {
+    std::cout << "  [Work] " << name_ << ": Managing team" << std::endl;
+}
+
+void StaffManager::subDuty()  {
+    std::cout << "  [Sub] " << name_ << ": Administrative tasks" << std::endl;
 }

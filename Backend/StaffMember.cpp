@@ -1,37 +1,29 @@
 #include "StaffMember.h"
 
-StaffMember::StaffMember(string name, string role, Customer& customer) : customer_(customer) {
-    this->name = name;
-    this->role = role;
-    this->customer_.Attach(this);
-    this->customer_.setMediator(this);
-}
+StaffMember::StaffMember(std::string name, std::string role) : name_(name), role_(role) {
+    std::cout << "StaffMember created: " << name_ << " (" << role_ << ")" << std::endl;
+}//init name and role
 
-string StaffMember::getName() {
-    return name;
-}
+void StaffMember::notify(IColleague* sender, std::string request) {//For Mediator
+    std::string response = processRequest(request);
+    std::cout << name_ << " processes request and sends response back to " << sender->getName() << ": " << response << std::endl;
+}// process request
 
-string StaffMember::getRole() {
-    return role;
+void StaffMember::Update(std::string message) {//For Observer
+    std::cout << name_ << " received notification: " << message << std::endl;
+    // Extension: Execute a command for plant need
+    StaffAction* action = new StaffAction();
+    action->setOnStart(new StaffReaction("handle_plant_need"));
+    action->doCommand("plant");
+    delete action;
 }
 
 void StaffMember::templateWorkCycle() {
-    cout << "StaffMember now working:" << endl;
-    this->mainDuty();
-    this->workDuty();
-    this->subDuty();
-    cout << endl;
+    std::cout << "=== " << name_ << " (" << role_ << ") Work Cycle ===" << std::endl;
+    mainDuty();
+    workDuty();
+    subDuty();
+    std::cout << "=== Work Cycle Complete ===" << std::endl;
 }
 
-void StaffMember::notify(SubjectColleague *colleague, string event) {
-    if (event == "Customer Interaction A") {
-        cout << "Staff Member interacts with Customer in a specific way" << endl;
-    }
-    else if (event == "Customer Interaction B") {
-        cout << "Staff Member interacts with Customer in another type of way" << endl;
-    }
-}
-
-void StaffMember::action(string type) {
-
-}
+std::string StaffMember::getName() const { return name_; }

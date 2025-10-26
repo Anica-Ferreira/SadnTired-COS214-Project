@@ -1,26 +1,22 @@
-#ifndef STAFFACTION_H
-#define STAFFACTION_H
-#include <string>
+#ifndef STAFFACTIONS_H
+#define STAFFACTIONS_H
 
 #include "StaffCommand.h"
-#include <iostream>
-using namespace std;
+#include <string>
 
 class StaffAction {
 private:
-    StaffCommand* start;
-    StaffCommand* finish;
+    StaffCommand* onStart_ = nullptr;
+    StaffCommand* onFinish_ = nullptr;
+
 public:
-    ~StaffAction() {
-        delete start;
-        delete finish;
-    }
+    void setOnStart(StaffCommand* cmd);
 
-    void setOnStart(StaffCommand* command);
-    void setOnFinish(StaffCommand* command);
+    void setOnFinish(StaffCommand* cmd);
 
-    void doCommand();
+    void doCommand(std::string type = "");
+
+    ~StaffAction();
 };
 
-
-#endif //STAFFACTION_H
+#endif // STAFFACTIONS_H

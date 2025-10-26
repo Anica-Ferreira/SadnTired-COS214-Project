@@ -1,19 +1,20 @@
 #include "StaffAction.h"
 
-void StaffAction::setOnStart(StaffCommand *command) {
-    this->start = command;
+void StaffAction::setOnStart(StaffCommand* cmd) {
+    onStart_ = cmd;
 }
 
-void StaffAction::setOnFinish(StaffCommand *command) {
-    this->finish = command;
+void StaffAction::setOnFinish(StaffCommand* cmd) {
+    onFinish_ = cmd;
 }
 
-void StaffAction::doCommand() {
-    cout << "Invoke Command:" << endl;
-    if (this->start) {
-        this->start->execute("CustomerCommand");
-    }
-    if (this->finish) {
-        this->finish->execute("PlantRequest");
-    }//will add actual staff member for actual work to be done in executes
+void StaffAction::doCommand(std::string type) {
+    if (onStart_) onStart_->execute(type);
+    std::cout << "Performing main action..." << std::endl;//can be removed and replaced with onStart only
+    if (onFinish_) onFinish_->execute(type);
+}
+
+StaffAction::~StaffAction() {
+    delete onStart_;
+    delete onFinish_;
 }
