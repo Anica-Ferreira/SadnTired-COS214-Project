@@ -1,8 +1,9 @@
 #include "Plant.h"
 
-Plant::Plant(const std::string& name, const std::string& type, double price, WateringStrategy* strategy)
-    : name(name), type(type), price(price), waterLevel(0.0), wateringStrategy(strategy), state(new PlantedState()), wateringCount(0) {}
-
+Plant::Plant(const std::string& name, const std::string& type, double price, WateringStrategy* strategy, const std::string& description)
+    : name(name), type(type), description(description), price(price),
+      waterLevel(0.0), wateringStrategy(strategy), state(new PlantedState()), wateringCount(0) {}
+      
 Plant::~Plant() {
     delete state;
     delete wateringStrategy;
@@ -40,6 +41,11 @@ double Plant::getPrice() const {
     return price;
 }
 
+
+std::string Plant::getDescription() const {
+    return description;
+}
+
 WateringStrategy* Plant::getStrategy() const {
     return wateringStrategy;
 }
@@ -59,25 +65,26 @@ bool Plant::isReadyForSale() const {
     return wateringCount >= getRequiredWaterings();
 }
 
+
 // Succulent
-Succulent::Succulent(const std::string& name, double price, WateringStrategy* strategy)
-    : Plant(name, "Succulent", price, strategy) {}
+Succulent::Succulent(const std::string& name, double price, WateringStrategy* strategy, const std::string& description)
+    : Plant(name, "Succulent", price, strategy, description) {}
 
 int Succulent::getRequiredWaterings() const {
     return 5;  // Succulents need fewer waterings
 }
 
 // Flower
-Flower::Flower(const std::string& name, double price, WateringStrategy* strategy)
-    : Plant(name, "Flower", price, strategy) {}
+Flower::Flower(const std::string& name, double price, WateringStrategy* strategy, const std::string& description)
+    : Plant(name, "Flower", price, strategy, description) {}
 
 int Flower::getRequiredWaterings() const {
     return 10;  // Flowers need moderate waterings
 }
 
 // Tree
-Tree::Tree(const std::string& name, double price, WateringStrategy* strategy)
-    : Plant(name, "Tree", price, strategy) {}
+Tree::Tree(const std::string& name, double price, WateringStrategy* strategy, const std::string& description)
+    : Plant(name, "Tree", price, strategy, description) {}
 
 int Tree::getRequiredWaterings() const {
     return 15;  // Trees need more waterings to mature

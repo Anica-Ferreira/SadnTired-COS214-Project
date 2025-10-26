@@ -9,6 +9,7 @@ class Plant {
 protected:
     std::string name;
     std::string type;
+    std::string description;
     double price;
     double waterLevel;
     WateringStrategy* wateringStrategy;
@@ -20,7 +21,7 @@ protected:
     bool isReadyForSale() const;
 
 public:
-    Plant(const std::string& name, const std::string& type, double price, WateringStrategy* strategy);
+    Plant(const std::string& name, const std::string& type, double price, WateringStrategy* strategy,const std::string& description = "");
     virtual ~Plant();
 
     void water();
@@ -31,6 +32,7 @@ public:
     std::string getName() const;
     std::string getType() const;
     double getPrice() const;
+    std::string getDescription() const;
     WateringStrategy* getStrategy() const; // Declared here
     void setState(PlantState* newState);
 
@@ -47,7 +49,7 @@ protected:
     int getRequiredWaterings() const override;
 
 public:
-    Succulent(const std::string& name, double price, WateringStrategy* strategy);
+    Succulent(const std::string& name, double price, WateringStrategy* strategy, const std::string& description = "");
 };
 
 class Flower : public Plant {
@@ -55,7 +57,7 @@ protected:
     int getRequiredWaterings() const override;
 
 public:
-    Flower(const std::string& name, double price, WateringStrategy* strategy);
+    Flower(const std::string& name, double price, WateringStrategy* strategy, const std::string& description = "");
 };
 
 class Tree : public Plant {
@@ -63,7 +65,7 @@ protected:
     int getRequiredWaterings() const override;
 
 public:
-    Tree(const std::string& name, double price, WateringStrategy* strategy);
+    Tree(const std::string& name, double price, WateringStrategy* strategy, const std::string& description = "");
 };
 
 #endif // PLANT_H

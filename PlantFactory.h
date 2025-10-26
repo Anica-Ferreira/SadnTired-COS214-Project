@@ -8,22 +8,22 @@
 class PlantFactory {
 public:
     virtual ~PlantFactory() {}
-    virtual Plant* createPlant(const std::string& name, double price, WateringStrategy* strategy) = 0;
+    virtual Plant* createPlant(const std::string& name, double price, const std::string& description = "") = 0;
 };
 
 class SucculentFactory : public PlantFactory {
 public:
-    Plant* createPlant(const std::string& name, double price, WateringStrategy* strategy) override;
+    Plant* createPlant(const std::string& name, double price, const std::string& description = "") override;
 };
 
 class FlowerFactory : public PlantFactory {
 public:
-    Plant* createPlant(const std::string& name, double price, WateringStrategy* strategy) override;
+    Plant* createPlant(const std::string& name, double price, const std::string& description = "") override;
 };
 
 class TreeFactory : public PlantFactory {
 public:
-    Plant* createPlant(const std::string& name, double price, WateringStrategy* strategy) override;
+    Plant* createPlant(const std::string& name, double price, const std::string& description = "") override;
 };
 
 #endif // PLANT_FACTORY_H
