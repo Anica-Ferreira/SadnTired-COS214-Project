@@ -28,6 +28,7 @@ $(TARGET): $(OBJECTS)
 # Clean up generated files
 clean:
 	rm -f $(OBJECTS) $(TARGET)
+	rm -f *.o *.gcov *.gcda *.gcno *.gz *.json *.html *.css output.txt coverage.txt valgrind.txt main api
 
 # Run the program with Valgrind to check for memory leaks
 coverage: $(TARGET)
@@ -37,13 +38,52 @@ coverage: $(TARGET)
 gdb: $(TARGET)
 	gdb ./$(TARGET)
 
+# --- API Specific Build Targets ---
+filesToDelete = main api
+filesToCompile = Product.cpp ProductItem.cpp ProductDecorator.cpp DecorativePot.cpp GiftWrapping.cpp ProductBundle.cpp TestingMain.cpp OrderDirector.cpp OrderBuilder.cpp ConcreteOrderBuilder.cpp Api.cpp
+filesInCoverageReport = main
+
+main: 
+	g++ -g -std=c++17 ${filesToCompile} -o main
+
+api:
+	g++ -g -std=c++17 -I ../crow/include -I ../asio/include Api.cpp -o api -pthread
+
+run: main
+	./main
+
+runapi: api
+	./api
+
+coverage-api:
+	make clean
+	g++ -g --coverage ${filesToCompile} -o api
+	./api
+	gcov -f -m -r -j ${filesInCoverageReport} > coverage.txt
+	gcovr --html-details output.html
+
+valgrind-main:
+	make clean
+	make
+	valgrind --track-origins=yes --leak-check=full --keep-stacktraces=alloc-and-free --error-exitcode=1 --log-file=valgrind.txt ./main > output.txt
+
+gdb-main:
+	make clean
+	make
+	gdb ./main
+
 # Phony targets
-.PHONY: all clean valgrind gdb
+.PHONY: all clean valgrind gdb run runapi main api coverage coverage-api valgrind-main gdb-main
 
 # Available commands:
-# make          - Build the executable (same as 'make all')
-# make all      - Build the executable
-# make clean    - Remove object files and the executable
-# make valgrind - Run the executable with Valgrind to check for memory leaks
-# make gdb      - Run the executable with GDB for debugging
-# make all && ./app - Build and run the executable
+# make          - Build the main executable
+# make all      - Build the main executable
+# make clean    - Remove object files, coverage, valgrind logs, and built executables
+# make valgrind - Run main executable with Valgrind
+# make gdb      - Debug main executable with GDB
+# make run      - Run main executable
+# make api      - Build the API executable
+# make runapi   - Run the API executable
+# make coverage-api - Run API executable with coverage
+# make valgrind-main - Run main with Valgrind
+# make gdb-main - Debug main with GDB
