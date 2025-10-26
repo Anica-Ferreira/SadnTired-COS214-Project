@@ -79,10 +79,7 @@ function generate() {
         itemList = itemList + `<div class="buttonGroup">`;
         itemList = itemList + `<button id="water` + itemID + `">Water</button>`;
         itemList = itemList + `<button id="check` + itemID + `">Check-up</button>`;
-        itemList = itemList + `<div class="miniButtons">`;
-        itemList = itemList + `<button id="store` + itemID + `">+ Store</button>`;
-        itemList = itemList + `<button id="return` + itemID + `">- Store</button>`;
-        itemList = itemList + `</div>`;
+        itemList = itemList + `<button id="store` + itemID + `">Add to Store</button>`;
         itemList = itemList + `</div>`;
         itemList = itemList + `</div>`;
     }
