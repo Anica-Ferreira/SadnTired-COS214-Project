@@ -21,6 +21,11 @@ const arr = [
     }
 ]
 
+const bundle = {
+    "name" : "Existensial Crisis",
+    "count" : 2000000
+}
+
 window.addEventListener("load", generate);
 
 function generate() {
@@ -39,6 +44,20 @@ function generate() {
         itemList = itemList + `</div>`;
         itemList = itemList + `</li>`;
     }
+
+    $('#shopList').html(itemList);
+}
+
+function addBundle() {
+    var itemList = $('#shopList').html();
+
+    itemList = itemList + `<li>`;
+    itemList = itemList + `<img src="media/TempBundle.png" class="plantImg"/>`;
+    itemList = itemList + `<div class="details">`;
+    itemList = itemList + `<h2>` + bundle.name + `</h2>`;
+    itemList = itemList + `<p>Count: <span>` + bundle.count + `</span></p>`;
+    itemList = itemList + `</div>`;
+    itemList = itemList + `</li>`;
 
     $('#shopList').html(itemList);
 }

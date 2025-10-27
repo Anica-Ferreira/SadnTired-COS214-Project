@@ -77,12 +77,21 @@ function generate() {
         itemList = itemList + `<p class="plantStatus">` + arr[i].status + `</p>`;
         itemList = itemList + `<p class="plantCount">In Stock: <span class="countLoc">` + arr[i].nurseryStock + `</span></p>`;
         itemList = itemList + `<div class="buttonGroup">`;
-        itemList = itemList + `<button id="water` + itemID + `">Water</button>`;
-        itemList = itemList + `<button id="check` + itemID + `">Check-up</button>`;
-        itemList = itemList + `<button id="store` + itemID + `">Add to Store</button>`;
+        itemList = itemList + `<button id="water` + itemID + `" onClick="water(` + itemID + `)">Water</button>`;
+        itemList = itemList + `<button id="store` + itemID + `" onClick="addToShop(` + itemID + `)">Add to Store</button>`;
         itemList = itemList + `</div>`;
         itemList = itemList + `</div>`;
     }
 
     $('#cardBoxes').html(itemList);
+}
+
+function water(id) {
+    console.log(id);
+    //POST WaterPlant/id
+}
+
+function addToShop(id) {
+    console.log(id);
+    //POST MovePlantOut/id
 }

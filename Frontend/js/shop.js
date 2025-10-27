@@ -76,8 +76,18 @@ function generate() {
         itemList = itemList + `<h2 class="plantName">` + arr[i].name + `</h2>`;
         itemList = itemList + `<p class="plantDesc">` + arr[i].description + `</p>`;
         itemList = itemList + `<p class="plantCount">In Stock: <span class="countLoc">` + arr[i].shopStock + `</span></p>`;
+        itemList = itemList + `<button id="button` + itemID + `" onClick="addToCart(` + itemID + `)">Add To Cart</button>`
         itemList = itemList + `</div>`;
     }
 
     $('#cardBoxes').html(itemList);
+}
+
+function getShop() {
+    //GET Shop
+}
+
+function addToCart(id) {
+    console.log(id);
+    //POST AddToCart/id
 }

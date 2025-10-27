@@ -25,11 +25,19 @@ const arr = [
     }
 ]
 
-window.addEventListener("load", generate);
+const staffObj = {
+    "name" : "Curt Curious",
+    "role" : "Emotional Support",
+    "since" : 2024
+}
 
-function generate() {
+window.addEventListener("load", generateNotifs);
+window.addEventListener("load", generateStaff);
+
+function generateNotifs() {
     var itemList = "";
     var itemID;
+    //const arr = getNotifs();
 
     for (var i = 0; i < arr.length; i++) {
         if (i < 9) itemID = "0" + (i + 1)
@@ -38,9 +46,45 @@ function generate() {
         itemList = itemList + `<li>`;
         itemList = itemList + `<h3>` + arr[i].type + ` : ` + arr[i].status + `</h3>`;
         itemList = itemList + `<p>` + arr[i].description + `</p>`;
-        itemList = itemList + `<button id="` + arr[i].itemID + `">Mark Complete</button>`;
+        itemList = itemList + `<button id="` + arr[i].id + `" onClick="finishTask(` + itemID + `)">Mark Complete</button>`;
         itemList = itemList + `</li>`;
     }
 
     $('#notifList').html(itemList);
+}
+
+function generateStaff() {
+    var itemList = "";
+    var itemID;
+
+    itemList = itemList + `<h3>` + staffObj.name + `</h3>`;
+    itemList = itemList + `<img id="personalIcon" src="media/tempIcon.png" />`;
+    itemList = itemList + `<p id="role">` + staffObj.role + `</p>`;
+    itemList = itemList + `<p id="since">` + staffObj.since + `</p>`;
+
+    $('#profile').html(itemList);
+}
+
+async function getNotifs() {
+    try {
+        var request = new XMLHttpRequest();
+        request.open("GET", 'http://localhost:8080/notifications', true);
+        request.send();
+        console.log(request.response);
+
+        /*const response = await fetch('http://localhost:8080/notifications');
+        if (!response.ok) throw new Error('Cannot GET notifications');
+        const data = await response.json();
+        return data;*/
+    } catch (err) {
+        console.error('Fetch error: ', err);
+    }
+}
+
+function getStaff() {
+    //GET Staff
+}
+
+function finishTask(id) {
+    //POST FinishTask/id
 }
