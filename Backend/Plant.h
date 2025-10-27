@@ -3,10 +3,17 @@
 
 using namespace std;
 #include <string>
+#include <iostream>//J
+#include <list>//J
 #include "WateringStrategy.h"
 #include "PlantState.h"
+#include "ISubject.h"//J
+#include "IObserver.h"    //J
 
 class Plant {
+private://all J
+    list<IObserver*> observers_;//list of pointers
+    string current_need_;
 protected:
     //Stats/Plant Info
     string name;//Plant name
@@ -52,6 +59,12 @@ public:
     friend class WateredState;
     friend class DryState;
     friend class ReadyForSaleState;
+
+    //J
+    void Attach(IObserver* observer) override; //add observer to list
+    void Detach(IObserver* observer) override; //remove observer from list
+    void Notify() override;//loop through observers and update on all
+    void signalNeed(string need);//set need and call notify, extension
 };
 
 class Succulent : public Plant {

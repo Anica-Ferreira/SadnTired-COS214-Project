@@ -1,44 +1,43 @@
+// WebAPIAdapter.h - UPDATED
 #ifndef WEB_API_ADAPTER_H
 #define WEB_API_ADAPTER_H
 
-#include "InventoryFacade.h"
-#include "CustomerManager.h"
-#include "StaffMediator.h"
-#include "PlantMonitor.h"
 #include <string>
+#include "InventoryManager.h"  // Now includes Inventory
 
 class WebAPIAdapter {
 private:
-    InventoryFacade* inventoryFacade;
-    CustomerManager* customerManager;
-    StaffMediator* staffMediator;
-    PlantMonitor* plantMonitor;
+    InventoryManager* inventoryManager;
+    // Remove other managers if not needed
 
 public:
-    WebAPIAdapter();
+    WebAPIAdapter(InventoryManager* invManager);  // Takes real inventory manager
     ~WebAPIAdapter();
 
-    // Shop endpoints
+    // Shop endpoints - SERVES REAL DATA
     std::string getShopProducts();
     std::string getRandomPlants();
 
-    // Nursery endpoints
+    // Nursery endpoints - SERVES REAL DATA
     std::string getNurseryPlants();
-    std::string waterPlant(int plantId);
-    std::string movePlantToShop(int plantId);
+    std::string waterPlant(const std::string& plantName);  // Changed to string
+    std::string movePlantToShop(const std::string& plantName);  // Changed to string
 
     // Staff endpoints
     std::string getStaff();
     std::string getNotifications();
     std::string finishTask(int taskId);
 
-    // Customer endpoints (new)
+    // Customer endpoints
     std::string createCustomer(const std::string& name, const std::string& email);
-    std::string executeCustomerCommand(int customerId, const std::string& commandType, const std::string& params);
+    std::string executeCustomerCommand(const std::string& commandType, const std::string& params);
     std::string getCustomerCart(int customerId);
 
     // Bundle endpoints
     std::string getRandomBundle();
+
+private:
+    std::string inventoryToJSON(const std::vector<Plant*>& plants);
 };
 
 #endif

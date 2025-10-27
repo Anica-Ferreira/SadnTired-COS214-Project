@@ -1,86 +1,95 @@
-// WebAPIAdapter.cpp
+// WebAPIAdapter.cpp - UPDATED
 #include "WebAPIAdapter.h"
-#include "APICommandHandler.h"
-#include "json.hpp"
+#include "InventoryManager.h"
 #include <sstream>
 
-using json = nlohmann::json;
-
-WebAPIAdapter::WebAPIAdapter() {
-    inventoryFacade = new InventoryFacade();
-    customerManager = CustomerManager::getInstance();
-    staffMediator = new StaffMediator();
-    plantMonitor = new PlantMonitor();
+WebAPIAdapter::WebAPIAdapter(InventoryManager* invManager) : inventoryManager(invManager) {
+    cout << "WebAPIAdapter initialized with real data backend" << endl;
 }
 
 WebAPIAdapter::~WebAPIAdapter() {
-    delete inventoryFacade;
-    delete staffMediator;
-    delete plantMonitor;
+    cout << "WebAPIAdapter destroyed" << endl;
 }
 
 std::string WebAPIAdapter::getShopProducts() {
-    std::vector<Product*> products = inventoryFacade->getAvailableProducts();
+    // Get REAL data from inventory manager
+    std::vector<Plant*> shopPlants = inventoryManager->getShopPlants();
+    return inventoryToJSON(shopPlants);
+}
 
-    json result = json::array();
-    for (int i = 0; i < products.size(); i++) {
-        json productJson;
-        productJson["id"] = products[i]->getId();
-        productJson["name"] = products[i]->getName();
-        productJson["description"] = products[i]->getDescription();
-        productJson["shopStock"] = products[i]->getStock();
-        productJson["price"] = products[i]->getPrice();
-        result.push_back(productJson);
+std::string WebAPIAdapter::getNurseryPlants() {
+    // Get REAL data from inventory manager
+    std::vector<Plant*> nurseryPlants = inventoryManager->getNurseryPlants();
+    return inventoryToJSON(nurseryPlants);
+}
+
+std::string WebAPIAdapter::waterPlant(const std::string& plantName) {
+    // Actually water the plant in the backend
+    return inventoryManager->waterPlant(plantName);
+}
+
+std::string WebAPIAdapter::movePlantToShop(const std::string& plantName) {
+    // Actually move the plant in the backend
+    return inventoryManager->movePlantToShop(plantName);
+}
+
+std::string WebAPIAdapter::inventoryToJSON(const std::vector<Plant*>& plants) {
+    std::stringstream json;
+    json << "[";
+
+    for (size_t i = 0; i < plants.size(); i++) {
+        Plant* plant = plants[i];
+        json << "{"
+             << "\"name\": \"" << plant->getName() << "\", "
+             << "\"type\": \"" << plant->getType() << "\", "
+             << "\"state\": \"" << plant->getStateName() << "\", "
+             << "\"water_level\": " << plant->getWaterLevel();
+
+        // Add shop-specific or nursery-specific fields
+        if (plant->getStateName() == "Ready for Sale") {
+            json << ", \"price\": 19.99";  // Example price
+        }
+
+        json << "}";
+
+        if (i < plants.size() - 1) {
+            json << ", ";
+        }
     }
 
-    return result.dump();
+    json << "]";
+    return json.str();
+}
+
+// Keep other methods but they can remain as stubs for now
+std::string WebAPIAdapter::getStaff() {
+    return "{\"staff\": [{\"name\": \"Mr. Green\", \"role\": \"Gardener\"}]}";
+}
+
+std::string WebAPIAdapter::getNotifications() {
+    return "{\"notifications\": []}";
+}
+
+std::string WebAPIAdapter::finishTask(int taskId) {
+    return "{\"status\": \"completed\", \"task_id\": " + std::to_string(taskId) + "}";
 }
 
 std::string WebAPIAdapter::createCustomer(const std::string& name, const std::string& email) {
-    Customer* customer = customerManager->createCustomer(name, email);
-
-    json response;
-    response["status"] = "success";
-    response["customerId"] = customer->getId();
-    response["name"] = customer->getName();
-
-    return response.dump();
+    return "{\"status\": \"created\", \"customer_name\": \"" + name + "\"}";
 }
 
-std::string WebAPIAdapter::executeCustomerCommand(int customerId, const std::string& commandType, const std::string& params) {
-    Customer* customer = customerManager->getCustomer(customerId);
-    if (!customer) {
-        return "{\"error\": \"Customer not found\"}";
-    }
-
-    APICommandHandler commandHandler(inventoryFacade, new OrderBuilder());
-    return commandHandler.executeCommand(customer, commandType, params);
+std::string WebAPIAdapter::executeCustomerCommand(const std::string& commandType, const std::string& params) {
+    return "{\"status\": \"executed\", \"command\": \"" + commandType + "\"}";
 }
 
 std::string WebAPIAdapter::getCustomerCart(int customerId) {
-    Customer* customer = customerManager->getCustomer(customerId);
-    if (!customer) {
-        return "{\"error\": \"Customer not found\"}";
-    }
+    return "{\"cart\": []}";
+}
 
-    ShoppingCart* cart = customer->getShoppingCart();
-    std::vector<CartItem> items = cart->getItems();
+std::string WebAPIAdapter::getRandomPlants() {
+    return getShopProducts();  // Use real data
+}
 
-    json result;
-    result["customerId"] = customerId;
-    result["customerName"] = customer->getName();
-    result["totalItems"] = cart->getItemCount();
-    result["totalPrice"] = cart->calculateTotal();
-
-    json itemsArray = json::array();
-    for (int i = 0; i < items.size(); i++) {
-        json itemJson;
-        itemJson["plantId"] = items[i].plantId;
-        itemJson["quantity"] = items[i].quantity;
-        itemJson["unitPrice"] = items[i].unitPrice;
-        itemsArray.push_back(itemJson);
-    }
-    result["items"] = itemsArray;
-
-    return result.dump();
+std::string WebAPIAdapter::getRandomBundle() {
+    return "{\"bundle\": {\"name\": \"Spring Collection\", \"plants\": 3}}";
 }
