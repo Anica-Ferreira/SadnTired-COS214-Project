@@ -1,52 +1,52 @@
+// Customer.h - UPDATED
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
-using namespace std;
-#include <list>
-#include <vector>
 #include <string>
-#include <iostream>
+#include <vector>
+using namespace std;
 
-#include "ObserverMediator.h"
-#include "SubjectColleague.h"
-#include "Facade.h"
-
-class RequestSystem;
 class CustomerCommand;
 
-class Customer : public SubjectColleague {
+class Customer {
 private:
-    std::list<ObserverMediator*> list_observer_;
-    std::string message_;
-    std::vector<CustomerCommand*> commandHistory;
-    RequestSystem* requestSystem;
-    Facade* nurseryFacade;
+    string name;
+    string email;
+    string phoneNum;
+    string surname;
+    vector<CustomerCommand*> commandHistory;
+
 public:
     Customer();
+    Customer(const string& customerName, const string& customerSurname,
+             const string& customerEmail, const string& customerPhone = "");
     ~Customer();
 
-    void Attach(ObserverMediator* observer) override;
-    void Detach(ObserverMediator* observer) override;
-    void Notify() override;
+    // Getters
+    string getName() const { return name + " " + surname; }
+    string getEmail() const { return email; }
+    string getPhone() const { return phoneNum; }
+    string getSurname() const { return surname; }
 
-    void CreateMessage(std::string message = "Default Message");
+    // Setters - FIXED (remove const)
+    void setName(const string& newName) { name = newName; }
+    void setEmail(const string& newEmail) { email = newEmail; }
+    void setPhone(const string& newPhone) { phoneNum = newPhone; }
+    void setSurname(const string& newSurname) { surname = newSurname; }
 
     // Command execution methods
     void executeCommand(CustomerCommand* command);
     void showCommandHistory() const;
 
-    // Chain of Responsibility method
-    void makeRequest(const std::string& requestType, const std::string& details);
+    // Customer actions that will be handled by commands
+    string purchasePlant(const string& plantName, int quantity);
+    string requestPlantCare(const string& plantName, const string& careType);
+    string checkPlantStock(const string& plantName);
+    string requestRefund(const string& plantName, const string& reason);
+    string getPlantInfo(const string& plantName);
 
-    // Facade methods
-    void useFacadePurchase(const std::string& plantName, int quantity, double price);
-    void useFacadeCare(const std::string& plantName, const std::string& careType);
-    void useFacadeCheckStock(const std::string& plantName);
-    void useFacadeRefund(const std::string& plantName, const std::string& reason);
-    void useFacadeGetInfo(const std::string& plantName);
-    
-    void doA();
-    void doB();
+private:
+    void cleanup();
 };
 
-#endif // CUSTOMER_H
+#endif

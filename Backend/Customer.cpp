@@ -1,91 +1,61 @@
+// Customer.cpp - UPDATED
 #include "Customer.h"
-#include "RequestSystem.h"
 #include "CustomerCommand.h"
-#include "Facade.h"      // if you call methods on nurseryFacade
+#include <iostream>
 
+Customer::Customer() : name(""), surname(""), email(""), phoneNum("") {}
 
-Customer::Customer() : requestSystem(new RequestSystem()), nurseryFacade(new Facade()) {
-    // Constructor implementation
+Customer::Customer(const string& customerName, const string& customerSurname,
+                   const string& customerEmail, const string& customerPhone)
+    : name(customerName), surname(customerSurname),
+      email(customerEmail), phoneNum(customerPhone) {
+
+    cout << "Customer created: " << getName() << " (" << email << ")" << endl;
 }
 
 Customer::~Customer() {
-    // Clean up command history
-    for (auto cmd : commandHistory) {
-        delete cmd;
+    cleanup();
+}
+
+void Customer::cleanup() {
+    for (auto command : commandHistory) {
+        delete command;
     }
-    // Clean up systems
-    delete requestSystem;
-    delete nurseryFacade;
-}
-
-void Customer::Attach(ObserverMediator* observer) {
-    list_observer_.push_back(observer);
-}
-
-void Customer::Detach(ObserverMediator* observer) {
-    list_observer_.remove(observer);
-}
-
-void Customer::Notify() {
-    std::list<ObserverMediator*>::iterator it = list_observer_.begin();
-    while (it != list_observer_.end()) {
-        (*it)->Update(message_);
-        it++;
-    }
-}
-
-void Customer::CreateMessage(std::string message) {
-    this->message_ = message;
-    Notify();
+    commandHistory.clear();
 }
 
 void Customer::executeCommand(CustomerCommand* command) {
-    commandHistory.push_back(command);
-    command->execute();
-}
-
-void Customer::showCommandHistory() const {
-    std::cout << "Customer Command History:" << std::endl;
-    for (const auto& cmd : commandHistory) {
-        std::cout << " - " << cmd->getDescription() << std::endl;
+    if (command) {
+        commandHistory.push_back(command);
+        command->execute(this);
+        // Note: command is NOT deleted here - manager handles cleanup
     }
 }
 
-void Customer::makeRequest(const std::string& requestType, const std::string& details) {
-    requestSystem->processCustomerRequest(requestType, this, details);
+void Customer::showCommandHistory() const {
+    cout << "=== Command History for " << getName() << " ===" << endl;
+    for (size_t i = 0; i < commandHistory.size(); i++) {
+        cout << i + 1 << ". " << commandHistory[i]->getDescription() << endl;
+    }
 }
 
-void Customer::doA() {
-    std::cout << "Customer: 'Can you help do A?' " << std::endl;
-    this->mediator_->notify(this, "Customer Interaction A");
+// These methods will be called by commands
+string Customer::purchasePlant(const string& plantName, int quantity) {
+    return "Customer " + getName() + " purchasing " + to_string(quantity) + " of " + plantName;
 }
 
-void Customer::doB() {
-    std::cout << "Customer: 'What about B?' " << std::endl;
-    this->mediator_->notify(this, "Customer Interaction B");
+string Customer::requestPlantCare(const string& plantName, const string& careType) {
+    return "Customer " + getName() + " requesting " + careType + " for " + plantName;
 }
 
-void Customer::useFacadePurchase(const std::string& plantName, int quantity, double price) {
-    std::cout << "Customer using facade to purchase plants..." << std::endl;
-    nurseryFacade->purchasePlant(plantName, quantity, price);
+string Customer::checkPlantStock(const string& plantName) {
+    return "Customer " + getName() + " checking stock for " + plantName;
 }
 
-void Customer::useFacadeCare(const std::string& plantName, const std::string& careType) {
-    std::cout << "Customer using facade for plant care..." << std::endl;
-    nurseryFacade->requestPlantCare(plantName, careType);
+string Customer::requestRefund(const string& plantName, const string& reason) {
+    return "Customer " + getName() + " requesting refund for " + plantName + " - Reason: " + reason;
 }
 
-void Customer::useFacadeCheckStock(const std::string& plantName) {
-    std::cout << "Customer using facade to check stock..." << std::endl;
-    nurseryFacade->checkPlantStock(plantName);
-}
-
-void Customer::useFacadeRefund(const std::string& plantName, const std::string& reason) {
-    std::cout << "Customer using facade for refund..." << std::endl;
-    nurseryFacade->processRefund(plantName, reason);
-}
-
-void Customer::useFacadeGetInfo(const std::string& plantName) {
-    std::cout << "Customer using facade to get plant info..." << std::endl;
-    nurseryFacade->getPlantInfo(plantName);
+string Customer::getPlantInfo(const string& plantName) {
+    return "Customer " + getName() + " getting info for " + plantName;
 }
