@@ -27,7 +27,7 @@ $(TARGET): $(OBJECTS)
 
 # Clean up generated files
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(TARGET) api
 
 # Run the program with Valgrind to check for memory leaks
 coverage: $(TARGET)
@@ -39,6 +39,14 @@ gdb: $(TARGET)
 
 # Phony targets
 .PHONY: all clean valgrind gdb
+
+# API Commands
+
+api:
+	g++ -g -std=c++17 -I ../crow/include -I ../asio/include Api.cpp -o api -pthread
+
+runapi: api
+	./api
 
 # Available commands:
 # make          - Build the executable (same as 'make all')
