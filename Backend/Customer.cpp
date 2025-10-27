@@ -59,3 +59,16 @@ string Customer::requestRefund(const string& plantName, const string& reason) {
 string Customer::getPlantInfo(const string& plantName) {
     return "Customer " + getName() + " getting info for " + plantName;
 }
+
+void Customer::setMediator(IMediator* mediator) {
+    mediator_ = mediator;
+}//set mediator pointer
+
+void Customer::sendRequest(std::string request) {
+    if (mediator_) {
+        std::cout << name<< " sends request: " << request << std::endl;
+        mediator_->notify(this, request);
+    } else {
+        std::cout << name<< ": No mediator set!" << std::endl;
+    }
+}//check if mediator exists, if yes, print send message and call mediator's notify with self and request, else error.

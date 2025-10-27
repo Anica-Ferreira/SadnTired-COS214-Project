@@ -6,10 +6,8 @@
 #include "StaffCoordinator.h"
 #include "PlantNursery.h"
 #include "Inventory.h"
-#include "Plant.h"  // Your Plant classes
-#include "Flower.h" // Your specific plant types
-#include "Succulent.h"
-#include "Tree.h"
+#include "Plant.h"
+#include "PlantFactory.h"  // Include the factory
 #include "CustomerCommand.h"
 #include <iostream>
 #include <sstream>
@@ -33,7 +31,7 @@ void NurserySystemFacade::initializeSubsystems() {
     nurseryInventory = new Inventory();
     shopInventory = new Inventory();
 
-    // Populate with sample data
+    // Populate with sample data using factory
     populateSampleData();
 
     // Create inventory manager with real inventories
@@ -42,10 +40,7 @@ void NurserySystemFacade::initializeSubsystems() {
     // Create API adapter with inventory manager
     apiAdapter = new WebAPIAdapter(inventoryManager);
 
-    // Update inventory manager with API adapter
-    // Note: You might need to add a setter in InventoryManager for this
-
-    staffCoordinator = new StaffCoordinator(apiAdapter);
+    staffCoordinator = new StaffCoordinator("test", apiAdapter);
     plantNursery = new PlantNursery(apiAdapter);
 
     // Initialize customer and cart
@@ -65,19 +60,30 @@ void NurserySystemFacade::cleanupSubsystems() {
 }
 
 void NurserySystemFacade::populateSampleData() {
-    // Add sample plants to nursery
-    nurseryInventory->addPlant(new Flower("Rose"));
-    nurseryInventory->addPlant(new Flower("Tulip"));
-    nurseryInventory->addPlant(new Flower("Lavender"));
-    nurseryInventory->addPlant(new Succulent("Cactus"));
-    nurseryInventory->addPlant(new Succulent("Aloe Vera"));
-    nurseryInventory->addPlant(new Tree("Bonsai"));
-    nurseryInventory->addPlant(new Tree("Maple"));
+    // Create factories
+    SucculentFactory succulentFactory;
+    FlowerFactory flowerFactory;
+    TreeFactory treeFactory;
+
+    // Add sample plants to nursery using factory
+    nurseryInventory->addPlant(flowerFactory.createPlant("Rose", 12.99, "Beautiful red roses"));
+    nurseryInventory->addPlant(flowerFactory.createPlant("Tulip", 8.99, "Colorful spring tulips"));
+    nurseryInventory->addPlant(flowerFactory.createPlant("Lavender", 10.99, "Fragrant purple lavender"));
+    nurseryInventory->addPlant(succulentFactory.createPlant("Cactus", 6.99, "Low maintenance cactus"));
+    nurseryInventory->addPlant(succulentFactory.createPlant("Aloe Vera", 9.99, "Healing aloe plant"));
+    nurseryInventory->addPlant(treeFactory.createPlant("Bonsai", 49.99, "Miniature bonsai tree"));
+    nurseryInventory->addPlant(treeFactory.createPlant("Maple", 29.99, "Beautiful maple tree"));
 
     // Add some plants to shop (ready for sale)
-    shopInventory->addPlant(new Flower("Sunflower", "Ready for Sale"));
-    shopInventory->addPlant(new Succulent("Snake Plant", "Ready for Sale"));
-    shopInventory->addPlant(new Tree("Oak", "Ready for Sale"));
+    Plant* sunflower = flowerFactory.createPlant("Sunflower", 14.99, "Bright sunflowers");
+    // Set sunflower to ready state if needed
+    shopInventory->addPlant(sunflower);
+
+    Plant* snakePlant = succulentFactory.createPlant("Snake Plant", 18.99, "Air purifying snake plant");
+    shopInventory->addPlant(snakePlant);
+
+    Plant* oak = treeFactory.createPlant("Oak", 39.99, "Strong oak tree");
+    shopInventory->addPlant(oak);
 
     cout << "Sample data populated: " << nurseryInventory->size()
          << " plants in nursery, " << shopInventory->size()
@@ -122,23 +128,23 @@ string NurserySystemFacade::getCurrentCustomerInfo() const {
 
 // Plant Shop Operations - USING REAL DATA
 string NurserySystemFacade::browseAllPlants() {
-    return apiAdapter->getShopProducts(); // Returns real plant data as JSON
+    return apiAdapter->getShopProducts();
 }
 
 string NurserySystemFacade::searchPlants(const string& keyword) {
-    return inventoryManager->searchPlants(keyword); // Searches real data
+    return inventoryManager->searchPlants(keyword);
 }
 
 string NurserySystemFacade::filterPlantsByType(const string& plantType) {
-    return inventoryManager->filterPlantsByType(plantType); // Filters real data
+    return inventoryManager->filterPlantsByType(plantType);
 }
 
 string NurserySystemFacade::getPlantInfo(const string& plantName) {
-    return inventoryManager->getPlantDetails(plantName); // Gets real plant info
+    return inventoryManager->getPlantDetails(plantName);
 }
 
 string NurserySystemFacade::checkPlantStock(const string& plantName) {
-    return inventoryManager->checkStock(plantName); // Checks real stock
+    return inventoryManager->checkStock(plantName);
 }
 
 // Shopping Cart Operations
@@ -216,15 +222,15 @@ string NurserySystemFacade::checkout() {
 
 // Nursery Management - MODIFIES REAL DATA
 string NurserySystemFacade::viewNurseryStatus() {
-    return apiAdapter->getNurseryPlants(); // Returns real nursery data
+    return apiAdapter->getNurseryPlants();
 }
 
 string NurserySystemFacade::waterPlant(const string& plantName) {
-    return inventoryManager->waterPlant(plantName); // Actually waters the plant
+    return inventoryManager->waterPlant(plantName);
 }
 
 string NurserySystemFacade::movePlantToShop(const string& plantName) {
-    return inventoryManager->movePlantToShop(plantName); // Actually moves the plant
+    return inventoryManager->movePlantToShop(plantName);
 }
 
 string NurserySystemFacade::waterAllPlants() {
@@ -249,7 +255,7 @@ string NurserySystemFacade::askStaffQuestion(const string& question) {
         return "{\"error\": \"Please set customer information first\"}";
     }
 
-    return staffCoordinator->handleCustomerQuestion(0, question); // 0 as placeholder customer ID
+    return staffCoordinator->handleCustomerQuestion(0, question);
 }
 
 string NurserySystemFacade::requestPlantRecommendation(const string& sunlight,
@@ -271,7 +277,7 @@ string NurserySystemFacade::completeTask(int taskId) {
     return apiAdapter->finishTask(taskId);
 }
 
-// Inventory Reports
+// Inventory Reports - REMOVED getInventoryReport()
 string NurserySystemFacade::getStockCounts() {
     if (nurseryInventory && shopInventory) {
         stringstream report;
@@ -280,10 +286,6 @@ string NurserySystemFacade::getStockCounts() {
         return report.str();
     }
     return "{\"error\": \"Inventories not available\"}";
-}
-
-string NurserySystemFacade::getInventoryReport() {
-    return inventoryManager->getInventoryReport();
 }
 
 // Command execution helper

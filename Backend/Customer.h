@@ -4,18 +4,20 @@
 
 #include <string>
 #include <vector>
+#include "IColleague.h"
+#include "IMediator.h"
 using namespace std;
 
 class CustomerCommand;
 
-class Customer {
+class Customer : public IColleague{
 private:
     string name;
     string email;
     string phoneNum;
     string surname;
     vector<CustomerCommand*> commandHistory;
-
+    IMediator* mediator_;//mediator customer goes to
 public:
     Customer();
     Customer(const string& customerName, const string& customerSurname,
@@ -44,6 +46,10 @@ public:
     string checkPlantStock(const string& plantName);
     string requestRefund(const string& plantName, const string& reason);
     string getPlantInfo(const string& plantName);
+
+    void setMediator(IMediator* mediator) override;
+
+    void sendRequest(std::string request) override; //check if mediator exists, if yes, print send message and call mediator's notify with self and request, else error.
 
 private:
     void cleanup();

@@ -61,9 +61,9 @@ public:
     friend class ReadyForSaleState;
 
     //J
-    void Attach(IObserver* observer) override; //add observer to list
-    void Detach(IObserver* observer) override; //remove observer from list
-    void Notify() override;//loop through observers and update on all
+    void Attach(IObserver* observer) ; //add observer to list
+    void Detach(IObserver* observer) ; //remove observer from list
+    void Notify() ;//loop through observers and update on all
     void signalNeed(string need);//set need and call notify, extension
 };
 

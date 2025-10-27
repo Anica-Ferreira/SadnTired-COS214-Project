@@ -1,48 +1,47 @@
-// StaffCoordinator.h
-#ifndef STAFF_COORDINATOR_H
-#define STAFF_COORDINATOR_H
+#ifndef STAFFCOORDINATOR_H
+#define STAFFCOORDINATOR_H
 
-using namespace std;
+#include "StaffMember.h"
+#include "WebAPIAdapter.h"
 #include <string>
-#include <vector>
+#include <map>
 
-class WebAPIAdapter;
-
-class StaffCoordinator {
+class StaffCoordinator : public StaffMember {
 private:
     WebAPIAdapter* apiAdapter;
     
+    // Private helper methods
+    std::string determineStaffRoleForTask(const std::string& task);
+    int findAvailableStaff(const std::string& role);
+    std::string formatTaskDescription(const std::string& task);
+
 public:
-    StaffCoordinator(WebAPIAdapter* adapter);
+    StaffCoordinator(std::string name, WebAPIAdapter* adapter);
     ~StaffCoordinator();
-    
-    // Customer interaction
-    string handleCustomerQuestion(int customerId, const string& question);
-    string handleCustomerRequest(int customerId, const string& request);
-    string providePlantAdvice(int customerId, const string& plantType);
-    
-    // Task management
-    string assignTask(int staffId, const string& task);
-    string assignTaskByRole(const string& role, const string& task);
-    string completeTask(int taskId);
-    string getPendingTasks();
-    string getStaffTasks(int staffId);
-    
-    // Staff management
-    string getAllStaff();
-    string getStaffByRole(const string& role);
-    
-    // Escalation and coordination
-    string escalateTask(int taskId);
-    string reassignTask(int taskId, int newStaffId);
-    
-    // Notification management
-    string getStaffNotifications();
-    string markNotificationCompleted(int notificationId);
-    string createStaffNotification(const string& message, const string& priority);
-private:
-    string determineStaffRoleForTask(const string& task);
-    int findAvailableStaff(const string& role);
+
+    // Override pure virtual functions from StaffMember
+    std::string processRequest(std::string request) override;
+    void mainDuty() override;
+    void workDuty() override;
+    void subDuty() override;
+
+    // Coordinator-specific methods
+    std::string handleCustomerQuestion(int customerId, const std::string& question);
+    std::string handleCustomerRequest(int customerId, const std::string& request);
+    std::string providePlantAdvice(int customerId, const std::string& plantType);
+    std::string assignTask(int staffId, const std::string& task);
+    std::string assignTaskByRole(const std::string& role, const std::string& task);
+    std::string completeTask(int taskId);
+    std::string getPendingTasks();
+    std::string getStaffTasks(int staffId);
+    std::string getAllStaff();
+    std::string getStaffByRole(const std::string& role);
+    std::string escalateTask(int taskId);
+    std::string reassignTask(int taskId, int newStaffId);
+    std::string coordinateStaffMeeting(const std::string& agenda);
+    std::string getStaffNotifications();
+    std::string markNotificationCompleted(int notificationId);
+    std::string createStaffNotification(const std::string& message, const std::string& priority);
 };
 
-#endif
+#endif // STAFFCOORDINATOR_H

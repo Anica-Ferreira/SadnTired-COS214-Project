@@ -2,6 +2,7 @@
 #define SAD_TIRED_PLANTNURSERY_H
 
 #include <string>
+using namespace std;
 
 class WebAPIAdapter;
 

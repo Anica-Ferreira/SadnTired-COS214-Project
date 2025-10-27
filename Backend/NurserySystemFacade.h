@@ -87,7 +87,6 @@ public:
 
     // Inventory Reports
     string getStockCounts();
-    string getInventoryReport();
 
     // Command execution helper
     string executeCustomerCommand(const string& commandType,
@@ -102,7 +101,7 @@ private:
     void initializeSubsystems();
     void cleanupSubsystems();
     bool validateCustomer() const;
-    void populateSampleData(); // Add sample plants to inventories
+    void populateSampleData(); // Add sample plants to inventories using Factory
 };
 
 #endif

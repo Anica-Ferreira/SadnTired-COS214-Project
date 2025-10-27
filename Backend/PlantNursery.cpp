@@ -1,5 +1,10 @@
-//
-// Created by Chloe-Uni on 2025/10/27.
-//
-
 #include "PlantNursery.h"
+
+PlantNursery::PlantNursery(WebAPIAdapter* adapter){
+
+}
+
+string getGrowthStatus();
+string getWateringSchedule();
+string getPlantHealthAlerts();
+string addNewPlant(const string& plantType, int quantity);

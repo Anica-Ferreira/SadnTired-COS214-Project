@@ -102,7 +102,7 @@ void Plant::Detach(IObserver* observer) {
 
 void Plant::Notify() {
     for (auto* o : observers_) {
-        o->Update(current_need_ + " for plant " + name_);
+        o->Update(current_need_ + " for plant " + name);
     }
 }//loop through observers and update on all
 
