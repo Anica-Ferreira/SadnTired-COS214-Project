@@ -1,4 +1,4 @@
-const arr = [
+/*const arr = [
     {
         "name" : "Plant 01",
         "description" : "Yeah This A Plant",
@@ -59,11 +59,12 @@ const arr = [
         "description" : "Yeah This A Plant",
         "shopStock" : 10
     }
-]
+]*/
 
 window.addEventListener("load", generate);
 
-function generate() {
+async function generate() {
+    const arr = await getShop();
     var itemList = "";
     var itemID;
 

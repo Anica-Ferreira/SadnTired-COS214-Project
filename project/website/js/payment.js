@@ -28,7 +28,7 @@ const bundle = {
 
 window.addEventListener("load", generate);
 
-function generate() {
+async function generate() {
     var itemList = "";
     var itemID;
 

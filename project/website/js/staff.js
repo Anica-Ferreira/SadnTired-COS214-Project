@@ -1,4 +1,4 @@
-const arr = [
+/*const arr = [
     {
         "type" : "Warning",
         "status" : "Active",
@@ -29,7 +29,7 @@ const staffObj = {
     "name" : "Curt Curious",
     "role" : "Emotional Support",
     "since" : 2024
-}
+}*/
 
 window.addEventListener("load", generateNotifs);
 window.addEventListener("load", generateStaff);
@@ -60,9 +60,9 @@ async function generateNotifs() {
     $('#notifList').html(itemList);
 }
 
-function generateStaff() {
+async function generateStaff() {
+    const staffObj = await getStaff();
     var itemList = "";
-    var itemID;
 
     itemList = itemList + `<h3>` + staffObj.name + `</h3>`;
     itemList = itemList + `<img id="personalIcon" src="media/tempIcon.png" />`;

@@ -1,4 +1,4 @@
-const arr = [
+/*const arr = [
     {
         "name" : "Plant 01",
         "status" : "Healthy",
@@ -59,11 +59,12 @@ const arr = [
         "status" : "Healthy",
         "nurseryStock" : 10
     }
-]
+]*/
 
 window.addEventListener("load", generate);
 
-function generate() {
+async function generate() {
+    const arr = await getNursery();
     var itemList = "";
     var itemID;
 
@@ -84,6 +85,18 @@ function generate() {
     }
 
     $('#cardBoxes').html(itemList);
+}
+
+async function getNursery() {
+    try{
+        const response = await fetch("/nursery"); //call from the express server from now on yay
+        if (!response.ok) throw new Error("Cannot GET notifications");
+        const data = await response.json();
+        return data;
+    }catch (err) {
+        console.error("Fetch error:", err);
+        return [];
+    }
 }
 
 async function water(id) {
