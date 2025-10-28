@@ -1,57 +1,27 @@
+// StaffCoordinator.cpp
 #include "StaffCoordinator.h"
 #include "WebAPIAdapter.h"
 #include <iostream>
 #include <sstream>
 #include <map>
-#include <cstdlib> // for rand()
 
-using namespace std;
-
-StaffCoordinator::StaffCoordinator(string name, WebAPIAdapter* adapter)
-    : StaffMember(name, "Coordinator"), apiAdapter(adapter) {
+StaffCoordinator::StaffCoordinator(WebAPIAdapter* adapter) : apiAdapter(adapter) {
+    std::cout << "Staff Coordinator initialized" << std::endl;
 }
 
 StaffCoordinator::~StaffCoordinator() {
-    cout << "Staff Coordinator " << name_ << " destroyed" << endl;
+    std::cout << "Staff Coordinator destroyed" << std::endl;
 }
 
-// Override StaffMember pure virtual functions
-string StaffCoordinator::processRequest(string request) {
-    cout << name_ << " processing request: " << request << endl;
+std::string StaffCoordinator::handleCustomerQuestion(int customerId, const std::string& question) {
+    std::cout << "StaffCoordinator: Handling question from customer " << customerId
+              << ": " << question << std::endl;
 
-    // Simple request routing logic
-    if (request.find("question") != string::npos) {
-        return handleCustomerQuestion(1, request);
-    } else if (request.find("advice") != string::npos) {
-        return providePlantAdvice(1, "general");
-    } else if (request.find("assign") != string::npos) {
-        return assignTaskByRole("general", request);
-    } else {
-        return "Coordinator handling: " + request;
-    }
-}
-
-void StaffCoordinator::mainDuty() {
-    cout << "  [Main] " << name_ << ": Coordinating staff activities" << endl;
-}
-
-void StaffCoordinator::workDuty() {
-    cout << "  [Work] " << name_ << ": Assigning tasks and managing workflow" << endl;
-}
-
-void StaffCoordinator::subDuty() {
-    cout << "  [Sub] " << name_ << ": Monitoring staff performance" << endl;
-}
-
-// Coordinator-specific methods (keep your existing implementations)
-string StaffCoordinator::handleCustomerQuestion(int customerId, const string& question) {
-    cout << "StaffCoordinator: Handling question from customer " << customerId
-              << ": " << question << endl;
-
-    string assignedRole = determineStaffRoleForTask(question);
+    // Analyze question to determine which staff member should handle it
+    std::string assignedRole = determineStaffRoleForTask(question);
     int staffId = findAvailableStaff(assignedRole);
 
-    stringstream response;
+    std::stringstream response;
     response << "{\"action\": \"handle_question\", "
              << "\"customer_id\": " << customerId << ", "
              << "\"question\": \"" << question << "\", "
@@ -62,13 +32,14 @@ string StaffCoordinator::handleCustomerQuestion(int customerId, const string& qu
     return response.str();
 }
 
-string StaffCoordinator::handleCustomerRequest(int customerId, const string& request) {
-    cout << "StaffCoordinator: Handling request from customer " << customerId
-              << ": " << request << endl;
+std::string StaffCoordinator::handleCustomerRequest(int customerId, const std::string& request) {
+    std::cout << "StaffCoordinator: Handling request from customer " << customerId
+              << ": " << request << std::endl;
 
-    string staffInfo = apiAdapter->getStaff();
+    // Get staff information from API
+    std::string staffInfo = apiAdapter->getStaff();
 
-    stringstream response;
+    std::stringstream response;
     response << "{\"action\": \"handle_request\", "
              << "\"customer_id\": " << customerId << ", "
              << "\"request\": \"" << request << "\", "
@@ -78,11 +49,12 @@ string StaffCoordinator::handleCustomerRequest(int customerId, const string& req
     return response.str();
 }
 
-string StaffCoordinator::providePlantAdvice(int customerId, const string& plantType) {
-    cout << "StaffCoordinator: Providing plant advice to customer " << customerId
-              << " for plant type: " << plantType << endl;
+std::string StaffCoordinator::providePlantAdvice(int customerId, const std::string& plantType) {
+    std::cout << "StaffCoordinator: Providing plant advice to customer " << customerId
+              << " for plant type: " << plantType << std::endl;
 
-    string advice;
+    // Simulate plant advice based on type
+    std::string advice;
     if (plantType == "Rose" || plantType == "rose") {
         advice = "Roses need full sunlight (6+ hours daily) and well-drained soil. Water deeply 2-3 times per week.";
     } else if (plantType == "Cactus" || plantType == "cactus") {
@@ -93,27 +65,27 @@ string StaffCoordinator::providePlantAdvice(int customerId, const string& plantT
         advice = "This plant requires moderate care. Provide indirect sunlight and water when the top soil feels dry.";
     }
 
-    return "{\"customer_id\": " + to_string(customerId) +
+    return "{\"customer_id\": " + std::to_string(customerId) +
            ", \"plant_type\": \"" + plantType +
            "\", \"advice\": \"" + advice + "\"}";
 }
 
-string StaffCoordinator::assignTask(int staffId, const string& task) {
-    cout << "StaffCoordinator: Assigning task to staff " << staffId
-              << ": " << task << endl;
+std::string StaffCoordinator::assignTask(int staffId, const std::string& task) {
+    std::cout << "StaffCoordinator: Assigning task to staff " << staffId
+              << ": " << task << std::endl;
 
-    string formattedTask = formatTaskDescription(task);
+    std::string formattedTask = formatTaskDescription(task);
 
     return "{\"action\": \"assign_task\", "
-           "\"staff_id\": " + to_string(staffId) +
+           "\"staff_id\": " + std::to_string(staffId) +
            ", \"task\": \"" + formattedTask +
            "\", \"status\": \"assigned\", "
-           "\"task_id\": " + to_string(rand() % 1000 + 1) + "}";
+           "\"task_id\": " + std::to_string(rand() % 1000 + 1) + "}";
 }
 
-string StaffCoordinator::assignTaskByRole(const string& role, const string& task) {
-    cout << "StaffCoordinator: Assigning task to role " << role
-              << ": " << task << endl;
+std::string StaffCoordinator::assignTaskByRole(const std::string& role, const std::string& task) {
+    std::cout << "StaffCoordinator: Assigning task to role " << role
+              << ": " << task << std::endl;
 
     int staffId = findAvailableStaff(role);
 
@@ -124,28 +96,31 @@ string StaffCoordinator::assignTaskByRole(const string& role, const string& task
     return assignTask(staffId, task);
 }
 
-string StaffCoordinator::completeTask(int taskId) {
-    cout << "StaffCoordinator: Completing task ID: " << taskId << endl;
+std::string StaffCoordinator::completeTask(int taskId) {
+    std::cout << "StaffCoordinator: Completing task ID: " << taskId << std::endl;
 
-    string apiResponse = apiAdapter->finishTask(taskId);
+    // Use API to mark task as completed
+    std::string apiResponse = apiAdapter->finishTask(taskId);
 
     return "{\"action\": \"complete_task\", "
-           "\"task_id\": " + to_string(taskId) +
+           "\"task_id\": " + std::to_string(taskId) +
            ", \"api_response\": " + apiResponse + "}";
 }
 
-string StaffCoordinator::getPendingTasks() {
-    cout << "StaffCoordinator: Retrieving pending tasks" << endl;
+std::string StaffCoordinator::getPendingTasks() {
+    std::cout << "StaffCoordinator: Retrieving pending tasks" << std::endl;
 
-    string notifications = apiAdapter->getNotifications();
+    // Get notifications from API (which represent tasks)
+    std::string notifications = apiAdapter->getNotifications();
 
     return "{\"pending_tasks\": " + notifications + "}";
 }
 
-string StaffCoordinator::getStaffTasks(int staffId) {
-    cout << "StaffCoordinator: Getting tasks for staff ID: " << staffId << endl;
+std::string StaffCoordinator::getStaffTasks(int staffId) {
+    std::cout << "StaffCoordinator: Getting tasks for staff ID: " << staffId << std::endl;
 
-    return "{\"staff_id\": " + to_string(staffId) +
+    // Simulate staff-specific tasks
+    return "{\"staff_id\": " + std::to_string(staffId) +
            ", \"tasks\": ["
            "{\"task_id\": 101, \"description\": \"Water plants in greenhouse A\", \"status\": \"in_progress\"}, "
            "{\"task_id\": 102, \"description\": \"Restock rose inventory\", \"status\": \"pending\"}, "
@@ -153,44 +128,69 @@ string StaffCoordinator::getStaffTasks(int staffId) {
            "]}";
 }
 
-string StaffCoordinator::getAllStaff() {
-    cout << "StaffCoordinator: Retrieving all staff information" << endl;
+std::string StaffCoordinator::getAllStaff() {
+    std::cout << "StaffCoordinator: Retrieving all staff information" << std::endl;
 
-    string staffInfo = apiAdapter->getStaff();
+    std::string staffInfo = apiAdapter->getStaff();
     return "{\"staff_list\": " + staffInfo + "}";
 }
 
-string StaffCoordinator::getStaffByRole(const string& role) {
-    cout << "StaffCoordinator: Retrieving staff by role: " << role << endl;
+std::string StaffCoordinator::getStaffByRole(const std::string& role) {
+    std::cout << "StaffCoordinator: Retrieving staff by role: " << role << std::endl;
 
-    string allStaff = apiAdapter->getStaff();
+    std::string allStaff = apiAdapter->getStaff();
 
+    // In real implementation, filter by role from API response
     return "{\"role\": \"" + role +
            "\", \"staff\": [{\"id\": 1, \"name\": \"Mr. Green\", \"role\": \"Gardener\"}]}";
 }
 
-string StaffCoordinator::escalateTask(int taskId) {
-    cout << "StaffCoordinator: Escalating task ID: " << taskId << endl;
+std::string StaffCoordinator::getStaffPerformance() {
+    std::cout << "StaffCoordinator: Generating staff performance report" << std::endl;
 
+    return "{\"performance_report\": {"
+           "\"period\": \"November 2024\", "
+           "\"metrics\": {"
+           "\"tasks_completed\": 45, "
+           "\"customer_satisfaction\": 4.8, "
+           "\"plants_cared_for\": 123, "
+           "\"efficiency_rating\": 92"
+           "}}}";
+}
+
+std::string StaffCoordinator::assignStaffToNurseryArea(int staffId, const std::string& area) {
+    std::cout << "StaffCoordinator: Assigning staff " << staffId
+              << " to nursery area: " << area << std::endl;
+
+    return "{\"action\": \"assign_area\", "
+           "\"staff_id\": " + std::to_string(staffId) +
+           ", \"area\": \"" + area +
+           "\", \"status\": \"assigned\"}";
+}
+
+std::string StaffCoordinator::escalateTask(int taskId) {
+    std::cout << "StaffCoordinator: Escalating task ID: " << taskId << std::endl;
+
+    // Simulate escalation logic
     return "{\"action\": \"escalate_task\", "
-           "\"task_id\": " + to_string(taskId) +
+           "\"task_id\": " + std::to_string(taskId) +
            ", \"new_priority\": \"high\", "
            "\"assigned_to\": \"senior_staff\", "
            "\"status\": \"escalated\"}";
 }
 
-string StaffCoordinator::reassignTask(int taskId, int newStaffId) {
-    cout << "StaffCoordinator: Reassigning task " << taskId
-              << " to staff " << newStaffId << endl;
+std::string StaffCoordinator::reassignTask(int taskId, int newStaffId) {
+    std::cout << "StaffCoordinator: Reassigning task " << taskId
+              << " to staff " << newStaffId << std::endl;
 
     return "{\"action\": \"reassign_task\", "
-           "\"task_id\": " + to_string(taskId) +
-           ", \"new_staff_id\": " + to_string(newStaffId) +
+           "\"task_id\": " + std::to_string(taskId) +
+           ", \"new_staff_id\": " + std::to_string(newStaffId) +
            ", \"status\": \"reassigned\"}";
 }
 
-string StaffCoordinator::coordinateStaffMeeting(const string& agenda) {
-    cout << "StaffCoordinator: Coordinating staff meeting with agenda: " << agenda << endl;
+std::string StaffCoordinator::coordinateStaffMeeting(const std::string& agenda) {
+    std::cout << "StaffCoordinator: Coordinating staff meeting with agenda: " << agenda << std::endl;
 
     return "{\"action\": \"schedule_meeting\", "
            "\"agenda\": \"" + agenda +
@@ -199,61 +199,94 @@ string StaffCoordinator::coordinateStaffMeeting(const string& agenda) {
            "\"status\": \"scheduled\"}";
 }
 
-string StaffCoordinator::getStaffNotifications() {
-    cout << "StaffCoordinator: Retrieving staff notifications" << endl;
+std::string StaffCoordinator::getStaffNotifications() {
+    std::cout << "StaffCoordinator: Retrieving staff notifications" << std::endl;
 
-    string notifications = apiAdapter->getNotifications();
+    std::string notifications = apiAdapter->getNotifications();
     return "{\"staff_notifications\": " + notifications + "}";
 }
 
-string StaffCoordinator::markNotificationCompleted(int notificationId) {
-    cout << "StaffCoordinator: Marking notification as completed: " << notificationId << endl;
+std::string StaffCoordinator::markNotificationCompleted(int notificationId) {
+    std::cout << "StaffCoordinator: Marking notification as completed: " << notificationId << std::endl;
 
-    string apiResponse = apiAdapter->finishTask(notificationId);
+    std::string apiResponse = apiAdapter->finishTask(notificationId);
     return "{\"action\": \"complete_notification\", "
-           "\"notification_id\": " + to_string(notificationId) +
+           "\"notification_id\": " + std::to_string(notificationId) +
            ", \"api_response\": " + apiResponse + "}";
 }
 
-string StaffCoordinator::createStaffNotification(const string& message, const string& priority) {
-    cout << "StaffCoordinator: Creating staff notification: " << message
-              << " (priority: " << priority << ")" << endl;
+std::string StaffCoordinator::createStaffNotification(const std::string& message, const std::string& priority) {
+    std::cout << "StaffCoordinator: Creating staff notification: " << message
+              << " (priority: " << priority << ")" << std::endl;
 
     return "{\"action\": \"create_notification\", "
            "\"message\": \"" + message +
            "\", \"priority\": \"" + priority +
            "\", \"status\": \"created\", "
-           "\"notification_id\": " + to_string(rand() % 1000 + 100) + "}";
+           "\"notification_id\": " + std::to_string(rand() % 1000 + 100) + "}";
+}
+
+std::string StaffCoordinator::createWorkSchedule(const std::string& period) {
+    std::cout << "StaffCoordinator: Creating work schedule for period: " << period << std::endl;
+
+    return "{\"schedule\": {"
+           "\"period\": \"" + period + "\", "
+           "\"shifts\": ["
+           "{\"staff_id\": 1, \"name\": \"Mr. Green\", \"monday\": \"9-5\", \"tuesday\": \"9-5\", \"wednesday\": \"off\", \"thursday\": \"9-5\", \"friday\": \"9-5\"}, "
+           "{\"staff_id\": 2, \"name\": \"Mr. Cash\", \"monday\": \"12-8\", \"tuesday\": \"12-8\", \"wednesday\": \"9-5\", \"thursday\": \"12-8\", \"friday\": \"9-5\"}"
+           "]}}";
+}
+
+std::string StaffCoordinator::getStaffSchedule(int staffId) {
+    std::cout << "StaffCoordinator: Getting schedule for staff ID: " << staffId << std::endl;
+
+    return "{\"staff_id\": " + std::to_string(staffId) +
+           ", \"schedule\": {"
+           "\"week\": \"2024-11-11 to 2024-11-15\", "
+           "\"shifts\": [\"Mon: 9AM-5PM\", \"Tue: 9AM-5PM\", \"Wed: OFF\", \"Thu: 9AM-5PM\", \"Fri: 9AM-5PM\"]"
+           "}}";
+}
+
+std::string StaffCoordinator::updateStaffAvailability(int staffId, const std::string& availability) {
+    std::cout << "StaffCoordinator: Updating availability for staff " << staffId
+              << ": " << availability << std::endl;
+
+    return "{\"action\": \"update_availability\", "
+           "\"staff_id\": " + std::to_string(staffId) +
+           ", \"availability\": \"" + availability +
+           "\", \"status\": \"updated\"}";
 }
 
 // Private helper methods
-string StaffCoordinator::determineStaffRoleForTask(const string& task) {
-    string lowerTask = task;
+std::string StaffCoordinator::determineStaffRoleForTask(const std::string& task) {
+    std::string lowerTask = task;
+    // Convert to lowercase for comparison (simplified)
     for (char &c : lowerTask) {
         c = tolower(c);
     }
 
-    if (lowerTask.find("water") != string::npos ||
-        lowerTask.find("plant") != string::npos ||
-        lowerTask.find("grow") != string::npos) {
+    if (lowerTask.find("water") != std::string::npos ||
+        lowerTask.find("plant") != std::string::npos ||
+        lowerTask.find("grow") != std::string::npos) {
         return "gardener";
-    } else if (lowerTask.find("sale") != string::npos ||
-               lowerTask.find("buy") != string::npos ||
-               lowerTask.find("price") != string::npos) {
+    } else if (lowerTask.find("sale") != std::string::npos ||
+               lowerTask.find("buy") != std::string::npos ||
+               lowerTask.find("price") != std::string::npos) {
         return "sales";
-    } else if (lowerTask.find("care") != string::npos ||
-               lowerTask.find("advice") != string::npos) {
+    } else if (lowerTask.find("care") != std::string::npos ||
+               lowerTask.find("advice") != std::string::npos) {
         return "consultant";
     }
 
     return "general";
 }
 
-int StaffCoordinator::findAvailableStaff(const string& role) {
-    map<string, int> roleToStaffId = {
+int StaffCoordinator::findAvailableStaff(const std::string& role) {
+    // Simple staff assignment logic
+    std::map<std::string, int> roleToStaffId = {
         {"gardener", 1},
         {"sales", 2},
-        {"consultant", 1},
+        {"consultant", 1}, // Mr. Green can also consult
         {"general", 2}
     };
 
@@ -261,13 +294,10 @@ int StaffCoordinator::findAvailableStaff(const string& role) {
         return roleToStaffId[role];
     }
 
-    return 1;
+    return 1; // Default to Mr. Green
 }
 
-string StaffCoordinator::formatTaskDescription(const string& task) {
-    // Simple formatting - capitalize first letter
-    if (task.empty()) return task;
-    string formatted = task;
-    formatted[0] = toupper(formatted[0]);
-    return formatted;
+std::string StaffCoordinator::formatTaskDescription(const std::string& task) {
+    // Add timestamp and format task description
+    return "[Task] " + task + " (assigned: 2024-11-10)";
 }

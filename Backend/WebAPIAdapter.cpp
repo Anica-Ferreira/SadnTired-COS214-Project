@@ -1,60 +1,95 @@
+// WebAPIAdapter.cpp - UPDATED
 #include "WebAPIAdapter.h"
-#include "NurserySystemFacade.h"
-#include <iostream>
+#include "InventoryManager.h"
+#include <sstream>
 
-using namespace std;
-
-WebAPIAdapter::WebAPIAdapter(NurserySystemFacade* facade) : nurseryFacade(facade) {
-    cout << "WebAPIAdapter initialized" << endl;
+WebAPIAdapter::WebAPIAdapter(InventoryManager* invManager) : inventoryManager(invManager) {
+    cout << "WebAPIAdapter initialized with real data backend" << endl;
 }
 
 WebAPIAdapter::~WebAPIAdapter() {
     cout << "WebAPIAdapter destroyed" << endl;
 }
 
-string WebAPIAdapter::getShopProducts() {
-    if (nurseryFacade) {
-        return nurseryFacade->browseAllPlants();
-    }
-    return "{\"error\": \"System not available\"}";
+std::string WebAPIAdapter::getShopProducts() {
+    // Get REAL data from inventory manager
+    std::vector<Plant*> shopPlants = inventoryManager->getShopPlants();
+    return inventoryToJSON(shopPlants);
 }
 
-string WebAPIAdapter::getNurseryPlants() {
-    if (nurseryFacade) {
-        return nurseryFacade->viewNurseryStatus();
-    }
-    return "{\"error\": \"System not available\"}";
+std::string WebAPIAdapter::getNurseryPlants() {
+    // Get REAL data from inventory manager
+    std::vector<Plant*> nurseryPlants = inventoryManager->getNurseryPlants();
+    return inventoryToJSON(nurseryPlants);
 }
 
-string WebAPIAdapter::waterPlant(const string& plantName) {
-    if (nurseryFacade) {
-        return nurseryFacade->waterPlant(plantName);
-    }
-    return "{\"error\": \"System not available\"}";
+std::string WebAPIAdapter::waterPlant(const std::string& plantName) {
+    // Actually water the plant in the backend
+    return inventoryManager->waterPlant(plantName);
 }
 
-string WebAPIAdapter::movePlantToShop(const string& plantName) {
-    if (nurseryFacade) {
-        return nurseryFacade->movePlantToShop(plantName);
-    }
-    return "{\"error\": \"System not available\"}";
+std::string WebAPIAdapter::movePlantToShop(const std::string& plantName) {
+    // Actually move the plant in the backend
+    return inventoryManager->movePlantToShop(plantName);
 }
 
+std::string WebAPIAdapter::inventoryToJSON(const std::vector<Plant*>& plants) {
+    std::stringstream json;
+    json << "[";
 
-string WebAPIAdapter::createCustomer(const string& name, const string& email) {
-    return "{\"status\": \"success\", \"message\": \"Customer " + name + " created\", \"email\": \"" + email + "\"}";
+    for (size_t i = 0; i < plants.size(); i++) {
+        Plant* plant = plants[i];
+        json << "{"
+             << "\"name\": \"" << plant->getName() << "\", "
+             << "\"type\": \"" << plant->getType() << "\", "
+             << "\"state\": \"" << plant->getStateName() << "\", "
+             << "\"water_level\": " << plant->getWaterLevel();
+
+        // Add shop-specific or nursery-specific fields
+        if (plant->getStateName() == "Ready for Sale") {
+            json << ", \"price\": 19.99";  // Example price
+        }
+
+        json << "}";
+
+        if (i < plants.size() - 1) {
+            json << ", ";
+        }
+    }
+
+    json << "]";
+    return json.str();
 }
 
-string WebAPIAdapter::getRandomPlants() {
-    if (nurseryFacade) {
-        return nurseryFacade->browseAllPlants();
-    }
-    return "{\"error\": \"System not available\"}";
+// Keep other methods but they can remain as stubs for now
+std::string WebAPIAdapter::getStaff() {
+    return "{\"staff\": [{\"name\": \"Mr. Green\", \"role\": \"Gardener\"}]}";
 }
 
-string WebAPIAdapter::getRandomBundle() {
-    if (nurseryFacade) {
-        return nurseryFacade->viewAvailableBundles();
-    }
-    return "{\"error\": \"System not available\"}";
+std::string WebAPIAdapter::getNotifications() {
+    return "{\"notifications\": []}";
+}
+
+std::string WebAPIAdapter::finishTask(int taskId) {
+    return "{\"status\": \"completed\", \"task_id\": " + std::to_string(taskId) + "}";
+}
+
+std::string WebAPIAdapter::createCustomer(const std::string& name, const std::string& email) {
+    return "{\"status\": \"created\", \"customer_name\": \"" + name + "\"}";
+}
+
+std::string WebAPIAdapter::executeCustomerCommand(const std::string& commandType, const std::string& params) {
+    return "{\"status\": \"executed\", \"command\": \"" + commandType + "\"}";
+}
+
+std::string WebAPIAdapter::getCustomerCart(int customerId) {
+    return "{\"cart\": []}";
+}
+
+std::string WebAPIAdapter::getRandomPlants() {
+    return getShopProducts();  // Use real data
+}
+
+std::string WebAPIAdapter::getRandomBundle() {
+    return "{\"bundle\": {\"name\": \"Spring Collection\", \"plants\": 3}}";
 }

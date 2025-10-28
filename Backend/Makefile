@@ -1,24 +1,5 @@
 filesToDelete = main api
-filesToCompile = Product.cpp ProductItem.cpp ProductDecorator.cpp DecorativePot.cpp GiftWrapping.cpp ProductBundle.cpp TestingMain.cpp OrderDirector.cpp OrderBuilder.cpp ConcreteOrderBuilder.cpp Api.cpp
-
-# API specific files - UPDATED with missing files
-apiFiles = Api.cpp \
-          WebAPIAdapter.cpp \
-          NurserySystemFacade.cpp \
-          StaffMember.cpp \
-          StaffCoordinator.cpp \
-          Customer.cpp \
-          InventoryManager.cpp \
-          PlantNursery.cpp \
-          CustomerCommand.cpp \
-          Inventory.cpp \
-          Plant.cpp \
-          PlantFactory.cpp \
-          ShoppingCart.cpp \
-          WateringStrategy.cpp \
-          PlantState.cpp \
-          StaffReaction.cpp \
-          StaffAction.cpp
+filesToCompile = TestingMain.cpp ConcreteOrderBuilder.cpp Customer.cpp CustomerCommand.cpp DecorativePot.cpp GiftWrapping.cpp IColleague.cpp IMediator.cpp Inventory.cpp InventoryManager.cpp IObserver.cpp ISubject.cpp NurserySystemFacade.cpp OrderBuilder.cpp OrderDirector.cpp Plant.cpp PlantFactory.cpp PlantNursery.cpp PlantState.cpp Product.cpp ProductBundle.cpp ProductDecorator.cpp ProductItem.cpp ShoppingCart.cpp StaffAction.cpp StaffCommand.cpp StaffCoordinator.cpp StaffGardener.cpp StaffManager.cpp StaffMember.cpp StaffReaction.cpp StaffSalesman.cpp WaterCommand.cpp WateringStrategy.cpp WebAPIAdapter.cpp
 
 filesInCoverageReport = main
 
@@ -26,7 +7,7 @@ main:
 	g++ -g -std=c++17 ${filesToCompile} -o main
 
 api:
-	g++ -g -std=c++17 -I ../crow/include -I ../asio/include ${apiFiles} -o api -pthread
+	g++ -g -std=c++17 -I ../crow/include -I ../asio/include Api.cpp -o api -pthread
 
 run: main
 	./main

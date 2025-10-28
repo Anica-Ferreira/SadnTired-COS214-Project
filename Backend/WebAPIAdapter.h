@@ -1,27 +1,27 @@
+// WebAPIAdapter.h - UPDATED
 #ifndef WEB_API_ADAPTER_H
 #define WEB_API_ADAPTER_H
 
-using namespace std;
 #include <string>
-
-class NurserySystemFacade;
+#include "InventoryManager.h"  // Now includes Inventory
 
 class WebAPIAdapter {
 private:
-    NurserySystemFacade* nurseryFacade;
+    InventoryManager* inventoryManager;
+    // Remove other managers if not needed
 
 public:
-    WebAPIAdapter(NurserySystemFacade* facade);
+    WebAPIAdapter(InventoryManager* invManager);  // Takes real inventory manager
     ~WebAPIAdapter();
 
-    // Shop endpoints
+    // Shop endpoints - SERVES REAL DATA
     std::string getShopProducts();
     std::string getRandomPlants();
 
-    // Nursery endpoints
+    // Nursery endpoints - SERVES REAL DATA
     std::string getNurseryPlants();
-    std::string waterPlant(const std::string& plantName);
-    std::string movePlantToShop(const std::string& plantName);
+    std::string waterPlant(const std::string& plantName);  // Changed to string
+    std::string movePlantToShop(const std::string& plantName);  // Changed to string
 
     // Staff endpoints
     std::string getStaff();
@@ -35,6 +35,9 @@ public:
 
     // Bundle endpoints
     std::string getRandomBundle();
+
+private:
+    std::string inventoryToJSON(const std::vector<Plant*>& plants);
 };
 
 #endif
