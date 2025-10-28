@@ -86,12 +86,30 @@ function generate() {
     $('#cardBoxes').html(itemList);
 }
 
-function water(id) {
-    console.log(id);
-    //POST WaterPlant/id
+async function water(id) {
+    try{
+        const response = await fetch(`/waterPlant/${id}`, {
+            method: "POST"
+        })
+        if (!response.ok) throw new Error("Cannot Water Plant");
+        const data = await response.json();
+        return data;
+    }catch (err) {
+        console.error("Fetch error:", err);
+        return [];
+    }
 }
 
-function addToShop(id) {
-    console.log(id);
-    //POST MovePlantOut/id
+async function addToShop(id) {
+    try{
+        const response = await fetch(`/movePlantOut/${id}`, {
+            method: "POST"
+        })
+        if (!response.ok) throw new Error("Cannot Add Plants to Shop");
+        const data = await response.json();
+        return data;
+    }catch (err) {
+        console.error("Fetch error:", err);
+        return [];
+    }
 }

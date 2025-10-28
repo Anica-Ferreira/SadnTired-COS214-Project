@@ -57,7 +57,7 @@ async function generateNotifs() {
         </li>`;
     }
 
-    document.getElementById("notifList").innerHTML = itemList;
+    $('#notifList').html(itemList);
 }
 
 function generateStaff() {
@@ -84,10 +84,28 @@ async function getNotifs() {
     }
 }
 
-function getStaff() {
-    //GET Staff
+async function getStaff() {
+    try{
+        const response = await fetch("/staff"); //call from the express server from now on yay
+        if (!response.ok) throw new Error("Cannot GET staff profile");
+        const data = await response.json();
+        return data;
+    }catch (err) {
+        console.error("Fetch error:", err);
+        return [];
+    }
 }
 
-function finishTask(id) {
-    //POST FinishTask/id
+async function finishTask(id) {
+    try{
+        const response = await fetch(`/finishTask/${id}`, {
+            method: "POST"
+        })
+        if (!response.ok) throw new Error("Cannot Complete Task");
+        const data = await response.json();
+        return data;
+    }catch (err) {
+        console.error("Fetch error:", err);
+        return [];
+    }
 }

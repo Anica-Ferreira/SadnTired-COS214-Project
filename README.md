@@ -14,7 +14,22 @@ This is where we yap about our project
 
 # Setup
 
-make run whatever you guys end up needing
+## In the /Backend folder
+
+Run the following commands:
+
+make clean
+make api
+make runapi
+
+## In the /project folder
+
+Run the following commands:
+
+npm install
+node server.js
+
+## Open http://localhost:3000
 
 # Documents
 

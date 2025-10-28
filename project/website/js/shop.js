@@ -83,11 +83,19 @@ function generate() {
     $('#cardBoxes').html(itemList);
 }
 
-function getShop() {
-    //GET Shop
+async function getShop() {
+    try{
+        const response = await fetch("/shop"); //call from the express server from now on yay
+        if (!response.ok) throw new Error("Cannot GET notifications");
+        const data = await response.json();
+        return data;
+    }catch (err) {
+        console.error("Fetch error:", err);
+        return [];
+    }
 }
 
-function addToCart(id) {
+async function addToCart(id) {
     console.log(id);
     //POST AddToCart/id
 }
