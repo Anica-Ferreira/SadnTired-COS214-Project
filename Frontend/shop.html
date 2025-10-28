@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop - Melancholy Nursery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: rgb(255, 238, 241);
+            font-family: "Kumbh Sans";
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 80px;
+            color: rgb(44, 1, 1);
+            margin: 30px 0;
+        }
+
+        /* HEADER STYLING */
+        header {
+            display: grid;
+            grid-template-columns: auto auto;
+            font-size: 24px;
+            background-color: darkred;
+            padding: 15px;
+            align-items: center;
+        }
+
+        header a {
+            text-decoration: none;
+            color: aliceblue;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        #home {
+            text-align: left;
+        }
+
+        #payment {
+            text-align: right;
+        }
+
+        /* CARD STYLING */
+        #cardBoxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cardItem {
+            border: solid 4px darkred;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            background-color: rgb(255, 245, 247);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .cardItem:hover {
+            transform: translateY(-5px);
+        }
+
+        .plantImg {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            background-color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 0 auto 15px;
+            border: 2px solid #ddd;
+        }
+
+        .plantName {
+            font-size: 24px;
+            color: darkred;
+            margin: 10px 0;
+        }
+
+        .plantDesc {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+            flex-grow: 1;
+        }
+
+        .plantCount {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: darkred;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #a52a2a;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER STYLING */
+        footer {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            font-size: 18px;
+            background-color: darkred;
+            padding: 20px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: lightpink;
+            padding: 0 20px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        #footer1 {
+            text-align: right;
+        }
+
+        #footer2 {
+            text-align: left;
+        }
+
+        footer span {
+            text-align: center;
+            color: white;
+        }
+
+        .cart-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: darkred;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html" id="home">🏠 Home</a>
+    <a href="payment.html" id="payment">🛒 Checkout</a>
+</header>
+
+<div class="cart-indicator" id="cartIndicator" style="display: none;">
+    🛒 <span id="cartCount">0</span> items
+</div>
+
+<main>
+    <h1>Our Plant Shop</h1>
+
+    <div id="cardBoxes">
+        <div class="loading">Loading plants...</div>
+    </div>
+</main>
+
+<footer>
+    <a href="about.html" id="footer1">About Us</a>
+    <span>|</span>
+    <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

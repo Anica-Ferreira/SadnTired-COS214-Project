@@ -1,5 +1,5 @@
-#ifndef SAD_TIRED_PLANTNURSERY_H
-#define SAD_TIRED_PLANTNURSERY_H
+#ifndef PLANT_NURSERY_H
+#define PLANT_NURSERY_H
 
 #include <string>
 using namespace std;
@@ -12,10 +12,16 @@ private:
 
 public:
     PlantNursery(WebAPIAdapter* adapter);
+
+    // Core nursery operations
     string getGrowthStatus();
     string getWateringSchedule();
     string getPlantHealthAlerts();
     string addNewPlant(const string& plantType, int quantity);
+
+    // Additional nursery management methods
+    string getPropagationReport();
+    string getEnvironmentalConditions();
 };
 
-#endif //SAD_TIRED_PLANTNURSERY_H
+#endif

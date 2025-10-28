@@ -1,49 +1,61 @@
-# Universal C++ Makefile
-# Compiler to use
-CXX = g++
-# Compiler flags (includes debugging symbols for Valgrind and GDB)
-CXXFLAGS = -Wall -Wextra -std=c++17 -O2 -g
-# Linker flags
-LDFLAGS =
+filesToDelete = main api
+filesToCompile = Product.cpp ProductItem.cpp ProductDecorator.cpp DecorativePot.cpp GiftWrapping.cpp ProductBundle.cpp TestingMain.cpp OrderDirector.cpp OrderBuilder.cpp ConcreteOrderBuilder.cpp Api.cpp
 
-# Target executable name
-TARGET = app
+# API specific files - UPDATED with missing files
+apiFiles = Api.cpp \
+          WebAPIAdapter.cpp \
+          NurserySystemFacade.cpp \
+          StaffMember.cpp \
+          StaffCoordinator.cpp \
+          Customer.cpp \
+          InventoryManager.cpp \
+          PlantNursery.cpp \
+          CustomerCommand.cpp \
+          Inventory.cpp \
+          Plant.cpp \
+          PlantFactory.cpp \
+          ShoppingCart.cpp \
+          WateringStrategy.cpp \
+          PlantState.cpp \
+          StaffReaction.cpp \
+          StaffAction.cpp
 
-# Source files
-SOURCES = $(wildcard *.cpp)
-# Object files
-OBJECTS = $(SOURCES:.cpp=.o)
+filesInCoverageReport = main
 
-# Default target: build the executable
-all: $(TARGET)
+main:
+	g++ -g -std=c++17 ${filesToCompile} -o main
 
-# Link object files to create the executable
-$(TARGET): $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+api:
+	g++ -g -std=c++17 -I ../crow/include -I ../asio/include ${apiFiles} -o api -pthread
 
-# Compile source files to object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+run: main
+	./main
 
-# Clean up generated files
+runapi: api
+	./api
+
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f *.o *.gcov *.gcda *.gcno *.gz *.json *.html *.css output.txt coverage.txt valgrind.txt ${filesToDelete}
 
-# Run the program with Valgrind to check for memory leaks
-coverage: $(TARGET)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
+coverage:
+	make clean
+	g++ -g --coverage ${filesToCompile} -o main
+	./main
+	gcov -f -m -r -j ${filesInCoverageReport} > coverage.txt
+	gcovr --html-details output.html
 
-# Run the program with GDB for debugging
-gdb: $(TARGET)
-	gdb ./$(TARGET)
+valgrind:
+	make clean
+	make
+	valgrind --track-origins=yes --leak-check=full --keep-stacktraces=alloc-and-free --error-exitcode=1 --log-file=valgrind.txt ./main > output.txt
 
-# Phony targets
-.PHONY: all clean valgrind gdb
+gdb:
+	make clean
+	make
+	gdb ./main
 
-# Available commands:
-# make          - Build the executable (same as 'make all')
-# make all      - Build the executable
-# make clean    - Remove object files and the executable
-# make valgrind - Run the executable with Valgrind to check for memory leaks
-# make gdb      - Run the executable with GDB for debugging
-# make all && ./app - Build and run the executable
+all:
+	make clean
+	make valgrind
+	make coverage
+	make gdb

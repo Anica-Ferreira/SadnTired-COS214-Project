@@ -23,7 +23,6 @@ public:
     // Plant search and filtering
     string searchPlants(const string& keyword);
     string filterPlantsByType(const string& plantType);
-    string filterPlantsByCareLevel(const string& careLevel);
     string getPlantsByStatus(const string& status);
 
     // Plant information
@@ -42,7 +41,6 @@ public:
     string waterPlant(const string& plantName);
 
     // Bundle management
-    string getAvailableBundles();
     string getBundleDetails(const string& bundleName);
     string createCustomBundle(const vector<string>& plantNames, const string& bundleName);
 
