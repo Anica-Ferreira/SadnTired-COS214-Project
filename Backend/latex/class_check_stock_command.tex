@@ -1,0 +1,89 @@
+\doxysection{Check\+Stock\+Command Class Reference}
+\hypertarget{class_check_stock_command}{}\label{class_check_stock_command}\index{CheckStockCommand@{CheckStockCommand}}
+Inheritance diagram for Check\+Stock\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_check_stock_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_check_stock_command_abb6ad50b227f9be6b03d78f5545c7517}{Check\+Stock\+Command}} (const string \&plant, \mbox{\hyperlink{class_nursery_system_facade}{Nursery\+System\+Facade}} \texorpdfstring{$\ast$}{*}fac)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_check_stock_command}{Check\+Stock\+Command} object\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_check_stock_command_a6ab22e20216762ae37be40f5b503c6bf}{execute}} (\mbox{\hyperlink{class_customer}{Customer}} \texorpdfstring{$\ast$}{*}customer) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the stock check command\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_check_stock_command_a5c36515dbbd2fa99d67047c8f8b3739e}{get\+Description}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the stock description of this command\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_check_stock_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_check_stock_command_abb6ad50b227f9be6b03d78f5545c7517}\index{CheckStockCommand@{CheckStockCommand}!CheckStockCommand@{CheckStockCommand}}
+\index{CheckStockCommand@{CheckStockCommand}!CheckStockCommand@{CheckStockCommand}}
+\doxysubsubsection{\texorpdfstring{CheckStockCommand()}{CheckStockCommand()}}
+{\footnotesize\ttfamily \label{class_check_stock_command_abb6ad50b227f9be6b03d78f5545c7517} 
+Check\+Stock\+Command\+::\+Check\+Stock\+Command (\begin{DoxyParamCaption}\item[{const string \&}]{plant}{, }\item[{\mbox{\hyperlink{class_nursery_system_facade}{Nursery\+System\+Facade}} \texorpdfstring{$\ast$}{*}}]{fac}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_check_stock_command}{Check\+Stock\+Command} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Name of the plant to check stock for\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em fac} & \mbox{[}Pointer to the nursery system facade\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_check_stock_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_check_stock_command_a6ab22e20216762ae37be40f5b503c6bf}\index{CheckStockCommand@{CheckStockCommand}!execute@{execute}}
+\index{execute@{execute}!CheckStockCommand@{CheckStockCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_check_stock_command_a6ab22e20216762ae37be40f5b503c6bf} 
+string Check\+Stock\+Command\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_customer}{Customer}} \texorpdfstring{$\ast$}{*}}]{customer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Executes the stock check command\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em customer} & \mbox{[}Pointer to the customer executing the command\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Stock information message\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_customer_command}{Customer\+Command}}.
+
+\Hypertarget{class_check_stock_command_a5c36515dbbd2fa99d67047c8f8b3739e}\index{CheckStockCommand@{CheckStockCommand}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!CheckStockCommand@{CheckStockCommand}}
+\doxysubsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily \label{class_check_stock_command_a5c36515dbbd2fa99d67047c8f8b3739e} 
+string Check\+Stock\+Command\+::get\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the stock description of this command\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Command description string\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_customer_command}{Customer\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Customer\+Command.\+h\item 
+Customer\+Command.\+cpp\end{DoxyCompactItemize}

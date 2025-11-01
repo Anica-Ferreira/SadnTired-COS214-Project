@@ -1,0 +1,70 @@
+\doxysection{Plant\+State Class Reference}
+\hypertarget{class_plant_state}{}\label{class_plant_state}\index{PlantState@{PlantState}}
+
+
+\mbox{[}Implementation of plant state classes for state management\mbox{]}  
+
+
+Inheritance diagram for Plant\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_plant_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_plant_state_a61bf33d07e33b14ce4fbd7db3a6c8f86}{handle\+Watering}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant)=0
+\item 
+virtual void \mbox{\hyperlink{class_plant_state_a44fb923373d6fbe17ccf7a67df24637a}{handle\+Pass\+Time}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant)=0
+\item 
+virtual string \mbox{\hyperlink{class_plant_state_a2000c38d991893145a7a88d1f6cdc49b}{get\+State\+Name}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of plant state classes for state management\mbox{]} 
+
+\mbox{[}Handles plant state transitions and behavior based on current state\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-func-members}
+\Hypertarget{class_plant_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_plant_state_a2000c38d991893145a7a88d1f6cdc49b}\index{PlantState@{PlantState}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!PlantState@{PlantState}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily \label{class_plant_state_a2000c38d991893145a7a88d1f6cdc49b} 
+virtual string Plant\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_dry_state_a317d743b6e9c3fa380bdf63be81f9f32}{Dry\+State}}, \mbox{\hyperlink{class_planted_state_a4745ff2e46b19bc5d270f700495c1669}{Planted\+State}}, \mbox{\hyperlink{class_ready_for_sale_state_acf2143fd0a4ccfa5827cdce08adc2d5e}{Ready\+For\+Sale\+State}}, and \mbox{\hyperlink{class_watered_state_a5f3f73f0083c7cc8792e74cada579da6}{Watered\+State}}.
+
+\Hypertarget{class_plant_state_a44fb923373d6fbe17ccf7a67df24637a}\index{PlantState@{PlantState}!handlePassTime@{handlePassTime}}
+\index{handlePassTime@{handlePassTime}!PlantState@{PlantState}}
+\doxysubsubsection{\texorpdfstring{handlePassTime()}{handlePassTime()}}
+{\footnotesize\ttfamily \label{class_plant_state_a44fb923373d6fbe17ccf7a67df24637a} 
+virtual void Plant\+State\+::handle\+Pass\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_dry_state_aebaaef25e20419c08d0b1f7415dccd02}{Dry\+State}}, \mbox{\hyperlink{class_planted_state_a53eacc180f8cb4698a80197173aab01c}{Planted\+State}}, \mbox{\hyperlink{class_ready_for_sale_state_adc69f46c0700b8ec62db324545b352b7}{Ready\+For\+Sale\+State}}, and \mbox{\hyperlink{class_watered_state_aee3053bea9d12e7ba857e131ecb0b3ac}{Watered\+State}}.
+
+\Hypertarget{class_plant_state_a61bf33d07e33b14ce4fbd7db3a6c8f86}\index{PlantState@{PlantState}!handleWatering@{handleWatering}}
+\index{handleWatering@{handleWatering}!PlantState@{PlantState}}
+\doxysubsubsection{\texorpdfstring{handleWatering()}{handleWatering()}}
+{\footnotesize\ttfamily \label{class_plant_state_a61bf33d07e33b14ce4fbd7db3a6c8f86} 
+virtual void Plant\+State\+::handle\+Watering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_dry_state_ac44961105702f0cf32cd39812e329cea}{Dry\+State}}, \mbox{\hyperlink{class_planted_state_a71abd925bd14df0e07bc352e4d0744f2}{Planted\+State}}, \mbox{\hyperlink{class_ready_for_sale_state_aaf678157cbf4f3a0db0cb7499724ba9f}{Ready\+For\+Sale\+State}}, and \mbox{\hyperlink{class_watered_state_a11fe0838cd628312764f2e5c625f611c}{Watered\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Plant\+State.\+h\end{DoxyCompactItemize}

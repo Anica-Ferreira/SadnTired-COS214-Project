@@ -1,0 +1,33 @@
+\doxysection{Watering\+Strategy.\+h}
+\hypertarget{_watering_strategy_8h_source}{}\label{_watering_strategy_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WATERING\_STRATEGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WATERING\_STRATEGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant}{Plant}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_watering_strategy}{\string~WateringStrategy}}()\ \{\}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ water(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ =\ 0;}
+\DoxyCodeLine{00011\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_heavy_watering}{HeavyWatering}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heavy_watering_a5da971f288ffef988420ededccc17758}{water}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \};\ \ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_regular_watering}{RegularWatering}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regular_watering_a67263a94f91651f486828ed2a76b90e0}{water}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_light_watering}{LightWatering}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_light_watering_a591edbe9ab75077340baa3ddf964bf6e}{water}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WATERING\_STRATEGY\_H}}
+
+\end{DoxyCode}

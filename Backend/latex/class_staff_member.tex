@@ -1,0 +1,181 @@
+\doxysection{Staff\+Member Class Reference}
+\hypertarget{class_staff_member}{}\label{class_staff_member}\index{StaffMember@{StaffMember}}
+
+
+\mbox{[}Implementation of the \doxylink{class_staff_member}{Staff\+Member} base class for all staff types\mbox{]}  
+
+
+Inheritance diagram for Staff\+Member\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_staff_member}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72}{Staff\+Member}} (std\+::string name, std\+::string role)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_staff_member}{Staff\+Member} object\mbox{]} \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_staff_member_a99390d2a62ccbf1724792aa9e3f42ab9}{process\+Request}} (std\+::string request)=0
+\item 
+void \mbox{\hyperlink{class_staff_member_a802a0ef47f184b818208947458cda0ab}{notify}} (\mbox{\hyperlink{class_i_colleague}{IColleague}} \texorpdfstring{$\ast$}{*}sender, std\+::string request) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles notifications from the mediator pattern\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_member_a8840c6eab82f02d8b54098ac76698371}{Update}} (std\+::string message) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles updates from the observer pattern\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_staff_member_a0ab256f43d444996dd417d8e15ba5091}\label{class_staff_member_a0ab256f43d444996dd417d8e15ba5091} 
+virtual void {\bfseries template\+Work\+Cycle} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the staff work cycle template method\mbox{]} \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_staff_member_ab8f47b85f7a2b723f1d4149f393c7df2}{main\+Duty}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_staff_member_aa27d7bfde7e1c46be604ae30c9506611}{work\+Duty}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_staff_member_a158cc710d0724bb33c14176bfce18eff}{sub\+Duty}} ()=0
+\item 
+std\+::string \mbox{\hyperlink{class_staff_member_ac5030ee11b0fab0ef250d86932af006b}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the staff member\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_staff_member_a54f77d6528546feb869c4c3d69202505}\label{class_staff_member_a54f77d6528546feb869c4c3d69202505} 
+std\+::string {\bfseries name\+\_\+}
+\item 
+\Hypertarget{class_staff_member_abea34309e0c13fd6c8debe40e27a3096}\label{class_staff_member_abea34309e0c13fd6c8debe40e27a3096} 
+std\+::string {\bfseries role\+\_\+}
+\item 
+\Hypertarget{class_staff_member_a739f396641baafa5f2bc43d13d5cf1d1}\label{class_staff_member_a739f396641baafa5f2bc43d13d5cf1d1} 
+std\+::vector$<$ std\+::string $>$ {\bfseries current\+\_\+tasks\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_staff_member}{Staff\+Member} base class for all staff types\mbox{]} 
+
+\mbox{[}Provides base functionality for staff operations including mediator and observer patterns\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_staff_member_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72}\index{StaffMember@{StaffMember}!StaffMember@{StaffMember}}
+\index{StaffMember@{StaffMember}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{StaffMember()}{StaffMember()}}
+{\footnotesize\ttfamily \label{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72} 
+Staff\+Member\+::\+Staff\+Member (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{std\+::string}]{role}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_staff_member}{Staff\+Member} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em name} & \mbox{[}The name of the staff member\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em role} & \mbox{[}The role of the staff member\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_staff_member_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_staff_member_ac5030ee11b0fab0ef250d86932af006b}\index{StaffMember@{StaffMember}!getName@{getName}}
+\index{getName@{getName}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_staff_member_ac5030ee11b0fab0ef250d86932af006b} 
+std\+::string Staff\+Member\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the name of the staff member\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}The staff member\textquotesingle{}s name\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_member_ab8f47b85f7a2b723f1d4149f393c7df2}\index{StaffMember@{StaffMember}!mainDuty@{mainDuty}}
+\index{mainDuty@{mainDuty}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{mainDuty()}{mainDuty()}}
+{\footnotesize\ttfamily \label{class_staff_member_ab8f47b85f7a2b723f1d4149f393c7df2} 
+virtual void Staff\+Member\+::main\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_staff_gardener_a93342f6b8349c45ccde092ce7ee42725}{Staff\+Gardener}}, \mbox{\hyperlink{class_staff_manager_a568ad1d14f595b960525d9ef91f9e1f2}{Staff\+Manager}}, and \mbox{\hyperlink{class_staff_salesman_aab167670a9c3cbf243bf2157ad2a77b4}{Staff\+Salesman}}.
+
+\Hypertarget{class_staff_member_a802a0ef47f184b818208947458cda0ab}\index{StaffMember@{StaffMember}!notify@{notify}}
+\index{notify@{notify}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily \label{class_staff_member_a802a0ef47f184b818208947458cda0ab} 
+void Staff\+Member\+::notify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_colleague}{IColleague}} \texorpdfstring{$\ast$}{*}}]{sender}{, }\item[{std\+::string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles notifications from the mediator pattern\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em sender} & \mbox{[}Pointer to the colleague sending the notification\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em request} & \mbox{[}The request message from the sender\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_mediator}{IMediator}}.
+
+\Hypertarget{class_staff_member_a99390d2a62ccbf1724792aa9e3f42ab9}\index{StaffMember@{StaffMember}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily \label{class_staff_member_a99390d2a62ccbf1724792aa9e3f42ab9} 
+virtual std\+::string Staff\+Member\+::process\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_staff_gardener_a5ef5bc10820ae1572c35307f0afb7422}{Staff\+Gardener}}, \mbox{\hyperlink{class_staff_manager_a7893103972a5bcf157ecc0f2423ddb22}{Staff\+Manager}}, and \mbox{\hyperlink{class_staff_salesman_a933ad18677f2d534bfce1d4089cc310c}{Staff\+Salesman}}.
+
+\Hypertarget{class_staff_member_a158cc710d0724bb33c14176bfce18eff}\index{StaffMember@{StaffMember}!subDuty@{subDuty}}
+\index{subDuty@{subDuty}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{subDuty()}{subDuty()}}
+{\footnotesize\ttfamily \label{class_staff_member_a158cc710d0724bb33c14176bfce18eff} 
+virtual void Staff\+Member\+::sub\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_staff_gardener_a2d1f2d5679a936427a90d04e9b114154}{Staff\+Gardener}}, \mbox{\hyperlink{class_staff_manager_aae5402ad2efe69833f63292132d451b0}{Staff\+Manager}}, and \mbox{\hyperlink{class_staff_salesman_ad400ea3e6157da128d0893adbce5e024}{Staff\+Salesman}}.
+
+\Hypertarget{class_staff_member_a8840c6eab82f02d8b54098ac76698371}\index{StaffMember@{StaffMember}!Update@{Update}}
+\index{Update@{Update}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_staff_member_a8840c6eab82f02d8b54098ac76698371} 
+void Staff\+Member\+::\+Update (\begin{DoxyParamCaption}\item[{std\+::string}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles updates from the observer pattern\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em message} & \mbox{[}The update message from the subject\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_observer}{IObserver}}.
+
+\Hypertarget{class_staff_member_aa27d7bfde7e1c46be604ae30c9506611}\index{StaffMember@{StaffMember}!workDuty@{workDuty}}
+\index{workDuty@{workDuty}!StaffMember@{StaffMember}}
+\doxysubsubsection{\texorpdfstring{workDuty()}{workDuty()}}
+{\footnotesize\ttfamily \label{class_staff_member_aa27d7bfde7e1c46be604ae30c9506611} 
+virtual void Staff\+Member\+::work\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_staff_gardener_a59aaf930ccac147c3947bddc55f5c294}{Staff\+Gardener}}, \mbox{\hyperlink{class_staff_manager_a82fb5b541cba2b6df19e4fb3bf46bc12}{Staff\+Manager}}, and \mbox{\hyperlink{class_staff_salesman_aa43281e2f02ea593b483f9ef2261f4ea}{Staff\+Salesman}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Staff\+Member.\+h\item 
+Staff\+Member.\+cpp\end{DoxyCompactItemize}

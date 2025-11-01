@@ -1,0 +1,152 @@
+\doxysection{Staff\+Gardener Class Reference}
+\hypertarget{class_staff_gardener}{}\label{class_staff_gardener}\index{StaffGardener@{StaffGardener}}
+
+
+\mbox{[}Implementation of the \doxylink{class_staff_gardener}{Staff\+Gardener} class for gardening staff operations\mbox{]}  
+
+
+Inheritance diagram for Staff\+Gardener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_staff_gardener}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_gardener_a14c7e35e5727196523494c496d0edbad}{Staff\+Gardener}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_staff_gardener}{Staff\+Gardener} object\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_gardener_a5ef5bc10820ae1572c35307f0afb7422}{process\+Request}} (std\+::string request) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Processes customer requests for gardening staff\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_gardener_a93342f6b8349c45ccde092ce7ee42725}{main\+Duty}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Performs the main duty of gardening staff\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_gardener_a59aaf930ccac147c3947bddc55f5c294}{work\+Duty}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Performs the work duty of gardening staff\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_gardener_a2d1f2d5679a936427a90d04e9b114154}{sub\+Duty}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Performs the sub duty of gardening staff\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_staff_member}{Staff\+Member}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72}{Staff\+Member}} (std\+::string name, std\+::string role)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_staff_member}{Staff\+Member} object\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_member_a802a0ef47f184b818208947458cda0ab}{notify}} (\mbox{\hyperlink{class_i_colleague}{IColleague}} \texorpdfstring{$\ast$}{*}sender, std\+::string request) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles notifications from the mediator pattern\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_member_a8840c6eab82f02d8b54098ac76698371}{Update}} (std\+::string message) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles updates from the observer pattern\mbox{]} \end{DoxyCompactList}\item 
+virtual void {\bfseries template\+Work\+Cycle} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the staff work cycle template method\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_member_ac5030ee11b0fab0ef250d86932af006b}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the staff member\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_staff_member}{Staff\+Member}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\item 
+std\+::string {\bfseries role\+\_\+}
+\item 
+std\+::vector$<$ std\+::string $>$ {\bfseries current\+\_\+tasks\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_staff_gardener}{Staff\+Gardener} class for gardening staff operations\mbox{]} 
+
+\mbox{[}Handles gardening-\/related staff duties and plant care tasks\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_staff_gardener_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_staff_gardener_a14c7e35e5727196523494c496d0edbad}\index{StaffGardener@{StaffGardener}!StaffGardener@{StaffGardener}}
+\index{StaffGardener@{StaffGardener}!StaffGardener@{StaffGardener}}
+\doxysubsubsection{\texorpdfstring{StaffGardener()}{StaffGardener()}}
+{\footnotesize\ttfamily \label{class_staff_gardener_a14c7e35e5727196523494c496d0edbad} 
+Staff\+Gardener\+::\+Staff\+Gardener (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_staff_gardener}{Staff\+Gardener} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}The name of the gardening staff member\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_staff_gardener_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_staff_gardener_a93342f6b8349c45ccde092ce7ee42725}\index{StaffGardener@{StaffGardener}!mainDuty@{mainDuty}}
+\index{mainDuty@{mainDuty}!StaffGardener@{StaffGardener}}
+\doxysubsubsection{\texorpdfstring{mainDuty()}{mainDuty()}}
+{\footnotesize\ttfamily \label{class_staff_gardener_a93342f6b8349c45ccde092ce7ee42725} 
+void Staff\+Gardener\+::main\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Performs the main duty of gardening staff\mbox{]} 
+
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+\Hypertarget{class_staff_gardener_a5ef5bc10820ae1572c35307f0afb7422}\index{StaffGardener@{StaffGardener}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!StaffGardener@{StaffGardener}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily \label{class_staff_gardener_a5ef5bc10820ae1572c35307f0afb7422} 
+std\+::string Staff\+Gardener\+::process\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Processes customer requests for gardening staff\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em request} & \mbox{[}The customer request to process\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Response string for the customer request\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+\Hypertarget{class_staff_gardener_a2d1f2d5679a936427a90d04e9b114154}\index{StaffGardener@{StaffGardener}!subDuty@{subDuty}}
+\index{subDuty@{subDuty}!StaffGardener@{StaffGardener}}
+\doxysubsubsection{\texorpdfstring{subDuty()}{subDuty()}}
+{\footnotesize\ttfamily \label{class_staff_gardener_a2d1f2d5679a936427a90d04e9b114154} 
+void Staff\+Gardener\+::sub\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Performs the sub duty of gardening staff\mbox{]} 
+
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+\Hypertarget{class_staff_gardener_a59aaf930ccac147c3947bddc55f5c294}\index{StaffGardener@{StaffGardener}!workDuty@{workDuty}}
+\index{workDuty@{workDuty}!StaffGardener@{StaffGardener}}
+\doxysubsubsection{\texorpdfstring{workDuty()}{workDuty()}}
+{\footnotesize\ttfamily \label{class_staff_gardener_a59aaf930ccac147c3947bddc55f5c294} 
+void Staff\+Gardener\+::work\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Performs the work duty of gardening staff\mbox{]} 
+
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Staff\+Gardener.\+h\item 
+Staff\+Gardener.\+cpp\end{DoxyCompactItemize}

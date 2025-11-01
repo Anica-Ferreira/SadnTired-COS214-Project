@@ -1,52 +1,42 @@
 #ifndef STAFFMEMBER_H
 #define STAFFMEMBER_H
 
-#include <string>
+#include "IMediator.h"
+#include "IObserver.h"
+#include "IColleague.h"
+#include "StaffCommand.h"  // For command integration
 #include <iostream>
+#include <string>
+#include <vector>
 
-#include "Customer.h"
-#include "ObserverMediator.h"
+#include "StaffAction.h"
+#include "StaffReaction.h"
 
-using namespace std;
+// Forward declaration for commands
+class StaffAction;
 
-
-
-class StaffMember : public ObserverMediator{//template method to specify which type of employee this is
+class StaffMember : public IMediator, public IObserver {
 protected:
-    string name;
-    string role;
-    string message_from_subject_;
-    Customer& customer_;
-    Customer* component;
+    std::string name_;
+    std::string role_;
+    std::vector<std::string> current_tasks_;//vector for queueing
+
+public:
+    StaffMember(std::string name, std::string role);//init name and role
+
+    virtual std::string processRequest(std::string request) = 0;//method for handling requests
+
+    void notify(IColleague* sender, std::string request) override; //checks busy, if not set to busy and process request
+
+    void Update(std::string message) override;
+
+    virtual void templateWorkCycle();
 
     virtual void mainDuty() = 0;
     virtual void workDuty() = 0;
     virtual void subDuty() = 0;
-public:
-    StaffMember(string name, string role, Customer& customer);
-    ~StaffMember() = default;
-    string getName();
-    string getRole();
-    void templateWorkCycle();
 
-    void Update(const std::string &message_from_subject) override {
-        message_from_subject_ = message_from_subject;
-        PrintInfo();
-    }
-    void RemoveMeFromTheList() {
-        customer_.Detach(this);
-        std::cout << "Observer: " << getName() << " removed from the list.\n";
-    }
-
-    void PrintInfo() {
-        std::cout << "Observer: " << getName() << ", a new message is available --> " << this->message_from_subject_ << "\n";
-    }
-
-    void notify(SubjectColleague *colleague, string event) override;
-
-    void action(string type);
-
+    std::string getName() const;
 };
 
-
-#endif //STAFFMEMBER_H
+#endif // STAFFMEMBER_H

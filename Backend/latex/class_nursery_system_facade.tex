@@ -1,0 +1,650 @@
+\doxysection{Nursery\+System\+Facade Class Reference}
+\hypertarget{class_nursery_system_facade}{}\label{class_nursery_system_facade}\index{NurserySystemFacade@{NurserySystemFacade}}
+
+
+\mbox{[}Implementation of the \doxylink{class_nursery_system_facade}{Nursery\+System\+Facade} class\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nursery_system_facade_a3ba9b1e37209d4a88c233088f8e717d6}{Nursery\+System\+Facade}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_nursery_system_facade}{Nursery\+System\+Facade} object\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_nursery_system_facade_a7707e1bc74257c12ea82fc466fb71c63}{\texorpdfstring{$\sim$}{\string~}\+Nursery\+System\+Facade}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_nursery_system_facade}{Nursery\+System\+Facade} object\mbox{]} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_nursery_system_facade_a226b21d4d237e2dc71b58d7b3a08470e}{set\+Customer}} (const string \&name, const string \&surname, const string \&email, const string \&phone="{}"{})
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the current customer information\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_nursery_system_facade_a78f48ca66abc81612a1b9b3f22b49756}\label{class_nursery_system_facade_a78f48ca66abc81612a1b9b3f22b49756} 
+void {\bfseries reset\+Customer} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Resets the current customer information and shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_afd277084073e49ee39707de9177b247a}{get\+Current\+Customer\+Info}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current customer information\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a40921b5a4b5c9a1dfcff33f8a268bf3e}{browse\+All\+Plants}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves all plants available in the shop\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a03b2c10626276f5de064618a6f038494}{search\+Plants}} (const string \&keyword)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Searches for plants by keyword\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a174c29a2f5563b669ea0bf055739b7e4}{filter\+Plants\+By\+Type}} (const string \&plant\+Type)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Filters plants by type\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a862a70d50d677b162fccd3dbfda60ee3}{get\+Plant\+Info}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets detailed information about a specific plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_ac4b60889db6d69bef188a2683142a63d}{check\+Plant\+Stock}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Checks stock availability for a specific plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_ad1b4db6fb972c1bb92b147f563f83915}{add\+To\+Cart}} (const string \&plant\+Name, int quantity=1)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds a plant to the shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a9abe0e22b33cc2596a88e117a91ac27f}{remove\+From\+Cart}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Removes a plant from the shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_ac04fd816d88937428d5c86d72429645e}{update\+Cart\+Quantity}} (const string \&plant\+Name, int new\+Quantity)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Updates the quantity of a plant in the shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a7076553a904ebe8c9a4b1f858792f14a}{view\+Cart}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Views the current shopping cart contents\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a7a29f29cca25e206e373757bfe1386c0}{get\+Cart\+Summary}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets a summary of the current shopping cart\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_nursery_system_facade_a5a793d4b4c1aca992a73760bfa64b866}\label{class_nursery_system_facade_a5a793d4b4c1aca992a73760bfa64b866} 
+void {\bfseries clear\+Cart} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Clears all items from the shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_afb59acd508a56ea642224c95d5125ea5}{checkout}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Processes checkout for the current shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_ad59db8847c66ea8e0a1cea02299c7639}{ask\+Staff\+Question}} (const string \&question)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Asks a question to staff members\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_aaf01ab5070f1c928fc3767b3588ee308}{request\+Plant\+Recommendation}} (const string \&sunlight, const string \&space, const string \&experience)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Requests plant recommendations based on user conditions\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a72a38d6a072cfa0c61c4f0ea45db19fb}{view\+Nursery\+Status}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves the current status of the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a288a908521d62321f6a16e62e3956de1}{water\+Plant}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Waters a specific plant in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a26e5ef4890ce2dc3cb407d7af8defbef}{fertilize\+Plant}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Fertilizes a specific plant in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_af599d9e8c9cae2a87ed106bb5cf7120c}{move\+Plant\+To\+Shop}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Moves a plant from nursery to shop inventory\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_abca39053f01ec148fc26c4c8780e621d}{get\+Plant\+Health\+Report}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets a health report for all plants in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a7a67959dcd5ee0d20e26a5ac2f5ea2b3}{water\+All\+Plants}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Waters all plants in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a0e24190edc82435d9dbfc58a20b621b1}{pass\+Time\+For\+All\+Plants}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Advances time for all plants in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a9392da7f983bcc97db462d63f0b2c839}{view\+Staff\+Members}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Views all staff members\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a5b617d2a76db17a5d4a2fd91add85ead}{assign\+Staff\+Task}} (int staff\+Id, const string \&task)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Assigns a task to a staff member\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a56f43efef54cb0f271b62bebdc0ef254}{view\+Pending\+Tasks}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Views pending tasks for staff members\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_af1373c8bee86f71196aae82bf5c25db7}{complete\+Task}} (int task\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Completes a specific staff task\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_afba69a0b032d4e810f9da7e23628f99b}{get\+Notifications}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets notifications for staff members\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a30e1cfb28de6b7b3118011e3df5d75d0}{mark\+Notification\+Read}} (int notification\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Marks a notification as read\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_nursery_system_facade_a17876628bf0dbe8511172334cec1fbfc}\label{class_nursery_system_facade_a17876628bf0dbe8511172334cec1fbfc} 
+string {\bfseries view\+Available\+Bundles} ()
+\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a7242e963c2f73a2594824d83a1e4bba7}{add\+Bundle\+To\+Cart}} (const string \&bundle\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds a plant bundle to the shopping cart\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_a0e1c2d787de64386e79b10dbd2a276df}{get\+Stock\+Counts}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets stock counts for nursery and shop inventories\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_nursery_system_facade_ad883667b92d72fba43995cd8d292c66b}{execute\+Customer\+Command}} (const string \&command\+Type, const string \&plant\+Name="{}"{}, int quantity=0, const string \&question="{}"{}, const string \&sunlight="{}"{}, const string \&space="{}"{}, const string \&experience="{}"{})
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes a customer command based on type and parameters\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_nursery_system_facade}{Nursery\+System\+Facade} class\mbox{]} 
+
+\mbox{[}Provides a unified interface to the nursery system\textquotesingle{}s subsystems and operations\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_nursery_system_facade_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_nursery_system_facade_a3ba9b1e37209d4a88c233088f8e717d6}\index{NurserySystemFacade@{NurserySystemFacade}!NurserySystemFacade@{NurserySystemFacade}}
+\index{NurserySystemFacade@{NurserySystemFacade}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{NurserySystemFacade()}{NurserySystemFacade()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a3ba9b1e37209d4a88c233088f8e717d6} 
+Nursery\+System\+Facade\+::\+Nursery\+System\+Facade (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_nursery_system_facade}{Nursery\+System\+Facade} object\mbox{]} 
+
+\mbox{[}Initializes all subsystem components and sample data\mbox{]} \Hypertarget{class_nursery_system_facade_a7707e1bc74257c12ea82fc466fb71c63}\index{NurserySystemFacade@{NurserySystemFacade}!````~NurserySystemFacade@{\texorpdfstring{$\sim$}{\string~}NurserySystemFacade}}
+\index{````~NurserySystemFacade@{\texorpdfstring{$\sim$}{\string~}NurserySystemFacade}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}NurserySystemFacade()}{\string~NurserySystemFacade()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a7707e1bc74257c12ea82fc466fb71c63} 
+Nursery\+System\+Facade\+::\texorpdfstring{$\sim$}{\string~}\+Nursery\+System\+Facade (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Destroys the \doxylink{class_nursery_system_facade}{Nursery\+System\+Facade} object\mbox{]} 
+
+\mbox{[}Cleans up all subsystem components\mbox{]} 
+
+\label{doc-func-members}
+\Hypertarget{class_nursery_system_facade_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_nursery_system_facade_a7242e963c2f73a2594824d83a1e4bba7}\index{NurserySystemFacade@{NurserySystemFacade}!addBundleToCart@{addBundleToCart}}
+\index{addBundleToCart@{addBundleToCart}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{addBundleToCart()}{addBundleToCart()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a7242e963c2f73a2594824d83a1e4bba7} 
+string Nursery\+System\+Facade\+::add\+Bundle\+To\+Cart (\begin{DoxyParamCaption}\item[{const string \&}]{bundle\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Adds a plant bundle to the shopping cart\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em bundle\+Name} & \mbox{[}Name of the bundle to add\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating success or failure\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_ad1b4db6fb972c1bb92b147f563f83915}\index{NurserySystemFacade@{NurserySystemFacade}!addToCart@{addToCart}}
+\index{addToCart@{addToCart}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{addToCart()}{addToCart()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_ad1b4db6fb972c1bb92b147f563f83915} 
+string Nursery\+System\+Facade\+::add\+To\+Cart (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{, }\item[{int}]{quantity}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Adds a plant to the shopping cart\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to add\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em quantity} & \mbox{[}Quantity to add\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating success or failure\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_ad59db8847c66ea8e0a1cea02299c7639}\index{NurserySystemFacade@{NurserySystemFacade}!askStaffQuestion@{askStaffQuestion}}
+\index{askStaffQuestion@{askStaffQuestion}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{askStaffQuestion()}{askStaffQuestion()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_ad59db8847c66ea8e0a1cea02299c7639} 
+string Nursery\+System\+Facade\+::ask\+Staff\+Question (\begin{DoxyParamCaption}\item[{const string \&}]{question}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Asks a question to staff members\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em question} & \mbox{[}The question to ask\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with staff response\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a5b617d2a76db17a5d4a2fd91add85ead}\index{NurserySystemFacade@{NurserySystemFacade}!assignStaffTask@{assignStaffTask}}
+\index{assignStaffTask@{assignStaffTask}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{assignStaffTask()}{assignStaffTask()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a5b617d2a76db17a5d4a2fd91add85ead} 
+string Nursery\+System\+Facade\+::assign\+Staff\+Task (\begin{DoxyParamCaption}\item[{int}]{staff\+Id}{, }\item[{const string \&}]{task}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Assigns a task to a staff member\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em staff\+Id} & \mbox{[}ID of the staff member\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em task} & \mbox{[}Task description\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating task assignment result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a40921b5a4b5c9a1dfcff33f8a268bf3e}\index{NurserySystemFacade@{NurserySystemFacade}!browseAllPlants@{browseAllPlants}}
+\index{browseAllPlants@{browseAllPlants}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{browseAllPlants()}{browseAllPlants()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a40921b5a4b5c9a1dfcff33f8a268bf3e} 
+string Nursery\+System\+Facade\+::browse\+All\+Plants (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves all plants available in the shop\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing all shop plants\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_afb59acd508a56ea642224c95d5125ea5}\index{NurserySystemFacade@{NurserySystemFacade}!checkout@{checkout}}
+\index{checkout@{checkout}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{checkout()}{checkout()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_afb59acd508a56ea642224c95d5125ea5} 
+string Nursery\+System\+Facade\+::checkout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Processes checkout for the current shopping cart\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating success or failure\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_ac4b60889db6d69bef188a2683142a63d}\index{NurserySystemFacade@{NurserySystemFacade}!checkPlantStock@{checkPlantStock}}
+\index{checkPlantStock@{checkPlantStock}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{checkPlantStock()}{checkPlantStock()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_ac4b60889db6d69bef188a2683142a63d} 
+string Nursery\+System\+Facade\+::check\+Plant\+Stock (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Checks stock availability for a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing stock information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_af1373c8bee86f71196aae82bf5c25db7}\index{NurserySystemFacade@{NurserySystemFacade}!completeTask@{completeTask}}
+\index{completeTask@{completeTask}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{completeTask()}{completeTask()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_af1373c8bee86f71196aae82bf5c25db7} 
+string Nursery\+System\+Facade\+::complete\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Completes a specific staff task\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em task\+Id} & \mbox{[}ID of the task to complete\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating task completion result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_ad883667b92d72fba43995cd8d292c66b}\index{NurserySystemFacade@{NurserySystemFacade}!executeCustomerCommand@{executeCustomerCommand}}
+\index{executeCustomerCommand@{executeCustomerCommand}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{executeCustomerCommand()}{executeCustomerCommand()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_ad883667b92d72fba43995cd8d292c66b} 
+string Nursery\+System\+Facade\+::execute\+Customer\+Command (\begin{DoxyParamCaption}\item[{const string \&}]{command\+Type}{, }\item[{const string \&}]{plant\+Name}{ = {\ttfamily "{}"{}}, }\item[{int}]{quantity}{ = {\ttfamily 0}, }\item[{const string \&}]{question}{ = {\ttfamily "{}"{}}, }\item[{const string \&}]{sunlight}{ = {\ttfamily "{}"{}}, }\item[{const string \&}]{space}{ = {\ttfamily "{}"{}}, }\item[{const string \&}]{experience}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Executes a customer command based on type and parameters\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em command\+Type} & \mbox{[}Type of command to execute\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant (if applicable)\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em quantity} & \mbox{[}Quantity (if applicable)\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em question} & \mbox{[}Question to ask (if applicable)\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em sunlight} & \mbox{[}Sunlight condition (if applicable)\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em space} & \mbox{[}Space availability (if applicable)\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em experience} & \mbox{[}User experience level (if applicable)\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with command execution result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a26e5ef4890ce2dc3cb407d7af8defbef}\index{NurserySystemFacade@{NurserySystemFacade}!fertilizePlant@{fertilizePlant}}
+\index{fertilizePlant@{fertilizePlant}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{fertilizePlant()}{fertilizePlant()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a26e5ef4890ce2dc3cb407d7af8defbef} 
+string Nursery\+System\+Facade\+::fertilize\+Plant (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Fertilizes a specific plant in the nursery\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to fertilize\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating fertilization result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a174c29a2f5563b669ea0bf055739b7e4}\index{NurserySystemFacade@{NurserySystemFacade}!filterPlantsByType@{filterPlantsByType}}
+\index{filterPlantsByType@{filterPlantsByType}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{filterPlantsByType()}{filterPlantsByType()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a174c29a2f5563b669ea0bf055739b7e4} 
+string Nursery\+System\+Facade\+::filter\+Plants\+By\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Type}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Filters plants by type\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Type} & \mbox{[}Type of plant to filter by\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing filtered plants\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a7a29f29cca25e206e373757bfe1386c0}\index{NurserySystemFacade@{NurserySystemFacade}!getCartSummary@{getCartSummary}}
+\index{getCartSummary@{getCartSummary}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{getCartSummary()}{getCartSummary()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a7a29f29cca25e206e373757bfe1386c0} 
+string Nursery\+System\+Facade\+::get\+Cart\+Summary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets a summary of the current shopping cart\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing cart summary\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_afd277084073e49ee39707de9177b247a}\index{NurserySystemFacade@{NurserySystemFacade}!getCurrentCustomerInfo@{getCurrentCustomerInfo}}
+\index{getCurrentCustomerInfo@{getCurrentCustomerInfo}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{getCurrentCustomerInfo()}{getCurrentCustomerInfo()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_afd277084073e49ee39707de9177b247a} 
+string Nursery\+System\+Facade\+::get\+Current\+Customer\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current customer information\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}String representation of the current customer\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_afba69a0b032d4e810f9da7e23628f99b}\index{NurserySystemFacade@{NurserySystemFacade}!getNotifications@{getNotifications}}
+\index{getNotifications@{getNotifications}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{getNotifications()}{getNotifications()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_afba69a0b032d4e810f9da7e23628f99b} 
+string Nursery\+System\+Facade\+::get\+Notifications (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets notifications for staff members\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing notifications\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_abca39053f01ec148fc26c4c8780e621d}\index{NurserySystemFacade@{NurserySystemFacade}!getPlantHealthReport@{getPlantHealthReport}}
+\index{getPlantHealthReport@{getPlantHealthReport}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{getPlantHealthReport()}{getPlantHealthReport()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_abca39053f01ec148fc26c4c8780e621d} 
+string Nursery\+System\+Facade\+::get\+Plant\+Health\+Report (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets a health report for all plants in the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing plant health report\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a862a70d50d677b162fccd3dbfda60ee3}\index{NurserySystemFacade@{NurserySystemFacade}!getPlantInfo@{getPlantInfo}}
+\index{getPlantInfo@{getPlantInfo}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{getPlantInfo()}{getPlantInfo()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a862a70d50d677b162fccd3dbfda60ee3} 
+string Nursery\+System\+Facade\+::get\+Plant\+Info (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets detailed information about a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing plant details\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a0e1c2d787de64386e79b10dbd2a276df}\index{NurserySystemFacade@{NurserySystemFacade}!getStockCounts@{getStockCounts}}
+\index{getStockCounts@{getStockCounts}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{getStockCounts()}{getStockCounts()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a0e1c2d787de64386e79b10dbd2a276df} 
+string Nursery\+System\+Facade\+::get\+Stock\+Counts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets stock counts for nursery and shop inventories\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing stock counts\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a30e1cfb28de6b7b3118011e3df5d75d0}\index{NurserySystemFacade@{NurserySystemFacade}!markNotificationRead@{markNotificationRead}}
+\index{markNotificationRead@{markNotificationRead}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{markNotificationRead()}{markNotificationRead()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a30e1cfb28de6b7b3118011e3df5d75d0} 
+string Nursery\+System\+Facade\+::mark\+Notification\+Read (\begin{DoxyParamCaption}\item[{int}]{notification\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Marks a notification as read\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em notification\+Id} & \mbox{[}ID of the notification to mark as read\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating notification read result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_af599d9e8c9cae2a87ed106bb5cf7120c}\index{NurserySystemFacade@{NurserySystemFacade}!movePlantToShop@{movePlantToShop}}
+\index{movePlantToShop@{movePlantToShop}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{movePlantToShop()}{movePlantToShop()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_af599d9e8c9cae2a87ed106bb5cf7120c} 
+string Nursery\+System\+Facade\+::move\+Plant\+To\+Shop (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Moves a plant from nursery to shop inventory\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant to move\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating move result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a0e24190edc82435d9dbfc58a20b621b1}\index{NurserySystemFacade@{NurserySystemFacade}!passTimeForAllPlants@{passTimeForAllPlants}}
+\index{passTimeForAllPlants@{passTimeForAllPlants}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{passTimeForAllPlants()}{passTimeForAllPlants()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a0e24190edc82435d9dbfc58a20b621b1} 
+string Nursery\+System\+Facade\+::pass\+Time\+For\+All\+Plants (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Advances time for all plants in the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating time passage result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a9abe0e22b33cc2596a88e117a91ac27f}\index{NurserySystemFacade@{NurserySystemFacade}!removeFromCart@{removeFromCart}}
+\index{removeFromCart@{removeFromCart}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{removeFromCart()}{removeFromCart()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a9abe0e22b33cc2596a88e117a91ac27f} 
+string Nursery\+System\+Facade\+::remove\+From\+Cart (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Removes a plant from the shopping cart\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to remove\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating success or failure\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_aaf01ab5070f1c928fc3767b3588ee308}\index{NurserySystemFacade@{NurserySystemFacade}!requestPlantRecommendation@{requestPlantRecommendation}}
+\index{requestPlantRecommendation@{requestPlantRecommendation}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{requestPlantRecommendation()}{requestPlantRecommendation()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_aaf01ab5070f1c928fc3767b3588ee308} 
+string Nursery\+System\+Facade\+::request\+Plant\+Recommendation (\begin{DoxyParamCaption}\item[{const string \&}]{sunlight}{, }\item[{const string \&}]{space}{, }\item[{const string \&}]{experience}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Requests plant recommendations based on user conditions\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em sunlight} & \mbox{[}Sunlight condition\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em space} & \mbox{[}Space availability\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em experience} & \mbox{[}User experience level\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with plant recommendations\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a03b2c10626276f5de064618a6f038494}\index{NurserySystemFacade@{NurserySystemFacade}!searchPlants@{searchPlants}}
+\index{searchPlants@{searchPlants}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{searchPlants()}{searchPlants()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a03b2c10626276f5de064618a6f038494} 
+string Nursery\+System\+Facade\+::search\+Plants (\begin{DoxyParamCaption}\item[{const string \&}]{keyword}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Searches for plants by keyword\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em keyword} & \mbox{[}Search keyword\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing search results\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a226b21d4d237e2dc71b58d7b3a08470e}\index{NurserySystemFacade@{NurserySystemFacade}!setCustomer@{setCustomer}}
+\index{setCustomer@{setCustomer}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{setCustomer()}{setCustomer()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a226b21d4d237e2dc71b58d7b3a08470e} 
+bool Nursery\+System\+Facade\+::set\+Customer (\begin{DoxyParamCaption}\item[{const string \&}]{name}{, }\item[{const string \&}]{surname}{, }\item[{const string \&}]{email}{, }\item[{const string \&}]{phone}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Sets the current customer information\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s first name\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em surname} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s surname\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em email} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s email address\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em phone} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s phone number\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}True if customer information is set successfully\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_ac04fd816d88937428d5c86d72429645e}\index{NurserySystemFacade@{NurserySystemFacade}!updateCartQuantity@{updateCartQuantity}}
+\index{updateCartQuantity@{updateCartQuantity}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{updateCartQuantity()}{updateCartQuantity()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_ac04fd816d88937428d5c86d72429645e} 
+string Nursery\+System\+Facade\+::update\+Cart\+Quantity (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{, }\item[{int}]{new\+Quantity}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Updates the quantity of a plant in the shopping cart\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to update\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em new\+Quantity} & \mbox{[}New quantity to set\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating success or failure\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a7076553a904ebe8c9a4b1f858792f14a}\index{NurserySystemFacade@{NurserySystemFacade}!viewCart@{viewCart}}
+\index{viewCart@{viewCart}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{viewCart()}{viewCart()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a7076553a904ebe8c9a4b1f858792f14a} 
+string Nursery\+System\+Facade\+::view\+Cart (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Views the current shopping cart contents\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing cart contents\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a72a38d6a072cfa0c61c4f0ea45db19fb}\index{NurserySystemFacade@{NurserySystemFacade}!viewNurseryStatus@{viewNurseryStatus}}
+\index{viewNurseryStatus@{viewNurseryStatus}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{viewNurseryStatus()}{viewNurseryStatus()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a72a38d6a072cfa0c61c4f0ea45db19fb} 
+string Nursery\+System\+Facade\+::view\+Nursery\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves the current status of the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing all nursery plants\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a56f43efef54cb0f271b62bebdc0ef254}\index{NurserySystemFacade@{NurserySystemFacade}!viewPendingTasks@{viewPendingTasks}}
+\index{viewPendingTasks@{viewPendingTasks}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{viewPendingTasks()}{viewPendingTasks()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a56f43efef54cb0f271b62bebdc0ef254} 
+string Nursery\+System\+Facade\+::view\+Pending\+Tasks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Views pending tasks for staff members\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing pending tasks\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a9392da7f983bcc97db462d63f0b2c839}\index{NurserySystemFacade@{NurserySystemFacade}!viewStaffMembers@{viewStaffMembers}}
+\index{viewStaffMembers@{viewStaffMembers}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{viewStaffMembers()}{viewStaffMembers()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a9392da7f983bcc97db462d63f0b2c839} 
+string Nursery\+System\+Facade\+::view\+Staff\+Members (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Views all staff members\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing staff member details\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a7a67959dcd5ee0d20e26a5ac2f5ea2b3}\index{NurserySystemFacade@{NurserySystemFacade}!waterAllPlants@{waterAllPlants}}
+\index{waterAllPlants@{waterAllPlants}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{waterAllPlants()}{waterAllPlants()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a7a67959dcd5ee0d20e26a5ac2f5ea2b3} 
+string Nursery\+System\+Facade\+::water\+All\+Plants (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Waters all plants in the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating watering result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_nursery_system_facade_a288a908521d62321f6a16e62e3956de1}\index{NurserySystemFacade@{NurserySystemFacade}!waterPlant@{waterPlant}}
+\index{waterPlant@{waterPlant}!NurserySystemFacade@{NurserySystemFacade}}
+\doxysubsubsection{\texorpdfstring{waterPlant()}{waterPlant()}}
+{\footnotesize\ttfamily \label{class_nursery_system_facade_a288a908521d62321f6a16e62e3956de1} 
+string Nursery\+System\+Facade\+::water\+Plant (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Waters a specific plant in the nursery\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant to water\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating watering result\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Nursery\+System\+Facade.\+h\item 
+Nursery\+System\+Facade.\+cpp\end{DoxyCompactItemize}

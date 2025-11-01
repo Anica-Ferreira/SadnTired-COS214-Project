@@ -1,0 +1,89 @@
+\doxysection{Ask\+Question\+Command Class Reference}
+\hypertarget{class_ask_question_command}{}\label{class_ask_question_command}\index{AskQuestionCommand@{AskQuestionCommand}}
+Inheritance diagram for Ask\+Question\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ask_question_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ask_question_command_a1d9b1f570454b6a6f34f0faacf6e420c}{Ask\+Question\+Command}} (const string \&quest, \mbox{\hyperlink{class_nursery_system_facade}{Nursery\+System\+Facade}} \texorpdfstring{$\ast$}{*}fac)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_ask_question_command}{Ask\+Question\+Command} object\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ask_question_command_a0f554843d195a33fe78b8231652a5f8a}{execute}} (\mbox{\hyperlink{class_customer}{Customer}} \texorpdfstring{$\ast$}{*}customer) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the staff question command\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ask_question_command_abe70310f7532912677d34ac4cf5fbc87}{get\+Description}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the question description of this command\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_ask_question_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ask_question_command_a1d9b1f570454b6a6f34f0faacf6e420c}\index{AskQuestionCommand@{AskQuestionCommand}!AskQuestionCommand@{AskQuestionCommand}}
+\index{AskQuestionCommand@{AskQuestionCommand}!AskQuestionCommand@{AskQuestionCommand}}
+\doxysubsubsection{\texorpdfstring{AskQuestionCommand()}{AskQuestionCommand()}}
+{\footnotesize\ttfamily \label{class_ask_question_command_a1d9b1f570454b6a6f34f0faacf6e420c} 
+Ask\+Question\+Command\+::\+Ask\+Question\+Command (\begin{DoxyParamCaption}\item[{const string \&}]{quest}{, }\item[{\mbox{\hyperlink{class_nursery_system_facade}{Nursery\+System\+Facade}} \texorpdfstring{$\ast$}{*}}]{fac}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_ask_question_command}{Ask\+Question\+Command} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em quest} & \mbox{[}The question to ask staff\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em fac} & \mbox{[}Pointer to the nursery system facade\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ask_question_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ask_question_command_a0f554843d195a33fe78b8231652a5f8a}\index{AskQuestionCommand@{AskQuestionCommand}!execute@{execute}}
+\index{execute@{execute}!AskQuestionCommand@{AskQuestionCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_ask_question_command_a0f554843d195a33fe78b8231652a5f8a} 
+string Ask\+Question\+Command\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_customer}{Customer}} \texorpdfstring{$\ast$}{*}}]{customer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Executes the staff question command\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em customer} & \mbox{[}Pointer to the customer executing the command\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Response message from staff\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_customer_command}{Customer\+Command}}.
+
+\Hypertarget{class_ask_question_command_abe70310f7532912677d34ac4cf5fbc87}\index{AskQuestionCommand@{AskQuestionCommand}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!AskQuestionCommand@{AskQuestionCommand}}
+\doxysubsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily \label{class_ask_question_command_abe70310f7532912677d34ac4cf5fbc87} 
+string Ask\+Question\+Command\+::get\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the question description of this command\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Command description string\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_customer_command}{Customer\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Customer\+Command.\+h\item 
+Customer\+Command.\+cpp\end{DoxyCompactItemize}

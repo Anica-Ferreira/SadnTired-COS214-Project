@@ -1,0 +1,345 @@
+\doxysection{Plant Class Reference}
+\hypertarget{class_plant}{}\label{class_plant}\index{Plant@{Plant}}
+
+
+\mbox{[}Implementation of the \doxylink{class_plant}{Plant} class and its derived classes\mbox{]}  
+
+
+Inheritance diagram for Plant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_plant}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_plant_a0a473d9518f04836673b2934e5414d32}{Plant}} (const string \&name, const string \&type, double price, \mbox{\hyperlink{class_watering_strategy}{Watering\+Strategy}} \texorpdfstring{$\ast$}{*}strategy, const string \&description="{}"{})
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_plant}{Plant} object\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_plant_ab0effb2b143e6da7b65ebd13a3b1fc29}\label{class_plant_ab0effb2b143e6da7b65ebd13a3b1fc29} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Plant} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_plant}{Plant} object and cleans up resources\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_aee652769b7d942d18b7d91e2f83a9973}{get\+State\+Name}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current state name of the plant\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_plant_a692301e793d59eb8130e56c2b39dcb6c}{get\+Water\+Level}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current water level of the plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_a44d07091c1a58d676cd133ae491ea076}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current name of the plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_a9d2328c31775a5c42e4b62ccb160c904}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current type of the plant\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_plant_a1a6e78e58443899921fb32f1622dc0bc}{get\+Price}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current price of the plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_a8beaa430d8c045f70791e7387fd5505f}{get\+Description}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the current description of the plant\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plant_ac4400b63c256690544c3f166bfc6716e}{set\+Water\+Level}} (double level)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the water level of the plant\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plant_a8a2563e6b6c1da65d9af725cf97f2719}{set\+State}} (\mbox{\hyperlink{class_plant_state}{Plant\+State}} \texorpdfstring{$\ast$}{*}new\+State)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the state of the plant\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_plant_af4552dd9ec01741c38eefd2f15ce2431}\label{class_plant_af4552dd9ec01741c38eefd2f15ce2431} 
+void {\bfseries water} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Waters the plant using its watering strategy\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_plant_a24c328d0e806617bc801c79a18a7a073}\label{class_plant_a24c328d0e806617bc801c79a18a7a073} 
+void {\bfseries pass\+Time} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Advances time for the plant, affecting its state\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_watering_strategy}{Watering\+Strategy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_plant_aad5262bca0fb0dac33f3e4c2b598eee7}{get\+Strategy}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the watering strategy of the plant\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plant_a5ac073f59218e25647ed7db9a89dfbd6}{Attach}} (\mbox{\hyperlink{class_i_observer}{IObserver}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Attaches an observer to the plant\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plant_aeb7d098014b53db55ea432da9aa17eee}{Detach}} (\mbox{\hyperlink{class_i_observer}{IObserver}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Detaches an observer from the plant\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_plant_a67d31e81209603ab5be7c266b15b1a35}\label{class_plant_a67d31e81209603ab5be7c266b15b1a35} 
+void {\bfseries Notify} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Notifies all attached observers of plant state changes\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plant_a5c1f694f955ff77d86df5454f63a8eb7}{signal\+Need}} (string need)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Signals a need and notifies observers\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_plant_a0f5c516a5ca66fb862aea97f21fbf039}{get\+Required\+Waterings}} () const =0
+\item 
+\Hypertarget{class_plant_a4245b00a4b891596c60a12390def662d}\label{class_plant_a4245b00a4b891596c60a12390def662d} 
+void {\bfseries increase\+Watering\+Count} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Increases the watering count\mbox{]} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_plant_a1c8c18e35f4076765ffa6ef9ddd85be2}{is\+Ready\+For\+Sale}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Checks if the plant is ready for sale\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plant_a5e7524c02c407392be4ac490f849eecd}\label{class_plant_a5e7524c02c407392be4ac490f849eecd} 
+string {\bfseries name}
+\item 
+\Hypertarget{class_plant_a857f799a4ca4ca04cea5c205c0767a18}\label{class_plant_a857f799a4ca4ca04cea5c205c0767a18} 
+string {\bfseries type}
+\item 
+\Hypertarget{class_plant_a2502f4a5dadb369c45022c5b4550fe56}\label{class_plant_a2502f4a5dadb369c45022c5b4550fe56} 
+string {\bfseries description}
+\item 
+\Hypertarget{class_plant_ab761ff9eeb8f9c68fbe8d22ec2fbb09e}\label{class_plant_ab761ff9eeb8f9c68fbe8d22ec2fbb09e} 
+double {\bfseries price}
+\item 
+\Hypertarget{class_plant_a118931cd558e7031bf4fb3f456a92308}\label{class_plant_a118931cd558e7031bf4fb3f456a92308} 
+double {\bfseries water\+Level}
+\item 
+\Hypertarget{class_plant_a496e29bd6f0dd996eec144e38e2ad2a9}\label{class_plant_a496e29bd6f0dd996eec144e38e2ad2a9} 
+\mbox{\hyperlink{class_watering_strategy}{Watering\+Strategy}} \texorpdfstring{$\ast$}{*} {\bfseries watering\+Strategy}
+\item 
+\Hypertarget{class_plant_af36448fdbbe126eec23963ed9873bdf6}\label{class_plant_af36448fdbbe126eec23963ed9873bdf6} 
+\mbox{\hyperlink{class_plant_state}{Plant\+State}} \texorpdfstring{$\ast$}{*} {\bfseries state}
+\item 
+\Hypertarget{class_plant_a1d7a839a0f9029308af4d91799c1f837}\label{class_plant_a1d7a839a0f9029308af4d91799c1f837} 
+int {\bfseries watering\+Count}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plant_a1dd3c94bf47774551da3b3750f260ff2}\label{class_plant_a1dd3c94bf47774551da3b3750f260ff2} 
+class {\bfseries Plant\+State}
+\item 
+\Hypertarget{class_plant_a34273f63798fb00d7c76d777fe2b1c7a}\label{class_plant_a34273f63798fb00d7c76d777fe2b1c7a} 
+class {\bfseries Planted\+State}
+\item 
+\Hypertarget{class_plant_afaae97795f4d7b066b017a8cd6581e26}\label{class_plant_afaae97795f4d7b066b017a8cd6581e26} 
+class {\bfseries Watered\+State}
+\item 
+\Hypertarget{class_plant_ae48b171889dedd972ff2861cdd38bb91}\label{class_plant_ae48b171889dedd972ff2861cdd38bb91} 
+class {\bfseries Dry\+State}
+\item 
+\Hypertarget{class_plant_a147208876a102badb510e5ec00c76283}\label{class_plant_a147208876a102badb510e5ec00c76283} 
+class {\bfseries Ready\+For\+Sale\+State}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_plant}{Plant} class and its derived classes\mbox{]} 
+
+\mbox{[}Handles plant lifecycle, watering strategies, and state management\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_plant_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_plant_a0a473d9518f04836673b2934e5414d32}\index{Plant@{Plant}!Plant@{Plant}}
+\index{Plant@{Plant}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{Plant()}{Plant()}}
+{\footnotesize\ttfamily \label{class_plant_a0a473d9518f04836673b2934e5414d32} 
+Plant\+::\+Plant (\begin{DoxyParamCaption}\item[{const string \&}]{name}{, }\item[{const string \&}]{type}{, }\item[{double}]{price}{, }\item[{\mbox{\hyperlink{class_watering_strategy}{Watering\+Strategy}} \texorpdfstring{$\ast$}{*}}]{strategy}{, }\item[{const string \&}]{description}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_plant}{Plant} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}\doxylink{class_plant}{Plant} name\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em type} & \mbox{[}\doxylink{class_plant}{Plant} type\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em price} & \mbox{[}\doxylink{class_plant}{Plant} price\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em strategy} & \mbox{[}Watering strategy for the plant\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em description} & \mbox{[}\doxylink{class_plant}{Plant} description\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_plant_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_plant_a5ac073f59218e25647ed7db9a89dfbd6}\index{Plant@{Plant}!Attach@{Attach}}
+\index{Attach@{Attach}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{Attach()}{Attach()}}
+{\footnotesize\ttfamily \label{class_plant_a5ac073f59218e25647ed7db9a89dfbd6} 
+void Plant\+::\+Attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_observer}{IObserver}} \texorpdfstring{$\ast$}{*}}]{observer}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Attaches an observer to the plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em observer} & \mbox{[}Pointer to the observer to attach\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_plant_aeb7d098014b53db55ea432da9aa17eee}\index{Plant@{Plant}!Detach@{Detach}}
+\index{Detach@{Detach}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{Detach()}{Detach()}}
+{\footnotesize\ttfamily \label{class_plant_aeb7d098014b53db55ea432da9aa17eee} 
+void Plant\+::\+Detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_observer}{IObserver}} \texorpdfstring{$\ast$}{*}}]{observer}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Detaches an observer from the plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em observer} & \mbox{[}Pointer to the observer to detach\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_plant_a8beaa430d8c045f70791e7387fd5505f}\index{Plant@{Plant}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily \label{class_plant_a8beaa430d8c045f70791e7387fd5505f} 
+string Plant\+::get\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current description of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Current description\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a44d07091c1a58d676cd133ae491ea076}\index{Plant@{Plant}!getName@{getName}}
+\index{getName@{getName}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_plant_a44d07091c1a58d676cd133ae491ea076} 
+string Plant\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current name of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Current name\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a1a6e78e58443899921fb32f1622dc0bc}\index{Plant@{Plant}!getPrice@{getPrice}}
+\index{getPrice@{getPrice}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getPrice()}{getPrice()}}
+{\footnotesize\ttfamily \label{class_plant_a1a6e78e58443899921fb32f1622dc0bc} 
+double Plant\+::get\+Price (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current price of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Current price\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a0f5c516a5ca66fb862aea97f21fbf039}\index{Plant@{Plant}!getRequiredWaterings@{getRequiredWaterings}}
+\index{getRequiredWaterings@{getRequiredWaterings}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getRequiredWaterings()}{getRequiredWaterings()}}
+{\footnotesize\ttfamily \label{class_plant_a0f5c516a5ca66fb862aea97f21fbf039} 
+virtual int Plant\+::get\+Required\+Waterings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_flower_a8d18caff13b87e0453afb3d771480b2f}{Flower}}, \mbox{\hyperlink{class_succulent_a3f81a03d4b7a30c391a06986d62c3c08}{Succulent}}, and \mbox{\hyperlink{class_tree_a666caade257832a73f71746567f816ac}{Tree}}.
+
+\Hypertarget{class_plant_aee652769b7d942d18b7d91e2f83a9973}\index{Plant@{Plant}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily \label{class_plant_aee652769b7d942d18b7d91e2f83a9973} 
+string Plant\+::get\+State\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current state name of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Current state name\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_aad5262bca0fb0dac33f3e4c2b598eee7}\index{Plant@{Plant}!getStrategy@{getStrategy}}
+\index{getStrategy@{getStrategy}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getStrategy()}{getStrategy()}}
+{\footnotesize\ttfamily \label{class_plant_aad5262bca0fb0dac33f3e4c2b598eee7} 
+\mbox{\hyperlink{class_watering_strategy}{Watering\+Strategy}} \texorpdfstring{$\ast$}{*} Plant\+::get\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the watering strategy of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Pointer to water strategy\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a9d2328c31775a5c42e4b62ccb160c904}\index{Plant@{Plant}!getType@{getType}}
+\index{getType@{getType}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_plant_a9d2328c31775a5c42e4b62ccb160c904} 
+string Plant\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current type of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Current type\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a692301e793d59eb8130e56c2b39dcb6c}\index{Plant@{Plant}!getWaterLevel@{getWaterLevel}}
+\index{getWaterLevel@{getWaterLevel}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getWaterLevel()}{getWaterLevel()}}
+{\footnotesize\ttfamily \label{class_plant_a692301e793d59eb8130e56c2b39dcb6c} 
+double Plant\+::get\+Water\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the current water level of the plant\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Current water level\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a1c8c18e35f4076765ffa6ef9ddd85be2}\index{Plant@{Plant}!isReadyForSale@{isReadyForSale}}
+\index{isReadyForSale@{isReadyForSale}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{isReadyForSale()}{isReadyForSale()}}
+{\footnotesize\ttfamily \label{class_plant_a1c8c18e35f4076765ffa6ef9ddd85be2} 
+bool Plant\+::is\+Ready\+For\+Sale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\mbox{[}Checks if the plant is ready for sale\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}True if plant is ready for sale, false otherwise\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a8a2563e6b6c1da65d9af725cf97f2719}\index{Plant@{Plant}!setState@{setState}}
+\index{setState@{setState}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily \label{class_plant_a8a2563e6b6c1da65d9af725cf97f2719} 
+void Plant\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant_state}{Plant\+State}} \texorpdfstring{$\ast$}{*}}]{new\+State}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Sets the state of the plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em new\+State} & \mbox{[}New state\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_plant_ac4400b63c256690544c3f166bfc6716e}\index{Plant@{Plant}!setWaterLevel@{setWaterLevel}}
+\index{setWaterLevel@{setWaterLevel}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{setWaterLevel()}{setWaterLevel()}}
+{\footnotesize\ttfamily \label{class_plant_ac4400b63c256690544c3f166bfc6716e} 
+void Plant\+::set\+Water\+Level (\begin{DoxyParamCaption}\item[{double}]{level}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Sets the water level of the plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em level} & \mbox{[}New water level\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_plant_a5c1f694f955ff77d86df5454f63a8eb7}\index{Plant@{Plant}!signalNeed@{signalNeed}}
+\index{signalNeed@{signalNeed}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{signalNeed()}{signalNeed()}}
+{\footnotesize\ttfamily \label{class_plant_a5c1f694f955ff77d86df5454f63a8eb7} 
+void Plant\+::signal\+Need (\begin{DoxyParamCaption}\item[{string}]{need}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Signals a need and notifies observers\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em need} & \mbox{[}The need message to signal\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plant.\+h\item 
+Plant.\+cpp\end{DoxyCompactItemize}

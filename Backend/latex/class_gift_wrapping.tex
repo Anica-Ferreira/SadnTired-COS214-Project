@@ -1,0 +1,146 @@
+\doxysection{Gift\+Wrapping Class Reference}
+\hypertarget{class_gift_wrapping}{}\label{class_gift_wrapping}\index{GiftWrapping@{GiftWrapping}}
+
+
+\mbox{[}Implementation of the \doxylink{class_gift_wrapping}{Gift\+Wrapping} decorator class\mbox{]}  
+
+
+Inheritance diagram for Gift\+Wrapping\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_gift_wrapping}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gift_wrapping_ad4b09ab7d7bc7f6e7fdc4a2e0a9911fd}\label{class_gift_wrapping_ad4b09ab7d7bc7f6e7fdc4a2e0a9911fd} 
+enum {\bfseries Wrapping\+Type} \{ {\bfseries RED\+\_\+\+BOW}
+, {\bfseries BROWN\+\_\+\+PAPER}
+, {\bfseries FLORAL\+\_\+\+WRAP}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gift_wrapping_a842408a0b7fc40abf9c417776d8aff74}{Gift\+Wrapping}} (\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*}product, Wrapping\+Type type)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_gift_wrapping}{Gift\+Wrapping} decorator\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_gift_wrapping_a7da6c394eb0964cb03bbfc2699324705}\label{class_gift_wrapping_a7da6c394eb0964cb03bbfc2699324705} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Gift\+Wrapping} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_gift_wrapping}{Gift\+Wrapping} object\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_gift_wrapping_a6ca532f968c44861f3cbd81676acaf7b}{get\+Price}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Calculates the total price including gift wrapping\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_gift_wrapping_af9f423fa96d6356d60483064759666f6}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the combined name of product and wrapping\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_gift_wrapping_a4c15aab70423ec6f894aeb175c459c87}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Creates a deep copy of the \doxylink{class_gift_wrapping}{Gift\+Wrapping} object\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_product_decorator}{Product\+Decorator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_product_decorator_aa75d69eb640fd4a7cfcc32b22532d3c1}{Product\+Decorator}} (\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*}product)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_product_decorator}{Product\+Decorator} object\mbox{]} \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Product\+Decorator} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_product_decorator}{Product\+Decorator} object and cleans up resources\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_product}{Product}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_product_a46de9651ef2729fed8bf08f9013cd146}{print\+Product}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Prints product information to console\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_product_decorator}{Product\+Decorator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} {\bfseries product}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_gift_wrapping}{Gift\+Wrapping} decorator class\mbox{]} 
+
+\mbox{[}Adds gift wrapping functionality to plant products using the Decorator pattern\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_gift_wrapping_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gift_wrapping_a842408a0b7fc40abf9c417776d8aff74}\index{GiftWrapping@{GiftWrapping}!GiftWrapping@{GiftWrapping}}
+\index{GiftWrapping@{GiftWrapping}!GiftWrapping@{GiftWrapping}}
+\doxysubsubsection{\texorpdfstring{GiftWrapping()}{GiftWrapping()}}
+{\footnotesize\ttfamily \label{class_gift_wrapping_a842408a0b7fc40abf9c417776d8aff74} 
+Gift\+Wrapping\+::\+Gift\+Wrapping (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*}}]{product}{, }\item[{Wrapping\+Type}]{type}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_gift_wrapping}{Gift\+Wrapping} decorator\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em product} & \mbox{[}Pointer to the product to decorate\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em type} & \mbox{[}Type of gift wrapping\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_gift_wrapping_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gift_wrapping_a4c15aab70423ec6f894aeb175c459c87}\index{GiftWrapping@{GiftWrapping}!clone@{clone}}
+\index{clone@{clone}!GiftWrapping@{GiftWrapping}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_gift_wrapping_a4c15aab70423ec6f894aeb175c459c87} 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} Gift\+Wrapping\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Creates a deep copy of the \doxylink{class_gift_wrapping}{Gift\+Wrapping} object\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Pointer to the cloned \doxylink{class_gift_wrapping}{Gift\+Wrapping} object\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_product}{Product}}.
+
+\Hypertarget{class_gift_wrapping_af9f423fa96d6356d60483064759666f6}\index{GiftWrapping@{GiftWrapping}!getName@{getName}}
+\index{getName@{getName}!GiftWrapping@{GiftWrapping}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_gift_wrapping_af9f423fa96d6356d60483064759666f6} 
+std\+::string Gift\+Wrapping\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the combined name of product and wrapping\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Combined name string\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_product}{Product}}.
+
+\Hypertarget{class_gift_wrapping_a6ca532f968c44861f3cbd81676acaf7b}\index{GiftWrapping@{GiftWrapping}!getPrice@{getPrice}}
+\index{getPrice@{getPrice}!GiftWrapping@{GiftWrapping}}
+\doxysubsubsection{\texorpdfstring{getPrice()}{getPrice()}}
+{\footnotesize\ttfamily \label{class_gift_wrapping_a6ca532f968c44861f3cbd81676acaf7b} 
+double Gift\+Wrapping\+::get\+Price (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Calculates the total price including gift wrapping\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Total price of product plus wrapping\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_product}{Product}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Gift\+Wrapping.\+h\item 
+Gift\+Wrapping.\+cpp\end{DoxyCompactItemize}

@@ -1,16 +1,20 @@
 #ifndef STAFFGARDENER_H
 #define STAFFGARDENER_H
+
 #include "StaffMember.h"
+#include <string>
 
-
-class StaffGardener : public StaffMember{
+class StaffGardener : public StaffMember {
 public:
-    StaffGardener(string name, Customer& customer);
+    StaffGardener(std::string name);
+
+    std::string processRequest(std::string request) override;
 
     void mainDuty() override;
-    void subDuty() override;
+
     void workDuty() override;
+
+    void subDuty() override;
 };
 
-
-#endif //STAFFGARDENER_H
+#endif // STAFFGARDENER_H

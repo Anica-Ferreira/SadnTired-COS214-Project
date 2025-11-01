@@ -1,0 +1,50 @@
+\doxysection{Plant\+State.\+h}
+\hypertarget{_plant_state_8h_source}{}\label{_plant_state_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLANT\_STATE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLANT\_STATE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant}{Plant}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant_state}{PlantState}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_plant_state}{\string~PlantState}}()\ \{\}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ handleWatering(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ =\ 0;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ handlePassTime(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ getStateName()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_planted_state}{PlantedState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_state}{PlantState}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_planted_state_a71abd925bd14df0e07bc352e4d0744f2}{handleWatering}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_planted_state_a53eacc180f8cb4698a80197173aab01c}{handlePassTime}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_planted_state_a4745ff2e46b19bc5d270f700495c1669}{getStateName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_watered_state}{WateredState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_state}{PlantState}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_watered_state_a11fe0838cd628312764f2e5c625f611c}{handleWatering}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_watered_state_aee3053bea9d12e7ba857e131ecb0b3ac}{handlePassTime}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_watered_state_a5f3f73f0083c7cc8792e74cada579da6}{getStateName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dry_state}{DryState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_state}{PlantState}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dry_state_ac44961105702f0cf32cd39812e329cea}{handleWatering}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dry_state_aebaaef25e20419c08d0b1f7415dccd02}{handlePassTime}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_dry_state_a317d743b6e9c3fa380bdf63be81f9f32}{getStateName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ready_for_sale_state}{ReadyForSaleState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_state}{PlantState}}\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ready_for_sale_state_aaf678157cbf4f3a0db0cb7499724ba9f}{handleWatering}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ready_for_sale_state_adc69f46c0700b8ec62db324545b352b7}{handlePassTime}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ready_for_sale_state_acf2143fd0a4ccfa5827cdce08adc2d5e}{getStateName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PLANT\_STATE\_H}}
+
+\end{DoxyCode}

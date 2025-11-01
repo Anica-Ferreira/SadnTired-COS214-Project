@@ -1,0 +1,270 @@
+\doxysection{Customer Class Reference}
+\hypertarget{class_customer}{}\label{class_customer}\index{Customer@{Customer}}
+
+
+\mbox{[}Implementation of the \doxylink{class_customer}{Customer} class for managing customer data and actions\mbox{]}  
+
+
+Inheritance diagram for Customer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_customer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_customer_abcc8fae9701e5ba9d7d6fe44498b34e3}\label{class_customer_abcc8fae9701e5ba9d7d6fe44498b34e3} 
+{\bfseries Customer} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_customer}{Customer} object with default values\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_customer_a216c20b55d99dd3b6e2eeb1942adae1e}{Customer}} (const string \&customer\+Name, const string \&customer\+Surname, const string \&customer\+Email, const string \&customer\+Phone="{}"{})
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_customer}{Customer} object with specified details\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_customer_ab93fb14683b0393b9c900109f77c2629}\label{class_customer_ab93fb14683b0393b9c900109f77c2629} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Customer} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_customer}{Customer} object and cleans up resources\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_customer_ac987a032179493e7a75b3dbdc32c1cf9}{get\+Name}} () const
+\item 
+\Hypertarget{class_customer_a89fe5dc7065739347c436f673c68b249}\label{class_customer_a89fe5dc7065739347c436f673c68b249} 
+string {\bfseries get\+Email} () const
+\item 
+\Hypertarget{class_customer_ac34eaf091e758c7f8c89f86af2dc29f1}\label{class_customer_ac34eaf091e758c7f8c89f86af2dc29f1} 
+string {\bfseries get\+Phone} () const
+\item 
+\Hypertarget{class_customer_a92935ef4bdcf7b72ef004c40e6a73fc3}\label{class_customer_a92935ef4bdcf7b72ef004c40e6a73fc3} 
+string {\bfseries get\+Surname} () const
+\item 
+\Hypertarget{class_customer_a82c5149375647c85512bd768303a78e1}\label{class_customer_a82c5149375647c85512bd768303a78e1} 
+void {\bfseries set\+Name} (const string \&new\+Name)
+\item 
+\Hypertarget{class_customer_a6babe87a2534398cdcd805a995c6c922}\label{class_customer_a6babe87a2534398cdcd805a995c6c922} 
+void {\bfseries set\+Email} (const string \&new\+Email)
+\item 
+\Hypertarget{class_customer_a8d26b93e5a1ed5702d7705d203292ea2}\label{class_customer_a8d26b93e5a1ed5702d7705d203292ea2} 
+void {\bfseries set\+Phone} (const string \&new\+Phone)
+\item 
+\Hypertarget{class_customer_a14b0b476255541ab158137204032bd7d}\label{class_customer_a14b0b476255541ab158137204032bd7d} 
+void {\bfseries set\+Surname} (const string \&new\+Surname)
+\item 
+void \mbox{\hyperlink{class_customer_a0d44772856fea287b1ccd5db5c9be9ec}{execute\+Command}} (\mbox{\hyperlink{class_customer_command}{Customer\+Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes a customer command\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_customer_acc75a803ab8dd096bde37ec5c25cc57b}\label{class_customer_acc75a803ab8dd096bde37ec5c25cc57b} 
+void {\bfseries show\+Command\+History} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Displays the command execution history\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_customer_a8563f31aa39358c901ffb46566c45f20}{purchase\+Plant}} (const string \&plant\+Name, int quantity)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Simulates purchasing a plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_customer_af443822d961f0eaa54479a689ced560c}{request\+Plant\+Care}} (const string \&plant\+Name, const string \&care\+Type)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Requests plant care services\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_customer_a99a7f79c4214e468f94f8b78c68519ae}{check\+Plant\+Stock}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Checks stock for a specific plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_customer_a7436acbe8dff94a5b045e9c4cb2bbd55}{request\+Refund}} (const string \&plant\+Name, const string \&reason)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Requests a refund for a plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_customer_ae7f6809e7e06b708b9757ab22777780b}{get\+Plant\+Info}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets information about a specific plant\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_customer_a6da24d73f38444e378e78dbae95ffabb}{set\+Mediator}} (\mbox{\hyperlink{class_i_mediator}{IMediator}} \texorpdfstring{$\ast$}{*}mediator) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the mediator for communication\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_customer_a19aea847c560b3e42be614aee34b3642}{send\+Request}} (std\+::string request) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sends a request through the mediator\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_customer}{Customer} class for managing customer data and actions\mbox{]} 
+
+\mbox{[}Handles customer operations including command execution and mediator communication\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_customer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_customer_a216c20b55d99dd3b6e2eeb1942adae1e}\index{Customer@{Customer}!Customer@{Customer}}
+\index{Customer@{Customer}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{Customer()}{Customer()}}
+{\footnotesize\ttfamily \label{class_customer_a216c20b55d99dd3b6e2eeb1942adae1e} 
+Customer\+::\+Customer (\begin{DoxyParamCaption}\item[{const string \&}]{customer\+Name}{, }\item[{const string \&}]{customer\+Surname}{, }\item[{const string \&}]{customer\+Email}{, }\item[{const string \&}]{customer\+Phone}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_customer}{Customer} object with specified details\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em customer\+Name} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s first name\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em customer\+Surname} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s last name\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em customer\+Email} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s email address\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em customer\+Phone} & \mbox{[}\doxylink{class_customer}{Customer}\textquotesingle{}s phone number\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_customer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_customer_a99a7f79c4214e468f94f8b78c68519ae}\index{Customer@{Customer}!checkPlantStock@{checkPlantStock}}
+\index{checkPlantStock@{checkPlantStock}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{checkPlantStock()}{checkPlantStock()}}
+{\footnotesize\ttfamily \label{class_customer_a99a7f79c4214e468f94f8b78c68519ae} 
+string Customer\+::check\+Plant\+Stock (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Checks stock for a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to check\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Stock information message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_customer_a0d44772856fea287b1ccd5db5c9be9ec}\index{Customer@{Customer}!executeCommand@{executeCommand}}
+\index{executeCommand@{executeCommand}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{executeCommand()}{executeCommand()}}
+{\footnotesize\ttfamily \label{class_customer_a0d44772856fea287b1ccd5db5c9be9ec} 
+void Customer\+::execute\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_customer_command}{Customer\+Command}} \texorpdfstring{$\ast$}{*}}]{command}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Executes a customer command\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em command} & \mbox{[}Pointer to the command to execute\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_customer_ac987a032179493e7a75b3dbdc32c1cf9}\index{Customer@{Customer}!getName@{getName}}
+\index{getName@{getName}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_customer_ac987a032179493e7a75b3dbdc32c1cf9} 
+string Customer\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_colleague}{IColleague}}.
+
+\Hypertarget{class_customer_ae7f6809e7e06b708b9757ab22777780b}\index{Customer@{Customer}!getPlantInfo@{getPlantInfo}}
+\index{getPlantInfo@{getPlantInfo}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{getPlantInfo()}{getPlantInfo()}}
+{\footnotesize\ttfamily \label{class_customer_ae7f6809e7e06b708b9757ab22777780b} 
+string Customer\+::get\+Plant\+Info (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets information about a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to get info for\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}\doxylink{class_plant}{Plant} information message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_customer_a8563f31aa39358c901ffb46566c45f20}\index{Customer@{Customer}!purchasePlant@{purchasePlant}}
+\index{purchasePlant@{purchasePlant}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{purchasePlant()}{purchasePlant()}}
+{\footnotesize\ttfamily \label{class_customer_a8563f31aa39358c901ffb46566c45f20} 
+string Customer\+::purchase\+Plant (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{, }\item[{int}]{quantity}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Simulates purchasing a plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to purchase\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em quantity} & \mbox{[}Number of plants to purchase\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Status message about the purchase\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_customer_af443822d961f0eaa54479a689ced560c}\index{Customer@{Customer}!requestPlantCare@{requestPlantCare}}
+\index{requestPlantCare@{requestPlantCare}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{requestPlantCare()}{requestPlantCare()}}
+{\footnotesize\ttfamily \label{class_customer_af443822d961f0eaa54479a689ced560c} 
+string Customer\+::request\+Plant\+Care (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{, }\item[{const string \&}]{care\+Type}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Requests plant care services\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & Name of the plant needing care \\
+\hline
+\mbox{\texttt{in,out}}  & {\em care\+Type} & \mbox{[}Type of care requested\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Status message about the care request\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_customer_a7436acbe8dff94a5b045e9c4cb2bbd55}\index{Customer@{Customer}!requestRefund@{requestRefund}}
+\index{requestRefund@{requestRefund}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{requestRefund()}{requestRefund()}}
+{\footnotesize\ttfamily \label{class_customer_a7436acbe8dff94a5b045e9c4cb2bbd55} 
+string Customer\+::request\+Refund (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{, }\item[{const string \&}]{reason}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Requests a refund for a plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant for refund\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em reason} & \mbox{[}Reason for the refund request\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Refund request status message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_customer_a19aea847c560b3e42be614aee34b3642}\index{Customer@{Customer}!sendRequest@{sendRequest}}
+\index{sendRequest@{sendRequest}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{sendRequest()}{sendRequest()}}
+{\footnotesize\ttfamily \label{class_customer_a19aea847c560b3e42be614aee34b3642} 
+void Customer\+::send\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Sends a request through the mediator\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{[}request} & The request message to send\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_colleague}{IColleague}}.
+
+\Hypertarget{class_customer_a6da24d73f38444e378e78dbae95ffabb}\index{Customer@{Customer}!setMediator@{setMediator}}
+\index{setMediator@{setMediator}!Customer@{Customer}}
+\doxysubsubsection{\texorpdfstring{setMediator()}{setMediator()}}
+{\footnotesize\ttfamily \label{class_customer_a6da24d73f38444e378e78dbae95ffabb} 
+void Customer\+::set\+Mediator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_mediator}{IMediator}} \texorpdfstring{$\ast$}{*}}]{mediator}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Sets the mediator for communication\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em mediator} & \mbox{[}Pointer to the mediator interface\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_colleague}{IColleague}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Customer.\+h\item 
+Customer.\+cpp\end{DoxyCompactItemize}

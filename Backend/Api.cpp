@@ -1,288 +1,203 @@
-/* 
-
-    Endpoints : 
-
-    Shop:
-        GET: Get all products in shop
-        URL: http://localhost:8080/shop
-        Returns 12 products in the format:
-        {
-            "name": "Rose Bouquet",
-            "description": "Fresh red and pink roses",
-            "shopStock": 10
-        }
-
-        GET: Get random plants
-        URL: http://localhost:8080/randomShop
-        Returns 1-12 random plants with their count:
-        [
-            {"name":"Rose","count":3},
-            {"name":"Cactus","count":1},
-            ...
-        ]
-
-    Nursery:
-        GET: Get all plants in nursery
-        URL: http://localhost:8080/nursery
-        Returns 12 plants in the format:
-        {
-            "name": "Rose",
-            "status": "Planted",
-            "nurseryStock": 5
-        }
-
-        POST: Water a plant
-        URL: http://localhost:8080/waterPlant/{id}
-        Updates the status of the plant to "Watered"
-
-        POST: Move a plant to shop
-        URL: http://localhost:8080/movePlantOut/{id}
-        Decreases nursery stock by 1, increases shop stock by 1
-
-    
-    Staff
-        GET: Get a single staff member
-        URL: http://localhost:8080/staff
-        Returns:
-        {
-            "name": "Mr. Green",
-            "role": "Gardener",
-            "since": 1999
-        }
-    
-    Notifications:
-        GET: Get all notifications
-        URL: http://localhost:8080/notifications
-        Returns array of notifications:
-        [
-            {
-                "id":1,
-                "type":"Watering",
-                "status":"Active",
-                "description":"Rose needs watering"
-            },
-        ]
-
-        POST: Finish a task
-        URL: http://localhost:8080/finishTask/{id}
-        Updates the notification's status to "Completed"
-
-    Bundles:
-        GET: Get a random bundle
-        URL: http://localhost:8080/bundle
-        Returns:
-        {
-            "name":"Valentines bundle",
-            "count":2
-        }
+/**
+ * @class [Api]
+ * @brief [The API backend to connect with our frontend]
+ * @details [Sets up HTTP routes and handles API requests using Crow framework]
+ * @authors [Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy]
 */
 
 #include "crow.h"
+#include "NurserySystemFacade.h"
+#include "WebAPIAdapter.h"
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-//Here are the structures for all the data - we can change it as needed...
+/**
+ * @brief [CORS middleware for handling cross-origin requests]
+ */
+struct CORSMiddleware {
+    struct context {};
 
-//This refers to the plant in the nursery
-struct Plant {
-    int id;
-    string name;
-    string status;
-    int nurseryStock;
+    /**
+     * @brief [Handles pre-flight CORS headers]
+     */
+    void before_handle(crow::request& req, crow::response& res, context&) {
+        res.add_header("Access-Control-Allow-Origin", "*");
+        res.add_header("Access-Control-Allow-Headers", "Content-Type");
+        res.add_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    }
+
+    /**
+     * @brief [Adds CORS headers to responses]
+     */
+    void after_handle(crow::request& req, crow::response& res, context&) {
+        res.add_header("Access-Control-Allow-Origin", "*");
+    }
 };
 
-//The final product ready to be sold in shop
-struct Product {
-    int id;
-    string name;
-    string description;
-    int shopStock;
-};
 
-struct Staff {
-    int id;
-    string name;
-    string role;
-    int since;
-};
-
-struct Notification {
-    int id;
-    string type;
-    string status;
-    string description;
-};
-
-struct Bundle {
-    string name;
-    int count;
-};
-
-/* Dummy data */
-
-vector<Plant> nursery = {
-    {1,"Rose","Planted",5},
-    {2,"Lavender","Ready",3},
-    {3,"Cactus","Ready",7},
-    {4,"Tulip","Dry",6},
-    {5,"Daisy","Planted",4},
-    {6,"Orchid", "Dry",2},
-    {7,"Sunflower","Ready",5},
-    {8,"Succulent","Planted",3},
-    {9,"Fern","Watered",8},
-    {10,"Bonsai","Watered",1},
-    {11,"Peace Lily","Ready",6},
-    {12,"Aloe Vera","Dry",2}
-};
-
-vector<Product> shop = {
-    {1, "Rose", "Fresh red and pink roses", 10},
-    {2, "Lavender", "Potted lavender plant", 5},
-    {3, "Cactus", "Small cactus in pot", 8},
-    {4, "Tulip", "Colorful tulips", 6},
-    {5, "Daisy", "White and yellow daisies", 7},
-    {6, "Orchid", "Orchid with blooms", 4},
-    {7, "Sunflower", "Sunflowers in vase", 5},
-    {8, "Succulent", "Three small succulents", 6},
-    {9, "Fern", "Indoor fern plant", 3},
-    {10, "Bonsai", "Mini bonsai tree", 2},
-    {11, "Peace Lily", "Potted peace lily", 8},
-    {12, "Aloe Vera", "Aloe vera in pot", 3}
-};
-
-vector<Staff> staffList = {
-    {1,"Mr. Green","Gardener",1999},
-    {2,"Mr. Cash","Sales", 2018}
-};
-
-vector<Notification> notifications = {
-    {1,"Watering","Active","Rose needs watering"},
-    {2,"Check","Waiting","Check Lavender status"},
-    {3,"Move","Active","Move Aloe Vera to shop"}
-};
-
-vector<Bundle> bundles = {
-    {"Sptring bundle",3},
-    {"Valentines bundle",2},
-    {"Cactus Trio", 1}
-};
-
+/**
+ * @brief [Main entry point for the Nursery Management System web server]
+ * @return [Exit status code]
+ */
 int main() {
-    crow::SimpleApp app;
+    cout << "🌱 Starting Plant Nursery Management System..." << endl;
+
+    // Initialize the complete backend system
+    NurserySystemFacade* nurserySystem = new NurserySystemFacade();
+    WebAPIAdapter* apiAdapter = new WebAPIAdapter(nurserySystem);
+
+    crow::App<CORSMiddleware> app;
     srand(time(nullptr));
 
-    //SHOP
-
-    //GET /shop
-    CROW_ROUTE(app, "/shop").methods(crow::HTTPMethod::GET)([](){
-        crow::json::wvalue result;
-        for (size_t i = 0; i < shop.size(); i++) {
-            result[i]["name"] = shop[i].name;
-            result[i]["description"] = shop[i].description;
-            result[i]["shopStock"] = shop[i].shopStock;
+    // OPTIONS catch-all for preflight
+    CROW_CATCHALL_ROUTE(app)([](const crow::request& req, crow::response& res){
+        if (req.method == crow::HTTPMethod::Options) {
+            res.add_header("Access-Control-Allow-Origin", "*");
+            res.add_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            res.add_header("Access-Control-Allow-Headers", "Content-Type");
+            res.code = 200;
+            res.end();
+            return;
         }
-        return crow::response(result);
+        // Let other routes handle non-OPTIONS requests
+        res.code = 404;
+        res.end();
     });
 
-    //NURSERY
+    // --- ROOT ENDPOINT ---
+    CROW_ROUTE(app, "/")([](){
+        string html = R"(
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nursery API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .endpoint { background: #f5f5f5; padding: 10px; margin: 5px 0; border-radius: 5px; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>🌿 Nursery Management System API</h1>
+    <p>API is running successfully! Use the following endpoints:</p>
 
-    //GET /nursery
-    CROW_ROUTE(app, "/nursery").methods(crow::HTTPMethod::GET)([](){
-        crow::json::wvalue result;
-        for (size_t i = 0; i < nursery.size(); i++) {
-            result[i]["name"] = nursery[i].name;
-            result[i]["status"] = nursery[i].status;
-            result[i]["nurseryStock"] = nursery[i].nurseryStock;
+    <div class="endpoint"><strong>GET</strong> <a href="/health" target="_blank">/health</a> - Health check</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/shop" target="_blank">/shop</a> - Browse shop plants</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/nursery" target="_blank">/nursery</a> - View nursery plants</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/staff" target="_blank">/staff</a> - Get staff info</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/notifications" target="_blank">/notifications</a> - Get pending tasks</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/bundle" target="_blank">/bundle</a> - Get random bundle</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/system/status" target="_blank">/system/status</a> - Get system status</div>
+
+    <p>Test the API by clicking the links above or using curl commands.</p>
+</body>
+</html>
+        )";
+        crow::response res(html);
+        res.add_header("Content-Type", "text/html");
+        return res;
+    });
+
+    // --- FAVICON ENDPOINT ---
+    CROW_ROUTE(app, "/favicon.ico")([](){
+        crow::response res;
+        res.code = 204; // No content
+        return res;
+    });
+
+    // --- HEALTH ENDPOINT ---
+    CROW_ROUTE(app, "/health")([](){
+        crow::response res("{\"status\": \"healthy\", \"service\": \"Nursery API\"}");
+        res.add_header("Content-Type", "application/json");
+        return res;
+    });
+
+    // --- SHOP ENDPOINT ---
+    CROW_ROUTE(app, "/shop")([apiAdapter](){
+        try {
+            string result = apiAdapter->getShopProducts();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
         }
-        return crow::response(result);
     });
 
-    //POST /waterPlant/{id}
-    CROW_ROUTE(app, "/waterPlant/<int>").methods(crow::HTTPMethod::POST)([](int id){
-        if (id < 1 || id > nursery.size())
-            return crow::response(400, "Invalid id");
-
-        nursery[id-1].status = "Watered";
-        return crow::response("Plant watered successfully");
-    });
-
-    //POST /movePlantOut/{id}
-    CROW_ROUTE(app, "/movePlantOut/<int>").methods(crow::HTTPMethod::POST)([](int id){
-        if (id < 1 || id > nursery.size())
-            return crow::response(400, "Invalid id");
-
-        if (nursery[id-1].nurseryStock <= 0)
-            return crow::response(400, "No stock in nursery");
-
-        nursery[id-1].nurseryStock--;
-        shop[id-1].shopStock++;
-        return crow::response("Plant moved to shop");
-    });
-
-    //STAFF
-
-    //GET /staff
-    CROW_ROUTE(app, "/staff").methods(crow::HTTPMethod::GET)([](){
-        crow::json::wvalue result;
-        Staff s = staffList[0];
-        result["name"] = s.name;
-        result["role"] = s.role;
-        result["since"] = s.since;
-        return crow::response(result);
-    });
-
-    //GET /notifications
-    CROW_ROUTE(app, "/notifications").methods(crow::HTTPMethod::GET)([](){
-        crow::json::wvalue result;
-        for(size_t i=0;i<notifications.size();i++){
-            result[i]["id"] = notifications[i].id;
-            result[i]["type"] = notifications[i].type;
-            result[i]["status"] = notifications[i].status;
-            result[i]["description"] = notifications[i].description;
+    // --- NURSERY ENDPOINT ---
+    CROW_ROUTE(app, "/nursery")([apiAdapter](){
+        try {
+            string result = apiAdapter->getNurseryPlants();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
         }
-        return crow::response(result);
     });
 
-    //POST /finishTask/{id}
-    CROW_ROUTE(app, "/finishTask/<int>").methods(crow::HTTPMethod::POST)([](int id){
-        bool found = false;
-        for(size_t i=0;i<notifications.size();i++){
-            if(notifications[i].id == id){
-                notifications[i].status = "Completed";
-                found = true;
-                break;
-            }
+    // --- STAFF ENDPOINT ---
+    CROW_ROUTE(app, "/staff")([apiAdapter](){
+        try {
+            string result = apiAdapter->getStaff();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
         }
-        if(!found) return crow::response(400,"Invalid task id");
-        return crow::response("Task marked as completed");
     });
 
-    //SHOP
-
-    //GET /randomShop
-    CROW_ROUTE(app, "/randomShop").methods(crow::HTTPMethod::GET)([](){
-        crow::json::wvalue result;
-        int n = 1 + rand()%12;
-
-        for(int i=0; i<n; i++){
-            int idx = rand() % nursery.size();
-            result[i]["name"] = nursery[idx].name;
-            result[i]["count"] = 1 + rand()%5;
+    // --- NOTIFICATIONS ENDPOINT ---
+    CROW_ROUTE(app, "/notifications")([apiAdapter](){
+        try {
+            string result = apiAdapter->getNotifications();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
         }
-        return crow::response(result);
     });
 
-    //GET /bundle
-    CROW_ROUTE(app, "/bundle").methods(crow::HTTPMethod::GET)([](){
-        crow::json::wvalue result;
-        int idx = rand() % bundles.size();
-        result["name"] = bundles[idx].name;
-        result["count"] = bundles[idx].count;
-        return crow::response(result);
+    // --- SYSTEM STATUS ENDPOINT ---
+    CROW_ROUTE(app, "/system/status")([nurserySystem](){
+        try {
+            string result = nurserySystem->getStockCounts();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
     });
+
+    // --- BUNDLE ENDPOINT ---
+    CROW_ROUTE(app, "/bundle")([apiAdapter](){
+        try {
+            string result = apiAdapter->getRandomBundle();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
+    cout << "🚀 Nursery System Backend running on:" << endl;
+    cout << "   http://localhost:8080" << endl;
+    cout << "   http://127.0.0.1:8080" << endl;
 
     app.port(8080).multithreaded().run();
+
+    delete apiAdapter;
+    delete nurserySystem;
+
+    return 0;
 }

@@ -1,0 +1,47 @@
+\doxysection{Staff\+Member.\+h}
+\hypertarget{_staff_member_8h_source}{}\label{_staff_member_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STAFFMEMBER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STAFFMEMBER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}IMediator.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}IObserver.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}IColleague.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}StaffCommand.h"{}}\ \ \textcolor{comment}{//\ For\ command\ integration}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}StaffAction.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}StaffReaction.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Forward\ declaration\ for\ commands}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_staff_action}{StaffAction}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72}{StaffMember}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_mediator}{IMediator}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_observer}{IObserver}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ role\_;}
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<std::string>\ current\_tasks\_;\textcolor{comment}{//vector\ for\ queueing}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72}{StaffMember}}(std::string\ name,\ std::string\ role);\textcolor{comment}{//init\ name\ and\ role}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ processRequest(std::string\ request)\ =\ 0;\textcolor{comment}{//method\ for\ handling\ requests}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_staff_member_a802a0ef47f184b818208947458cda0ab}{notify}}(\mbox{\hyperlink{class_i_colleague}{IColleague}}*\ sender,\ std::string\ request)\ \textcolor{keyword}{override};\ \textcolor{comment}{//checks\ busy,\ if\ not\ set\ to\ busy\ and\ process\ request}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_staff_member_a8840c6eab82f02d8b54098ac76698371}{Update}}(std::string\ message)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_staff_member_a0ab256f43d444996dd417d8e15ba5091}{templateWorkCycle}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ mainDuty()\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ workDuty()\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ subDuty()\ =\ 0;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_member_ac5030ee11b0fab0ef250d86932af006b}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STAFFMEMBER\_H}}
+
+\end{DoxyCode}

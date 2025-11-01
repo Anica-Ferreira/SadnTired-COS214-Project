@@ -1,0 +1,142 @@
+\doxysection{Inventory Class Reference}
+\hypertarget{class_inventory}{}\label{class_inventory}\index{Inventory@{Inventory}}
+
+
+\mbox{[}Implementation of the \doxylink{class_inventory}{Inventory} class for managing plant collections\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_inventory_a6c6dfcb6d977c74a7abf46809e892e3d}\label{class_inventory_a6c6dfcb6d977c74a7abf46809e892e3d} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Inventory} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_inventory}{Inventory} object and cleans up plant resources\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_inventory_a2eb47df6decb30c872d5596936e47932}{add\+Plant}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds a plant to the inventory\mbox{]} \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_inventory_a25ccca0beb522ca035a98ea329479efe}{get\+All}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets all plants in the inventory\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_inventory_a59c30039ab9c868427b6295621b08264}{get}} (int index) const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets a plant by index\mbox{]} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_inventory_adccb3b3b02dbe5bb16523e593adc6b65}{size}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the number of plants in inventory\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_a31e9f7d29167f2671728684d77cb4c77}\label{class_inventory_a31e9f7d29167f2671728684d77cb4c77} 
+void {\bfseries water\+All} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Waters all plants in the inventory\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_acdf047410fea9116c9e88f2becdfabad}\label{class_inventory_acdf047410fea9116c9e88f2becdfabad} 
+void {\bfseries pass\+Time\+All} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Advances time for all plants in the inventory\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_a8032544c5185d8cafffc201372400ba5}\label{class_inventory_a8032544c5185d8cafffc201372400ba5} 
+void {\bfseries print\+Stock\+Counts} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Prints stock counts by plant type\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_inventory_a775d02edd78192a12ffa024994986182}{remove\+Plant}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Removes a specific plant from inventory\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_inventory_a5f8d454d8123756ebd359afd5fbf9ecf}{move\+Ready\+Plants\+To}} (\mbox{\hyperlink{class_inventory}{Inventory}} \&store)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Moves ready plants from this inventory to another inventory\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_inventory}{Inventory} class for managing plant collections\mbox{]} 
+
+\mbox{[}Handles storage, retrieval, and management of plant objects in inventory\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-func-members}
+\Hypertarget{class_inventory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_inventory_a2eb47df6decb30c872d5596936e47932}\index{Inventory@{Inventory}!addPlant@{addPlant}}
+\index{addPlant@{addPlant}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{addPlant()}{addPlant()}}
+{\footnotesize\ttfamily \label{class_inventory_a2eb47df6decb30c872d5596936e47932} 
+void Inventory\+::add\+Plant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Adds a plant to the inventory\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant to add\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_inventory_a59c30039ab9c868427b6295621b08264}\index{Inventory@{Inventory}!get@{get}}
+\index{get@{get}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_inventory_a59c30039ab9c868427b6295621b08264} 
+\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} Inventory\+::get (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets a plant by index\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em index} & \mbox{[}Index of the plant to retrieve\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Pointer to the plant at specified index, or nullptr if invalid\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a25ccca0beb522ca035a98ea329479efe}\index{Inventory@{Inventory}!getAll@{getAll}}
+\index{getAll@{getAll}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily \label{class_inventory_a25ccca0beb522ca035a98ea329479efe} 
+vector$<$ \mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} $>$ Inventory\+::get\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets all plants in the inventory\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Vector containing pointers to all plants\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a5f8d454d8123756ebd359afd5fbf9ecf}\index{Inventory@{Inventory}!moveReadyPlantsTo@{moveReadyPlantsTo}}
+\index{moveReadyPlantsTo@{moveReadyPlantsTo}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{moveReadyPlantsTo()}{moveReadyPlantsTo()}}
+{\footnotesize\ttfamily \label{class_inventory_a5f8d454d8123756ebd359afd5fbf9ecf} 
+void Inventory\+::move\+Ready\+Plants\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_inventory}{Inventory}} \&}]{store}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Moves ready plants from this inventory to another inventory\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em store} & \mbox{[}Reference to the destination inventory\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_inventory_a775d02edd78192a12ffa024994986182}\index{Inventory@{Inventory}!removePlant@{removePlant}}
+\index{removePlant@{removePlant}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{removePlant()}{removePlant()}}
+{\footnotesize\ttfamily \label{class_inventory_a775d02edd78192a12ffa024994986182} 
+void Inventory\+::remove\+Plant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Removes a specific plant from inventory\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant to remove\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_inventory_adccb3b3b02dbe5bb16523e593adc6b65}\index{Inventory@{Inventory}!size@{size}}
+\index{size@{size}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_inventory_adccb3b3b02dbe5bb16523e593adc6b65} 
+int Inventory\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}Gets the number of plants in inventory\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Number of plants in inventory\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Inventory.\+h\item 
+Inventory.\+cpp\end{DoxyCompactItemize}

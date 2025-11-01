@@ -1,0 +1,26 @@
+var class_staff_coordinator =
+[
+    [ "StaffCoordinator", "class_staff_coordinator.html#a89f6bdf9a44ab845014007f711107085", null ],
+    [ "~StaffCoordinator", "class_staff_coordinator.html#a802c976029e4ec8c2e4b41b73dd50d6c", null ],
+    [ "assignStaffToNurseryArea", "class_staff_coordinator.html#a0c11b4b27c5c3a9cd52f76f9e65b8856", null ],
+    [ "assignTask", "class_staff_coordinator.html#a4f64a8e40702f1e910b7a4319be74b34", null ],
+    [ "assignTaskByRole", "class_staff_coordinator.html#a8af46fb51f73c846ea39edcdcd7c9bb1", null ],
+    [ "completeTask", "class_staff_coordinator.html#a5575557674f636a7bccd285ac202fcb0", null ],
+    [ "coordinateStaffMeeting", "class_staff_coordinator.html#af18f2fe9ca0526cec942e709db34bd6f", null ],
+    [ "createStaffNotification", "class_staff_coordinator.html#a839be53523de11c48484e25cf249e751", null ],
+    [ "createWorkSchedule", "class_staff_coordinator.html#ab8424c46f89b1c0287b977f4cf40534a", null ],
+    [ "escalateTask", "class_staff_coordinator.html#a80560e02153ae7c091d20ee7e16bfdbc", null ],
+    [ "getAllStaff", "class_staff_coordinator.html#a585b852fb9f3027f2fa67954e0f87f98", null ],
+    [ "getPendingTasks", "class_staff_coordinator.html#ad3beae9936061e748630398d1590f9b2", null ],
+    [ "getStaffByRole", "class_staff_coordinator.html#a3753d7e32f71a28847ca4a52a680c75c", null ],
+    [ "getStaffNotifications", "class_staff_coordinator.html#a46caf7ccdf274acaa514b09062f7e5df", null ],
+    [ "getStaffPerformance", "class_staff_coordinator.html#a16115ba21e6f53a89e5b8fc8e10cbbbc", null ],
+    [ "getStaffSchedule", "class_staff_coordinator.html#adfe4d8d2c5e32853922d436d27ec50f4", null ],
+    [ "getStaffTasks", "class_staff_coordinator.html#a0125b18f23f8b05155fd100cbb27a9ff", null ],
+    [ "handleCustomerQuestion", "class_staff_coordinator.html#a282df87dd5a53d3e6df65777fbdbc36b", null ],
+    [ "handleCustomerRequest", "class_staff_coordinator.html#af3cdcced421017f6986dd9f3f33e92ff", null ],
+    [ "markNotificationCompleted", "class_staff_coordinator.html#ae981774446fc9da59dc67fefe000688c", null ],
+    [ "providePlantAdvice", "class_staff_coordinator.html#a1954603d48d6a8b0ab1c02e0daf92599", null ],
+    [ "reassignTask", "class_staff_coordinator.html#adc6367ab24054fc890d8dafdd9c7e03f", null ],
+    [ "updateStaffAvailability", "class_staff_coordinator.html#a70a82990e2acfe983c34d3ab64c557f2", null ]
+];

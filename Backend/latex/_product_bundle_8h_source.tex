@@ -1,0 +1,33 @@
+\doxysection{Product\+Bundle.\+h}
+\hypertarget{_product_bundle_8h_source}{}\label{_product_bundle_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Composite\ }}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ PRODUCTBUNDLE\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ PRODUCTBUNDLE\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Product.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_product_bundle_a552e394ca0477cd05ac210e139331fd3}{ProductBundle}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_product}{Product}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_product_bundle_a552e394ca0477cd05ac210e139331fd3}{ProductBundle}}(\textcolor{keywordtype}{string}\ name\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_product_bundle_a552e394ca0477cd05ac210e139331fd3}{ProductBundle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_product_bundle_a552e394ca0477cd05ac210e139331fd3}{ProductBundle}}\&\ other);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_product_bundle_a1b84615c7416ff9af87cf9d9458f6ba2}{\string~ProductBundle}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_product_bundle_a0ee048484c80ca380cdedfd8a93ef654}{add}}(\mbox{\hyperlink{class_product}{Product}}*\ item);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_product_bundle_a1f53e6e2b7900388601a933bba5dc379}{getName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_product_bundle_ad11951b5f520d28fdc9a433df10f6d1c}{getPrice}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_product}{Product}}*\ \mbox{\hyperlink{class_product_bundle_ac2e0fd1ddd6bad446461a6158300f7a5}{clone}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_product_bundle_ab96a847a75da93e41fbb478ffe9d8e6e}{printProduct}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ vector<Product*>\ items;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

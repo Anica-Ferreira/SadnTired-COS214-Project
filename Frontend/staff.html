@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Dashboard - Melancholy Nursery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: rgb(247, 240, 255);
+            font-family: "Kumbh Sans";
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 80px;
+            color: rgb(25, 1, 44);
+            margin: 30px 0;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: rgb(25, 1, 44);
+            margin-bottom: 20px;
+        }
+
+        /* HEADER STYLING */
+        header {
+            display: grid;
+            grid-template-columns: auto auto;
+            font-size: 24px;
+            background-color: rgb(126, 91, 173);
+            padding: 15px;
+            align-items: center;
+        }
+
+        header a {
+            text-decoration: none;
+            color: rgb(248, 240, 255);
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        #home {
+            text-align: left;
+        }
+
+        #nursery {
+            text-align: right;
+        }
+
+        /* DASHBOARD STYLING */
+        #staffZone {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: 30px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #profile {
+            border: solid 4px rgb(92, 34, 139);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(222, 191, 243);
+            height: fit-content;
+        }
+
+        #personalIcon {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 20px 0;
+            border: 4px solid rgb(92, 34, 139);
+        }
+
+        #profile h3 {
+            font-size: 28px;
+            color: rgb(25, 1, 44);
+            margin: 10px 0;
+        }
+
+        #role, #since {
+            font-size: 18px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        /* NOTIFICATION STYLING */
+        #alerts {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            border: solid 2px rebeccapurple;
+            border-radius: 15px;
+            margin: 15px 0;
+            padding: 20px;
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        li:hover {
+            transform: translateX(5px);
+        }
+
+        li h3 {
+            font-size: 20px;
+            color: rgb(25, 1, 44);
+            margin: 0 0 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-type {
+            background: rebeccapurple;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .task-status {
+            background: #666;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .status-active { background: #2196F3; }
+        .status-waiting { background: #FF9800; }
+        .status-completed { background: #4CAF50; }
+
+        li p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rebeccapurple;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #553c8b;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER STYLING */
+        footer {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            font-size: 18px;
+            background-color: rgb(126, 91, 173);
+            padding: 20px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: aliceblue;
+            padding: 0 20px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        #footer1 {
+            text-align: right;
+        }
+
+        #footer2 {
+            text-align: left;
+        }
+
+        footer span {
+            text-align: center;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            padding: 20px;
+        }
+
+        .no-tasks {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            padding: 40px;
+            border: 2px dashed #ccc;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            #staffZone {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                font-size: 18px;
+            }
+
+            h1 {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html" id="home">🏠 Home</a>
+    <a href="nursery.html" id="nursery">🌱 Nursery</a>
+</header>
+
+<main>
+    <h1>Staff Dashboard</h1>
+
+    <div id="staffZone">
+        <div id="alerts">
+            <h2>📋 Task Notifications</h2>
+            <div id="notifList">
+                <div class="loading">Loading notifications...</div>
+            </div>
+        </div>
+
+        <div id="profile">
+            <h3 id="staffName">Staff Member</h3>
+            <img id="personalIcon" src="media/tempIcon.png" alt="Staff Icon" />
+            <p id="role">Role: Loading...</p>
+            <p id="since">Since: Loading...</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <a href="about.html" id="footer1">About Us</a>
+    <span>|</span>
+    <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/staff.js"></script>
+</body>
+</html>

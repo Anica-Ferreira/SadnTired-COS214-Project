@@ -1,6 +1,5 @@
 // ConcreteDecorator
 // Adds gift wrapping to a product with selectable wrapping styles.
-
 #ifndef GIFTWRAPPING_H
 #define GIFTWRAPPING_H
 

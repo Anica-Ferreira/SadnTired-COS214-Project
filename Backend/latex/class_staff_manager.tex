@@ -1,0 +1,152 @@
+\doxysection{Staff\+Manager Class Reference}
+\hypertarget{class_staff_manager}{}\label{class_staff_manager}\index{StaffManager@{StaffManager}}
+
+
+\mbox{[}Implementation of the \doxylink{class_staff_manager}{Staff\+Manager} class for management staff operations\mbox{]}  
+
+
+Inheritance diagram for Staff\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_staff_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_manager_a37be5bfef4d346d4e646807d2de3c6b0}{Staff\+Manager}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_staff_manager}{Staff\+Manager} object\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_manager_a7893103972a5bcf157ecc0f2423ddb22}{process\+Request}} (std\+::string request) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Processes customer requests for management staff\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_manager_a568ad1d14f595b960525d9ef91f9e1f2}{main\+Duty}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Performs the main duty of management staff\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_manager_a82fb5b541cba2b6df19e4fb3bf46bc12}{work\+Duty}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Performs the work duty of management staff\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_manager_aae5402ad2efe69833f63292132d451b0}{sub\+Duty}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Performs the sub duty of management staff\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_staff_member}{Staff\+Member}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_member_abb5fe1aa8eb4450acbc5c25e09396d72}{Staff\+Member}} (std\+::string name, std\+::string role)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_staff_member}{Staff\+Member} object\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_member_a802a0ef47f184b818208947458cda0ab}{notify}} (\mbox{\hyperlink{class_i_colleague}{IColleague}} \texorpdfstring{$\ast$}{*}sender, std\+::string request) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles notifications from the mediator pattern\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_member_a8840c6eab82f02d8b54098ac76698371}{Update}} (std\+::string message) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles updates from the observer pattern\mbox{]} \end{DoxyCompactList}\item 
+virtual void {\bfseries template\+Work\+Cycle} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the staff work cycle template method\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_member_ac5030ee11b0fab0ef250d86932af006b}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the staff member\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_staff_member}{Staff\+Member}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\item 
+std\+::string {\bfseries role\+\_\+}
+\item 
+std\+::vector$<$ std\+::string $>$ {\bfseries current\+\_\+tasks\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_staff_manager}{Staff\+Manager} class for management staff operations\mbox{]} 
+
+\mbox{[}Handles management-\/level staff duties and administrative tasks\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_staff_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_staff_manager_a37be5bfef4d346d4e646807d2de3c6b0}\index{StaffManager@{StaffManager}!StaffManager@{StaffManager}}
+\index{StaffManager@{StaffManager}!StaffManager@{StaffManager}}
+\doxysubsubsection{\texorpdfstring{StaffManager()}{StaffManager()}}
+{\footnotesize\ttfamily \label{class_staff_manager_a37be5bfef4d346d4e646807d2de3c6b0} 
+Staff\+Manager\+::\+Staff\+Manager (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_staff_manager}{Staff\+Manager} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}The name of the management staff member\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_staff_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_staff_manager_a568ad1d14f595b960525d9ef91f9e1f2}\index{StaffManager@{StaffManager}!mainDuty@{mainDuty}}
+\index{mainDuty@{mainDuty}!StaffManager@{StaffManager}}
+\doxysubsubsection{\texorpdfstring{mainDuty()}{mainDuty()}}
+{\footnotesize\ttfamily \label{class_staff_manager_a568ad1d14f595b960525d9ef91f9e1f2} 
+void Staff\+Manager\+::main\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Performs the main duty of management staff\mbox{]} 
+
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+\Hypertarget{class_staff_manager_a7893103972a5bcf157ecc0f2423ddb22}\index{StaffManager@{StaffManager}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!StaffManager@{StaffManager}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily \label{class_staff_manager_a7893103972a5bcf157ecc0f2423ddb22} 
+std\+::string Staff\+Manager\+::process\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Processes customer requests for management staff\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em request} & \mbox{[}The customer request to process\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}Response string for the customer request\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+\Hypertarget{class_staff_manager_aae5402ad2efe69833f63292132d451b0}\index{StaffManager@{StaffManager}!subDuty@{subDuty}}
+\index{subDuty@{subDuty}!StaffManager@{StaffManager}}
+\doxysubsubsection{\texorpdfstring{subDuty()}{subDuty()}}
+{\footnotesize\ttfamily \label{class_staff_manager_aae5402ad2efe69833f63292132d451b0} 
+void Staff\+Manager\+::sub\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Performs the sub duty of management staff\mbox{]} 
+
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+\Hypertarget{class_staff_manager_a82fb5b541cba2b6df19e4fb3bf46bc12}\index{StaffManager@{StaffManager}!workDuty@{workDuty}}
+\index{workDuty@{workDuty}!StaffManager@{StaffManager}}
+\doxysubsubsection{\texorpdfstring{workDuty()}{workDuty()}}
+{\footnotesize\ttfamily \label{class_staff_manager_a82fb5b541cba2b6df19e4fb3bf46bc12} 
+void Staff\+Manager\+::work\+Duty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Performs the work duty of management staff\mbox{]} 
+
+
+
+Implements \mbox{\hyperlink{class_staff_member}{Staff\+Member}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Staff\+Manager.\+h\item 
+Staff\+Manager.\+cpp\end{DoxyCompactItemize}

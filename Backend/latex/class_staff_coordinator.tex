@@ -1,0 +1,474 @@
+\doxysection{Staff\+Coordinator Class Reference}
+\hypertarget{class_staff_coordinator}{}\label{class_staff_coordinator}\index{StaffCoordinator@{StaffCoordinator}}
+
+
+\mbox{[}Implementation of the \doxylink{class_staff_coordinator}{Staff\+Coordinator} class for staff coordination\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_coordinator_a89f6bdf9a44ab845014007f711107085}{Staff\+Coordinator}} (\mbox{\hyperlink{class_web_a_p_i_adapter}{Web\+APIAdapter}} \texorpdfstring{$\ast$}{*}adapter)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_staff_coordinator}{Staff\+Coordinator} object\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_staff_coordinator_a802c976029e4ec8c2e4b41b73dd50d6c}\label{class_staff_coordinator_a802c976029e4ec8c2e4b41b73dd50d6c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Staff\+Coordinator} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_staff_coordinator}{Staff\+Coordinator} object\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a282df87dd5a53d3e6df65777fbdbc36b}{handle\+Customer\+Question}} (int customer\+Id, const std\+::string \&question)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles customer questions and assigns appropriate staff\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_af3cdcced421017f6986dd9f3f33e92ff}{handle\+Customer\+Request}} (int customer\+Id, const std\+::string \&request)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles general customer requests\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a1954603d48d6a8b0ab1c02e0daf92599}{provide\+Plant\+Advice}} (int customer\+Id, const std\+::string \&plant\+Type)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Provides plant care advice to customers\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a4f64a8e40702f1e910b7a4319be74b34}{assign\+Task}} (int staff\+Id, const std\+::string \&task)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Assigns a task to a specific staff member\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a8af46fb51f73c846ea39edcdcd7c9bb1}{assign\+Task\+By\+Role}} (const std\+::string \&role, const std\+::string \&task)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Assigns a task to any available staff member of a specific role\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a5575557674f636a7bccd285ac202fcb0}{complete\+Task}} (int task\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Marks a task as completed\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_ad3beae9936061e748630398d1590f9b2}{get\+Pending\+Tasks}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves all pending tasks\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a0125b18f23f8b05155fd100cbb27a9ff}{get\+Staff\+Tasks}} (int staff\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets tasks assigned to a specific staff member\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a585b852fb9f3027f2fa67954e0f87f98}{get\+All\+Staff}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves information about all staff members\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a3753d7e32f71a28847ca4a52a680c75c}{get\+Staff\+By\+Role}} (const std\+::string \&role)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves staff members by specific role\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a16115ba21e6f53a89e5b8fc8e10cbbbc}{get\+Staff\+Performance}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Generates a performance report for staff members\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a0c11b4b27c5c3a9cd52f76f9e65b8856}{assign\+Staff\+To\+Nursery\+Area}} (int staff\+Id, const std\+::string \&area)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Assigns a staff member to a specific nursery area\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a80560e02153ae7c091d20ee7e16bfdbc}{escalate\+Task}} (int task\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Escalates a task to higher priority\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_adc6367ab24054fc890d8dafdd9c7e03f}{reassign\+Task}} (int task\+Id, int new\+Staff\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Reassigns a task to a different staff member\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_af18f2fe9ca0526cec942e709db34bd6f}{coordinate\+Staff\+Meeting}} (const std\+::string \&agenda)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Coordinates staff meetings with specified agenda\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a46caf7ccdf274acaa514b09062f7e5df}{get\+Staff\+Notifications}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves staff notifications\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_ae981774446fc9da59dc67fefe000688c}{mark\+Notification\+Completed}} (int notification\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Marks a notification as completed\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a839be53523de11c48484e25cf249e751}{create\+Staff\+Notification}} (const std\+::string \&message, const std\+::string \&priority)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Creates a new staff notification\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_ab8424c46f89b1c0287b977f4cf40534a}{create\+Work\+Schedule}} (const std\+::string \&period)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Creates a work schedule for staff members\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_adfe4d8d2c5e32853922d436d27ec50f4}{get\+Staff\+Schedule}} (int staff\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves the schedule for a specific staff member\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_staff_coordinator_a70a82990e2acfe983c34d3ab64c557f2}{update\+Staff\+Availability}} (int staff\+Id, const std\+::string \&availability)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Updates the availability status of a staff member\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_staff_coordinator}{Staff\+Coordinator} class for staff coordination\mbox{]} 
+
+\mbox{[}Handles staff task assignment, coordination, and workflow management\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_staff_coordinator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_staff_coordinator_a89f6bdf9a44ab845014007f711107085}\index{StaffCoordinator@{StaffCoordinator}!StaffCoordinator@{StaffCoordinator}}
+\index{StaffCoordinator@{StaffCoordinator}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{StaffCoordinator()}{StaffCoordinator()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a89f6bdf9a44ab845014007f711107085} 
+Staff\+Coordinator\+::\+Staff\+Coordinator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_web_a_p_i_adapter}{Web\+APIAdapter}} \texorpdfstring{$\ast$}{*}}]{adapter}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_staff_coordinator}{Staff\+Coordinator} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}The name of the staff coordinator\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em adapter} & \mbox{[}Pointer to the \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} for system communication\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_staff_coordinator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_staff_coordinator_a0c11b4b27c5c3a9cd52f76f9e65b8856}\index{StaffCoordinator@{StaffCoordinator}!assignStaffToNurseryArea@{assignStaffToNurseryArea}}
+\index{assignStaffToNurseryArea@{assignStaffToNurseryArea}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{assignStaffToNurseryArea()}{assignStaffToNurseryArea()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a0c11b4b27c5c3a9cd52f76f9e65b8856} 
+std\+::string Staff\+Coordinator\+::assign\+Staff\+To\+Nursery\+Area (\begin{DoxyParamCaption}\item[{int}]{staff\+Id}{, }\item[{const std\+::string \&}]{area}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Assigns a staff member to a specific nursery area\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em staff\+Id} & \mbox{[}The ID of the staff member\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em area} & \mbox{[}The nursery area to assign the staff member to\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with assignment confirmation\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a4f64a8e40702f1e910b7a4319be74b34}\index{StaffCoordinator@{StaffCoordinator}!assignTask@{assignTask}}
+\index{assignTask@{assignTask}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{assignTask()}{assignTask()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a4f64a8e40702f1e910b7a4319be74b34} 
+std\+::string Staff\+Coordinator\+::assign\+Task (\begin{DoxyParamCaption}\item[{int}]{staff\+Id}{, }\item[{const std\+::string \&}]{task}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Assigns a task to a specific staff member\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em staff\+Id} & \mbox{[}The ID of the staff member to assign the task to\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em task} & \mbox{[}The task description to assign\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with assignment confirmation\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a8af46fb51f73c846ea39edcdcd7c9bb1}\index{StaffCoordinator@{StaffCoordinator}!assignTaskByRole@{assignTaskByRole}}
+\index{assignTaskByRole@{assignTaskByRole}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{assignTaskByRole()}{assignTaskByRole()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a8af46fb51f73c846ea39edcdcd7c9bb1} 
+std\+::string Staff\+Coordinator\+::assign\+Task\+By\+Role (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{role}{, }\item[{const std\+::string \&}]{task}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Assigns a task to any available staff member of a specific role\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em role} & \mbox{[}The role type to assign the task to\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em task} & \mbox{[}The task description to assign\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with assignment information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a5575557674f636a7bccd285ac202fcb0}\index{StaffCoordinator@{StaffCoordinator}!completeTask@{completeTask}}
+\index{completeTask@{completeTask}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{completeTask()}{completeTask()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a5575557674f636a7bccd285ac202fcb0} 
+std\+::string Staff\+Coordinator\+::complete\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Marks a task as completed\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em task\+Id} & \mbox{[}The ID of the task to complete\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with completion confirmation\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_af18f2fe9ca0526cec942e709db34bd6f}\index{StaffCoordinator@{StaffCoordinator}!coordinateStaffMeeting@{coordinateStaffMeeting}}
+\index{coordinateStaffMeeting@{coordinateStaffMeeting}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{coordinateStaffMeeting()}{coordinateStaffMeeting()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_af18f2fe9ca0526cec942e709db34bd6f} 
+std\+::string Staff\+Coordinator\+::coordinate\+Staff\+Meeting (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{agenda}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Coordinates staff meetings with specified agenda\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em agenda} & \mbox{[}The meeting agenda\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with meeting scheduling information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a839be53523de11c48484e25cf249e751}\index{StaffCoordinator@{StaffCoordinator}!createStaffNotification@{createStaffNotification}}
+\index{createStaffNotification@{createStaffNotification}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{createStaffNotification()}{createStaffNotification()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a839be53523de11c48484e25cf249e751} 
+std\+::string Staff\+Coordinator\+::create\+Staff\+Notification (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{, }\item[{const std\+::string \&}]{priority}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Creates a new staff notification\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em message} & \mbox{[}The notification message\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em priority} & \mbox{[}The priority level of the notification\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with notification creation information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_ab8424c46f89b1c0287b977f4cf40534a}\index{StaffCoordinator@{StaffCoordinator}!createWorkSchedule@{createWorkSchedule}}
+\index{createWorkSchedule@{createWorkSchedule}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{createWorkSchedule()}{createWorkSchedule()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_ab8424c46f89b1c0287b977f4cf40534a} 
+std\+::string Staff\+Coordinator\+::create\+Work\+Schedule (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{period}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Creates a work schedule for staff members\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em period} & \mbox{[}The scheduling period\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with work schedule information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a80560e02153ae7c091d20ee7e16bfdbc}\index{StaffCoordinator@{StaffCoordinator}!escalateTask@{escalateTask}}
+\index{escalateTask@{escalateTask}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{escalateTask()}{escalateTask()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a80560e02153ae7c091d20ee7e16bfdbc} 
+std\+::string Staff\+Coordinator\+::escalate\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Escalates a task to higher priority\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em task\+Id} & \mbox{[}The ID of the task to escalate\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with escalation information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a585b852fb9f3027f2fa67954e0f87f98}\index{StaffCoordinator@{StaffCoordinator}!getAllStaff@{getAllStaff}}
+\index{getAllStaff@{getAllStaff}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getAllStaff()}{getAllStaff()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a585b852fb9f3027f2fa67954e0f87f98} 
+std\+::string Staff\+Coordinator\+::get\+All\+Staff (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves information about all staff members\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with staff list information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_ad3beae9936061e748630398d1590f9b2}\index{StaffCoordinator@{StaffCoordinator}!getPendingTasks@{getPendingTasks}}
+\index{getPendingTasks@{getPendingTasks}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getPendingTasks()}{getPendingTasks()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_ad3beae9936061e748630398d1590f9b2} 
+std\+::string Staff\+Coordinator\+::get\+Pending\+Tasks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves all pending tasks\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with pending tasks information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a3753d7e32f71a28847ca4a52a680c75c}\index{StaffCoordinator@{StaffCoordinator}!getStaffByRole@{getStaffByRole}}
+\index{getStaffByRole@{getStaffByRole}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getStaffByRole()}{getStaffByRole()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a3753d7e32f71a28847ca4a52a680c75c} 
+std\+::string Staff\+Coordinator\+::get\+Staff\+By\+Role (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{role}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves staff members by specific role\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em role} & \mbox{[}The role to filter staff by\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with filtered staff information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a46caf7ccdf274acaa514b09062f7e5df}\index{StaffCoordinator@{StaffCoordinator}!getStaffNotifications@{getStaffNotifications}}
+\index{getStaffNotifications@{getStaffNotifications}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getStaffNotifications()}{getStaffNotifications()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a46caf7ccdf274acaa514b09062f7e5df} 
+std\+::string Staff\+Coordinator\+::get\+Staff\+Notifications (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves staff notifications\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with staff notifications\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a16115ba21e6f53a89e5b8fc8e10cbbbc}\index{StaffCoordinator@{StaffCoordinator}!getStaffPerformance@{getStaffPerformance}}
+\index{getStaffPerformance@{getStaffPerformance}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getStaffPerformance()}{getStaffPerformance()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a16115ba21e6f53a89e5b8fc8e10cbbbc} 
+std\+::string Staff\+Coordinator\+::get\+Staff\+Performance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Generates a performance report for staff members\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with performance report\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_adfe4d8d2c5e32853922d436d27ec50f4}\index{StaffCoordinator@{StaffCoordinator}!getStaffSchedule@{getStaffSchedule}}
+\index{getStaffSchedule@{getStaffSchedule}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getStaffSchedule()}{getStaffSchedule()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_adfe4d8d2c5e32853922d436d27ec50f4} 
+std\+::string Staff\+Coordinator\+::get\+Staff\+Schedule (\begin{DoxyParamCaption}\item[{int}]{staff\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves the schedule for a specific staff member\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em staff\+Id} & \mbox{[}The ID of the staff member\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with staff schedule information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a0125b18f23f8b05155fd100cbb27a9ff}\index{StaffCoordinator@{StaffCoordinator}!getStaffTasks@{getStaffTasks}}
+\index{getStaffTasks@{getStaffTasks}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{getStaffTasks()}{getStaffTasks()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a0125b18f23f8b05155fd100cbb27a9ff} 
+std\+::string Staff\+Coordinator\+::get\+Staff\+Tasks (\begin{DoxyParamCaption}\item[{int}]{staff\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets tasks assigned to a specific staff member\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em staff\+Id} & \mbox{[}The ID of the staff member\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with staff task information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a282df87dd5a53d3e6df65777fbdbc36b}\index{StaffCoordinator@{StaffCoordinator}!handleCustomerQuestion@{handleCustomerQuestion}}
+\index{handleCustomerQuestion@{handleCustomerQuestion}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{handleCustomerQuestion()}{handleCustomerQuestion()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a282df87dd5a53d3e6df65777fbdbc36b} 
+std\+::string Staff\+Coordinator\+::handle\+Customer\+Question (\begin{DoxyParamCaption}\item[{int}]{customer\+Id}{, }\item[{const std\+::string \&}]{question}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Handles customer questions and assigns appropriate staff\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em customer\+Id} & \mbox{[}The ID of the customer asking the question\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em question} & \mbox{[}The customer\textquotesingle{}s question\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with assignment information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_af3cdcced421017f6986dd9f3f33e92ff}\index{StaffCoordinator@{StaffCoordinator}!handleCustomerRequest@{handleCustomerRequest}}
+\index{handleCustomerRequest@{handleCustomerRequest}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{handleCustomerRequest()}{handleCustomerRequest()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_af3cdcced421017f6986dd9f3f33e92ff} 
+std\+::string Staff\+Coordinator\+::handle\+Customer\+Request (\begin{DoxyParamCaption}\item[{int}]{customer\+Id}{, }\item[{const std\+::string \&}]{request}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Handles general customer requests\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em customer\+Id} & \mbox{[}The ID of the customer making the request\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em request} & \mbox{[}The customer\textquotesingle{}s request\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with request handling information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_ae981774446fc9da59dc67fefe000688c}\index{StaffCoordinator@{StaffCoordinator}!markNotificationCompleted@{markNotificationCompleted}}
+\index{markNotificationCompleted@{markNotificationCompleted}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{markNotificationCompleted()}{markNotificationCompleted()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_ae981774446fc9da59dc67fefe000688c} 
+std\+::string Staff\+Coordinator\+::mark\+Notification\+Completed (\begin{DoxyParamCaption}\item[{int}]{notification\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Marks a notification as completed\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em notification\+Id} & \mbox{[}The ID of the notification to complete\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with completion confirmation\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a1954603d48d6a8b0ab1c02e0daf92599}\index{StaffCoordinator@{StaffCoordinator}!providePlantAdvice@{providePlantAdvice}}
+\index{providePlantAdvice@{providePlantAdvice}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{providePlantAdvice()}{providePlantAdvice()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a1954603d48d6a8b0ab1c02e0daf92599} 
+std\+::string Staff\+Coordinator\+::provide\+Plant\+Advice (\begin{DoxyParamCaption}\item[{int}]{customer\+Id}{, }\item[{const std\+::string \&}]{plant\+Type}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Provides plant care advice to customers\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em customer\+Id} & \mbox{[}The ID of the customer requesting advice\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em plant\+Type} & \mbox{[}The type of plant for advice\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with plant care advice\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_adc6367ab24054fc890d8dafdd9c7e03f}\index{StaffCoordinator@{StaffCoordinator}!reassignTask@{reassignTask}}
+\index{reassignTask@{reassignTask}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{reassignTask()}{reassignTask()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_adc6367ab24054fc890d8dafdd9c7e03f} 
+std\+::string Staff\+Coordinator\+::reassign\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+Id}{, }\item[{int}]{new\+Staff\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Reassigns a task to a different staff member\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em task\+Id} & \mbox{[}The ID of the task to reassign\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em new\+Staff\+Id} & \mbox{[}The ID of the new staff member\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with reassignment confirmation\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_staff_coordinator_a70a82990e2acfe983c34d3ab64c557f2}\index{StaffCoordinator@{StaffCoordinator}!updateStaffAvailability@{updateStaffAvailability}}
+\index{updateStaffAvailability@{updateStaffAvailability}!StaffCoordinator@{StaffCoordinator}}
+\doxysubsubsection{\texorpdfstring{updateStaffAvailability()}{updateStaffAvailability()}}
+{\footnotesize\ttfamily \label{class_staff_coordinator_a70a82990e2acfe983c34d3ab64c557f2} 
+std\+::string Staff\+Coordinator\+::update\+Staff\+Availability (\begin{DoxyParamCaption}\item[{int}]{staff\+Id}{, }\item[{const std\+::string \&}]{availability}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Updates the availability status of a staff member\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em staff\+Id} & \mbox{[}The ID of the staff member\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em availability} & \mbox{[}The new availability status\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with availability update confirmation\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Staff\+Coordinator.\+h\item 
+Staff\+Coordinator.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,268 @@
+\doxysection{Web\+APIAdapter Class Reference}
+\hypertarget{class_web_a_p_i_adapter}{}\label{class_web_a_p_i_adapter}\index{WebAPIAdapter@{WebAPIAdapter}}
+
+
+\mbox{[}The implementation of the \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} class for handling HTTP API requests\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_web_a_p_i_adapter_a24ce87d03bb83234c78e48362ee2b879}{Web\+APIAdapter}} (\mbox{\hyperlink{class_inventory_manager}{Inventory\+Manager}} \texorpdfstring{$\ast$}{*}inv\+Manager)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} object\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_web_a_p_i_adapter_aca04fc5b5792f13b13d571a9b3737d38}\label{class_web_a_p_i_adapter_aca04fc5b5792f13b13d571a9b3737d38} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Web\+APIAdapter} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} object\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_aa9ba888f5518f665d9f34a742e08f4f5}{get\+Shop\+Products}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves all shop products\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a41bc42ec677e5b1278086926d7b740ce}{get\+Random\+Plants}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves random plants from shop\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_ad0355637aa0b854fd0bc64c6c0795d2c}{get\+Nursery\+Plants}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves all nursery plants\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a292f4f1fe779c8bc22dfe5095f7a4516}{water\+Plant}} (const std\+::string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Waters a specific plant\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a8d5472824828bde0f6100b2c1226c6a5}{move\+Plant\+To\+Shop}} (const std\+::string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Moves a plant from nursery to shop\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a841285dbcb9778d11db596208dbfe5ee}{get\+Staff}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves all tasks\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_ab197073ff3b06b7b470f4d8932c8d35c}{get\+Notifications}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves all notifications\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_af4b68f74a782199c4eb2c7bae4b70f70}{finish\+Task}} (int task\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Finishes a specific task\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_acef0a80f756f2ab701e7bbed33a95c33}{create\+Customer}} (const std\+::string \&name, const std\+::string \&email)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Creates a new customer\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a6d6a648edbb83fecb70830a9a0da0d89}{execute\+Customer\+Command}} (const std\+::string \&command\+Type, const std\+::string \&params)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes a customer command\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a2f974b76064a6b63bc5a7bbf8c073160}{get\+Customer\+Cart}} (int customer\+Id)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves the cart for a specific customer\mbox{]} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_web_a_p_i_adapter_a6f67de4ace3ea227cb0a6fa974b1c162}{get\+Random\+Bundle}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves a random plant bundle\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}The implementation of the \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} class for handling HTTP API requests\mbox{]} 
+
+\mbox{[}Acts as an adapter between the web API and the nursery system facade\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_web_a_p_i_adapter_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_web_a_p_i_adapter_a24ce87d03bb83234c78e48362ee2b879}\index{WebAPIAdapter@{WebAPIAdapter}!WebAPIAdapter@{WebAPIAdapter}}
+\index{WebAPIAdapter@{WebAPIAdapter}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{WebAPIAdapter()}{WebAPIAdapter()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a24ce87d03bb83234c78e48362ee2b879} 
+Web\+APIAdapter\+::\+Web\+APIAdapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_inventory_manager}{Inventory\+Manager}} \texorpdfstring{$\ast$}{*}}]{inv\+Manager}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em inv\+Manager} & \mbox{[}Pointer to the \doxylink{class_inventory_manager}{Inventory\+Manager} instance\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_web_a_p_i_adapter_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_web_a_p_i_adapter_acef0a80f756f2ab701e7bbed33a95c33}\index{WebAPIAdapter@{WebAPIAdapter}!createCustomer@{createCustomer}}
+\index{createCustomer@{createCustomer}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{createCustomer()}{createCustomer()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_acef0a80f756f2ab701e7bbed33a95c33} 
+std\+::string Web\+APIAdapter\+::create\+Customer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{const std\+::string \&}]{email}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Creates a new customer\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em name} & \mbox{[}\doxylink{class_customer}{Customer} name\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em email} & \mbox{[}\doxylink{class_customer}{Customer} email\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string with customer creation status\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a6d6a648edbb83fecb70830a9a0da0d89}\index{WebAPIAdapter@{WebAPIAdapter}!executeCustomerCommand@{executeCustomerCommand}}
+\index{executeCustomerCommand@{executeCustomerCommand}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{executeCustomerCommand()}{executeCustomerCommand()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a6d6a648edbb83fecb70830a9a0da0d89} 
+std\+::string Web\+APIAdapter\+::execute\+Customer\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{command\+Type}{, }\item[{const std\+::string \&}]{params}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Executes a customer command\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em command\+Type} & \mbox{[}Type of command to execute\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em params} & \mbox{[}Parameters for the command\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating command execution result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_af4b68f74a782199c4eb2c7bae4b70f70}\index{WebAPIAdapter@{WebAPIAdapter}!finishTask@{finishTask}}
+\index{finishTask@{finishTask}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{finishTask()}{finishTask()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_af4b68f74a782199c4eb2c7bae4b70f70} 
+std\+::string Web\+APIAdapter\+::finish\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Finishes a specific task\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em task\+Id} & \mbox{[}ID of the task to finish\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating task completion or error\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a2f974b76064a6b63bc5a7bbf8c073160}\index{WebAPIAdapter@{WebAPIAdapter}!getCustomerCart@{getCustomerCart}}
+\index{getCustomerCart@{getCustomerCart}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getCustomerCart()}{getCustomerCart()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a2f974b76064a6b63bc5a7bbf8c073160} 
+std\+::string Web\+APIAdapter\+::get\+Customer\+Cart (\begin{DoxyParamCaption}\item[{int}]{customer\+Id}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves the cart for a specific customer\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em customer\+Id} & \mbox{[}ID of the customer\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing cart details or error\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_ab197073ff3b06b7b470f4d8932c8d35c}\index{WebAPIAdapter@{WebAPIAdapter}!getNotifications@{getNotifications}}
+\index{getNotifications@{getNotifications}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getNotifications()}{getNotifications()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_ab197073ff3b06b7b470f4d8932c8d35c} 
+std\+::string Web\+APIAdapter\+::get\+Notifications (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves all notifications\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing notifications or error message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_ad0355637aa0b854fd0bc64c6c0795d2c}\index{WebAPIAdapter@{WebAPIAdapter}!getNurseryPlants@{getNurseryPlants}}
+\index{getNurseryPlants@{getNurseryPlants}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getNurseryPlants()}{getNurseryPlants()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_ad0355637aa0b854fd0bc64c6c0795d2c} 
+std\+::string Web\+APIAdapter\+::get\+Nursery\+Plants (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves all nursery plants\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing nursery plants or error message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a6f67de4ace3ea227cb0a6fa974b1c162}\index{WebAPIAdapter@{WebAPIAdapter}!getRandomBundle@{getRandomBundle}}
+\index{getRandomBundle@{getRandomBundle}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getRandomBundle()}{getRandomBundle()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a6f67de4ace3ea227cb0a6fa974b1c162} 
+std\+::string Web\+APIAdapter\+::get\+Random\+Bundle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves a random plant bundle\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing bundle information or error\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a41bc42ec677e5b1278086926d7b740ce}\index{WebAPIAdapter@{WebAPIAdapter}!getRandomPlants@{getRandomPlants}}
+\index{getRandomPlants@{getRandomPlants}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getRandomPlants()}{getRandomPlants()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a41bc42ec677e5b1278086926d7b740ce} 
+std\+::string Web\+APIAdapter\+::get\+Random\+Plants (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves random plants from shop\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing random plants or error\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_aa9ba888f5518f665d9f34a742e08f4f5}\index{WebAPIAdapter@{WebAPIAdapter}!getShopProducts@{getShopProducts}}
+\index{getShopProducts@{getShopProducts}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getShopProducts()}{getShopProducts()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_aa9ba888f5518f665d9f34a742e08f4f5} 
+std\+::string Web\+APIAdapter\+::get\+Shop\+Products (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves all shop products\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing shop products or error message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a841285dbcb9778d11db596208dbfe5ee}\index{WebAPIAdapter@{WebAPIAdapter}!getStaff@{getStaff}}
+\index{getStaff@{getStaff}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{getStaff()}{getStaff()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a841285dbcb9778d11db596208dbfe5ee} 
+std\+::string Web\+APIAdapter\+::get\+Staff (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Retrieves all tasks\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing tasks or error message\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a8d5472824828bde0f6100b2c1226c6a5}\index{WebAPIAdapter@{WebAPIAdapter}!movePlantToShop@{movePlantToShop}}
+\index{movePlantToShop@{movePlantToShop}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{movePlantToShop()}{movePlantToShop()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a8d5472824828bde0f6100b2c1226c6a5} 
+std\+::string Web\+APIAdapter\+::move\+Plant\+To\+Shop (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Moves a plant from nursery to shop\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant to move\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating move result or error\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_web_a_p_i_adapter_a292f4f1fe779c8bc22dfe5095f7a4516}\index{WebAPIAdapter@{WebAPIAdapter}!waterPlant@{waterPlant}}
+\index{waterPlant@{waterPlant}!WebAPIAdapter@{WebAPIAdapter}}
+\doxysubsubsection{\texorpdfstring{waterPlant()}{waterPlant()}}
+{\footnotesize\ttfamily \label{class_web_a_p_i_adapter_a292f4f1fe779c8bc22dfe5095f7a4516} 
+std\+::string Web\+APIAdapter\+::water\+Plant (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Waters a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant\+Name} & \mbox{[}Name of the plant to water\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating watering result or error\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Web\+APIAdapter.\+h\item 
+Web\+APIAdapter.\+cpp\end{DoxyCompactItemize}

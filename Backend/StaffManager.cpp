@@ -1,15 +1,44 @@
+/**
+ * @class [StaffManager]
+ * @brief [Implementation of the StaffManager class for management staff operations]
+ * @details [Handles management-level staff duties and administrative tasks]
+ * @authors [Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy]
+ */
+
 #include "StaffManager.h"
 
-StaffManager::StaffManager(string name, Customer& customer): StaffMember(name, "Manager", customer) {}
+/**
+ * @brief [Constructs a new StaffManager object]
+ * @param[in] name [The name of the management staff member]
+ */
+StaffManager::StaffManager(std::string name) : StaffMember(name, "Manager") {}
 
-void StaffManager::mainDuty() {
-    cout << "Manager " << this->getName() << " has led team of employees" << endl;
+/**
+ * @brief [Processes customer requests for management staff]
+ * @param[in,out] request [The customer request to process]
+ * @return [Response string for the customer request]
+ */
+std::string StaffManager::processRequest(std::string request)  {
+    return "Manager handling: " + request;
 }
 
-void StaffManager::subDuty() {
-    cout << "Manager: " << getName() << " has made reports and budget" << endl;
+/**
+ * @brief [Performs the main duty of management staff]
+ */
+void StaffManager::mainDuty()  {
+    std::cout << "  [Main] " << name_ << ": Overseeing operations" << std::endl;
 }
 
-void StaffManager::workDuty() {
-    cout << "Manager: " << getName() << " has worked in Greenhouse and made sure all plants are healthy" << endl;
+/**
+ * @brief [Performs the work duty of management staff]
+ */
+void StaffManager::workDuty()  {
+    std::cout << "  [Work] " << name_ << ": Managing team" << std::endl;
+}
+
+/**
+ * @brief [Performs the sub duty of management staff]
+ */
+void StaffManager::subDuty()  {
+    std::cout << "  [Sub] " << name_ << ": Administrative tasks" << std::endl;
 }

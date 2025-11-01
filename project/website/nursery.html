@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Melancholy Nursery</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: rgb(240, 255, 248);
+                font-family: "Kumbh Sans";
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 100px;
+                color: rgb(1, 44, 37);
+            }
+
+            /*HEADER STYLING*/
+            header {
+                display: grid;
+                grid-template-columns: auto auto;
+                font-size: 64px;
+                background-color: rgb(91, 173, 148);
+                padding: 20px;
+            }
+
+            header a {
+                text-decoration: none;
+                color: aliceblue;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            header a:hover {
+                text-decoration: underline dashed;
+            }
+
+            #home {
+                text-align: left;
+            }
+
+            #staff {
+                text-align: right;
+            }
+
+            /*CARD STYLING*/
+
+            #cardBoxes {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 128px;
+            }
+
+            .cardItem {
+                border: solid 4px forestgreen;
+                border-radius: 20px;
+                padding: 32px;
+                margin: 32px;
+                display: grid;
+                grid-template-rows: repeat(5, auto);
+                justify-content: center;
+                text-align: center;
+                background-color: rgb(191, 243, 191);
+            }
+
+            .plantImg {
+                max-width: 300px;
+                max-height: 300px;
+                background-color: rgb(240, 255, 248);
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .buttonGroup {
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+            }
+
+            .buttonGroup button {
+                margin: 10px;
+                padding: 10px;
+                font-size: 20px;
+                background-color: mediumseagreen;
+                border: none;
+                border-radius: 10px;
+                color: white;
+            }
+
+            /*FOOTER STYLING*/
+
+            footer {
+                display: grid;
+                grid-template-columns: 48% 2% 48%;
+                font-size: 64px;
+                background-color: rgb(91, 173, 148);
+                padding: 20px;
+            }
+
+            footer a {
+                text-decoration: none;
+                color: aliceblue;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            footer a:hover {
+                text-decoration: underline dashed;
+            }
+
+            #footer1 {
+                text-align: right;
+            }
+
+            #footer2 {
+                text-align: left;
+            }
+            
+            footer span {
+                text-align: center;
+                color: white
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" id="home">< Home</a>
+            <a href="staff.html" id="staff">Dashboard ></a>
+        </header>
+        <main>
+            <h1>Nursery</h1>
+
+            <div id="cardBoxes">
+                <!--div class="cardItem" id="plant01">
+                    <img src="media/Plant01.png" class="plantImg"/>
+                    <h2 class="plantName">Name</h2>
+                    <p class="plantStatus">Status</p>
+                    <p class="plantCount">In Stock: <span class="countLoc"></span></p>
+                    <div class="buttonGroup">
+                        <button id="water01">Water</button>
+                        <button id="check01">Check-up</button>
+                        <button id="store01">Add to Store</button>
+                    </div>
+                </div-->
+            </div>
+        </main>
+        <footer>
+            <a href="about.html" id="footer1">About Us</a>
+            <span>|</span>
+            <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/nursery.js"></script>
+    </body>
+</html>

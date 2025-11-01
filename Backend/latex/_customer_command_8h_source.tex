@@ -1,0 +1,83 @@
+\doxysection{Customer\+Command.\+h}
+\hypertarget{_customer_command_8h_source}{}\label{_customer_command_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ CustomerCommand.h\ -\/\ NEW\ FILE}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ CUSTOMER\_COMMAND\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ CUSTOMER\_COMMAND\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_customer}{Customer}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_customer_command}{CustomerCommand}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_customer_command}{\string~CustomerCommand}}()\ \{\}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ execute(\mbox{\hyperlink{class_customer}{Customer}}*\ customer)\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ getDescription()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Concrete\ Commands}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_purchase_plant_command_a72980a16c54aaacc2b8f1433f8f040dc}{PurchasePlantCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer_command}{CustomerCommand}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{string}\ plantName;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ quantity;}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ facade;}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_purchase_plant_command_a72980a16c54aaacc2b8f1433f8f040dc}{PurchasePlantCommand}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plant,\ \textcolor{keywordtype}{int}\ qty,\ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ fac);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_purchase_plant_command_ae52eae75288f0a5e2b2248cc225b211e}{execute}}(\mbox{\hyperlink{class_customer}{Customer}}*\ customer)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_purchase_plant_command_a13bfbe279871ac50b31ed9ddaad1c70e}{getDescription}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_stock_command_abb6ad50b227f9be6b03d78f5545c7517}{CheckStockCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer_command}{CustomerCommand}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{string}\ plantName;}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ facade;}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_check_stock_command_abb6ad50b227f9be6b03d78f5545c7517}{CheckStockCommand}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plant,\ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ fac);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_check_stock_command_a6ab22e20216762ae37be40f5b503c6bf}{execute}}(\mbox{\hyperlink{class_customer}{Customer}}*\ customer)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_check_stock_command_a5c36515dbbd2fa99d67047c8f8b3739e}{getDescription}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_get_plant_info_command_abb09d2a4dd20ea23931502e6749555ae}{GetPlantInfoCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer_command}{CustomerCommand}}\ \{}
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{string}\ plantName;}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ facade;}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_get_plant_info_command_abb09d2a4dd20ea23931502e6749555ae}{GetPlantInfoCommand}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plant,\ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ fac);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_get_plant_info_command_ace84d2e8dc73a8f2025dbf39ce16ae4c}{execute}}(\mbox{\hyperlink{class_customer}{Customer}}*\ customer)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_get_plant_info_command_a3f0667564cf7aee891008e7f9d4ae26f}{getDescription}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ask_question_command_a1d9b1f570454b6a6f34f0faacf6e420c}{AskQuestionCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer_command}{CustomerCommand}}\ \{}
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{string}\ question;}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ facade;}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_ask_question_command_a1d9b1f570454b6a6f34f0faacf6e420c}{AskQuestionCommand}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ quest,\ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ fac);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ask_question_command_a0f554843d195a33fe78b8231652a5f8a}{execute}}(\mbox{\hyperlink{class_customer}{Customer}}*\ customer)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ask_question_command_abe70310f7532912677d34ac4cf5fbc87}{getDescription}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_request_recommendation_command_a2228ff0ffba1539561839427dd3fa18d}{RequestRecommendationCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer_command}{CustomerCommand}}\ \{}
+\DoxyCodeLine{00065\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{string}\ sunlight;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{string}\ space;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{string}\ experience;}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ facade;}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_request_recommendation_command_a2228ff0ffba1539561839427dd3fa18d}{RequestRecommendationCommand}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ sun,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ sp,\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ exp,\ \mbox{\hyperlink{class_nursery_system_facade}{NurserySystemFacade}}*\ fac);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_request_recommendation_command_aa3cad8dca01bb94e5803d9d4ac71e569}{execute}}(\mbox{\hyperlink{class_customer}{Customer}}*\ customer)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_request_recommendation_command_a73b65115c07a6cb7b5e2a6642b82617b}{getDescription}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

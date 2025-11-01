@@ -1,0 +1,62 @@
+\doxysection{Staff\+Coordinator.\+h}
+\hypertarget{_staff_coordinator_8h_source}{}\label{_staff_coordinator_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ StaffCoordinator.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ STAFF\_COORDINATOR\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ STAFF\_COORDINATOR\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_staff_coordinator_a89f6bdf9a44ab845014007f711107085}{StaffCoordinator}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}}*\ apiAdapter;}
+\DoxyCodeLine{00013\ \ \ \ \ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_staff_coordinator_a89f6bdf9a44ab845014007f711107085}{StaffCoordinator}}(\mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}}*\ adapter);}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_staff_coordinator_a802c976029e4ec8c2e4b41b73dd50d6c}{\string~StaffCoordinator}}();}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ Customer\ interaction}}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a282df87dd5a53d3e6df65777fbdbc36b}{handleCustomerQuestion}}(\textcolor{keywordtype}{int}\ customerId,\ \textcolor{keyword}{const}\ std::string\&\ question);}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_af3cdcced421017f6986dd9f3f33e92ff}{handleCustomerRequest}}(\textcolor{keywordtype}{int}\ customerId,\ \textcolor{keyword}{const}\ std::string\&\ request);}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a1954603d48d6a8b0ab1c02e0daf92599}{providePlantAdvice}}(\textcolor{keywordtype}{int}\ customerId,\ \textcolor{keyword}{const}\ std::string\&\ plantType);}
+\DoxyCodeLine{00022\ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Task\ management}}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a4f64a8e40702f1e910b7a4319be74b34}{assignTask}}(\textcolor{keywordtype}{int}\ staffId,\ \textcolor{keyword}{const}\ std::string\&\ task);}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a8af46fb51f73c846ea39edcdcd7c9bb1}{assignTaskByRole}}(\textcolor{keyword}{const}\ std::string\&\ role,\ \textcolor{keyword}{const}\ std::string\&\ task);}
+\DoxyCodeLine{00026\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a5575557674f636a7bccd285ac202fcb0}{completeTask}}(\textcolor{keywordtype}{int}\ taskId);}
+\DoxyCodeLine{00027\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_ad3beae9936061e748630398d1590f9b2}{getPendingTasks}}();}
+\DoxyCodeLine{00028\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a0125b18f23f8b05155fd100cbb27a9ff}{getStaffTasks}}(\textcolor{keywordtype}{int}\ staffId);}
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Staff\ management}}
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a585b852fb9f3027f2fa67954e0f87f98}{getAllStaff}}();}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a3753d7e32f71a28847ca4a52a680c75c}{getStaffByRole}}(\textcolor{keyword}{const}\ std::string\&\ role);}
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a16115ba21e6f53a89e5b8fc8e10cbbbc}{getStaffPerformance}}();}
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a0c11b4b27c5c3a9cd52f76f9e65b8856}{assignStaffToNurseryArea}}(\textcolor{keywordtype}{int}\ staffId,\ \textcolor{keyword}{const}\ std::string\&\ area);}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Escalation\ and\ coordination}}
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a80560e02153ae7c091d20ee7e16bfdbc}{escalateTask}}(\textcolor{keywordtype}{int}\ taskId);}
+\DoxyCodeLine{00038\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_adc6367ab24054fc890d8dafdd9c7e03f}{reassignTask}}(\textcolor{keywordtype}{int}\ taskId,\ \textcolor{keywordtype}{int}\ newStaffId);}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_af18f2fe9ca0526cec942e709db34bd6f}{coordinateStaffMeeting}}(\textcolor{keyword}{const}\ std::string\&\ agenda);}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Notification\ management}}
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a46caf7ccdf274acaa514b09062f7e5df}{getStaffNotifications}}();}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_ae981774446fc9da59dc67fefe000688c}{markNotificationCompleted}}(\textcolor{keywordtype}{int}\ notificationId);}
+\DoxyCodeLine{00044\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a839be53523de11c48484e25cf249e751}{createStaffNotification}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keyword}{const}\ std::string\&\ priority);}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Work\ scheduling}}
+\DoxyCodeLine{00047\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_ab8424c46f89b1c0287b977f4cf40534a}{createWorkSchedule}}(\textcolor{keyword}{const}\ std::string\&\ period);}
+\DoxyCodeLine{00048\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_adfe4d8d2c5e32853922d436d27ec50f4}{getStaffSchedule}}(\textcolor{keywordtype}{int}\ staffId);}
+\DoxyCodeLine{00049\ \ \ \ \ std::string\ \mbox{\hyperlink{class_staff_coordinator_a70a82990e2acfe983c34d3ab64c557f2}{updateStaffAvailability}}(\textcolor{keywordtype}{int}\ staffId,\ \textcolor{keyword}{const}\ std::string\&\ availability);}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \ \ std::string\ determineStaffRoleForTask(\textcolor{keyword}{const}\ std::string\&\ task);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ findAvailableStaff(\textcolor{keyword}{const}\ std::string\&\ role);}
+\DoxyCodeLine{00054\ \ \ \ \ std::string\ formatTaskDescription(\textcolor{keyword}{const}\ std::string\&\ task);}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

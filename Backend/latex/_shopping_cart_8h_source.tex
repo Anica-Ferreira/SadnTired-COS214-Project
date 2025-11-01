@@ -1,0 +1,56 @@
+\doxysection{Shopping\+Cart.\+h}
+\hypertarget{_shopping_cart_8h_source}{}\label{_shopping_cart_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ ShoppingCart.h\ -\/\ NEW\ FILE\ (if\ needed)}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ SHOPPING\_CART\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ SHOPPING\_CART\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }CartItem\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{string}\ plantName;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ quantity;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{double}\ price;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ CartItem(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keywordtype}{int}\ qty,\ \textcolor{keywordtype}{double}\ pr)\ :\ plantName(name),\ quantity(qty),\ price(pr)\ \{\}}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }ShoppingCart\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ vector<CartItem>\ items;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ ShoppingCart()\ \{\}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ addItem(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName,\ \textcolor{keywordtype}{int}\ quantity)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Simple\ implementation}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ items.push\_back(\mbox{\hyperlink{struct_cart_item}{CartItem}}(plantName,\ quantity,\ 19.99));}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ removeItem(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ items.begin();\ it\ !=\ items.end();\ ++it)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it-\/>plantName\ ==\ plantName)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.erase(it);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ items.clear();}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ isEmpty()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ items.empty();}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ vector<CartItem>\ getItems()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

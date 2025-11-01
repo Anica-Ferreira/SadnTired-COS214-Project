@@ -1,0 +1,83 @@
+\doxysection{Staff\+Action Class Reference}
+\hypertarget{class_staff_action}{}\label{class_staff_action}\index{StaffAction@{StaffAction}}
+
+
+\mbox{[}Implementation of the \doxylink{class_staff_action}{Staff\+Action} class for staff command sequences\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_staff_action_af4a13ac39e7fdb90b23d744aa001c897}{set\+On\+Start}} (\mbox{\hyperlink{class_staff_command}{Staff\+Command}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the command to execute at the start of the action\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_action_ac6b74c9bd7e833b035dba27c29231ab3}{set\+On\+Finish}} (\mbox{\hyperlink{class_staff_command}{Staff\+Command}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the command to execute at the finish of the action\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_staff_action_accd96717d964a04b2390937a6bfd5802}{do\+Command}} (std\+::string type="{}"{})
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the complete command sequence\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_staff_action_aa0e2e23f4a417e2a573c293feceb7cac}\label{class_staff_action_aa0e2e23f4a417e2a573c293feceb7cac} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Staff\+Action} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_staff_action}{Staff\+Action} object and cleans up commands\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_staff_action}{Staff\+Action} class for staff command sequences\mbox{]} 
+
+\mbox{[}Manages command execution sequences for staff actions with start/finish hooks\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-func-members}
+\Hypertarget{class_staff_action_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_staff_action_accd96717d964a04b2390937a6bfd5802}\index{StaffAction@{StaffAction}!doCommand@{doCommand}}
+\index{doCommand@{doCommand}!StaffAction@{StaffAction}}
+\doxysubsubsection{\texorpdfstring{doCommand()}{doCommand()}}
+{\footnotesize\ttfamily \label{class_staff_action_accd96717d964a04b2390937a6bfd5802} 
+void Staff\+Action\+::do\+Command (\begin{DoxyParamCaption}\item[{std\+::string}]{type}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Executes the complete command sequence\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em type} & \mbox{[}The type of action to perform\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_staff_action_ac6b74c9bd7e833b035dba27c29231ab3}\index{StaffAction@{StaffAction}!setOnFinish@{setOnFinish}}
+\index{setOnFinish@{setOnFinish}!StaffAction@{StaffAction}}
+\doxysubsubsection{\texorpdfstring{setOnFinish()}{setOnFinish()}}
+{\footnotesize\ttfamily \label{class_staff_action_ac6b74c9bd7e833b035dba27c29231ab3} 
+void Staff\+Action\+::set\+On\+Finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_staff_command}{Staff\+Command}} \texorpdfstring{$\ast$}{*}}]{cmd}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Sets the command to execute at the finish of the action\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em cmd} & \mbox{[}Pointer to the finish command\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_staff_action_af4a13ac39e7fdb90b23d744aa001c897}\index{StaffAction@{StaffAction}!setOnStart@{setOnStart}}
+\index{setOnStart@{setOnStart}!StaffAction@{StaffAction}}
+\doxysubsubsection{\texorpdfstring{setOnStart()}{setOnStart()}}
+{\footnotesize\ttfamily \label{class_staff_action_af4a13ac39e7fdb90b23d744aa001c897} 
+void Staff\+Action\+::set\+On\+Start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_staff_command}{Staff\+Command}} \texorpdfstring{$\ast$}{*}}]{cmd}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Sets the command to execute at the start of the action\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em cmd} & \mbox{[}Pointer to the start command\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Staff\+Action.\+h\item 
+Staff\+Action.\+cpp\end{DoxyCompactItemize}

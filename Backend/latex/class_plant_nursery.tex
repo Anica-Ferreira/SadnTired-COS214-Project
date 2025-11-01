@@ -1,0 +1,148 @@
+\doxysection{Plant\+Nursery Class Reference}
+\hypertarget{class_plant_nursery}{}\label{class_plant_nursery}\index{PlantNursery@{PlantNursery}}
+
+
+\mbox{[}Implementation of the \doxylink{class_plant_nursery}{Plant\+Nursery} class for nursery management operations\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_plant_nursery_a55df55f373f4d1b045e3f1d2a0bf974f}{Plant\+Nursery}} (\mbox{\hyperlink{class_web_a_p_i_adapter}{Web\+APIAdapter}} \texorpdfstring{$\ast$}{*}adapter)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_plant_nursery}{Plant\+Nursery} object\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_nursery_af242d8c4a81a3d72a78aa5c0d38a0fc7}{get\+Growth\+Status}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the growth status of all plants in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_nursery_aa220ad4a9cc6b5b8dafcaee43714e4ad}{get\+Watering\+Schedule}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the watering schedule for the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_nursery_a950e0c5d7e6ba5c14c0aace4caa7e372}{get\+Plant\+Health\+Alerts}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets health alerts for plants in the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_nursery_aa82c3c70884365b640a25131991e7139}{add\+New\+Plant}} (const string \&plant\+Type, int quantity)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds new plants to the nursery\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_nursery_aab9e4139448c4fc87183114ea4b4bfe6}{get\+Propagation\+Report}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Create a propagation report\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_plant_nursery_a252ecf2cae081dea1d4e4f57080b4db0}{get\+Environmental\+Conditions}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets current environmental conditions in the nursery\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_plant_nursery}{Plant\+Nursery} class for nursery management operations\mbox{]} 
+
+\mbox{[}Handles plant growth monitoring, watering schedules, and health management\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_plant_nursery_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_plant_nursery_a55df55f373f4d1b045e3f1d2a0bf974f}\index{PlantNursery@{PlantNursery}!PlantNursery@{PlantNursery}}
+\index{PlantNursery@{PlantNursery}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{PlantNursery()}{PlantNursery()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_a55df55f373f4d1b045e3f1d2a0bf974f} 
+Plant\+Nursery\+::\+Plant\+Nursery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_web_a_p_i_adapter}{Web\+APIAdapter}} \texorpdfstring{$\ast$}{*}}]{adapter}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_plant_nursery}{Plant\+Nursery} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em adapter} & \mbox{[}Pointer to the \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} for system communication\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_plant_nursery_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_plant_nursery_aa82c3c70884365b640a25131991e7139}\index{PlantNursery@{PlantNursery}!addNewPlant@{addNewPlant}}
+\index{addNewPlant@{addNewPlant}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{addNewPlant()}{addNewPlant()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_aa82c3c70884365b640a25131991e7139} 
+string Plant\+Nursery\+::add\+New\+Plant (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Type}{, }\item[{int}]{quantity}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Adds new plants to the nursery\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Type} & \mbox{[}Type of plants to add\mbox{]} \\
+\hline
+\mbox{\texttt{in,out}}  & {\em quantity} & \mbox{[}Number of plants to add\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating add result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_nursery_a252ecf2cae081dea1d4e4f57080b4db0}\index{PlantNursery@{PlantNursery}!getEnvironmentalConditions@{getEnvironmentalConditions}}
+\index{getEnvironmentalConditions@{getEnvironmentalConditions}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{getEnvironmentalConditions()}{getEnvironmentalConditions()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_a252ecf2cae081dea1d4e4f57080b4db0} 
+string Plant\+Nursery\+::get\+Environmental\+Conditions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets current environmental conditions in the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing environmental data\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_nursery_af242d8c4a81a3d72a78aa5c0d38a0fc7}\index{PlantNursery@{PlantNursery}!getGrowthStatus@{getGrowthStatus}}
+\index{getGrowthStatus@{getGrowthStatus}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{getGrowthStatus()}{getGrowthStatus()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_af242d8c4a81a3d72a78aa5c0d38a0fc7} 
+string Plant\+Nursery\+::get\+Growth\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets the growth status of all plants in the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing growth status report\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_nursery_a950e0c5d7e6ba5c14c0aace4caa7e372}\index{PlantNursery@{PlantNursery}!getPlantHealthAlerts@{getPlantHealthAlerts}}
+\index{getPlantHealthAlerts@{getPlantHealthAlerts}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{getPlantHealthAlerts()}{getPlantHealthAlerts()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_a950e0c5d7e6ba5c14c0aace4caa7e372} 
+string Plant\+Nursery\+::get\+Plant\+Health\+Alerts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets health alerts for plants in the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing health alerts and recommendations\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_nursery_aab9e4139448c4fc87183114ea4b4bfe6}\index{PlantNursery@{PlantNursery}!getPropagationReport@{getPropagationReport}}
+\index{getPropagationReport@{getPropagationReport}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{getPropagationReport()}{getPropagationReport()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_aab9e4139448c4fc87183114ea4b4bfe6} 
+string Plant\+Nursery\+::get\+Propagation\+Report (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Create a propagation report\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_plant_nursery_aa220ad4a9cc6b5b8dafcaee43714e4ad}\index{PlantNursery@{PlantNursery}!getWateringSchedule@{getWateringSchedule}}
+\index{getWateringSchedule@{getWateringSchedule}!PlantNursery@{PlantNursery}}
+\doxysubsubsection{\texorpdfstring{getWateringSchedule()}{getWateringSchedule()}}
+{\footnotesize\ttfamily \label{class_plant_nursery_aa220ad4a9cc6b5b8dafcaee43714e4ad} 
+string Plant\+Nursery\+::get\+Watering\+Schedule (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets the watering schedule for the nursery\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing weekly watering schedule\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plant\+Nursery.\+h\item 
+Plant\+Nursery.\+cpp\end{DoxyCompactItemize}

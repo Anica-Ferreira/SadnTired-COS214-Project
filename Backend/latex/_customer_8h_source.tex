@@ -1,0 +1,63 @@
+\doxysection{Customer.\+h}
+\hypertarget{_customer_8h_source}{}\label{_customer_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Customer.h\ -\/\ UPDATED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ CUSTOMER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ CUSTOMER\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}IColleague.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}IMediator.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_customer_command}{CustomerCommand}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_customer_abcc8fae9701e5ba9d7d6fe44498b34e3}{Customer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_colleague}{IColleague}}\{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{string}\ email;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ phoneNum;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ surname;}
+\DoxyCodeLine{00019\ \ \ \ \ vector<CustomerCommand*>\ commandHistory;}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_i_mediator}{IMediator}}*\ mediator\_;\textcolor{comment}{//mediator\ customer\ goes\ to}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_customer_abcc8fae9701e5ba9d7d6fe44498b34e3}{Customer}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_customer_abcc8fae9701e5ba9d7d6fe44498b34e3}{Customer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ customerName,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ customerSurname,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ customerEmail,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ customerPhone\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_customer_ab93fb14683b0393b9c900109f77c2629}{\string~Customer}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{string}\ getName()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ name\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ surname;\ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{string}\ getEmail()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ email;\ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{string}\ getPhone()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ phoneNum;\ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{string}\ getSurname()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ surname;\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Setters\ -\/\ FIXED\ (remove\ const)}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ newName)\ \{\ name\ =\ newName;\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setEmail(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ newEmail)\ \{\ email\ =\ newEmail;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ setPhone(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ newPhone)\ \{\ phoneNum\ =\ newPhone;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ setSurname(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ newSurname)\ \{\ surname\ =\ newSurname;\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Command\ execution\ methods}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_a0d44772856fea287b1ccd5db5c9be9ec}{executeCommand}}(\mbox{\hyperlink{class_customer_command}{CustomerCommand}}*\ command);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_acc75a803ab8dd096bde37ec5c25cc57b}{showCommandHistory}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Customer\ actions\ that\ will\ be\ handled\ by\ commands}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_customer_a8563f31aa39358c901ffb46566c45f20}{purchasePlant}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName,\ \textcolor{keywordtype}{int}\ quantity);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_customer_af443822d961f0eaa54479a689ced560c}{requestPlantCare}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ careType);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_customer_a99a7f79c4214e468f94f8b78c68519ae}{checkPlantStock}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_customer_a7436acbe8dff94a5b045e9c4cb2bbd55}{requestRefund}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ reason);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_customer_ae7f6809e7e06b708b9757ab22777780b}{getPlantInfo}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_a6da24d73f38444e378e78dbae95ffabb}{setMediator}}(\mbox{\hyperlink{class_i_mediator}{IMediator}}*\ mediator)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_a19aea847c560b3e42be614aee34b3642}{sendRequest}}(std::string\ request)\ \textcolor{keyword}{override};\ \textcolor{comment}{//check\ if\ mediator\ exists,\ if\ yes,\ print\ send\ message\ and\ call\ mediator's\ notify\ with\ self\ and\ request,\ else\ error.}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ cleanup();}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

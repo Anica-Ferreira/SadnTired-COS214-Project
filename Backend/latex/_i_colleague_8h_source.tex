@@ -1,0 +1,20 @@
+\doxysection{IColleague.\+h}
+\hypertarget{_i_colleague_8h_source}{}\label{_i_colleague_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ICOLLEAGUE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ICOLLEAGUE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}IMediator.h"{}}\ \ \textcolor{comment}{//\ For\ setMediator}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_colleague}{IColleague}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setMediator(\mbox{\hyperlink{class_i_mediator}{IMediator}}*\ mediator)\ =\ 0;\textcolor{comment}{//set\ mediator\ for\ this\ colleague}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ sendRequest(std::string\ request)\ =\ 0;\textcolor{comment}{//send\ request\ via\ mediator}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ getName()\ \textcolor{keyword}{const}\ =\ 0;\textcolor{comment}{//get\ colleagues\ name}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_colleague}{\string~IColleague}}()\ \{\}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ICOLLEAGUE\_H}}
+
+\end{DoxyCode}

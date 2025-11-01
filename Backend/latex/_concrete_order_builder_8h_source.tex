@@ -1,0 +1,29 @@
+\doxysection{Concrete\+Order\+Builder.\+h}
+\hypertarget{_concrete_order_builder_8h_source}{}\label{_concrete_order_builder_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Concrete\ Builder}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Implements\ the\ steps\ defined\ by\ the\ Builder\ to\ create\ a\ concrete\ plant\ order}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ CONCRETEORDERBUILDER\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ CONCRETEORDERBUILDER\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}OrderBuilder.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_concrete_order_builder_a1e612275cad18978d8b6fcba96c70d23}{ConcreteOrderBuilder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order_builder}{OrderBuilder}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_concrete_order_builder_a1e612275cad18978d8b6fcba96c70d23}{ConcreteOrderBuilder}}();}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_concrete_order_builder_a59c73656e984a88253631e0024a16b33}{\string~ConcreteOrderBuilder}}();}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_concrete_order_builder_a0da355fabc1ec347c7e20a06160ac599}{setPlant}}(\textcolor{keywordtype}{string}\ name,\ \textcolor{keywordtype}{double}\ price)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_concrete_order_builder_a348234ed68a5b2f15a85c30231d6739a}{addPot}}(DecorativePot::PotType\ type)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_concrete_order_builder_acca96d942bd3007c64f860b08c0dad62}{addWrapping}}(GiftWrapping::WrappingType\ type)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_concrete_order_builder_ae07d686760cd09fe460244490b3d98b1}{addToBundle}}(\mbox{\hyperlink{class_product_bundle}{ProductBundle}}*\ bundle)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_product}{Product}}*\ \mbox{\hyperlink{class_concrete_order_builder_aea3da50b1ba4c65358fa201487f3eee5}{getProduct}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_product}{Product}}*\ product;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

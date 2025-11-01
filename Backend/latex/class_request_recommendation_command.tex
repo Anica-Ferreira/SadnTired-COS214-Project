@@ -1,0 +1,93 @@
+\doxysection{Request\+Recommendation\+Command Class Reference}
+\hypertarget{class_request_recommendation_command}{}\label{class_request_recommendation_command}\index{RequestRecommendationCommand@{RequestRecommendationCommand}}
+Inheritance diagram for Request\+Recommendation\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_request_recommendation_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_request_recommendation_command_a2228ff0ffba1539561839427dd3fa18d}{Request\+Recommendation\+Command}} (const string \&sun, const string \&sp, const string \&exp, \mbox{\hyperlink{class_nursery_system_facade}{Nursery\+System\+Facade}} \texorpdfstring{$\ast$}{*}fac)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_request_recommendation_command}{Request\+Recommendation\+Command} object\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_request_recommendation_command_aa3cad8dca01bb94e5803d9d4ac71e569}{execute}} (\mbox{\hyperlink{class_customer}{Customer}} \texorpdfstring{$\ast$}{*}customer) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Executes the plant recommendation command\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_request_recommendation_command_a73b65115c07a6cb7b5e2a6642b82617b}{get\+Description}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the recommendation description of this command\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_request_recommendation_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_request_recommendation_command_a2228ff0ffba1539561839427dd3fa18d}\index{RequestRecommendationCommand@{RequestRecommendationCommand}!RequestRecommendationCommand@{RequestRecommendationCommand}}
+\index{RequestRecommendationCommand@{RequestRecommendationCommand}!RequestRecommendationCommand@{RequestRecommendationCommand}}
+\doxysubsubsection{\texorpdfstring{RequestRecommendationCommand()}{RequestRecommendationCommand()}}
+{\footnotesize\ttfamily \label{class_request_recommendation_command_a2228ff0ffba1539561839427dd3fa18d} 
+Request\+Recommendation\+Command\+::\+Request\+Recommendation\+Command (\begin{DoxyParamCaption}\item[{const string \&}]{sun}{, }\item[{const string \&}]{sp}{, }\item[{const string \&}]{exp}{, }\item[{\mbox{\hyperlink{class_nursery_system_facade}{Nursery\+System\+Facade}} \texorpdfstring{$\ast$}{*}}]{fac}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_request_recommendation_command}{Request\+Recommendation\+Command} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em sun} & \mbox{[}Sunlight condition for recommendation\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em sp} & \mbox{[}Space availability for recommendation\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em exp} & \mbox{[}User experience level for recommendation\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em fac} & \mbox{[}Pointer to the nursery system facade\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_request_recommendation_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_request_recommendation_command_aa3cad8dca01bb94e5803d9d4ac71e569}\index{RequestRecommendationCommand@{RequestRecommendationCommand}!execute@{execute}}
+\index{execute@{execute}!RequestRecommendationCommand@{RequestRecommendationCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_request_recommendation_command_aa3cad8dca01bb94e5803d9d4ac71e569} 
+string Request\+Recommendation\+Command\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_customer}{Customer}} \texorpdfstring{$\ast$}{*}}]{customer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Executes the plant recommendation command\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em customer} & \mbox{[}Pointer to the customer executing the command\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}\doxylink{class_plant}{Plant} recommendation message\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_customer_command}{Customer\+Command}}.
+
+\Hypertarget{class_request_recommendation_command_a73b65115c07a6cb7b5e2a6642b82617b}\index{RequestRecommendationCommand@{RequestRecommendationCommand}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!RequestRecommendationCommand@{RequestRecommendationCommand}}
+\doxysubsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily \label{class_request_recommendation_command_a73b65115c07a6cb7b5e2a6642b82617b} 
+string Request\+Recommendation\+Command\+::get\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the recommendation description of this command\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Command description string\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_customer_command}{Customer\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Customer\+Command.\+h\item 
+Customer\+Command.\+cpp\end{DoxyCompactItemize}

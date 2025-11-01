@@ -1,0 +1,124 @@
+\doxysection{Product\+Item Class Reference}
+\hypertarget{class_product_item}{}\label{class_product_item}\index{ProductItem@{ProductItem}}
+
+
+\mbox{[}Implementation of the \doxylink{class_product_item}{Product\+Item} class for individual product items\mbox{]}  
+
+
+Inheritance diagram for Product\+Item\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_product_item}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_product_item_aac597f5df36faf8a0426449b206b280d}{Product\+Item}} (const string \&name="{}"{}, double price=0.\+0)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_product_item}{Product\+Item} object\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_product_item_a2ee88fd15487e7eefa0b6f126cc1cc77}\label{class_product_item_a2ee88fd15487e7eefa0b6f126cc1cc77} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Product\+Item} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_product_item}{Product\+Item} object\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_product_item_a6273fbd61edbb6718318e05f5cd9f74b}{get\+Price}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the price of the product item\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_product_item_a70844cb9fa18d3c84d5d435ee1fb4a8f}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the product item\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_product_item_ae6e63eff5823c7ee55dde54f63682665}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Creates a deep copy of the \doxylink{class_product_item}{Product\+Item}\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_product}{Product}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_product_a46de9651ef2729fed8bf08f9013cd146}{print\+Product}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{[}Prints product information to console\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_product_item}{Product\+Item} class for individual product items\mbox{]} 
+
+\mbox{[}Handles basic product item functionality and cloning\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_product_item_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_product_item_aac597f5df36faf8a0426449b206b280d}\index{ProductItem@{ProductItem}!ProductItem@{ProductItem}}
+\index{ProductItem@{ProductItem}!ProductItem@{ProductItem}}
+\doxysubsubsection{\texorpdfstring{ProductItem()}{ProductItem()}}
+{\footnotesize\ttfamily \label{class_product_item_aac597f5df36faf8a0426449b206b280d} 
+Product\+Item\+::\+Product\+Item (\begin{DoxyParamCaption}\item[{const string \&}]{name}{ = {\ttfamily "{}"{}}, }\item[{double}]{price}{ = {\ttfamily 0.0}}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_product_item}{Product\+Item} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}The name of the product item\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em price} & \mbox{[}The price of the product item\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_product_item_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_product_item_ae6e63eff5823c7ee55dde54f63682665}\index{ProductItem@{ProductItem}!clone@{clone}}
+\index{clone@{clone}!ProductItem@{ProductItem}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_product_item_ae6e63eff5823c7ee55dde54f63682665} 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} Product\+Item\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Creates a deep copy of the \doxylink{class_product_item}{Product\+Item}\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Pointer to the cloned \doxylink{class_product_item}{Product\+Item} object\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_product}{Product}}.
+
+\Hypertarget{class_product_item_a70844cb9fa18d3c84d5d435ee1fb4a8f}\index{ProductItem@{ProductItem}!getName@{getName}}
+\index{getName@{getName}!ProductItem@{ProductItem}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_product_item_a70844cb9fa18d3c84d5d435ee1fb4a8f} 
+std\+::string Product\+Item\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the name of the product item\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}The product name\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_product}{Product}}.
+
+\Hypertarget{class_product_item_a6273fbd61edbb6718318e05f5cd9f74b}\index{ProductItem@{ProductItem}!getPrice@{getPrice}}
+\index{getPrice@{getPrice}!ProductItem@{ProductItem}}
+\doxysubsubsection{\texorpdfstring{getPrice()}{getPrice()}}
+{\footnotesize\ttfamily \label{class_product_item_a6273fbd61edbb6718318e05f5cd9f74b} 
+double Product\+Item\+::get\+Price (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the price of the product item\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}The product price\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_product}{Product}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Product\+Item.\+h\item 
+Product\+Item.\+cpp\end{DoxyCompactItemize}

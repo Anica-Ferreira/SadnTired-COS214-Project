@@ -1,91 +1,140 @@
+/**
+ * @class [Customer]
+ * @brief [Implementation of the Customer class for managing customer data and actions]
+ * @details [Handles customer operations including command execution and mediator communication]
+ * @authors [Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy]
+ */
+
 #include "Customer.h"
-#include "RequestSystem.h"
 #include "CustomerCommand.h"
-#include "Facade.h"      // if you call methods on nurseryFacade
+#include <iostream>
 
+/**
+ * @brief [Constructs a new Customer object with default values]
+ */
+Customer::Customer() : name(""), surname(""), email(""), phoneNum("") {}
 
-Customer::Customer() : requestSystem(new RequestSystem()), nurseryFacade(new Facade()) {
-    // Constructor implementation
+/**
+ * @brief [Constructs a new Customer object with specified details]
+ * @param[in] customerName [Customer's first name]
+ * @param[in] customerSurname [Customer's last name]
+ * @param[in] customerEmail [Customer's email address]
+ * @param[in] customerPhone [Customer's phone number]
+ */
+Customer::Customer(const string& customerName, const string& customerSurname,
+                   const string& customerEmail, const string& customerPhone)
+    : name(customerName), surname(customerSurname),
+      email(customerEmail), phoneNum(customerPhone) {
+
+    cout << "Customer created: " << getName() << " (" << email << ")" << endl;
 }
 
+/**
+ * @brief [Destroys the Customer object and cleans up resources]
+ */
 Customer::~Customer() {
-    // Clean up command history
-    for (auto cmd : commandHistory) {
-        delete cmd;
+    cleanup();
+}
+
+/**
+ * @brief [Cleans up command history and resources]
+ */
+void Customer::cleanup() {
+    for (auto command : commandHistory) {
+        delete command;
     }
-    // Clean up systems
-    delete requestSystem;
-    delete nurseryFacade;
+    commandHistory.clear();
 }
 
-void Customer::Attach(ObserverMediator* observer) {
-    list_observer_.push_back(observer);
-}
-
-void Customer::Detach(ObserverMediator* observer) {
-    list_observer_.remove(observer);
-}
-
-void Customer::Notify() {
-    std::list<ObserverMediator*>::iterator it = list_observer_.begin();
-    while (it != list_observer_.end()) {
-        (*it)->Update(message_);
-        it++;
-    }
-}
-
-void Customer::CreateMessage(std::string message) {
-    this->message_ = message;
-    Notify();
-}
-
+/**
+ * @brief [Executes a customer command]
+ * @param[in] command [Pointer to the command to execute]
+ */
 void Customer::executeCommand(CustomerCommand* command) {
-    commandHistory.push_back(command);
-    command->execute();
-}
-
-void Customer::showCommandHistory() const {
-    std::cout << "Customer Command History:" << std::endl;
-    for (const auto& cmd : commandHistory) {
-        std::cout << " - " << cmd->getDescription() << std::endl;
+    if (command) {
+        commandHistory.push_back(command);
+        command->execute(this);
+        // Note: command is NOT deleted here - manager handles cleanup
     }
 }
 
-void Customer::makeRequest(const std::string& requestType, const std::string& details) {
-    requestSystem->processCustomerRequest(requestType, this, details);
+/**
+ * @brief [Displays the command execution history]
+ */
+void Customer::showCommandHistory() const {
+    cout << "=== Command History for " << getName() << " ===" << endl;
+    for (size_t i = 0; i < commandHistory.size(); i++) {
+        cout << i + 1 << ". " << commandHistory[i]->getDescription() << endl;
+    }
 }
 
-void Customer::doA() {
-    std::cout << "Customer: 'Can you help do A?' " << std::endl;
-    this->mediator_->notify(this, "Customer Interaction A");
+// These methods will be called by commands
+
+/**
+ * @brief [Simulates purchasing a plant]
+ * @param[in,out] plantName [Name of the plant to purchase]
+ * @param[in,out] quantity [Number of plants to purchase]
+ * @return [Status message about the purchase]
+ */
+string Customer::purchasePlant(const string& plantName, int quantity) {
+    return "Customer " + getName() + " purchasing " + to_string(quantity) + " of " + plantName;
 }
 
-void Customer::doB() {
-    std::cout << "Customer: 'What about B?' " << std::endl;
-    this->mediator_->notify(this, "Customer Interaction B");
+/**
+ * @brief [Requests plant care services]
+ * @param[in,out] plantName Name of the plant needing care
+ * @param[in,out] careType [Type of care requested]
+ * @return [Status message about the care request]
+ */
+string Customer::requestPlantCare(const string& plantName, const string& careType) {
+    return "Customer " + getName() + " requesting " + careType + " for " + plantName;
 }
 
-void Customer::useFacadePurchase(const std::string& plantName, int quantity, double price) {
-    std::cout << "Customer using facade to purchase plants..." << std::endl;
-    nurseryFacade->purchasePlant(plantName, quantity, price);
+/**
+ * @brief [Checks stock for a specific plant]
+ * @param[in,out] plantName [Name of the plant to check]
+ * @return [Stock information message]
+ */
+string Customer::checkPlantStock(const string& plantName) {
+    return "Customer " + getName() + " checking stock for " + plantName;
 }
 
-void Customer::useFacadeCare(const std::string& plantName, const std::string& careType) {
-    std::cout << "Customer using facade for plant care..." << std::endl;
-    nurseryFacade->requestPlantCare(plantName, careType);
+/**
+ * @brief [Requests a refund for a plant]
+ * @param[in,out] plantName [Name of the plant for refund]
+ * @param[in,out] reason [Reason for the refund request]
+ * @return [Refund request status message]
+ */
+string Customer::requestRefund(const string& plantName, const string& reason) {
+    return "Customer " + getName() + " requesting refund for " + plantName + " - Reason: " + reason;
 }
 
-void Customer::useFacadeCheckStock(const std::string& plantName) {
-    std::cout << "Customer using facade to check stock..." << std::endl;
-    nurseryFacade->checkPlantStock(plantName);
+/**
+ * @brief [Gets information about a specific plant]
+ * @param[in,out] plantName [Name of the plant to get info for]
+ * @return [Plant information message]
+ */
+string Customer::getPlantInfo(const string& plantName) {
+    return "Customer " + getName() + " getting info for " + plantName;
 }
 
-void Customer::useFacadeRefund(const std::string& plantName, const std::string& reason) {
-    std::cout << "Customer using facade for refund..." << std::endl;
-    nurseryFacade->processRefund(plantName, reason);
-}
+/**
+ * @brief [Sets the mediator for communication]
+ * @param[in] mediator [Pointer to the mediator interface]
+ */
+void Customer::setMediator(IMediator* mediator) {
+    mediator_ = mediator;
+}//set mediator pointer
 
-void Customer::useFacadeGetInfo(const std::string& plantName) {
-    std::cout << "Customer using facade to get plant info..." << std::endl;
-    nurseryFacade->getPlantInfo(plantName);
-}
+/**
+ * @brief [Sends a request through the mediator]
+ * @param [request The request message to send]
+ */
+void Customer::sendRequest(std::string request) {
+    if (mediator_) {
+        std::cout << name<< " sends request: " << request << std::endl;
+        mediator_->notify(this, request);
+    } else {
+        std::cout << name<< ": No mediator set!" << std::endl;
+    }
+}//check if mediator exists, if yes, print send message and call mediator's notify with self and request, else error.

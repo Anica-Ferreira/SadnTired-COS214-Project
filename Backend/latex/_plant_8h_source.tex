@@ -1,0 +1,99 @@
+\doxysection{Plant.\+h}
+\hypertarget{_plant_8h_source}{}\label{_plant_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLANT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLANT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}\textcolor{comment}{//J}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <list>}\textcolor{comment}{//J}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}WateringStrategy.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}PlantState.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}ISubject.h"{}}\textcolor{comment}{//J}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}IObserver.h"{}}\ \ \ \ \textcolor{comment}{//J}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant_a0a473d9518f04836673b2934e5414d32}{Plant}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:\textcolor{comment}{//all\ J}}
+\DoxyCodeLine{00015\ \ \ \ \ list<IObserver*>\ observers\_;\textcolor{comment}{//list\ of\ pointers}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{string}\ current\_need\_;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//Stats/Plant\ Info}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{string}\ name;\textcolor{comment}{//Plant\ name}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{string}\ type;\textcolor{comment}{//plant\ type/\ subclass}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{string}\ description;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ price;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ waterLevel;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//Design\ Pattern\ Pointers}}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}*\ wateringStrategy;}
+\DoxyCodeLine{00027\ \ \ \ \ PlantState*\ state;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//State\ and\ Strategy}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ wateringCount;\textcolor{comment}{//}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getRequiredWaterings()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a4245b00a4b891596c60a12390def662d}{increaseWateringCount}}();\textcolor{comment}{//waters?}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_plant_a1c8c18e35f4076765ffa6ef9ddd85be2}{isReadyForSale}}()\ \textcolor{keyword}{const};\textcolor{comment}{//changes\ to\ ready}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//Constructors\ \&\ Destructors}}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_plant_a0a473d9518f04836673b2934e5414d32}{Plant}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ type,\ \textcolor{keywordtype}{double}\ price,\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}*\ strategy,\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ description\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_plant_ab0effb2b143e6da7b65ebd13a3b1fc29}{\string~Plant}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_aee652769b7d942d18b7d91e2f83a9973}{getStateName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_plant_a692301e793d59eb8130e56c2b39dcb6c}{getWaterLevel}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_a44d07091c1a58d676cd133ae491ea076}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_a9d2328c31775a5c42e4b62ccb160c904}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_plant_a1a6e78e58443899921fb32f1622dc0bc}{getPrice}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_a8beaa430d8c045f70791e7387fd5505f}{getDescription}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//Setters}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_ac4400b63c256690544c3f166bfc6716e}{setWaterLevel}}(\textcolor{keywordtype}{double}\ level);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a8a2563e6b6c1da65d9af725cf97f2719}{setState}}(PlantState*\ newState);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_af4552dd9ec01741c38eefd2f15ce2431}{water}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a24c328d0e806617bc801c79a18a7a073}{passTime}}();\ \ \textcolor{comment}{//\ Simulates\ time\ passing,\ decreasing\ water\ level}}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}*\ \mbox{\hyperlink{class_plant_aad5262bca0fb0dac33f3e4c2b598eee7}{getStrategy}}()\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Declared\ here}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Allow\ PlantState\ classes\ to\ access\ protected\ members}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }PlantState;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }PlantedState;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }WateredState;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }DryState;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }ReadyForSaleState;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//J}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a5ac073f59218e25647ed7db9a89dfbd6}{Attach}}(\mbox{\hyperlink{class_i_observer}{IObserver}}*\ observer)\ ;\ \textcolor{comment}{//add\ observer\ to\ list}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_aeb7d098014b53db55ea432da9aa17eee}{Detach}}(\mbox{\hyperlink{class_i_observer}{IObserver}}*\ observer)\ ;\ \textcolor{comment}{//remove\ observer\ from\ list}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a67d31e81209603ab5be7c266b15b1a35}{Notify}}()\ ;\textcolor{comment}{//loop\ through\ observers\ and\ update\ on\ all}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a5c1f694f955ff77d86df5454f63a8eb7}{signalNeed}}(\textcolor{keywordtype}{string}\ need);\textcolor{comment}{//set\ need\ and\ call\ notify,\ extension}}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_succulent_aab2113cc5a6aff4337cb65969f395c29}{Succulent}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_a0a473d9518f04836673b2934e5414d32}{Plant}}\ \{}
+\DoxyCodeLine{00071\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_succulent_a3f81a03d4b7a30c391a06986d62c3c08}{getRequiredWaterings}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_succulent_aab2113cc5a6aff4337cb65969f395c29}{Succulent}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keywordtype}{double}\ price,\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}*\ strategy,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ description\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_flower_a120441d177f29bdcfbb48e27f0696412}{Flower}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_a0a473d9518f04836673b2934e5414d32}{Plant}}\ \{}
+\DoxyCodeLine{00079\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_flower_a8d18caff13b87e0453afb3d771480b2f}{getRequiredWaterings}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{class_flower_a120441d177f29bdcfbb48e27f0696412}{Flower}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keywordtype}{double}\ price,\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}*\ strategy,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ description\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tree_a4c25dfd39f7bc828575f4ddaa01f9f93}{Tree}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_a0a473d9518f04836673b2934e5414d32}{Plant}}\ \{}
+\DoxyCodeLine{00087\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tree_a666caade257832a73f71746567f816ac}{getRequiredWaterings}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{class_tree_a4c25dfd39f7bc828575f4ddaa01f9f93}{Tree}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keywordtype}{double}\ price,\ \mbox{\hyperlink{class_watering_strategy}{WateringStrategy}}*\ strategy,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ description\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PLANT\_H}}
+
+\end{DoxyCode}

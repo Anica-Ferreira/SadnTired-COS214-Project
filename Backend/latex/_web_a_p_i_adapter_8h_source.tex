@@ -1,0 +1,48 @@
+\doxysection{Web\+APIAdapter.\+h}
+\hypertarget{_web_a_p_i_adapter_8h_source}{}\label{_web_a_p_i_adapter_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ WebAPIAdapter.h\ -\/\ UPDATED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ WEB\_API\_ADAPTER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ WEB\_API\_ADAPTER\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}InventoryManager.h"{}}\ \ \textcolor{comment}{//\ Now\ includes\ Inventory}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_web_a_p_i_adapter_a24ce87d03bb83234c78e48362ee2b879}{WebAPIAdapter}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}*\ inventoryManager;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ Remove\ other\ managers\ if\ not\ needed}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_web_a_p_i_adapter_a24ce87d03bb83234c78e48362ee2b879}{WebAPIAdapter}}(\mbox{\hyperlink{class_inventory_manager}{InventoryManager}}*\ invManager);\ \ \textcolor{comment}{//\ Takes\ real\ inventory\ manager}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_web_a_p_i_adapter_aca04fc5b5792f13b13d571a9b3737d38}{\string~WebAPIAdapter}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Shop\ endpoints\ -\/\ SERVES\ REAL\ DATA}}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_aa9ba888f5518f665d9f34a742e08f4f5}{getShopProducts}}();}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a41bc42ec677e5b1278086926d7b740ce}{getRandomPlants}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Nursery\ endpoints\ -\/\ SERVES\ REAL\ DATA}}
+\DoxyCodeLine{00022\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_ad0355637aa0b854fd0bc64c6c0795d2c}{getNurseryPlants}}();}
+\DoxyCodeLine{00023\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a292f4f1fe779c8bc22dfe5095f7a4516}{waterPlant}}(\textcolor{keyword}{const}\ std::string\&\ plantName);\ \ \textcolor{comment}{//\ Changed\ to\ string}}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a8d5472824828bde0f6100b2c1226c6a5}{movePlantToShop}}(\textcolor{keyword}{const}\ std::string\&\ plantName);\ \ \textcolor{comment}{//\ Changed\ to\ string}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Staff\ endpoints}}
+\DoxyCodeLine{00027\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a841285dbcb9778d11db596208dbfe5ee}{getStaff}}();}
+\DoxyCodeLine{00028\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_ab197073ff3b06b7b470f4d8932c8d35c}{getNotifications}}();}
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_af4b68f74a782199c4eb2c7bae4b70f70}{finishTask}}(\textcolor{keywordtype}{int}\ taskId);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Customer\ endpoints}}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_acef0a80f756f2ab701e7bbed33a95c33}{createCustomer}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ email);}
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a6d6a648edbb83fecb70830a9a0da0d89}{executeCustomerCommand}}(\textcolor{keyword}{const}\ std::string\&\ commandType,\ \textcolor{keyword}{const}\ std::string\&\ params);}
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a2f974b76064a6b63bc5a7bbf8c073160}{getCustomerCart}}(\textcolor{keywordtype}{int}\ customerId);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Bundle\ endpoints}}
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ \mbox{\hyperlink{class_web_a_p_i_adapter_a6f67de4ace3ea227cb0a6fa974b1c162}{getRandomBundle}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ std::string\ inventoryToJSON(\textcolor{keyword}{const}\ std::vector<Plant*>\&\ plants);}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

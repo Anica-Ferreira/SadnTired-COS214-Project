@@ -1,0 +1,223 @@
+\doxysection{Inventory\+Manager Class Reference}
+\hypertarget{class_inventory_manager}{}\label{class_inventory_manager}\index{InventoryManager@{InventoryManager}}
+
+
+\mbox{[}Implementation of the \doxylink{class_inventory_manager}{Inventory\+Manager} class for inventory operations\mbox{]}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_inventory_manager_a2485a2457a78912b640014816982e6f6}{Inventory\+Manager}} (\mbox{\hyperlink{class_web_a_p_i_adapter}{Web\+APIAdapter}} \texorpdfstring{$\ast$}{*}adapter, \mbox{\hyperlink{class_inventory}{Inventory}} \texorpdfstring{$\ast$}{*}nursery\+Inv, \mbox{\hyperlink{class_inventory}{Inventory}} \texorpdfstring{$\ast$}{*}shop\+Inv)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_inventory_manager}{Inventory\+Manager} object\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_manager_a512a0bfc118080463aabc42267b28036}\label{class_inventory_manager_a512a0bfc118080463aabc42267b28036} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Inventory\+Manager} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_inventory_manager}{Inventory\+Manager} object\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_inventory_manager_a1b25b50b8e13c1a435555167d8d88015}{search\+Plants}} (const string \&keyword)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Searches plants by keyword\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_inventory_manager_a839cec48e4f950afe6039c5ffdbdab7f}{filter\+Plants\+By\+Type}} (const string \&plant\+Type)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Filters plants by type\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_manager_a08b12ec6a8bd57173e0d966c7d2f3bfa}\label{class_inventory_manager_a08b12ec6a8bd57173e0d966c7d2f3bfa} 
+string {\bfseries get\+Plants\+By\+Status} (const string \&status)
+\item 
+string \mbox{\hyperlink{class_inventory_manager_a58c025e5db4daf34e4d652b24669d897}{get\+Plant\+Details}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets detailed information about a specific plant\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_inventory_manager_a8c5e2e70bebd6b0147bbbfcd4e4ede2e}{check\+Stock}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Checks stock availability for a specific plant\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_manager_a7661bb7afa0de548daf04fed3d7b35c8}\label{class_inventory_manager_a7661bb7afa0de548daf04fed3d7b35c8} 
+string {\bfseries get\+Plant\+Care\+Instructions} (const string \&plant\+Name)
+\item 
+string \mbox{\hyperlink{class_inventory_manager_a9127701ef1efe220658bcba098ea5c72}{get\+Recommendations}} (const string \&sunlight, const string \&space, const string \&experience)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets plant recommendations based on user conditions\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_manager_ac51d4ce980f992e7919da4ae4a3ddd41}\label{class_inventory_manager_ac51d4ce980f992e7919da4ae4a3ddd41} 
+string {\bfseries update\+Stock} (const string \&plant\+Name, int quantity)
+\item 
+string \mbox{\hyperlink{class_inventory_manager_ae2fe188d61c75145fac6835a9d49609f}{move\+Plant\+To\+Shop}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Moves a plant from nursery to shop inventory\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_inventory_manager_aaf1d3a43bee484e3929d65bc7a9b5815}{water\+Plant}} (const string \&plant\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Waters a specific plant\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_inventory_manager_a8308ed109b7651bcef41423589498120}\label{class_inventory_manager_a8308ed109b7651bcef41423589498120} 
+string {\bfseries get\+Bundle\+Details} (const string \&bundle\+Name)
+\item 
+\Hypertarget{class_inventory_manager_ac5937909591b7866d9dd16c8a4c697f7}\label{class_inventory_manager_ac5937909591b7866d9dd16c8a4c697f7} 
+string {\bfseries create\+Custom\+Bundle} (const vector$<$ string $>$ \&plant\+Names, const string \&bundle\+Name)
+\item 
+\Hypertarget{class_inventory_manager_a63a384e71fde0ab9eba7f4c27d644b99}\label{class_inventory_manager_a63a384e71fde0ab9eba7f4c27d644b99} 
+vector$<$ \mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Nursery\+Plants} () const
+\item 
+\Hypertarget{class_inventory_manager_a992708670809977fbe733bd54a8aeb78}\label{class_inventory_manager_a992708670809977fbe733bd54a8aeb78} 
+vector$<$ \mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Shop\+Plants} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_inventory_manager}{Inventory\+Manager} class for inventory operations\mbox{]} 
+
+\mbox{[}Handles inventory management including search, filtering, and plant operations\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-constructors}
+\Hypertarget{class_inventory_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_inventory_manager_a2485a2457a78912b640014816982e6f6}\index{InventoryManager@{InventoryManager}!InventoryManager@{InventoryManager}}
+\index{InventoryManager@{InventoryManager}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{InventoryManager()}{InventoryManager()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_a2485a2457a78912b640014816982e6f6} 
+Inventory\+Manager\+::\+Inventory\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_web_a_p_i_adapter}{Web\+APIAdapter}} \texorpdfstring{$\ast$}{*}}]{adapter}{, }\item[{\mbox{\hyperlink{class_inventory}{Inventory}} \texorpdfstring{$\ast$}{*}}]{nursery\+Inv}{, }\item[{\mbox{\hyperlink{class_inventory}{Inventory}} \texorpdfstring{$\ast$}{*}}]{shop\+Inv}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Constructs a new \doxylink{class_inventory_manager}{Inventory\+Manager} object\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em adapter} & \mbox{[}Pointer to the \doxylink{class_web_a_p_i_adapter}{Web\+APIAdapter} for system communication\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em nursery\+Inv} & \mbox{[}Pointer to the nursery inventory\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em shop\+Inv} & \mbox{[}Pointer to the shop inventory\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_inventory_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_inventory_manager_a8c5e2e70bebd6b0147bbbfcd4e4ede2e}\index{InventoryManager@{InventoryManager}!checkStock@{checkStock}}
+\index{checkStock@{checkStock}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{checkStock()}{checkStock()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_a8c5e2e70bebd6b0147bbbfcd4e4ede2e} 
+string Inventory\+Manager\+::check\+Stock (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Checks stock availability for a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to check stock for\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing stock information\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_manager_a839cec48e4f950afe6039c5ffdbdab7f}\index{InventoryManager@{InventoryManager}!filterPlantsByType@{filterPlantsByType}}
+\index{filterPlantsByType@{filterPlantsByType}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{filterPlantsByType()}{filterPlantsByType()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_a839cec48e4f950afe6039c5ffdbdab7f} 
+string Inventory\+Manager\+::filter\+Plants\+By\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Type}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Filters plants by type\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Type} & \mbox{[}Type of plants to filter by\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing filtered results\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_manager_a58c025e5db4daf34e4d652b24669d897}\index{InventoryManager@{InventoryManager}!getPlantDetails@{getPlantDetails}}
+\index{getPlantDetails@{getPlantDetails}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{getPlantDetails()}{getPlantDetails()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_a58c025e5db4daf34e4d652b24669d897} 
+string Inventory\+Manager\+::get\+Plant\+Details (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets detailed information about a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to get details for\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing plant details\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_manager_a9127701ef1efe220658bcba098ea5c72}\index{InventoryManager@{InventoryManager}!getRecommendations@{getRecommendations}}
+\index{getRecommendations@{getRecommendations}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{getRecommendations()}{getRecommendations()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_a9127701ef1efe220658bcba098ea5c72} 
+string Inventory\+Manager\+::get\+Recommendations (\begin{DoxyParamCaption}\item[{const string \&}]{sunlight}{, }\item[{const string \&}]{space}{, }\item[{const string \&}]{experience}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Gets plant recommendations based on user conditions\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em sunlight} & \mbox{[}Sunlight condition\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em space} & \mbox{[}Space availability\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em experience} & \mbox{[}User experience level\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing plant recommendations\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_manager_ae2fe188d61c75145fac6835a9d49609f}\index{InventoryManager@{InventoryManager}!movePlantToShop@{movePlantToShop}}
+\index{movePlantToShop@{movePlantToShop}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{movePlantToShop()}{movePlantToShop()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_ae2fe188d61c75145fac6835a9d49609f} 
+string Inventory\+Manager\+::move\+Plant\+To\+Shop (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Moves a plant from nursery to shop inventory\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to move\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating move result\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_manager_a1b25b50b8e13c1a435555167d8d88015}\index{InventoryManager@{InventoryManager}!searchPlants@{searchPlants}}
+\index{searchPlants@{searchPlants}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{searchPlants()}{searchPlants()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_a1b25b50b8e13c1a435555167d8d88015} 
+string Inventory\+Manager\+::search\+Plants (\begin{DoxyParamCaption}\item[{const string \&}]{keyword}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Searches plants by keyword\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em keyword} & \mbox{[}Search keyword\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string containing search results\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_manager_aaf1d3a43bee484e3929d65bc7a9b5815}\index{InventoryManager@{InventoryManager}!waterPlant@{waterPlant}}
+\index{waterPlant@{waterPlant}!InventoryManager@{InventoryManager}}
+\doxysubsubsection{\texorpdfstring{waterPlant()}{waterPlant()}}
+{\footnotesize\ttfamily \label{class_inventory_manager_aaf1d3a43bee484e3929d65bc7a9b5815} 
+string Inventory\+Manager\+::water\+Plant (\begin{DoxyParamCaption}\item[{const string \&}]{plant\+Name}{}\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Waters a specific plant\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em plant\+Name} & \mbox{[}Name of the plant to water\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}JSON string indicating watering result\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Inventory\+Manager.\+h\item 
+Inventory\+Manager.\+cpp\end{DoxyCompactItemize}

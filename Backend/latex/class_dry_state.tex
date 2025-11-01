@@ -1,0 +1,83 @@
+\doxysection{Dry\+State Class Reference}
+\hypertarget{class_dry_state}{}\label{class_dry_state}\index{DryState@{DryState}}
+Inheritance diagram for Dry\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_dry_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_dry_state_ac44961105702f0cf32cd39812e329cea}{handle\+Watering}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles watering in the dry state\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dry_state_aebaaef25e20419c08d0b1f7415dccd02}{handle\+Pass\+Time}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles time passage in the dry state\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_dry_state_a317d743b6e9c3fa380bdf63be81f9f32}{get\+State\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the current state\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_dry_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_dry_state_a317d743b6e9c3fa380bdf63be81f9f32}\index{DryState@{DryState}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!DryState@{DryState}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily \label{class_dry_state_a317d743b6e9c3fa380bdf63be81f9f32} 
+string Dry\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the name of the current state\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Name of the dry state\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+\Hypertarget{class_dry_state_aebaaef25e20419c08d0b1f7415dccd02}\index{DryState@{DryState}!handlePassTime@{handlePassTime}}
+\index{handlePassTime@{handlePassTime}!DryState@{DryState}}
+\doxysubsubsection{\texorpdfstring{handlePassTime()}{handlePassTime()}}
+{\footnotesize\ttfamily \label{class_dry_state_aebaaef25e20419c08d0b1f7415dccd02} 
+void Dry\+State\+::handle\+Pass\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles time passage in the dry state\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant affected by time\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+\Hypertarget{class_dry_state_ac44961105702f0cf32cd39812e329cea}\index{DryState@{DryState}!handleWatering@{handleWatering}}
+\index{handleWatering@{handleWatering}!DryState@{DryState}}
+\doxysubsubsection{\texorpdfstring{handleWatering()}{handleWatering()}}
+{\footnotesize\ttfamily \label{class_dry_state_ac44961105702f0cf32cd39812e329cea} 
+void Dry\+State\+::handle\+Watering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles watering in the dry state\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant being watered\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plant\+State.\+h\item 
+Plant\+State.\+cpp\end{DoxyCompactItemize}

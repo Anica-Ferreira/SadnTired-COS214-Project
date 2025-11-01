@@ -1,0 +1,22 @@
+\doxysection{Order\+Director.\+h}
+\hypertarget{_order_director_8h_source}{}\label{_order_director_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Order\ Director}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Calls\ Builder\ methods\ to\ produce\ predefined\ products.}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ ORDERDIRECTOR\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ORDERDIRECTOR\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ConcreteOrderBuilder.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}OrderBuilder.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order_director}{OrderDirector}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_director_a76c89dc0ec6f28aa0b2aa58358213e9a}{makeValentinesBundle}}(\mbox{\hyperlink{class_concrete_order_builder}{ConcreteOrderBuilder}}\&\ builder);}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_director_a019022de6214e8bc39a89bbb89ef5059}{makeSpringBundle}}(\mbox{\hyperlink{class_concrete_order_builder}{ConcreteOrderBuilder}}\&\ builder,\ \mbox{\hyperlink{class_product_bundle}{ProductBundle}}*\ bundle);}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_order_builder}{OrderBuilder}}*\ builder;}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

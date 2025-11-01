@@ -1,0 +1,83 @@
+\doxysection{Planted\+State Class Reference}
+\hypertarget{class_planted_state}{}\label{class_planted_state}\index{PlantedState@{PlantedState}}
+Inheritance diagram for Planted\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_planted_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_planted_state_a71abd925bd14df0e07bc352e4d0744f2}{handle\+Watering}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles watering in the planted state\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_planted_state_a53eacc180f8cb4698a80197173aab01c}{handle\+Pass\+Time}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles time passage in the planted state\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_planted_state_a4745ff2e46b19bc5d270f700495c1669}{get\+State\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the current state\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_planted_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_planted_state_a4745ff2e46b19bc5d270f700495c1669}\index{PlantedState@{PlantedState}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!PlantedState@{PlantedState}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily \label{class_planted_state_a4745ff2e46b19bc5d270f700495c1669} 
+string Planted\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the name of the current state\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Name of the planted state\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+\Hypertarget{class_planted_state_a53eacc180f8cb4698a80197173aab01c}\index{PlantedState@{PlantedState}!handlePassTime@{handlePassTime}}
+\index{handlePassTime@{handlePassTime}!PlantedState@{PlantedState}}
+\doxysubsubsection{\texorpdfstring{handlePassTime()}{handlePassTime()}}
+{\footnotesize\ttfamily \label{class_planted_state_a53eacc180f8cb4698a80197173aab01c} 
+void Planted\+State\+::handle\+Pass\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles time passage in the planted state\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant affected by time\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+\Hypertarget{class_planted_state_a71abd925bd14df0e07bc352e4d0744f2}\index{PlantedState@{PlantedState}!handleWatering@{handleWatering}}
+\index{handleWatering@{handleWatering}!PlantedState@{PlantedState}}
+\doxysubsubsection{\texorpdfstring{handleWatering()}{handleWatering()}}
+{\footnotesize\ttfamily \label{class_planted_state_a71abd925bd14df0e07bc352e4d0744f2} 
+void Planted\+State\+::handle\+Watering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles watering in the planted state\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant being watered\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plant\+State.\+h\item 
+Plant\+State.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,32 @@
+\doxysection{Plant\+Nursery.\+h}
+\hypertarget{_plant_nursery_8h_source}{}\label{_plant_nursery_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLANT\_NURSERY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLANT\_NURSERY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant_nursery_a55df55f373f4d1b045e3f1d2a0bf974f}{PlantNursery}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}}*\ apiAdapter;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_plant_nursery_a55df55f373f4d1b045e3f1d2a0bf974f}{PlantNursery}}(\mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}}*\ adapter);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Core\ nursery\ operations}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_nursery_af242d8c4a81a3d72a78aa5c0d38a0fc7}{getGrowthStatus}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_nursery_aa220ad4a9cc6b5b8dafcaee43714e4ad}{getWateringSchedule}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_nursery_a950e0c5d7e6ba5c14c0aace4caa7e372}{getPlantHealthAlerts}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_nursery_aa82c3c70884365b640a25131991e7139}{addNewPlant}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantType,\ \textcolor{keywordtype}{int}\ quantity);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Additional\ nursery\ management\ methods}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_nursery_aab9e4139448c4fc87183114ea4b4bfe6}{getPropagationReport}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_plant_nursery_a252ecf2cae081dea1d4e4f57080b4db0}{getEnvironmentalConditions}}();}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

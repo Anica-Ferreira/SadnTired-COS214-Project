@@ -1,0 +1,19 @@
+\doxysection{IMediator.\+h}
+\hypertarget{_i_mediator_8h_source}{}\label{_i_mediator_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ IMEDIATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ IMEDIATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_colleague}{IColleague}};\ \ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_mediator}{IMediator}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ notify(\mbox{\hyperlink{class_i_colleague}{IColleague}}*\ sender,\ std::string\ request)\ =\ 0;\textcolor{comment}{//handle\ notifications\ from\ customer\ requests}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_mediator}{\string~IMediator}}()\ \{\}}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ IMEDIATOR\_H}}
+
+\end{DoxyCode}

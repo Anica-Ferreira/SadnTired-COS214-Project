@@ -1,0 +1,58 @@
+\doxysection{IColleague Class Reference}
+\hypertarget{class_i_colleague}{}\label{class_i_colleague}\index{IColleague@{IColleague}}
+
+
+\mbox{[}Interface for colleague classes in the Mediator pattern\mbox{]}  
+
+
+Inheritance diagram for IColleague\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_colleague}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_i_colleague_a4c2677f83a96f7c4a5e61f4108811f71}{set\+Mediator}} (\mbox{\hyperlink{class_i_mediator}{IMediator}} \texorpdfstring{$\ast$}{*}mediator)=0
+\item 
+virtual void \mbox{\hyperlink{class_i_colleague_af48c5507264a39a76f5ea50eeccc8063}{send\+Request}} (std\+::string request)=0
+\item 
+\Hypertarget{class_i_colleague_aa0c4f4efdbc3a46e5dc6e465fbc1a7ae}\label{class_i_colleague_aa0c4f4efdbc3a46e5dc6e465fbc1a7ae} 
+virtual std\+::string {\bfseries get\+Name} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Interface for colleague classes in the Mediator pattern\mbox{]} 
+
+\mbox{[}Defines the interface for objects that communicate through a mediator\mbox{]} 
+
+\label{doc-func-members}
+\Hypertarget{class_i_colleague_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_colleague_af48c5507264a39a76f5ea50eeccc8063}\index{IColleague@{IColleague}!sendRequest@{sendRequest}}
+\index{sendRequest@{sendRequest}!IColleague@{IColleague}}
+\doxysubsubsection{\texorpdfstring{sendRequest()}{sendRequest()}}
+{\footnotesize\ttfamily \label{class_i_colleague_af48c5507264a39a76f5ea50eeccc8063} 
+virtual void IColleague\+::send\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_customer_a19aea847c560b3e42be614aee34b3642}{Customer}}.
+
+\Hypertarget{class_i_colleague_a4c2677f83a96f7c4a5e61f4108811f71}\index{IColleague@{IColleague}!setMediator@{setMediator}}
+\index{setMediator@{setMediator}!IColleague@{IColleague}}
+\doxysubsubsection{\texorpdfstring{setMediator()}{setMediator()}}
+{\footnotesize\ttfamily \label{class_i_colleague_a4c2677f83a96f7c4a5e61f4108811f71} 
+virtual void IColleague\+::set\+Mediator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_mediator}{IMediator}} \texorpdfstring{$\ast$}{*}}]{mediator}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_customer_a6da24d73f38444e378e78dbae95ffabb}{Customer}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+IColleague.\+h\end{DoxyCompactItemize}

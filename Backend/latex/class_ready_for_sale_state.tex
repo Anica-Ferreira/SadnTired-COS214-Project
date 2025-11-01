@@ -1,0 +1,83 @@
+\doxysection{Ready\+For\+Sale\+State Class Reference}
+\hypertarget{class_ready_for_sale_state}{}\label{class_ready_for_sale_state}\index{ReadyForSaleState@{ReadyForSaleState}}
+Inheritance diagram for Ready\+For\+Sale\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ready_for_sale_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ready_for_sale_state_aaf678157cbf4f3a0db0cb7499724ba9f}{handle\+Watering}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles watering in the ready for sale state\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ready_for_sale_state_adc69f46c0700b8ec62db324545b352b7}{handle\+Pass\+Time}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Handles time passage in the ready for sale state\mbox{]} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ready_for_sale_state_acf2143fd0a4ccfa5827cdce08adc2d5e}{get\+State\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Gets the name of the current state\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ready_for_sale_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ready_for_sale_state_acf2143fd0a4ccfa5827cdce08adc2d5e}\index{ReadyForSaleState@{ReadyForSaleState}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!ReadyForSaleState@{ReadyForSaleState}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily \label{class_ready_for_sale_state_acf2143fd0a4ccfa5827cdce08adc2d5e} 
+string Ready\+For\+Sale\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Gets the name of the current state\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Name of the ready for sale state\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+\Hypertarget{class_ready_for_sale_state_adc69f46c0700b8ec62db324545b352b7}\index{ReadyForSaleState@{ReadyForSaleState}!handlePassTime@{handlePassTime}}
+\index{handlePassTime@{handlePassTime}!ReadyForSaleState@{ReadyForSaleState}}
+\doxysubsubsection{\texorpdfstring{handlePassTime()}{handlePassTime()}}
+{\footnotesize\ttfamily \label{class_ready_for_sale_state_adc69f46c0700b8ec62db324545b352b7} 
+void Ready\+For\+Sale\+State\+::handle\+Pass\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles time passage in the ready for sale state\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant affected by time\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+\Hypertarget{class_ready_for_sale_state_aaf678157cbf4f3a0db0cb7499724ba9f}\index{ReadyForSaleState@{ReadyForSaleState}!handleWatering@{handleWatering}}
+\index{handleWatering@{handleWatering}!ReadyForSaleState@{ReadyForSaleState}}
+\doxysubsubsection{\texorpdfstring{handleWatering()}{handleWatering()}}
+{\footnotesize\ttfamily \label{class_ready_for_sale_state_aaf678157cbf4f3a0db0cb7499724ba9f} 
+void Ready\+For\+Sale\+State\+::handle\+Watering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{plant}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Handles watering in the ready for sale state\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em plant} & \mbox{[}Pointer to the plant being watered\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_plant_state}{Plant\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plant\+State.\+h\item 
+Plant\+State.\+cpp\end{DoxyCompactItemize}

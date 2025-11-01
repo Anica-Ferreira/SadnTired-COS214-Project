@@ -1,6 +1,5 @@
 // ConcreteDecorator
 // Adds a decorative pot to product.
-
 #ifndef DECORATIVEPOT_H
 #define DECORATIVEPOT_H
 
@@ -17,7 +16,6 @@ class DecorativePot : public ProductDecorator {
             SQUARE,
             VASE
         };
-
         DecorativePot(Product* product, PotType type);
         ~DecorativePot();
 
@@ -29,7 +27,6 @@ class DecorativePot : public ProductDecorator {
         PotType type;
         string getPotName() const;
         double getPotPrice() const;
-        
 };
 
 #endif

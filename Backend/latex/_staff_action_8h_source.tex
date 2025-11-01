@@ -1,0 +1,27 @@
+\doxysection{Staff\+Action.\+h}
+\hypertarget{_staff_action_8h_source}{}\label{_staff_action_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STAFFACTIONS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STAFFACTIONS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}StaffCommand.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_staff_action}{StaffAction}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_staff_command}{StaffCommand}}*\ onStart\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_staff_command}{StaffCommand}}*\ onFinish\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_staff_action_af4a13ac39e7fdb90b23d744aa001c897}{setOnStart}}(\mbox{\hyperlink{class_staff_command}{StaffCommand}}*\ cmd);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_staff_action_ac6b74c9bd7e833b035dba27c29231ab3}{setOnFinish}}(\mbox{\hyperlink{class_staff_command}{StaffCommand}}*\ cmd);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_staff_action_accd96717d964a04b2390937a6bfd5802}{doCommand}}(std::string\ type\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_staff_action_aa0e2e23f4a417e2a573c293feceb7cac}{\string~StaffAction}}();}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STAFFACTIONS\_H}}
+
+\end{DoxyCode}

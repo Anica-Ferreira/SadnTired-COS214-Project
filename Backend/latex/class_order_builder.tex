@@ -1,0 +1,94 @@
+\doxysection{Order\+Builder Class Reference}
+\hypertarget{class_order_builder}{}\label{class_order_builder}\index{OrderBuilder@{OrderBuilder}}
+
+
+\mbox{[}Implementation file for \doxylink{class_order_builder}{Order\+Builder} class\mbox{]}  
+
+
+Inheritance diagram for Order\+Builder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_order_builder}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_order_builder_ad4ca9781386f8890b2329d7490830509}{set\+Plant}} (string name, double price)=0
+\item 
+virtual void \mbox{\hyperlink{class_order_builder_a1496fbe44a8262934e40532084c54637}{add\+Pot}} (Decorative\+Pot\+::\+Pot\+Type type)=0
+\item 
+virtual void \mbox{\hyperlink{class_order_builder_a07da7f62b90303309b39930f0404144f}{add\+Wrapping}} (Gift\+Wrapping\+::\+Wrapping\+Type type)=0
+\item 
+virtual void \mbox{\hyperlink{class_order_builder_a2be1f1f8ab63a96702b560c74f480943}{add\+To\+Bundle}} (\mbox{\hyperlink{class_product_bundle}{Product\+Bundle}} \texorpdfstring{$\ast$}{*}bundle)=0
+\item 
+virtual \mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_order_builder_a49e84af06f189c8a64d9f7ecef4eb103}{get\+Product}} ()=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation file for \doxylink{class_order_builder}{Order\+Builder} class\mbox{]} 
+
+\mbox{[}This file may contain implementation details for the \doxylink{class_order_builder}{Order\+Builder} interface\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-func-members}
+\Hypertarget{class_order_builder_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_order_builder_a1496fbe44a8262934e40532084c54637}\index{OrderBuilder@{OrderBuilder}!addPot@{addPot}}
+\index{addPot@{addPot}!OrderBuilder@{OrderBuilder}}
+\doxysubsubsection{\texorpdfstring{addPot()}{addPot()}}
+{\footnotesize\ttfamily \label{class_order_builder_a1496fbe44a8262934e40532084c54637} 
+virtual void Order\+Builder\+::add\+Pot (\begin{DoxyParamCaption}\item[{Decorative\+Pot\+::\+Pot\+Type}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_concrete_order_builder_a348234ed68a5b2f15a85c30231d6739a}{Concrete\+Order\+Builder}}.
+
+\Hypertarget{class_order_builder_a2be1f1f8ab63a96702b560c74f480943}\index{OrderBuilder@{OrderBuilder}!addToBundle@{addToBundle}}
+\index{addToBundle@{addToBundle}!OrderBuilder@{OrderBuilder}}
+\doxysubsubsection{\texorpdfstring{addToBundle()}{addToBundle()}}
+{\footnotesize\ttfamily \label{class_order_builder_a2be1f1f8ab63a96702b560c74f480943} 
+virtual void Order\+Builder\+::add\+To\+Bundle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_product_bundle}{Product\+Bundle}} \texorpdfstring{$\ast$}{*}}]{bundle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_concrete_order_builder_ae07d686760cd09fe460244490b3d98b1}{Concrete\+Order\+Builder}}.
+
+\Hypertarget{class_order_builder_a07da7f62b90303309b39930f0404144f}\index{OrderBuilder@{OrderBuilder}!addWrapping@{addWrapping}}
+\index{addWrapping@{addWrapping}!OrderBuilder@{OrderBuilder}}
+\doxysubsubsection{\texorpdfstring{addWrapping()}{addWrapping()}}
+{\footnotesize\ttfamily \label{class_order_builder_a07da7f62b90303309b39930f0404144f} 
+virtual void Order\+Builder\+::add\+Wrapping (\begin{DoxyParamCaption}\item[{Gift\+Wrapping\+::\+Wrapping\+Type}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_concrete_order_builder_acca96d942bd3007c64f860b08c0dad62}{Concrete\+Order\+Builder}}.
+
+\Hypertarget{class_order_builder_a49e84af06f189c8a64d9f7ecef4eb103}\index{OrderBuilder@{OrderBuilder}!getProduct@{getProduct}}
+\index{getProduct@{getProduct}!OrderBuilder@{OrderBuilder}}
+\doxysubsubsection{\texorpdfstring{getProduct()}{getProduct()}}
+{\footnotesize\ttfamily \label{class_order_builder_a49e84af06f189c8a64d9f7ecef4eb103} 
+virtual \mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} Order\+Builder\+::get\+Product (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_concrete_order_builder_aea3da50b1ba4c65358fa201487f3eee5}{Concrete\+Order\+Builder}}.
+
+\Hypertarget{class_order_builder_ad4ca9781386f8890b2329d7490830509}\index{OrderBuilder@{OrderBuilder}!setPlant@{setPlant}}
+\index{setPlant@{setPlant}!OrderBuilder@{OrderBuilder}}
+\doxysubsubsection{\texorpdfstring{setPlant()}{setPlant()}}
+{\footnotesize\ttfamily \label{class_order_builder_ad4ca9781386f8890b2329d7490830509} 
+virtual void Order\+Builder\+::set\+Plant (\begin{DoxyParamCaption}\item[{string}]{name}{, }\item[{double}]{price}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_concrete_order_builder_a0da355fabc1ec347c7e20a06160ac599}{Concrete\+Order\+Builder}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Order\+Builder.\+h\end{DoxyCompactItemize}

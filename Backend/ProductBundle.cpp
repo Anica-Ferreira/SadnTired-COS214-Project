@@ -1,8 +1,23 @@
+/**
+ * @class [ProductBundle]
+ * @brief [Implementation of the ProductBundle class for product bundle management]
+ * @details [Handles creation and management of product bundles with deep copying]
+ * @authors [Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy]
+ */
+
 #include "ProductBundle.h"
 
+/**
+ * @brief [Constructs a new ProductBundle object]
+ * @param[in] name [The name of the product bundle]
+ */
 ProductBundle::ProductBundle(string name)
     : name(name) {}
 
+/**    
+ * @brief [Copy constructor for ProductBundle]
+ * @param[in] other [The ProductBundle to copy from]
+ */    
 ProductBundle::ProductBundle(const ProductBundle& other)
     : name(other.name) {
     
@@ -12,16 +27,27 @@ ProductBundle::ProductBundle(const ProductBundle& other)
     }
 }
 
+/**
+ * @brief [Destroys the ProductBundle object and cleans up resources]
+ */
 ProductBundle::~ProductBundle() {
     for (int i = 0; i < (int)items.size(); i++){
         delete items[i];
     }
 }
 
+/**
+ * @brief [Adds a product to the bundle]
+ * @param[in] item [Pointer to the product to add]
+ */
 void ProductBundle::add(Product* item) {
     items.push_back(item);
 }
 
+/**
+ * @brief [Gets the name of the product bundle]
+ * @return [The bundle name with included items]
+ */
 string ProductBundle::getName() const {
     string result = name + " (";
     for (int i = 0; i < (int)items.size(); i++) {
@@ -33,6 +59,10 @@ string ProductBundle::getName() const {
     return result;
 }
 
+/**
+ * @brief [Gets the total price of the product bundle]
+ * @return [The sum of all item prices in the bundle]
+ */
 double ProductBundle::getPrice() const {
     double total = 0.0;
     for (int i = 0; i < (int)items.size(); i++) {
@@ -41,10 +71,17 @@ double ProductBundle::getPrice() const {
     return total;
 }
 
+/**
+ * @brief [Creates a deep copy of the ProductBundle]
+ * @return [Pointer to the cloned ProductBundle object]
+ */
 Product* ProductBundle::clone() const {
     return new ProductBundle(*this);
 }
 
+/**
+ * @brief [Prints bundle information to console]
+ */
 void ProductBundle::printProduct() const {
     cout << "Bundle: " << getName() << endl;
     cout << "Total Price: R" << getPrice() << endl;

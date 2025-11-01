@@ -1,0 +1,19 @@
+\doxysection{ISubject.\+h}
+\hypertarget{_i_subject_8h_source}{}\label{_i_subject_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ISUBJECT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ISUBJECT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_observer}{IObserver}};\ \ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_subject}{ISubject}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Attach(\mbox{\hyperlink{class_i_observer}{IObserver}}*\ observer)\ =\ 0;\textcolor{comment}{//add\ observer}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Detach(\mbox{\hyperlink{class_i_observer}{IObserver}}*\ observer)\ =\ 0;\textcolor{comment}{//remove\ observer}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Notify()\ =\ 0;\textcolor{comment}{//notify\ all\ attached\ observers}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_subject}{\string~ISubject}}()\ \{\}}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ISUBJECT\_H}}
+
+\end{DoxyCode}

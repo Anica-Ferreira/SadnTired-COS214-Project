@@ -1,0 +1,35 @@
+\doxysection{Gift\+Wrapping.\+h}
+\hypertarget{_gift_wrapping_8h_source}{}\label{_gift_wrapping_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ ConcreteDecorator}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Adds\ gift\ wrapping\ to\ a\ product\ with\ selectable\ wrapping\ styles.}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ GIFTWRAPPING\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ GIFTWRAPPING\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ProductDecorator.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gift_wrapping_a842408a0b7fc40abf9c417776d8aff74}{GiftWrapping}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_product_decorator_aa75d69eb640fd4a7cfcc32b22532d3c1}{ProductDecorator}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ WrappingType\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ RED\_BOW,}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ BROWN\_PAPER,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ FLORAL\_WRAP}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_gift_wrapping_a842408a0b7fc40abf9c417776d8aff74}{GiftWrapping}}(\mbox{\hyperlink{class_product}{Product}}*\ product,\ WrappingType\ type);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_gift_wrapping_a7da6c394eb0964cb03bbfc2699324705}{\string~GiftWrapping}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_gift_wrapping_a6ca532f968c44861f3cbd81676acaf7b}{getPrice}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_gift_wrapping_af9f423fa96d6356d60483064759666f6}{getName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_product}{Product}}*\ \mbox{\hyperlink{class_gift_wrapping_a4c15aab70423ec6f894aeb175c459c87}{clone}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ WrappingType\ type;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getWrappingName()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getWrappingPrice()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

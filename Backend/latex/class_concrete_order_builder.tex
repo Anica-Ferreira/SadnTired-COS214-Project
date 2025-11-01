@@ -1,0 +1,146 @@
+\doxysection{Concrete\+Order\+Builder Class Reference}
+\hypertarget{class_concrete_order_builder}{}\label{class_concrete_order_builder}\index{ConcreteOrderBuilder@{ConcreteOrderBuilder}}
+
+
+\mbox{[}Implementation of the \doxylink{class_concrete_order_builder}{Concrete\+Order\+Builder} class for building plant orders\mbox{]}  
+
+
+Inheritance diagram for Concrete\+Order\+Builder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_concrete_order_builder}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_concrete_order_builder_a1e612275cad18978d8b6fcba96c70d23}\label{class_concrete_order_builder_a1e612275cad18978d8b6fcba96c70d23} 
+{\bfseries Concrete\+Order\+Builder} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Constructs a new \doxylink{class_concrete_order_builder}{Concrete\+Order\+Builder} object\mbox{]} \end{DoxyCompactList}\item 
+\Hypertarget{class_concrete_order_builder_a59c73656e984a88253631e0024a16b33}\label{class_concrete_order_builder_a59c73656e984a88253631e0024a16b33} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Concrete\+Order\+Builder} ()
+\begin{DoxyCompactList}\small\item\em \mbox{[}Destroys the \doxylink{class_concrete_order_builder}{Concrete\+Order\+Builder} object\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_order_builder_a0da355fabc1ec347c7e20a06160ac599}{set\+Plant}} (string name, double price) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Sets the base plant for the order\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_order_builder_a348234ed68a5b2f15a85c30231d6739a}{add\+Pot}} (Decorative\+Pot\+::\+Pot\+Type type) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds a decorative pot to the order\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_order_builder_acca96d942bd3007c64f860b08c0dad62}{add\+Wrapping}} (Gift\+Wrapping\+::\+Wrapping\+Type type) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds gift wrapping to the order\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_order_builder_ae07d686760cd09fe460244490b3d98b1}{add\+To\+Bundle}} (\mbox{\hyperlink{class_product_bundle}{Product\+Bundle}} \texorpdfstring{$\ast$}{*}bundle) override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Adds the current product to a bundle\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_concrete_order_builder_aea3da50b1ba4c65358fa201487f3eee5}{get\+Product}} () override
+\begin{DoxyCompactList}\small\item\em \mbox{[}Retrieves the built product\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{[}Implementation of the \doxylink{class_concrete_order_builder}{Concrete\+Order\+Builder} class for building plant orders\mbox{]} 
+
+\mbox{[}Implements the Builder pattern for creating complex plant product orders\mbox{]} \begin{DoxyAuthor}{Authors}
+\mbox{[}Anica Ferreira, Anika Coetzer, Chloe Kruger, Daniel Stevens, Jordan Reddy\mbox{]} 
+\end{DoxyAuthor}
+
+
+\label{doc-func-members}
+\Hypertarget{class_concrete_order_builder_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_concrete_order_builder_a348234ed68a5b2f15a85c30231d6739a}\index{ConcreteOrderBuilder@{ConcreteOrderBuilder}!addPot@{addPot}}
+\index{addPot@{addPot}!ConcreteOrderBuilder@{ConcreteOrderBuilder}}
+\doxysubsubsection{\texorpdfstring{addPot()}{addPot()}}
+{\footnotesize\ttfamily \label{class_concrete_order_builder_a348234ed68a5b2f15a85c30231d6739a} 
+void Concrete\+Order\+Builder\+::add\+Pot (\begin{DoxyParamCaption}\item[{Decorative\+Pot\+::\+Pot\+Type}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Adds a decorative pot to the order\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em type} & \mbox{[}Type of decorative pot to add\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_order_builder}{Order\+Builder}}.
+
+\Hypertarget{class_concrete_order_builder_ae07d686760cd09fe460244490b3d98b1}\index{ConcreteOrderBuilder@{ConcreteOrderBuilder}!addToBundle@{addToBundle}}
+\index{addToBundle@{addToBundle}!ConcreteOrderBuilder@{ConcreteOrderBuilder}}
+\doxysubsubsection{\texorpdfstring{addToBundle()}{addToBundle()}}
+{\footnotesize\ttfamily \label{class_concrete_order_builder_ae07d686760cd09fe460244490b3d98b1} 
+void Concrete\+Order\+Builder\+::add\+To\+Bundle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_product_bundle}{Product\+Bundle}} \texorpdfstring{$\ast$}{*}}]{bundle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Adds the current product to a bundle\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em bundle} & \mbox{[}Pointer to the product bundle\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_order_builder}{Order\+Builder}}.
+
+\Hypertarget{class_concrete_order_builder_acca96d942bd3007c64f860b08c0dad62}\index{ConcreteOrderBuilder@{ConcreteOrderBuilder}!addWrapping@{addWrapping}}
+\index{addWrapping@{addWrapping}!ConcreteOrderBuilder@{ConcreteOrderBuilder}}
+\doxysubsubsection{\texorpdfstring{addWrapping()}{addWrapping()}}
+{\footnotesize\ttfamily \label{class_concrete_order_builder_acca96d942bd3007c64f860b08c0dad62} 
+void Concrete\+Order\+Builder\+::add\+Wrapping (\begin{DoxyParamCaption}\item[{Gift\+Wrapping\+::\+Wrapping\+Type}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Adds gift wrapping to the order\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em type} & \mbox{[}Type of gift wrapping to add\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_order_builder}{Order\+Builder}}.
+
+\Hypertarget{class_concrete_order_builder_aea3da50b1ba4c65358fa201487f3eee5}\index{ConcreteOrderBuilder@{ConcreteOrderBuilder}!getProduct@{getProduct}}
+\index{getProduct@{getProduct}!ConcreteOrderBuilder@{ConcreteOrderBuilder}}
+\doxysubsubsection{\texorpdfstring{getProduct()}{getProduct()}}
+{\footnotesize\ttfamily \label{class_concrete_order_builder_aea3da50b1ba4c65358fa201487f3eee5} 
+\mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} Concrete\+Order\+Builder\+::get\+Product (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Retrieves the built product\mbox{]} 
+
+\begin{DoxyReturn}{Returns}
+\mbox{[}Pointer to the constructed \doxylink{class_product}{Product} object\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_order_builder}{Order\+Builder}}.
+
+\Hypertarget{class_concrete_order_builder_a0da355fabc1ec347c7e20a06160ac599}\index{ConcreteOrderBuilder@{ConcreteOrderBuilder}!setPlant@{setPlant}}
+\index{setPlant@{setPlant}!ConcreteOrderBuilder@{ConcreteOrderBuilder}}
+\doxysubsubsection{\texorpdfstring{setPlant()}{setPlant()}}
+{\footnotesize\ttfamily \label{class_concrete_order_builder_a0da355fabc1ec347c7e20a06160ac599} 
+void Concrete\+Order\+Builder\+::set\+Plant (\begin{DoxyParamCaption}\item[{string}]{name}{, }\item[{double}]{price}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{[}Sets the base plant for the order\mbox{]} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & \mbox{[}\doxylink{class_plant}{Plant} name\mbox{]} \\
+\hline
+\mbox{\texttt{in}}  & {\em price} & \mbox{[}\doxylink{class_plant}{Plant} price\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_order_builder}{Order\+Builder}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Concrete\+Order\+Builder.\+h\item 
+Concrete\+Order\+Builder.\+cpp\end{DoxyCompactItemize}

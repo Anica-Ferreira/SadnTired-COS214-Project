@@ -1,0 +1,62 @@
+\doxysection{Inventory\+Manager.\+h}
+\hypertarget{_inventory_manager_8h_source}{}\label{_inventory_manager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ InventoryManager.h\ -\/\ UPDATED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ INVENTORY\_MANAGER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ INVENTORY\_MANAGER\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Inventory.h"{}}\ \ \textcolor{comment}{//\ Include\ your\ actual\ Inventory\ class}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant}{Plant}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_inventory_manager_a2485a2457a78912b640014816982e6f6}{InventoryManager}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}}*\ apiAdapter;}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_inventory}{Inventory}}*\ nurseryInventory;\ \ \textcolor{comment}{//\ Your\ actual\ nursery\ inventory}}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_inventory}{Inventory}}*\ shopInventory;\ \ \ \ \ \textcolor{comment}{//\ Your\ actual\ shop\ inventory}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_inventory_manager_a2485a2457a78912b640014816982e6f6}{InventoryManager}}(\mbox{\hyperlink{class_web_a_p_i_adapter}{WebAPIAdapter}}*\ adapter,\ \mbox{\hyperlink{class_inventory}{Inventory}}*\ nurseryInv,\ \mbox{\hyperlink{class_inventory}{Inventory}}*\ shopInv);}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_inventory_manager_a512a0bfc118080463aabc42267b28036}{\string~InventoryManager}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Plant\ search\ and\ filtering}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_a1b25b50b8e13c1a435555167d8d88015}{searchPlants}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ keyword);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_a839cec48e4f950afe6039c5ffdbdab7f}{filterPlantsByType}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantType);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{string}\ getPlantsByStatus(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ status);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Plant\ information}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_a58c025e5db4daf34e4d652b24669d897}{getPlantDetails}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_a8c5e2e70bebd6b0147bbbfcd4e4ede2e}{checkStock}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{string}\ getPlantCareInstructions(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Recommendations}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_a9127701ef1efe220658bcba098ea5c72}{getRecommendations}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ sunlight,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ space,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ experience);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Inventory\ operations}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{string}\ updateStock(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName,\ \textcolor{keywordtype}{int}\ quantity);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_ae2fe188d61c75145fac6835a9d49609f}{movePlantToShop}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_inventory_manager_aaf1d3a43bee484e3929d65bc7a9b5815}{waterPlant}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Bundle\ management}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{string}\ getBundleDetails(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ bundleName);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{string}\ createCustomBundle(\textcolor{keyword}{const}\ vector<string>\&\ plantNames,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ bundleName);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Internal\ data\ access\ for\ API}}
+\DoxyCodeLine{00048\ \ \ \ \ vector<Plant*>\ getNurseryPlants()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ nurseryInventory-\/>getAll();\ \}}
+\DoxyCodeLine{00049\ \ \ \ \ vector<Plant*>\ getShopPlants()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ shopInventory-\/>getAll();\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_plant}{Plant}}*\ findPlantByName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ plantName);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{string}\ plantToJSON(\mbox{\hyperlink{class_plant}{Plant}}*\ plant);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{string}\ plantsToJSON(\textcolor{keyword}{const}\ vector<Plant*>\&\ plants);}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
