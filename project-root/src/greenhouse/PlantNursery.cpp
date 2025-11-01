@@ -6,9 +6,6 @@
  */
 
 #include "PlantNursery.h"
-#include "WebAPIAdapter.h"
-#include "InventoryManager.h"
-#include "PlantFactory.h"
 #include <iostream>
 #include <sstream>
 #include <ctime>

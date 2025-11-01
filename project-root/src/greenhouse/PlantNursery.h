@@ -2,6 +2,10 @@
 #define PLANT_NURSERY_H
 
 #include <string>
+#include "../core/WebAPIAdapter.h"
+#include "../inventory/InventoryManager.h"
+#include "../greenhouse/PlantFactory.h"
+
 using namespace std;
 
 class WebAPIAdapter;

@@ -4,8 +4,8 @@
 
 #include <string>
 #include <vector>
-#include "IColleague.h"
-#include "IMediator.h"
+#include "../core/IColleague.h"
+#include "../core/IMediator.h"
 using namespace std;
 
 class CustomerCommand;

@@ -6,8 +6,7 @@
  */
 
 #include "InventoryManager.h"
-#include "WebAPIAdapter.h"
-#include "Plant.h"  // Your Plant class
+ 
 #include <iostream>
 #include <sstream>
 

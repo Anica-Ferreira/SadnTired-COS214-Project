@@ -1,10 +1,11 @@
 #ifndef STAFFMEMBER_H
 #define STAFFMEMBER_H
 
-#include "IMediator.h"
-#include "IObserver.h"
-#include "IColleague.h"
-#include "StaffCommand.h"  // For command integration
+#include "../core/IMediator.h"
+#include "../core/IObserver.h"
+#include "../core/IColleague.h"
+#include "StaffCommand.h"
+
 #include <iostream>
 #include <string>
 #include <vector>

@@ -6,7 +6,6 @@
  */
 
 #include "StaffCoordinator.h"
-#include "WebAPIAdapter.h"
 #include <iostream>
 #include <sstream>
 #include <map>

@@ -3,6 +3,9 @@
 #define CUSTOMER_COMMAND_H
 
 #include <string>
+#include "../customer/Customer.h"
+#include "../core/NurserySystemFacade.h"
+
 using namespace std;
 
 class Customer;

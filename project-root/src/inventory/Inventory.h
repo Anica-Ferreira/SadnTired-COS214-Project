@@ -5,7 +5,7 @@ using namespace std;
 #include <vector>
 #include <string>
 #include <map>
-#include "Plant.h"
+#include "../greenhouse/Plant.h"
 
 class Inventory {
 private:

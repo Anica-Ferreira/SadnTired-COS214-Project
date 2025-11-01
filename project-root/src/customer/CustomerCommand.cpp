@@ -6,8 +6,6 @@
  */
 
 #include "CustomerCommand.h"
-#include "Customer.h"
-#include "NurserySystemFacade.h"
 #include <iostream>
 
 // PurchasePlantCommand Implementation

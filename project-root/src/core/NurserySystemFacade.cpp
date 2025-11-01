@@ -7,15 +7,15 @@
 
 #include "NurserySystemFacade.h"
 #include "WebAPIAdapter.h"
-#include "Customer.h"
-#include "ShoppingCart.h"
-#include "InventoryManager.h"
-#include "StaffCoordinator.h"
-#include "PlantNursery.h"
-#include "Inventory.h"
-#include "Plant.h"
-#include "PlantFactory.h"  // Include the factory
-#include "CustomerCommand.h"
+#include "../customer/Customer.h"
+#include "../customer/ShoppingCart.h"
+#include "../inventory/InventoryManager.h"
+#include "../staff/StaffCoordinator.h"
+#include "../greenhouse/PlantNursery.h"
+#include "../inventory/Inventory.h"
+#include "../greenhouse/Plant.h"
+#include "../greenhouse/PlantFactory.h"
+#include "../customer/CustomerCommand.h"
 #include <iostream>
 #include <sstream>
 

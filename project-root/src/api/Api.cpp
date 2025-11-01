@@ -6,8 +6,11 @@
 */
 
 #include "crow.h"
-#include "NurserySystemFacade.h"
-#include "WebAPIAdapter.h"
+#include <asio.hpp>
+#include "../core/NurserySystemFacade.h"
+#include "../core/WebAPIAdapter.h"
+#include "../inventory/Inventory.h"
+#include "../inventory/InventoryManager.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -47,9 +50,14 @@ struct CORSMiddleware {
 int main() {
     cout << "🌱 Starting Plant Nursery Management System..." << endl;
 
-    // Initialize the complete backend system
+    Inventory* nurseryInventory = new Inventory();
+    Inventory* shopInventory = new Inventory();
+
+    InventoryManager* inventoryManager = new InventoryManager(nullptr, nurseryInventory, shopInventory);
+
+    WebAPIAdapter* apiAdapter = new WebAPIAdapter(inventoryManager);
+
     NurserySystemFacade* nurserySystem = new NurserySystemFacade();
-    WebAPIAdapter* apiAdapter = new WebAPIAdapter(nurserySystem);
 
     crow::App<CORSMiddleware> app;
     srand(time(nullptr));

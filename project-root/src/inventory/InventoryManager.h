@@ -1,10 +1,11 @@
-// InventoryManager.h - UPDATED
 #ifndef INVENTORY_MANAGER_H
 #define INVENTORY_MANAGER_H
 
 #include <string>
 #include <vector>
-#include "Inventory.h"  // Include your actual Inventory class
+#include "Inventory.h"
+#include "../core/WebAPIAdapter.h"
+#include "../greenhouse/Plant.h"
 using namespace std;
 
 class WebAPIAdapter;
@@ -13,8 +14,8 @@ class Plant;
 class InventoryManager {
 private:
     WebAPIAdapter* apiAdapter;
-    Inventory* nurseryInventory;  // Your actual nursery inventory
-    Inventory* shopInventory;     // Your actual shop inventory
+    Inventory* nurseryInventory;
+    Inventory* shopInventory;
 
 public:
     InventoryManager(WebAPIAdapter* adapter, Inventory* nurseryInv, Inventory* shopInv);

@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include "../core/WebAPIAdapter.h"
 
 class WebAPIAdapter;
 

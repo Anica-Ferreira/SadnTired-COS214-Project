@@ -7,8 +7,8 @@ using namespace std;
 #include <list>//J
 #include "WateringStrategy.h"
 #include "PlantState.h"
-#include "ISubject.h"//J
-#include "IObserver.h"    //J
+#include "../core/ISubject.h"//J
+#include "../core/IObserver.h"    //J
 
 class Plant {
 private://all J

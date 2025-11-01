@@ -7,11 +7,11 @@
 #include <string>
 #include <iostream>
 
-#include "Product.h"
-#include "DecorativePot.h"
-#include "GiftWrapping.h"
-#include "ProductBundle.h"
-#include "ProductItem.h"
+#include "../products/Product.h"
+#include "../products/DecorativePot.h"
+#include "../products/GiftWrapping.h"
+#include "../products/ProductBundle.h"
+#include "../products/ProductItem.h"
 
 using namespace std;
 
