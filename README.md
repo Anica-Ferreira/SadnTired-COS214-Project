@@ -4,32 +4,45 @@
 # Contents
 
 - [Introduction](#introduction)
-- [Setting up the Project](#setup)
+- [Setting up the Project for Web Demoing](#webdemo)
+- [Setting up the Project for Interface Demoing](#textdemo)
 - [Important Documents](#documents) 
 - [Team Members](#members)
 
 # Introduction
 
-This is where we yap about our project
+With Melancholy Nursery we designed a system to mimic the base functionalities of a real-life Plant Nursery. The main purpouses of this work was to test our understanding of Design Patterns as we've been taught to use them and our capabilities to tie it all together into a working application.
 
-# Setup
+# WebDemo
 
-## In the /Backend folder
+This system builds a web-based interface to showcase the baseline functionalities implemented within the system.
+
+## In the /project-root folder
 
 Run the following commands:
 
-make clean
-make api
-make runapi
+- make clean
+- make runapi
 
 ## In the /project folder
 
 Run the following commands:
 
-npm install
-node server.js
+- npm install
+- node server.js
 
-## Open http://localhost:3000
+Open http://localhost:3000
+
+# TextDemo
+
+This system is used to show some of the more complex underlying workings of the system through a text-based interface
+
+## In the /project-root folder
+
+Run the following commands:
+
+- make clean
+- make run
 
 # Documents
 
@@ -45,12 +58,57 @@ Links links links
   </tr>
 
   <tr>
-    <td>Silly Image</td>
-    <td>Randomn Personne</td>
+    <td><img src="https://lh3.googleusercontent.com/d/1M_n_4JPXkK4TiLsZRiYobH_X8ruOdOKQ=s200" /></td>
+    <td>Anica Ferreira</td>
+    <td>
+      <ul>
+        <li>API</li>
+        <li>Text-Based Demo</li>
+        <li></li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><img src="https://lh3.googleusercontent.com/d/1EGkv4JN2Rhh_XT4XU4FpjK_qkdv20055=s200" /></td>
+    <td>Chloe Kruger</td>
     <td>
       <ul>
         <li>Gaming</li>
         <li>Emotional Support</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><img src="https://lh3.googleusercontent.com/d/1bFvD1j0nANzhKSqXLSZ3izgvyrrJTDit=s200" /></td>
+    <td>Jordan Reddy</td>
+    <td>
+      <ul>
+        <li>Gaming</li>
+        <li>Emotional Support</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><img src="https://lh3.googleusercontent.com/d/1zWFitbhq_9D-C-FIZpz_7vmycwilKcgk=s200" /></td>
+    <td>Daniel Stevens</td>
+    <td>
+      <ul>
+        <li>Gaming</li>
+        <li>Emotional Support</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><img src="https://lh3.googleusercontent.com/d/1062SI6QeG6dessZZnaD11wkV2BtVD-2i=s200" /></td>
+    <td>Anika Coetzer</td>
+    <td>
+      <ul>
+        <li>Frontend</li>
+        <li>ReadMe</li>
       </ul>
     </td>
   </tr>
