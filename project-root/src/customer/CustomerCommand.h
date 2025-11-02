@@ -8,11 +8,13 @@
 #include "../core/NurserySystemFacade.h"
 #include "../greenhouse/Plant.h"
 #include "../inventory/Inventory.h"
+#include "customer/ShoppingCart.h"
 
 using namespace std;
 
 class Customer;
 class NurserySystemFacade;
+class ShoppingCart;
 
 class CustomerCommand {
     public:

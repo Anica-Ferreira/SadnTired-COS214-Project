@@ -7,6 +7,7 @@
 #include "../products/Product.h"
 #include "../products/ProductDecorator.h"
 #include "../inventory/Inventory.h"
+#include "../products/ProductBundle.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ class ShoppingCart {
         void addProduct(Product* product);
         Product* removeProduct(int index);
         void viewCart() const;
-        void clear(Inventory* shopInventory);
+        void clear();
         bool isEmpty() const;
 
         std::vector<Product*> getItems() const;

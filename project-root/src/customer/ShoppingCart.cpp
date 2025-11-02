@@ -20,7 +20,7 @@ ShoppingCart::~ShoppingCart() {
 void ShoppingCart::addProduct(Product* product) {
     if (product) {
         items.push_back(product->clone());
-        cout << "\033[1;32mProduct added to cart successfully!\033[0m\n";
+        cout << "\033[1;32m\nProduct added to cart successfully!\033[0m\n";
     } else {
         cout << "\033[1;31mError: Cannot add an empty product to the cart.\033[0m\n";
     }
@@ -35,30 +35,46 @@ Product* ShoppingCart::removeProduct(int index) {
 
 void ShoppingCart::viewCart() const {
     const string indent = "\t";
-    const int descWidth = 40;
+    const int descWidth = 44;
     const int priceWidth = 12;
 
-    cout << indent << "\033[1;36m==============================================================\033[0m\n";
+    const string pastelAmber = "\033[38;5;179m"; 
+    const string green = "\033[1;32m";
+    const string red = "\033[1;31m";
+    const string reset = "\033[0m";
+
+    cout << indent << pastelAmber << "=============================================================="
+         << reset << "\n";
     cout << indent << "                      Shopping Cart\n";
-    cout << indent << "\033[1;36m==============================================================\033[0m\n";
+    cout << indent << pastelAmber << "=============================================================="
+         << reset << "\n";
 
     if (items.empty()) {
-        cout << indent << "\033[1;31m                    Your cart is empty.\033[0m\n";
-        cout << indent << "\033[1;36m==============================================================\033[0m\n";
+        cout << indent << red << "                    Your cart is empty." << reset << "\n";
+        cout << indent << pastelAmber << "=============================================================="
+             << reset << "\n";
         return;
     }
 
     double total = 0.0;
 
-    // Header
-    cout << indent << left << setw(5) << "#" 
-         << setw(descWidth) << "Item Description" 
+    cout << indent << left << setw(5) << "#"
+         << setw(descWidth) << "Item"
          << right << setw(priceWidth) << "Price (R)" << "\n";
-    cout << indent << "\033[1;36m--------------------------------------------------------------\033[0m\n";
+    cout << indent << pastelAmber << "--------------------------------------------------------------"
+         << reset << "\n";
 
     for (size_t i = 0; i < items.size(); ++i) {
-        string desc = items[i]->getDescription();
-        double price = items[i]->getPrice();
+        Product* product = items[i];
+        double price = product->getPrice();
+
+        string name;
+        ProductBundle* bundle = dynamic_cast<ProductBundle*>(product);
+        if (bundle) {
+            name = bundle->getName(); 
+        } else {
+            name = product->getName();
+        }
 
         stringstream priceStream;
         priceStream << "R" << fixed << setprecision(2) << price;
@@ -66,8 +82,8 @@ void ShoppingCart::viewCart() const {
 
         size_t pos = 0;
         bool firstLine = true;
-        while (pos < desc.length()) {
-            string line = desc.substr(pos, descWidth);
+        while (pos < name.length()) {
+            string line = name.substr(pos, descWidth);
             pos += descWidth;
 
             if (firstLine) {
@@ -77,40 +93,32 @@ void ShoppingCart::viewCart() const {
                 firstLine = false;
             } else {
                 cout << indent << left << setw(5) << ""
-                     << setw(descWidth) << line
-                     << "\n";
+                     << setw(descWidth) << line << "\n";
             }
         }
 
         total += price;
     }
 
-    cout << indent << "\033[1;36m--------------------------------------------------------------\033[0m\n";
+    cout << indent << pastelAmber << "--------------------------------------------------------------"
+         << reset << "\n";
 
+    // Total in green
     stringstream totalStream;
     totalStream << "R" << fixed << setprecision(2) << total;
     string totalStr = totalStream.str();
 
-    cout << indent << left << setw(descWidth + 5) << "\033[1;36mTotal:\033[0m"
-         << right << setw(priceWidth) << "\t\t" << totalStr << "\n";
+    cout << indent << left << setw(5) << ""
+         << setw(descWidth) << green + string("Total:\t\t") + reset
+         << right << setw(priceWidth) << totalStr << "\n";
 
-    cout << indent << "\033[1;36m==============================================================\033[0m\n";
+    cout << indent << pastelAmber << "=============================================================="
+         << reset << "\n";
 }
 
-void ShoppingCart::clear(Inventory* shopInventory) {
+
+void ShoppingCart::clear() {
     for (Product* p : items) {
-        Plant* basePlant = nullptr;
-
-        if (auto decorator = dynamic_cast<ProductDecorator*>(p)) {
-            basePlant = decorator->getBasePlant();
-        } else {
-            basePlant = dynamic_cast<Plant*>(p);
-        }
-
-        if (basePlant && shopInventory) {
-            shopInventory->addPlant(basePlant);
-        }
-
         delete p;
     }
 

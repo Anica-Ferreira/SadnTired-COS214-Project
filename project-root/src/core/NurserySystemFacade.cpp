@@ -19,6 +19,7 @@
 #include "../orders/ConcreteOrderBuilder.h"
 #include "../products/Product.h"
 #include "../customer/ShoppingCart.h"
+#include "../orders/OrderDirector.h"
 
 #include <iostream>
 #include <sstream>
@@ -57,6 +58,9 @@ void NurserySystemFacade::initializeSubsystems() {
     nurseryInventory = new Inventory();
     shopInventory = new Inventory();
 
+    builder = new ConcreteOrderBuilder();
+    director = new OrderDirector();
+
     // Populate with sample data using factory
     populateSampleData();
 
@@ -72,8 +76,6 @@ void NurserySystemFacade::initializeSubsystems() {
     // Initialize customer and cart
     currentCustomer = new Customer("", "", "", "");
     currentCart = new ShoppingCart();
-
-    builder = new ConcreteOrderBuilder();
 }
 
 /**
@@ -148,9 +150,11 @@ void NurserySystemFacade::populateSampleData() {
         } 
     }
 
-    /*cout << "Sample data populated: " << nurseryInventory->size()
+    createSpecialBundles();
+
+    cout << "Sample data populated: " << nurseryInventory->size()
          << " plants in nursery, " << shopInventory->size()
-         << " plants in shop" << endl;*/
+         << " plants in shop" << endl;
 }
 
 /**
@@ -188,7 +192,7 @@ void NurserySystemFacade::resetCustomer() {
         currentCustomer->setPhone("");
     }
     if (currentCart) {
-        currentCart->clear(shopInventory);
+        currentCart->clear();
     }
 }
 
@@ -478,6 +482,7 @@ string NurserySystemFacade::getStockCounts() {
  * @param[in] experience [User experience level (if applicable)]
  * @return [JSON string with command execution result]
  */
+
 string NurserySystemFacade::executeCustomerCommand(
     const string& commandType,
     const string& plantName,
@@ -490,42 +495,34 @@ string NurserySystemFacade::executeCustomerCommand(
     GiftWrapping::WrappingType wrap
 ) {
     if (!validateCustomer()) {
-        return "{\"error\": \"Please set customer information first\"}";
+        return "Please set customer information first";
     }
 
     CustomerCommand* command = nullptr;
 
-    // --- Purchase command ---
     if (commandType == "purchase" && !plantName.empty()) {
         Plant* plant = shopInventory->get(plantName);
-        if (!plant) return "{\"error\": \"Plant not found in shop\"}";
+        if (!plant) return "Plant not found in shop";
 
         command = new PurchasePlantCommand(plant, pot, wrap, quantity, this);
     }
-    // --- Check stock command ---
     else if (commandType == "check_stock" && !plantName.empty()) {
         command = new CheckStockCommand(plantName, this);
     }
-    // --- Get plant info command ---
     else if (commandType == "get_info" && !plantName.empty()) {
         command = new GetPlantInfoCommand(plantName, this);
     }
-    // --- Ask question command ---
     else if (commandType == "ask_question" && !question.empty()) {
         command = new AskQuestionCommand(question, this);
     }
-    // --- Request recommendation command ---
     else if (commandType == "get_recommendation") {
         command = new RequestRecommendationCommand(sunlight, space, experience, this);
     }
     else {
-        return "{\"error\": \"Invalid command or missing parameters\"}";
+        return "Invalid command or missing parameters";
     }
 
-    // Execute the command
-    string result = command ? command->execute(currentCustomer)
-                            : "{\"error\": \"Failed to create command\"}";
-
+    string result = command ? command->execute(currentCustomer) : "Failed to create command";
     delete command;
     return result;
 }
@@ -651,4 +648,16 @@ void NurserySystemFacade::addOrderWrapping(GiftWrapping::WrappingType type) {
 
 Product* NurserySystemFacade::finalizeOrder() {
     return builder->getProduct();
+}
+
+void NurserySystemFacade::createSpecialBundles() {
+    specialBundles.clear();
+
+    ProductBundle* valentines = director->makeValentinesBundle(*builder);
+    ProductBundle* succulent = director->makeSucculentBundle(*builder);
+    ProductBundle* spring = director->makeSpringBundle(*builder);
+
+    specialBundles.push_back(valentines);
+    specialBundles.push_back(succulent);
+    specialBundles.push_back(spring);
 }

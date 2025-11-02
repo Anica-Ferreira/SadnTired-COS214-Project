@@ -19,6 +19,10 @@ class ProductItem : public Product {
         string getName() const override;
         double getPrice() const override;
         string getDescription() const override;
+        string getTitle() const {
+            return getName();
+        }
+
 
         Plant* getBasePlant() const override;
 };

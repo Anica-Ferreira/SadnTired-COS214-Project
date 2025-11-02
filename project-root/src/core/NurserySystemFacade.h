@@ -21,7 +21,8 @@ class Plant;
 class DecorativePot;
 class GiftWrapping;
 class Product;
-
+class ProductBundle;
+class OrderDirector;
 
 class NurserySystemFacade {
 private:
@@ -35,8 +36,10 @@ private:
     // Real inventory objects
     Inventory* nurseryInventory;
     Inventory* shopInventory;
+    vector<Product*> specialBundles;
 
     ConcreteOrderBuilder* builder;
+    OrderDirector* director;
 public:
     NurserySystemFacade();
     ~NurserySystemFacade();
@@ -121,6 +124,10 @@ public:
     void addOrderPot(DecorativePot::PotType type);
     void addOrderWrapping(GiftWrapping::WrappingType type);
     Product* finalizeOrder();
+
+    //bundles
+    void createSpecialBundles();
+    vector<Product*> getSpecialBundles() const { return specialBundles; }
 
 private:
     void initializeSubsystems();

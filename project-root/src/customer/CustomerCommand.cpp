@@ -25,14 +25,27 @@ PurchasePlantCommand::PurchasePlantCommand(Plant* p, DecorativePot::PotType pt, 
  * @return [Result message of the purchase operation]
  */
 
-string PurchasePlantCommand::execute(Customer* customer){
-    if (facade && customer && plant) {
-        for (int i = 0; i < quantity; ++i) {
-            //facade->addToCart(plant, pot, wrap);
-        }
-        return "Added " + to_string(quantity) + " " + plant->getName() + "(s) to cart";
+string PurchasePlantCommand::execute(Customer* customer) {
+    if (!facade || !customer) {
+        return "Error: System not available.";
     }
-    return "Error: Could not add plant to cart";
+
+    ShoppingCart* cart = facade->getCart();
+    if (!cart || cart->getItems().empty()) {
+        return "Your cart is empty. Nothing to purchase.";
+    }
+
+    double total = 0.0;
+    for (Product* product : cart->getItems()) {
+        if (product) total += product->getPrice();
+    }
+
+    cout << "\033[1;32m--- Thank you for your purchase! ---\n\033[0m";
+    cout << "Total amount paid: R" << fixed << setprecision(2) << total << "\n\n";
+
+    cart->clear();
+
+    return "Purchase completed successfully.";
 }
 
 /**

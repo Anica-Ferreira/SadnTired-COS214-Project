@@ -71,12 +71,25 @@ double ProductBundle::getPrice() const {
     return total;
 }
 
+/**
+ * @brief [Gets the bundle title only, without listing contents]
+ * @return [The bundle name]
+ */
+string ProductBundle::getTitle() const {
+    return name;
+}
+
 string ProductBundle::getDescription() const {
-    string desc = "Bundle: " + name + "\nContains:\n";
+    string desc;
     for (size_t i = 0; i < items.size(); i++) {
+        
         desc += "  - " + items[i]->getDescription() + "\n";
     }
-    desc += "Total Price: R" + to_string(getPrice());
+
+    stringstream priceStream;
+    priceStream << fixed << setprecision(2) << getPrice();
+
+    desc += "\033[38;5;215m\nTotal Price: R" + priceStream.str() + "\033[0m";
     return desc;
 }
 

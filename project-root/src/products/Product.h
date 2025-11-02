@@ -27,6 +27,9 @@ class Product {
         virtual string getName() const;
         virtual double getPrice() const;
         virtual string getDescription() const;
+        virtual string getTitle() const {
+            return getName();
+        }
 
         virtual void printProduct() const;
 };

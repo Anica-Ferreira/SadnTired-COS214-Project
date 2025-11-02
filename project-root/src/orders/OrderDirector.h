@@ -8,8 +8,9 @@
 
 class OrderDirector {
     public:
-        void makeValentinesBundle(ConcreteOrderBuilder& builder);
-        void makeSpringBundle(ConcreteOrderBuilder& builder, ProductBundle* bundle);
+        ProductBundle* makeValentinesBundle(ConcreteOrderBuilder& builder);
+        ProductBundle* makeSpringBundle(ConcreteOrderBuilder& builder);
+        ProductBundle* makeSucculentBundle(ConcreteOrderBuilder& builder);
     private:
         OrderBuilder* builder;
 };

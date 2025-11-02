@@ -4,6 +4,7 @@
 #include "products/DecorativePot.h"
 #include "products/GiftWrapping.h"
 #include "customer/CustomerCommand.h"
+#include "products/ProductBundle.h"
 
 #include <iostream>
 #include <vector>
@@ -74,6 +75,59 @@ void displayPlantCard(int index, const string& name, double price, int width = 2
     cout << indentation << "+" << border << "+\n";
 }
 
+void pressEnterToContinue() {
+    cout << "\nPress Enter to continue...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+}
+
+void displaySpecialBundlesMenu(NurserySystemFacade* facade) {
+    // Get bundles as Product*
+    vector<Product*> bundles = facade->getSpecialBundles();
+
+    clearConsole();
+    cout << "\033[1;32m\t\t\t--- ✿ Special Bundles ✿ ---\033[0m\n\n";
+
+    int index = 1;
+    const int screenWidth = 70;
+    const string line = string(screenWidth, '-');
+
+    for (Product* p : bundles) {
+        if (ProductBundle* bundle = dynamic_cast<ProductBundle*>(p)) {
+            cout << "\033[1;32m" << line << "\033[0m\n";
+
+            string title = "Bundle #" + to_string(index) + ": " + bundle->getTitle();
+            int padding = (screenWidth - title.length()) / 2;
+            cout << string(padding, ' ') << "\033[1;35m" << title << "\033[0m\n\n";
+
+            cout << bundle->getDescription() << "\n";
+
+            cout << "\033[1;32m" << line << "\033[0m\n\n";
+
+        } else {
+            // Single product fallback
+            cout << "\033[1;36mItem #" << index << ":\033[0m " << p->getDescription() << "\n";
+            cout << "\033[1;32m" << line << "\033[0m\n\n";
+        }
+
+        index++;
+    }
+
+    cout << "0. <-- Back\n\n";
+    cout << "Select a bundle to add to cart: ";
+
+    int choice = readInt();
+    if (choice > 0 && choice <= (int)bundles.size()) {
+        Product* selected = bundles[choice - 1];
+        facade->getCart()->addProduct(selected);
+        cout << "\nAdded \"" << selected->getTitle() << "\" to your cart!\n";
+
+        cout << "\nPress Enter to continue...";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.get();
+    }
+}
+
 /* ------------------------------------------ MAIN FUNCTION ------------------------------------------ */
 
 int main() {
@@ -109,10 +163,9 @@ int main() {
 
                 do {
                     clearConsole();
-                    cout << "\033[1;32m\t\t      --- Customer Menu ---\n\n\033[0m";
+                    cout << "\033[1;32m\t\t\t\t         --- Customer Menu ---\n\n\033[0m";
 
-                    cout << "1. Browse Plants  |  2. View Cart  |  3. Search Plants  |   0. <--Back \n\n";
-                    cout << "Choice: ";
+                    cout << "\033[1;32m|\033[0m" << " 1. Browse Plants " << "\033[1;32m|\033[0m" << " 2. Search Plants " << "\033[1;32m|\033[0m" << " 3. Special Bundles " << "\033[1;32m|\033[0m" << " 4. View Cart " << "\033[1;32m|\033[0m"   << " 5. Customer Support " << "\033[1;32m|\033[0m" << " 0. <--Back " << "\033[1;32m|\033[0m\n\n"; cout << "Choice: ";
 
                     custChoice = readInt();
 
@@ -276,13 +329,14 @@ int main() {
                                                 nursery.addToCart(finalProduct);
                                                 nursery.getShopInventory()->removePlant(selectedPlant);
                                                 selectedPlant = NULL;
+                                                pressEnterToContinue();
                                         }
                                     }
                                 }
                             }
                         }break;
 
-                        case 2:
+                        case 4:
                         {   
                             /* ------------------------------------------ VIEW CART ------------------------------------------ */
                             
@@ -291,7 +345,7 @@ int main() {
                                 clearConsole();
                                 
                                 cout << "\033[1;32m\t\t\t     --- Cart Summary ---\n\n\033[0m";
-                                cout << "\t\t1. Checkout |  2. Remove Item |  0. <-- Back \n\n";
+                                cout << "\t\t"  << "\033[1;32m|\033[0m 1. Checkout " << "\033[1;32m|\033[0m 2. Remove Item " << "\033[1;32m|\033[0m 0. <-- Back " << "\033[1;32m|\033[0m\n\n";
 
                                 nursery.viewCart();
 
@@ -299,12 +353,29 @@ int main() {
                                 int cartChoice = readInt();
 
                                 switch (cartChoice) {
+                                    /* ------------------------------------------ CHECKOUT ------------------------------------------ */
                                     case 1:
-                                    {
-                                        cout << "\033[1;32mCart cleared successfully!\033[0m\n";
+                                    {   
+                                        ShoppingCart* cart = nursery.getCart();
+                                        if (cart && !cart->getItems().empty()) {
+                                            double total = 0.0;
+                                            for (Product* p : cart->getItems()) {
+                                                total += p->getPrice();
+                                            }
+
+                                            clearConsole();
+                                            cout << "\033[1;32m--- Thank you for your purchase!-- \n\033[0m\n";
+                                            cout << "Total amount paid: R" << fixed << setprecision(2) << total << "\n\n";
+
+                                            cart->clear();
+
+                                            pressEnterToContinue();
+                                        } else {
+                                            cout << "\033[1;31mYour cart is empty.\033[0m\n";
+                                            pressEnterToContinue();
+                                        }
                                     }break;
                                     
-
                                     case 2:
                                     {   
                                         /* ------------------------------------------ REMOVE ITEM FROM CART ------------------------------------------ */
@@ -339,8 +410,139 @@ int main() {
                         }
                         break;
 
+                        /* ------------------------------------------ CUSTOMER SUPPORT ------------------------------------------ */
+                        case 5: 
+                        {
+                            bool inSupport = true;
+                            while (inSupport) {
+                                clearConsole();
+                                cout << "\033[1;32m\t--- Customer Support ---\033[0m\n\n";
+                                cout << "1. Request a plant\n";
+                                cout << "2. Ask for advice\n";
+                                cout << "3. Get plant recommendation\n";
+                                cout << "0. Back\n\nChoice: ";
+                                int supportChoice = readInt();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+                                /* ------------------------------------------ CHECK STOCK ------------------------------------------ */
+                                switch (supportChoice) {
+                                
+                                    case 1: {
+                                        cout << "Enter plant name you want: ";
+                                        string plantName;
+                                        getline(cin, plantName);
+
+                                        string response = nursery.executeCustomerCommand(
+                                            "check_stock",
+                                            plantName,
+                                            0,
+                                            "", "", "", "",
+                                            DecorativePot::NONE,
+                                            GiftWrapping::NONE
+                                        );
+                                        cout << "\nResponse: " << response << "\n";
+
+                                        if(response.find("available in the shop") != string::npos) {
+                                            cout << "\nWould you like to add this to your cart? (y/n): ";
+                                            char choice;
+                                            cin >> choice;
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+                                            if (choice == 'y' || choice == 'Y') {
+                                                Plant* selectedPlant = nursery.getShopInventory()->get(plantName);
+                                                if (selectedPlant) {
+                                                    
+                                                    nursery.startNewOrder();
+                                                    nursery.setOrderPlant(selectedPlant);
+                                                    nursery.addOrderPot(DecorativePot::NONE);
+                                                    nursery.addOrderWrapping(GiftWrapping::NONE);
+
+                                                    Product* selectedProduct = nursery.finalizeOrder();
+                                                    nursery.getCart()->addProduct(selectedProduct);
+
+                                                    cout << "\n'" << plantName << "' has been added to your cart!\n";
+                                                }
+                                            }
+                                        }
+
+                                        pressEnterToContinue();
+                                        break;
+                                    }
+                                    case 2: {
+                                        cout << "Enter your question: ";
+                                        string question;
+                                        getline(cin, question);
+
+                                        string response = nursery.executeCustomerCommand(
+                                            "ask_question",
+                                            "",
+                                            0,
+                                            question,
+                                            "",
+                                            "",
+                                            "",
+                                            DecorativePot::NONE,
+                                            GiftWrapping::NONE
+                                        );
+                                        cout << "\nResponse: " << response << "\n";
+                                        pressEnterToContinue();
+                                        break;
+                                    }
+                                    case 3: {
+                                        string sunlight, space, experience;
+
+                                        //Validate sunlight
+                                        while (true) {
+                                            cout << "Enter sunlight condition (low/medium/high): ";
+                                            getline(cin, sunlight);
+                                            if (sunlight == "low" || sunlight == "medium" || sunlight == "high") break;
+                                            cout << "Invalid input. Please enter low, medium, or high.\n";
+                                        }
+
+                                        //Validate space
+                                        while (true) {
+                                            cout << "Enter space availability (small/medium/large): ";
+                                            getline(cin, space);
+                                            if (space == "small" || space == "medium" || space == "large") break;
+                                            cout << "Invalid input. Please enter small, medium, or large.\n";
+                                        }
+
+                                        //Validate experience
+                                        while (true) {
+                                            cout << "Enter experience level (beginner/intermediate/expert): ";
+                                            getline(cin, experience);
+                                            if (experience == "beginner" || experience == "intermediate" || experience == "expert") break;
+                                            cout << "Invalid input. Please enter beginner, intermediate, or expert.\n";
+                                        }
+
+                                        string response = nursery.executeCustomerCommand(
+                                            "get_recommendation",
+                                            "",
+                                            0,
+                                            "",
+                                            sunlight,
+                                            space,
+                                            experience,
+                                            DecorativePot::NONE,
+                                            GiftWrapping::NONE
+                                        );
+                                        cout << "\nRecommended Plants: " << response << "\n";
+                                        pressEnterToContinue();
+                                        break;
+                                    }
+                                    case 0:
+                                        inSupport = false;
+                                        break;
+                                    default:
+                                        cout << "Invalid choice. Try again.\n";
+                                        pressEnterToContinue();
+                                    }
+                                }
+                                break;
+                            }
+
                         /* ------------------------------------------ SEARCH ------------------------------------------ */ 
-                        case 3:
+                        case 2:
                         {   
                             bool backToMenu = false;
 
@@ -499,6 +701,7 @@ int main() {
                                                     nursery.addToCart(finalProduct);
                                                     nursery.getShopInventory()->removePlant(selectedPlant);
                                                     selectedPlant = NULL;
+                                                    pressEnterToContinue();
                                             }
                                         }
                                         searching = false;
@@ -506,6 +709,14 @@ int main() {
                                 }
                             }
                         }break;
+
+                        /* ------------------------------------------ SPECIAL BUNDLES ------------------------------------------ */
+                        case 3:
+                        {
+                            displaySpecialBundlesMenu(&nursery);
+                            break;
+                        }
+                            
 
                         case 0: break;
                         default: cout << "\033[1;31mInvalid option\033[0m\n";

@@ -18,6 +18,7 @@ class ProductBundle : public Product {
         string getName() const override;
         double getPrice() const override;
         string getDescription() const override;
+        string getTitle() const;
 
         Product* clone() const override;
         void printProduct() const override;

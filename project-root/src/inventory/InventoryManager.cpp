@@ -94,8 +94,9 @@ string InventoryManager::getPlantDetails(const string& plantName) {
  * @param[in,out] plantName [Name of the plant to check stock for]
  * @return [JSON string containing stock information]
  */
+
 string InventoryManager::checkStock(const string& plantName) {
-    cout << "InventoryManager: Checking stock for plant: " << plantName << endl;
+    cout << "\033[1;32m\nInventoryManager: Checking stock for plant: " << plantName << "\033[0m" << endl;
 
     vector<Plant*> shopPlants = shopInventory->getAll();
     int count = 0;
@@ -106,13 +107,12 @@ string InventoryManager::checkStock(const string& plantName) {
         }
     }
 
-    stringstream response;
-    response << "{\"plant_name\": \"" << plantName
-             << "\", \"in_stock\": " << (count > 0 ? "true" : "false")
-             << ", \"quantity\": " << count
-             << ", \"status\": \"" << (count > 0 ? "available" : "out_of_stock") << "\"}";
-
-    return response.str();
+    if (count > 0) {
+        return "Hello! I just checked for you and we currently have " + 
+               to_string(count) + " '" + plantName + "' available in the shop.";
+    }else {
+        return "Sorry but I'm afraid '" + plantName + "' is currently out of stock. Would you like me to recommend something similar?";
+    }
 }
 
 /**
