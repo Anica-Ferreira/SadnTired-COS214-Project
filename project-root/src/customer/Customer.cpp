@@ -26,7 +26,7 @@ Customer::Customer(const string& customerName, const string& customerSurname,
     : name(customerName), surname(customerSurname),
       email(customerEmail), phoneNum(customerPhone) {
 
-    cout << "Customer created: " << getName() << " (" << email << ")" << endl;
+    //cout << "Customer created: " << getName() << " (" << email << ")" << endl;
 }
 
 /**

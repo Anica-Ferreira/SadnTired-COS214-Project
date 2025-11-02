@@ -18,14 +18,14 @@
  */
 InventoryManager::InventoryManager(WebAPIAdapter* adapter, Inventory* nurseryInv, Inventory* shopInv)
     : apiAdapter(adapter), nurseryInventory(nurseryInv), shopInventory(shopInv) {
-    cout << "Inventory Manager initialized with real inventory data" << endl;
+    //cout << "Inventory Manager initialized with real inventory data" << endl;
 }
 
 /**
  * @brief [Destroys the InventoryManager object]
  */
 InventoryManager::~InventoryManager() {
-    cout << "Inventory Manager destroyed" << endl;
+    //cout << "Inventory Manager destroyed" << endl;
     // Don't delete inventories here - they're managed elsewhere
 }
 

@@ -10,20 +10,24 @@ class GiftWrapping : public ProductDecorator {
         enum WrappingType {
             RED_BOW,
             BROWN_PAPER,
-            FLORAL_WRAP
+            FLORAL_WRAP,
+            NONE
         };
 
         GiftWrapping(Product* product, WrappingType type);
         ~GiftWrapping();
 
         double getPrice() const override;
-        std::string getName() const override;
+        string getName() const override;
+        string getDescription() const override;
         Product* clone() const override;
+
+        static string getWrappingName(WrappingType type);
+        static double getWrappingPrice(WrappingType type);
 
     private:
         WrappingType type;
-        string getWrappingName() const;
-        double getWrappingPrice() const;
+        
         
 };
 

@@ -17,7 +17,7 @@ using namespace std;
  * @param[in] adapter [Pointer to the WebAPIAdapter for system communication]
  */
 PlantNursery::PlantNursery(WebAPIAdapter* adapter) : apiAdapter(adapter) {
-    cout << "Plant Nursery initialized" << endl;
+    //cout << "Plant Nursery initialized" << endl;
 }
 
 /**

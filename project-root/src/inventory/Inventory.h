@@ -16,6 +16,7 @@ public:
     void addPlant(Plant* plant);
     vector<Plant*> getAll() const;
     Plant* get(int index) const;
+    Plant* get(const string& name) const;
     int size() const;
 
     void waterAll();
@@ -26,6 +27,10 @@ public:
     void removePlant(Plant* plant);
     // Moves all ready-for-sale plants from this inventory to another
     void moveReadyPlantsTo(Inventory& store);
+
+    //get quantity of specific plant by name
+    int getQuantity(const string& plantName) const;
+
 };
 
 #endif // INVENTORY_H

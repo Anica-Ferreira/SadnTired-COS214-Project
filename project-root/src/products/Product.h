@@ -14,6 +14,7 @@ class Product {
 
         virtual double getPrice() const = 0;
         virtual std::string getName() const = 0;
+        virtual std::string getDescription() const = 0;
         virtual Product* clone() const = 0;
 
         virtual void printProduct() const;

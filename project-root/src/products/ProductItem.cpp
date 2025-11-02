@@ -12,9 +12,10 @@
  * @param[in] name [The name of the product item]
  * @param[in] price [The price of the product item]
  */
-ProductItem::ProductItem(const string& name, double price) {
+ProductItem::ProductItem(const string name, double price, const string description) {
     this->name = name;
     this->price = price;
+    this->description = description;
 }
 
 /**
@@ -34,8 +35,16 @@ double ProductItem::getPrice() const {
  * @brief [Gets the name of the product item]
  * @return [The product name]
  */
-std::string ProductItem::getName() const {
+string ProductItem::getName() const {
     return name;
+}
+
+/**
+ * @brief [Gets the description of the product item]
+ * @return [The product name]
+ */
+string ProductItem::getDescription() const {
+    return description;
 }
 
 /**

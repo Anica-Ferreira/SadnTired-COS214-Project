@@ -16,8 +16,14 @@
 #include "../greenhouse/Plant.h"
 #include "../greenhouse/PlantFactory.h"
 #include "../customer/CustomerCommand.h"
+#include "../orders/ConcreteOrderBuilder.h"
+#include "../products/Product.h"
+#include "../customer/ShoppingCart.h"
+
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
+#include <ctime>
 
 /**
  * @brief [Constructs a new NurserySystemFacade object]
@@ -28,8 +34,10 @@ NurserySystemFacade::NurserySystemFacade()
       inventoryManager(nullptr), staffCoordinator(nullptr),
       plantNursery(nullptr), nurseryInventory(nullptr), shopInventory(nullptr) {
 
+    srand((unsigned int)time(nullptr));
+
     initializeSubsystems();
-    cout << "Nursery System Facade initialized with real data backend" << endl;
+    //cout << "Nursery System Facade initialized with real data backend" << endl;
 }
 
 /**
@@ -38,7 +46,7 @@ NurserySystemFacade::NurserySystemFacade()
  */
 NurserySystemFacade::~NurserySystemFacade() {
     cleanupSubsystems();
-    cout << "Nursery System Facade destroyed" << endl;
+    //cout << "Nursery System Facade destroyed" << endl;
 }
 
 /**
@@ -64,6 +72,8 @@ void NurserySystemFacade::initializeSubsystems() {
     // Initialize customer and cart
     currentCustomer = new Customer("", "", "", "");
     currentCart = new ShoppingCart();
+
+    builder = new ConcreteOrderBuilder();
 }
 
 /**
@@ -78,10 +88,11 @@ void NurserySystemFacade::cleanupSubsystems() {
     delete apiAdapter;
     delete nurseryInventory;
     delete shopInventory;
+    delete builder;
 }
 
 /**
- * @brief [Populates the system with sample plant data]
+ * @brief [Populates the system with random sample plant data]
  */
 void NurserySystemFacade::populateSampleData() {
     // Create factories
@@ -89,29 +100,57 @@ void NurserySystemFacade::populateSampleData() {
     FlowerFactory flowerFactory;
     TreeFactory treeFactory;
 
-    // Add sample plants to nursery using factory
-    nurseryInventory->addPlant(flowerFactory.createPlant("Rose", 12.99, "Beautiful red roses"));
-    nurseryInventory->addPlant(flowerFactory.createPlant("Tulip", 8.99, "Colorful spring tulips"));
-    nurseryInventory->addPlant(flowerFactory.createPlant("Lavender", 10.99, "Fragrant purple lavender"));
-    nurseryInventory->addPlant(succulentFactory.createPlant("Cactus", 6.99, "Low maintenance cactus"));
-    nurseryInventory->addPlant(succulentFactory.createPlant("Aloe Vera", 9.99, "Healing aloe plant"));
-    nurseryInventory->addPlant(treeFactory.createPlant("Bonsai", 49.99, "Miniature bonsai tree"));
-    nurseryInventory->addPlant(treeFactory.createPlant("Maple", 29.99, "Beautiful maple tree"));
+    struct PlantType {
+        string name;
+        string description;
+        string category;
+    };
 
-    // Add some plants to shop (ready for sale)
-    Plant* sunflower = flowerFactory.createPlant("Sunflower", 14.99, "Bright sunflowers");
-    // Set sunflower to ready state if needed
-    shopInventory->addPlant(sunflower);
+    vector<PlantType> plantOptions = {
+        {"Rose", "Beautiful red roses", "Flower"},
+        {"Tulip", "Colorful spring tulips", "Flower"},
+        {"Lavender", "Fragrant purple lavender", "Flower"},
+        {"Cactus", "Low maintenance cactus", "Succulent"},
+        {"Aloe Vera", "Healing aloe plant", "Succulent"},
+        {"Bonsai", "Miniature bonsai tree", "Tree"},
+        {"Maple Tree", "Beautiful maple tree", "Tree"},
+        {"Sunflower", "Bright sunflowers", "Flower"},
+        {"Snake Plant", "Air purifying snake plant", "Succulent"},
+        {"Oak", "Strong oak tree", "Tree"}
+    };
 
-    Plant* snakePlant = succulentFactory.createPlant("Snake Plant", 18.99, "Air purifying snake plant");
-    shopInventory->addPlant(snakePlant);
+    int totalPlants = 10 + rand() % 11;
 
-    Plant* oak = treeFactory.createPlant("Oak", 39.99, "Strong oak tree");
-    shopInventory->addPlant(oak);
+    for(int i = 0; i < totalPlants; ++i) {
+        int idx = rand() % plantOptions.size();
+        PlantType p = plantOptions[idx];
 
-    cout << "Sample data populated: " << nurseryInventory->size()
+        Plant* plant = nullptr;
+        if(p.category == "Flower"){
+            plant = flowerFactory.createPlant(p.name, 5 + rand() % 15, p.description);
+        }else if (p.category == "Succulent"){
+            plant = succulentFactory.createPlant(p.name, 5 + rand() % 15, p.description);
+        }else if (p.category == "Tree"){
+            plant = treeFactory.createPlant(p.name, 20 + rand() % 40, p.description);
+        }
+        
+        if (rand() % 2 == 0){
+            //set to dry or watered randomly
+            if(rand() % 2 == 0){
+                plant->setState(new WateredState());
+            }else{
+                plant->setState(new DryState());
+            }
+            nurseryInventory->addPlant(plant);
+        }else{
+            plant->setState(new ReadyForSaleState());
+            shopInventory->addPlant(plant);
+        } 
+    }
+
+    /*cout << "Sample data populated: " << nurseryInventory->size()
          << " plants in nursery, " << shopInventory->size()
-         << " plants in shop" << endl;
+         << " plants in shop" << endl;*/
 }
 
 /**
@@ -219,26 +258,14 @@ string NurserySystemFacade::checkPlantStock(const string& plantName) {
  * @param[in,out] quantity [Quantity to add]
  * @return [JSON string indicating success or failure]
  */
-string NurserySystemFacade::addToCart(const string& plantName, int quantity) {
-    if (!validateCustomer()) {
-        return "{\"error\": \"Please set customer information first\"}";
-    }
 
-    // Check if plant is available
-    string stockCheck = checkPlantStock(plantName);
-    if (stockCheck.find("\"in_stock\": false") != string::npos) {
-        return "{\"error\": \"Plant not available: " + plantName + "\"}";
-    }
-
-    // Add to cart
+void NurserySystemFacade::addToCart(Product* product) {
+    //build the product and convert from plant to an actual product
+ 
     if (currentCart) {
-        currentCart->addItem(plantName, quantity);
-        return "{\"status\": \"success\", \"message\": \"Added " + to_string(quantity) +
-               " " + plantName + "(s) to cart\", \"customer\": \"" +
-               currentCustomer->getName() + "\"}";
+        currentCart->addProduct(product);
     }
 
-    return "{\"error\": \"Cart not available\"}";
 }
 
 /**
@@ -246,6 +273,8 @@ string NurserySystemFacade::addToCart(const string& plantName, int quantity) {
  * @param[in,out] plantName [Name of the plant to remove]
  * @return [JSON string indicating success or failure]
  */
+
+ /*
 string NurserySystemFacade::removeFromCart(const string& plantName) {
     if (!validateCustomer()) {
         return "{\"error\": \"No customer set\"}";
@@ -257,12 +286,13 @@ string NurserySystemFacade::removeFromCart(const string& plantName) {
     }
 
     return "{\"error\": \"Cart not available\"}";
-}
+}*/
 
 /**
  * @brief [Views the current shopping cart contents]
  * @return [JSON string containing cart contents]
  */
+/*
 string NurserySystemFacade::viewCart() {
     if (!validateCustomer()) {
         return "{\"error\": \"No customer set\"}";
@@ -281,7 +311,7 @@ string NurserySystemFacade::viewCart() {
     cartJson << "], \"total\": 39.98}";
 
     return cartJson.str();
-}
+}*/
 
 /**
  * @brief [Processes checkout for the current shopping cart]
@@ -440,32 +470,43 @@ string NurserySystemFacade::getStockCounts() {
  * @param[in] experience [User experience level (if applicable)]
  * @return [JSON string with command execution result]
  */
-string NurserySystemFacade::executeCustomerCommand(const string& commandType,
-                                                 const string& plantName,
-                                                 int quantity,
-                                                 const string& question,
-                                                 const string& sunlight,
-                                                 const string& space,
-                                                 const string& experience) {
-
+string NurserySystemFacade::executeCustomerCommand(
+    const string& commandType,
+    const string& plantName,
+    int quantity,
+    const string& question,
+    const string& sunlight,
+    const string& space,
+    const string& experience,
+    DecorativePot::PotType pot,
+    GiftWrapping::WrappingType wrap
+) {
     if (!validateCustomer()) {
         return "{\"error\": \"Please set customer information first\"}";
     }
 
     CustomerCommand* command = nullptr;
 
+    // --- Purchase command ---
     if (commandType == "purchase" && !plantName.empty()) {
-        command = new PurchasePlantCommand(plantName, quantity, this);
+        Plant* plant = shopInventory->get(plantName);
+        if (!plant) return "{\"error\": \"Plant not found in shop\"}";
+
+        command = new PurchasePlantCommand(plant, pot, wrap, quantity, this);
     }
+    // --- Check stock command ---
     else if (commandType == "check_stock" && !plantName.empty()) {
         command = new CheckStockCommand(plantName, this);
     }
+    // --- Get plant info command ---
     else if (commandType == "get_info" && !plantName.empty()) {
         command = new GetPlantInfoCommand(plantName, this);
     }
+    // --- Ask question command ---
     else if (commandType == "ask_question" && !question.empty()) {
         command = new AskQuestionCommand(question, this);
     }
+    // --- Request recommendation command ---
     else if (commandType == "get_recommendation") {
         command = new RequestRecommendationCommand(sunlight, space, experience, this);
     }
@@ -473,13 +514,12 @@ string NurserySystemFacade::executeCustomerCommand(const string& commandType,
         return "{\"error\": \"Invalid command or missing parameters\"}";
     }
 
-    if (command) {
-        string result = command->execute(currentCustomer);
-        delete command;
-        return result;
-    }
+    // Execute the command
+    string result = command ? command->execute(currentCustomer)
+                            : "{\"error\": \"Failed to create command\"}";
 
-    return "{\"error\": \"Failed to create command\"}";
+    delete command;
+    return result;
 }
 
 /**
@@ -570,4 +610,33 @@ void NurserySystemFacade::clearCart() {
     if (currentCart) {
         currentCart->clear();
     }
+}
+
+Inventory* NurserySystemFacade::getNurseryInventory() { 
+    return nurseryInventory; 
+}
+
+Inventory* NurserySystemFacade::getShopInventory() { 
+    return shopInventory; 
+}
+
+void NurserySystemFacade::startNewOrder() {
+    delete builder;
+    builder = new ConcreteOrderBuilder();
+}
+
+void NurserySystemFacade::setOrderPlant(Plant* plant) {
+    builder->setPlant(plant);
+}
+
+void NurserySystemFacade::addOrderPot(DecorativePot::PotType type) {
+    builder->addPot(type);
+}
+
+void NurserySystemFacade::addOrderWrapping(GiftWrapping::WrappingType type) {
+    builder->addWrapping(type);
+}
+
+Product* NurserySystemFacade::finalizeOrder() {
+    return builder->getProduct();
 }

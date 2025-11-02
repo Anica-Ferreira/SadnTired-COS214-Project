@@ -5,6 +5,7 @@ using namespace std;
 #include <string>
 #include <iostream>//J
 #include <list>//J
+#include <iomanip> 
 #include "WateringStrategy.h"
 #include "PlantState.h"
 #include "../core/ISubject.h"//J
@@ -65,6 +66,9 @@ public:
     void Detach(IObserver* observer) ; //remove observer from list
     void Notify() ;//loop through observers and update on all
     void signalNeed(string need);//set need and call notify, extension
+
+    //for demo main
+    void printSummary(int stock) const;
 };
 
 class Succulent : public Plant {

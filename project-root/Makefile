@@ -1,11 +1,12 @@
-filesToCompile := $(shell find src -name "*.cpp" ! -name "Api.cpp")
-filesToDelete = main api
-filesInCoverageReport = main
-
+filesToCompile := $(shell find src -name "*.cpp" ! -name "Api.cpp" ! -name "TestingMain.cpp" ! -name "DemoMain.cpp")
 INCLUDE_PATHS := -I src
+filesToDelete = main api test demo
 
-main:
-	g++ -g -std=c++17 $(filesToCompile) $(INCLUDE_PATHS) -o main
+test: $(filesToCompile)
+	g++ -g -std=c++17 $(filesToCompile) src/TestingMain.cpp $(INCLUDE_PATHS) -o test
+
+demo: $(filesToCompile)
+	g++ -g -std=c++17 $(filesToCompile) src/DemoMain.cpp $(INCLUDE_PATHS) -o demo
 
 api:
 	g++ -g -std=c++17 \
@@ -15,15 +16,14 @@ api:
 	    $(shell find src -name "*.cpp") \
 	    -o api -pthread
 
-run: main
-	./main
+runtest: test
+	./test
+
+run: demo
+	./demo
 
 runapi: api
 	./api
-
-runboth: main api
-	# run API in background, then main program
-	./api & ./main
 
 clean:
 	rm -f *.o *.gcov *.gcda *.gcno *.gz *.json *.html *.css output.txt coverage.txt valgrind.txt $(filesToDelete)

@@ -17,6 +17,8 @@ class ProductBundle : public Product {
         void add(Product* item);
         string getName() const override;
         double getPrice() const override;
+        string getDescription() const override;
+
         Product* clone() const override;
         void printProduct() const override;
 

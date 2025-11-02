@@ -3,6 +3,9 @@
 
 #include <string>
 #include <vector>
+#include "../products/DecorativePot.h"
+#include "../products/GiftWrapping.h"
+
 using namespace std;
 
 // Forward declarations
@@ -13,6 +16,12 @@ class InventoryManager;
 class StaffCoordinator;
 class PlantNursery;
 class Inventory;
+class ConcreteOrderBuilder;
+class Plant;
+class DecorativePot;
+class GiftWrapping;
+class Product;
+
 
 class NurserySystemFacade {
 private:
@@ -27,6 +36,7 @@ private:
     Inventory* nurseryInventory;
     Inventory* shopInventory;
 
+    ConcreteOrderBuilder* builder;
 public:
     NurserySystemFacade();
     ~NurserySystemFacade();
@@ -45,7 +55,7 @@ public:
     string checkPlantStock(const string& plantName);
 
     // Shopping Cart Operations
-    string addToCart(const string& plantName, int quantity = 1);
+    void addToCart(Product* product);
     string removeFromCart(const string& plantName);
     string updateCartQuantity(const string& plantName, int newQuantity);
     string viewCart();
@@ -88,13 +98,28 @@ public:
     string getStockCounts();
 
     // Command execution helper
-    string executeCustomerCommand(const string& commandType,
-                                 const string& plantName = "",
-                                 int quantity = 0,
-                                 const string& question = "",
-                                 const string& sunlight = "",
-                                 const string& space = "",
-                                 const string& experience = "");
+    string executeCustomerCommand(
+        const string& commandType,
+        const string& plantName,
+        int quantity,
+        const string& question,
+        const string& sunlight,
+        const string& space,
+        const string& experience,
+        DecorativePot::PotType pot,
+        GiftWrapping::WrappingType wrap
+    );
+    
+    //Accessors for testing
+    Inventory* getNurseryInventory();
+    Inventory* getShopInventory();
+
+    //Order builder
+    void startNewOrder();
+    void setOrderPlant(Plant* plant);
+    void addOrderPot(DecorativePot::PotType type);
+    void addOrderWrapping(GiftWrapping::WrappingType type);
+    Product* finalizeOrder();
 
 private:
     void initializeSubsystems();

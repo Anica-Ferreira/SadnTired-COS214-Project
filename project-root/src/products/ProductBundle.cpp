@@ -71,6 +71,15 @@ double ProductBundle::getPrice() const {
     return total;
 }
 
+string ProductBundle::getDescription() const {
+    string desc = "Bundle: " + name + "\nContains:\n";
+    for (size_t i = 0; i < items.size(); i++) {
+        desc += "  - " + items[i]->getDescription() + "\n";
+    }
+    desc += "Total Price: R" + to_string(getPrice());
+    return desc;
+}
+
 /**
  * @brief [Creates a deep copy of the ProductBundle]
  * @return [Pointer to the cloned ProductBundle object]

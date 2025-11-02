@@ -16,14 +16,14 @@
  * @param[in] adapter [Pointer to the WebAPIAdapter for system communication]
  */
 StaffCoordinator::StaffCoordinator(WebAPIAdapter* adapter) : apiAdapter(adapter) {
-    std::cout << "Staff Coordinator initialized" << std::endl;
+    //std::cout << "Staff Coordinator initialized" << std::endl;
 }
 
 /**
  * @brief [Destroys the StaffCoordinator object]
  */
 StaffCoordinator::~StaffCoordinator() {
-    std::cout << "Staff Coordinator destroyed" << std::endl;
+    //std::cout << "Staff Coordinator destroyed" << std::endl;
 }
 
 /**

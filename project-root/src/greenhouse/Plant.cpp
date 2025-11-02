@@ -231,3 +231,32 @@ void Plant::signalNeed(string need) {
     current_need_ = need;
     Notify();
 }//set need and call notify, extension
+
+void Plant::printSummary(int stock) const {
+    const string color = "\033[96m";
+    const string reset = "\033[0m";
+
+    cout << string(45, '=') << "\n";
+
+    cout << color;
+    cout << left << setw(15) << "Name:";
+    cout << reset << name << "\n";
+
+    cout << color;
+    cout << left << setw(15) << "Type:";
+    cout << reset << type << "\n";
+
+    cout << color;
+    cout << left << setw(15) << "Price:";
+    cout << reset << "R" << fixed << setprecision(2) << price << "\n";
+
+    cout << color;
+    cout << left << setw(15) << "Stock:";
+    cout << reset << stock << "\n";
+
+    cout << color;
+    cout << left << setw(15) << "Description:";
+    cout << reset << description << "\n";
+
+    cout << string(45, '=') << "\n\n";
+}

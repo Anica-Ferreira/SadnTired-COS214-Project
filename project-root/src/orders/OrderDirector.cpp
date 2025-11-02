@@ -12,9 +12,10 @@
  * @param[in] builder [Reference to the order builder to construct the bundle]
  */
 void OrderDirector::makeValentinesBundle(ConcreteOrderBuilder& builder) {
-    builder.setPlant("Rose", 25.0);
+    
+    /*builder.setPlant(rose);
     builder.addPot(DecorativePot::VASE);
-    builder.addWrapping(GiftWrapping::RED_BOW);
+    builder.addWrapping(GiftWrapping::RED_BOW);*/
 }
 
 /**
@@ -23,11 +24,11 @@ void OrderDirector::makeValentinesBundle(ConcreteOrderBuilder& builder) {
  * @param[in] bundle [Pointer to the product bundle to add plants to]
  */
 void OrderDirector::makeSpringBundle(ConcreteOrderBuilder& builder, ProductBundle* bundle) {
-    builder.setPlant("Cactus", 30.0);
+    /*builder.setPlant("Cactus", 30.0);
     builder.addPot(DecorativePot::CLASSIC);
     builder.addToBundle(bundle);
 
     builder.setPlant("Lavender", 20.0);
     builder.addWrapping(GiftWrapping::FLORAL_WRAP);
-    builder.addToBundle(bundle);
+    builder.addToBundle(bundle);*/
 }

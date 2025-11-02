@@ -25,15 +25,19 @@ GiftWrapping::~GiftWrapping() {}
  * @return [Total price of product plus wrapping]
  */
 double GiftWrapping::getPrice() const {
-    return product->getPrice() + getWrappingPrice();
+    return product->getPrice() + getWrappingPrice(type);
 }
 
 /**
  * @brief [Gets the combined name of product and wrapping]
  * @return [Combined name string]
  */
-std::string GiftWrapping::getName() const {
-    return product->getName() + " + " + getWrappingName();
+string GiftWrapping::getName() const {
+    return product->getName() + " + " + getWrappingName(type);
+}
+
+string GiftWrapping::getDescription() const {
+    return product->getDescription() + " Wrapped with " + getWrappingName(type) + ".";
 }
 
 /**
@@ -48,11 +52,12 @@ Product* GiftWrapping::clone() const {
  * @brief [Gets the name of the wrapping type]
  * @return [Wrapping type name string]
  */
-std::string GiftWrapping::getWrappingName() const {
+string GiftWrapping::getWrappingName(WrappingType type) {
     switch (type) {
         case RED_BOW: return "Red Bow Wrapping";
         case BROWN_PAPER: return "Parchment Paper Wrapping";
         case FLORAL_WRAP: return "Floral Wrap";
+        case NONE: return "No Wrapping";
         default: return "Unknown Wrapping";
     }
 }
@@ -61,11 +66,12 @@ std::string GiftWrapping::getWrappingName() const {
  * @brief [Gets the price of the wrapping type]
  * @return [Wrapping price]
  */
-double GiftWrapping::getWrappingPrice() const {
+double GiftWrapping::getWrappingPrice(WrappingType type) {
     switch (type) {
         case RED_BOW: return 12.00;
         case BROWN_PAPER: return 8.00;
         case FLORAL_WRAP: return 18.00;
+        case NONE: return 0.0;
         default: return 0.0;
     }
 }

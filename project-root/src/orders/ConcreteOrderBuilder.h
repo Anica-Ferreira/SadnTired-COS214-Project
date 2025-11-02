@@ -10,7 +10,7 @@ public:
     ConcreteOrderBuilder();
     ~ConcreteOrderBuilder();
 
-    void setPlant(string name, double price) override;
+    void setPlant(Plant* plant) override;
     void addPot(DecorativePot::PotType type) override;
     void addWrapping(GiftWrapping::WrappingType type) override;
     void addToBundle(ProductBundle* bundle) override;

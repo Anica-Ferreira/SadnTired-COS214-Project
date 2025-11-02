@@ -17,14 +17,14 @@ using namespace std;
  * @param[in] invManager [Pointer to the InventoryManager instance]
  */
 WebAPIAdapter::WebAPIAdapter(InventoryManager* invManager) : inventoryManager(invManager) {
-    cout << "WebAPIAdapter initialized with real data backend" << endl;
+    //cout << "WebAPIAdapter initialized with real data backend" << endl;
 }
 
 /**
  * @brief [Destroys the WebAPIAdapter object]
  */
 WebAPIAdapter::~WebAPIAdapter() {
-    cout << "WebAPIAdapter destroyed" << endl;
+    //cout << "WebAPIAdapter destroyed" << endl;
 }
 
 /**

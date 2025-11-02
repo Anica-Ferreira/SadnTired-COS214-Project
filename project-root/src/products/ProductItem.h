@@ -8,16 +8,18 @@
 
 class ProductItem : public Product {
     public:
-        ProductItem(const string& name = "", double price = 0.0);
+        ProductItem(const string name, double price, const string description);
         ~ProductItem();
 
         double getPrice() const override;
         string getName() const override;
+        string getDescription() const override;
         Product* clone() const override;
 
     private:
         string name;
         double price;
+        string description;
 };
 
 #endif

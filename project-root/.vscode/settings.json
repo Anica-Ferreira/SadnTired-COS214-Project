@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "limits": "cpp",
+        "algorithm": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "string_view": "cpp",
+        "iomanip": "cpp"
+    },
+    "cSpell.words": [
+        "cust",
+        "Customise"
+    ],
+    "cSpell.ignoreWords": [
+        "customisation"
+    ]
+}

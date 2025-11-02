@@ -24,16 +24,20 @@ DecorativePot::~DecorativePot() {}
  * @brief [Calculates the total price including the pot]
  * @return [Total price of product plus pot]
  */
-double DecorativePot::getPrice() const {
-    return product->getPrice() + getPotPrice();
+double DecorativePot::getPrice() const{
+    return product->getPrice() + getPotPrice(type);
 }
 
 /**
  * @brief [Gets the combined name of product and pot]
  * @return [Combined name string]
  */
-std::string DecorativePot::getName() const {
-    return product->getName() + " + " + getPotName();
+std::string DecorativePot::getName() const{
+    return product->getName() + " + " + getPotName(type);
+}
+
+string DecorativePot::getDescription() const{
+    return product->getDescription() + " Placed in a " + getPotName(type) + ".";
 }
 
 /**
@@ -48,13 +52,14 @@ Product* DecorativePot::clone() const {
  * @brief [Gets the name of the pot type]
  * @return [Pot type name string]
  */
-std::string DecorativePot::getPotName() const {
+string DecorativePot::getPotName(PotType type) {
     switch (type) {
         case CLASSIC: return "Classic Pot";
-        case ROTUND: return "Rotund Pot";
-        case SQUARE: return "Square Pot";
-        case VASE: return "Vase Pot";
-        default: return "Unknown Pot";
+        case ROTUND:  return "Rotund Pot";
+        case SQUARE:  return "Square Pot";
+        case VASE:    return "Vase Pot";
+        case NONE:    return "None";
+        default:      return "Unknown Pot";
     }
 }
 
@@ -62,12 +67,13 @@ std::string DecorativePot::getPotName() const {
  * @brief [Gets the price of the pot type]
  * @return [Pot price]
  */
-double DecorativePot::getPotPrice() const {
+double DecorativePot::getPotPrice(PotType type) {
     switch (type) {
         case CLASSIC: return 12.00;
-        case ROTUND: return 21.00;
-        case SQUARE: return 15.00;
-        case VASE: return 28;
-        default: return 0.0;
+        case ROTUND:  return 21.00;
+        case SQUARE:  return 15.00;
+        case VASE:    return 28.00;
+        case NONE:    return 0.0;
+        default:      return 0.0;
     }
 }

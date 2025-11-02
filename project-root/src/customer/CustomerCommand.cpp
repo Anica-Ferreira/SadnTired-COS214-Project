@@ -16,19 +16,23 @@
  * @param[in] qty [Quantity to purchase]
  * @param[in] fac [Pointer to the nursery system facade]
  */
-PurchasePlantCommand::PurchasePlantCommand(const string& plant, int qty, NurserySystemFacade* fac)
-    : plantName(plant), quantity(qty), facade(fac) {}
+PurchasePlantCommand::PurchasePlantCommand(Plant* p, DecorativePot::PotType pt, GiftWrapping::WrappingType w, int qty, NurserySystemFacade* f)
+        : plant(p), pot(pt), wrap(w), quantity(qty), facade(f) {}
 
 /**
  * @brief [Executes the plant purchase command]
  * @param[in] customer [Pointer to the customer executing the command]
  * @return [Result message of the purchase operation]
  */
-string PurchasePlantCommand::execute(Customer* customer) {
-    if (facade && customer) {
-        return facade->addToCart(plantName, quantity);
+
+string PurchasePlantCommand::execute(Customer* customer){
+    if (facade && customer && plant) {
+        for (int i = 0; i < quantity; ++i) {
+            //facade->addToCart(plant, pot, wrap);
+        }
+        return "Added " + to_string(quantity) + " " + plant->getName() + "(s) to cart";
     }
-    return "Error: System not available";
+    return "Error: Could not add plant to cart";
 }
 
 /**
@@ -36,7 +40,7 @@ string PurchasePlantCommand::execute(Customer* customer) {
  * @return [Command description string]
  */
 string PurchasePlantCommand::getDescription() const {
-    return "Purchase " + to_string(quantity) + " " + plantName + "(s)";
+    return "Purchase " + to_string(quantity) + " " + plant->getName() + "(s)";
 }
 
 // CheckStockCommand Implementation
@@ -85,10 +89,16 @@ GetPlantInfoCommand::GetPlantInfoCommand(const string& plant, NurserySystemFacad
  * @return [Plant information message]
  */
 string GetPlantInfoCommand::execute(Customer* customer) {
-    if (facade) {
-        return facade->getPlantInfo(plantName);
+    Plant* plant = facade->getShopInventory()->get(plantName);
+    if(!plant) {
+        cout << "Plant not found.\n";
+        return "";
     }
-    return "Error: System not available";
+
+    int stock = facade->getShopInventory()->getQuantity(plant->getName());
+    plant->printSummary(stock);
+
+    return "";
 }
 
 /**

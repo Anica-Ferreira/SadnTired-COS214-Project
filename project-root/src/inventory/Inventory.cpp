@@ -46,6 +46,13 @@ Plant* Inventory::get(int index) const {
     return nullptr;
 }
 
+Plant* Inventory::get(const string& name) const {
+    for (Plant* plant : plants) {
+        if (plant->getName() == name) return plant;
+    }
+    return nullptr;
+}
+
 /**
  * @brief [Gets the number of plants in inventory]
  * @return [Number of plants in inventory]
@@ -130,6 +137,16 @@ void Inventory::moveReadyPlantsTo(Inventory& store) {
     for (Plant* plant : toMove) {
         removePlant(plant);
         store.addPlant(plant);
-        cout << "✅ " << plant->getName() << " moved to store inventory.\n";
+        cout << plant->getName() << " moved to store inventory.\n";
     }
+}
+
+int Inventory::getQuantity(const std::string& plantName) const {
+    int count = 0;
+    for (Plant* plant : plants) {
+        if (plant->getName() == plantName) {
+            count++;
+        }
+    }
+    return count;
 }

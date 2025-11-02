@@ -1,9 +1,11 @@
-// ShoppingCart.h - NEW FILE (if needed)
 #ifndef SHOPPING_CART_H
 #define SHOPPING_CART_H
 
 #include <string>
 #include <vector>
+#include <iomanip>
+#include "../products/Product.h"
+
 using namespace std;
 
 struct CartItem {
@@ -15,37 +17,20 @@ struct CartItem {
 };
 
 class ShoppingCart {
-private:
-    vector<CartItem> items;
+    private:
+        std::vector<Product*> items;
 
-public:
-    ShoppingCart() {}
+    public:
+        ShoppingCart();
+        ~ShoppingCart();
 
-    void addItem(const string& plantName, int quantity) {
-        // Simple implementation
-        items.push_back(CartItem(plantName, quantity, 19.99));
-    }
+        void addProduct(Product* product);
+        void removeProduct(int index);
+        void viewCart() const;
+        void clear();
+        bool isEmpty() const;
 
-    void removeItem(const string& plantName) {
-        for (auto it = items.begin(); it != items.end(); ++it) {
-            if (it->plantName == plantName) {
-                items.erase(it);
-                break;
-            }
-        }
-    }
-
-    void clear() {
-        items.clear();
-    }
-
-    bool isEmpty() const {
-        return items.empty();
-    }
-
-    vector<CartItem> getItems() const {
-        return items;
-    }
+        std::vector<Product*> getItems() const;
 };
 
 #endif

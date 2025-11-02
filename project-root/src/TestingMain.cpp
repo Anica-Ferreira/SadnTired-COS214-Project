@@ -1,4 +1,4 @@
-#include "core/NurserySystemFacade.h"
+/*#include "core/NurserySystemFacade.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -6,7 +6,7 @@
 using namespace std;
 
 void testCustomerOperations(NurserySystemFacade& nursery) {
-    cout << "\n=== TESTING CUSTOMER OPERATIONS ===" << endl;
+    /*cout << "\n=== TESTING CUSTOMER OPERATIONS ===" << endl;
 
     // Set customer information (no login required)
     nursery.setCustomer("John", "Doe", "john.doe@email.com", "123-456-7890");
@@ -263,7 +263,7 @@ void runQuickDemo() {
 }
 
 int main() {
-    cout << "🌱 PLANT NURSERY MANAGEMENT SYSTEM - BACKEND TEST" << endl;
+    /*cout << "🌱 PLANT NURSERY MANAGEMENT SYSTEM - BACKEND TEST" << endl;
     cout << "=============================================" << endl;
 
     int choice;
@@ -292,7 +292,7 @@ int main() {
     // Keep console open
     cout << "\nPress Enter to exit...";
     cin.ignore();
-    cin.get();
+    cin.get();*/
 
-    return 0;
-}
+    //return 0;
+//}

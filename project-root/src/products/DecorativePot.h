@@ -9,24 +9,23 @@ using namespace std;
 
 class DecorativePot : public ProductDecorator {
     public:
-        //These are based on the pots Ani drew I don't know the shapes names
-        enum PotType {
-            CLASSIC,
-            ROTUND,
-            SQUARE,
-            VASE
-        };
+        
+        enum PotType { CLASSIC, ROTUND, SQUARE, VASE, NONE };
+
         DecorativePot(Product* product, PotType type);
         ~DecorativePot();
 
-        double getPrice() const override;
-        std::string getName() const override;
+        double getPrice() const override; 
+        string getName() const override;
+        string getDescription() const override;
+
         Product* clone() const override;
+        static string getPotName(PotType type);
+        static double getPotPrice(PotType type); 
 
     private:
         PotType type;
-        string getPotName() const;
-        double getPotPrice() const;
+        
 };
 
 #endif

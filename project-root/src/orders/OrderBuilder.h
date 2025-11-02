@@ -12,6 +12,7 @@
 #include "../products/GiftWrapping.h"
 #include "../products/ProductBundle.h"
 #include "../products/ProductItem.h"
+#include "../greenhouse/Plant.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ class OrderBuilder{
     public:
         virtual ~OrderBuilder() {}
 
-        virtual void setPlant(string name, double price) = 0;
+        virtual void setPlant(Plant* plant) = 0;
         virtual void addPot(DecorativePot::PotType type) = 0;
         virtual void addWrapping(GiftWrapping::WrappingType type) = 0;
         virtual void addToBundle(ProductBundle* bundle) = 0;

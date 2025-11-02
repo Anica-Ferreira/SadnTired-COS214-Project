@@ -19,15 +19,19 @@ ConcreteOrderBuilder::~ConcreteOrderBuilder() {}
 
 /**
  * @brief [Sets the base plant for the order]
- * @param[in] name [Plant name]
- * @param[in] price [Plant price]
+ * @param[in] Plant* [Plant]
+
  */
-void ConcreteOrderBuilder::setPlant(string name, double price) {
-    if(product){
+void ConcreteOrderBuilder::setPlant(Plant* plant) {
+    if (product) {
         delete product;
     }
 
-    product = new ProductItem(name, price);
+    if (plant) {
+        product = new ProductItem(plant->getName(), plant->getPrice(), plant->getDescription());
+    } else {
+        product = NULL;
+    }
 }
 
 /**
