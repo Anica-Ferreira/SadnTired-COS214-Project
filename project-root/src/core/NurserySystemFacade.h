@@ -23,6 +23,9 @@ class GiftWrapping;
 class Product;
 class ProductBundle;
 class OrderDirector;
+class StaffSalesman;
+class StaffGardener;
+class StaffManager;
 
 class NurserySystemFacade {
 private:
@@ -40,6 +43,10 @@ private:
 
     ConcreteOrderBuilder* builder;
     OrderDirector* director;
+
+    StaffSalesman* salesman;
+    StaffGardener* gardener;
+    StaffManager* manager;
 public:
     NurserySystemFacade();
     ~NurserySystemFacade();

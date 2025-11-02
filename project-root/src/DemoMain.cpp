@@ -5,6 +5,10 @@
 #include "products/GiftWrapping.h"
 #include "customer/CustomerCommand.h"
 #include "products/ProductBundle.h"
+#include "staff/StaffMember.h"
+#include "staff/StaffSalesman.h"
+#include "staff/StaffGardener.h"
+#include "staff/StaffManager.h"
 
 #include <iostream>
 #include <vector>
@@ -469,7 +473,7 @@ int main() {
                                         break;
                                     }
                                     case 2: {
-                                        cout << "Enter your question: ";
+                                        cout << "Enter the plant you want advice on: ";
                                         string question;
                                         getline(cin, question);
 
@@ -732,7 +736,61 @@ int main() {
             case 2:
             {
                 cout << "\033[1;32m\t--- Staff Menu ---\n\n\033[0m";
-                
+                int staffChoice;
+                do {
+                    clearConsole();
+                    cout << "\033[1;32m\t--- Staff Menu ---\n\n\033[0m";
+                    cout << "Select your role:\n";
+                    cout << " 1. Gardener\n";
+                    cout << " 2. Salesman\n";
+                    cout << " 3. Manager\n";
+                    cout << " 0. Back\nChoice: ";
+
+                    staffChoice = readInt();
+
+                    StaffMember* staff = NULL;
+                    switch (staffChoice) {
+                        case 1: staff = new StaffGardener("Gardener"); break;
+                        case 2: staff = new StaffSalesman("Salesman"); break;
+                        case 3: staff = new StaffManager("Manager"); break;
+                        case 0: break;
+                        default:
+                            cout << "\033[1;31mInvalid option. Try again.\033[0m\n";
+                            pressEnterToContinue();
+                            continue;
+                    }
+
+                    if (staff) {
+                        bool working = true;
+                        while (working) {
+                            clearConsole();
+                            //cout << "\033[1;32m\t--- " << staff->getRole() << " Actions ---\n\n\033[0m";
+                            cout << " 1. Perform Main Duty\n";
+                            cout << " 2. Perform Work Duty\n";
+                            cout << " 3. Perform Sub Duty\n";
+                            cout << " 4. View Tasks / Notifications\n";
+                            cout << " 0. Back\nChoice: ";
+
+                            int actionChoice = readInt();
+                            switch (actionChoice) {
+                                case 1: staff->mainDuty(); break;
+                                case 2: staff->workDuty(); break;
+                                case 3: staff->subDuty(); break;
+                                case 4:
+                                    cout << "\nPending Tasks / Notifications:\n";
+                                    //cout << nursery.getStaffCoordinator()->getStaffNotifications() << "\n";
+                                    pressEnterToContinue();
+                                    break;
+                                case 0: working = false; break;
+                                default:
+                                    cout << "\033[1;31mInvalid choice.\033[0m\n";
+                                    pressEnterToContinue();
+                            }
+                        }
+                        delete staff;
+                    }
+
+                } while (staffChoice != 0);
                 break;
             }
 

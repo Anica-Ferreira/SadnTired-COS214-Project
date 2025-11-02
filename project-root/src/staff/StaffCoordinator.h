@@ -18,7 +18,7 @@ public:
     ~StaffCoordinator();
     
     // Customer interaction
-    string handleCustomerQuestion(int customerId, const string& question);
+    string handleCustomerQuestion(int customerId, const string& plantName);
     string handleCustomerRequest(int customerId, const string& request);
     string providePlantAdvice(int customerId, const string& plantType);
     

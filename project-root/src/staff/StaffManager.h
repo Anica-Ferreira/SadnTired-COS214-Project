@@ -2,13 +2,16 @@
 #define STAFFMANAGER_H
 
 #include "StaffMember.h"
+#include <iostream>
 #include <string>
+
+using namespace std;
 
 class StaffManager : public StaffMember {
 public:
-    StaffManager(std::string name);
+    StaffManager(string name);
 
-    std::string processRequest(std::string request) override;
+    string processRequest(string request) override;
 
     void mainDuty() override ;
 
