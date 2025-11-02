@@ -46,6 +46,8 @@ public:
     double getPrice() const;
     string getDescription() const;
 
+    virtual Plant* clone() const = 0;
+
     //Setters
     void setWaterLevel(double level);
     void setState(PlantState* newState);
@@ -77,6 +79,10 @@ protected:
 
 public:
     Succulent(const string& name, double price, WateringStrategy* strategy, const string& description = "");
+
+    Succulent* clone() const override {
+        return new Succulent(*this);
+    }
 };
 
 class Flower : public Plant {
@@ -85,6 +91,10 @@ protected:
 
 public:
     Flower(const string& name, double price, WateringStrategy* strategy, const string& description = "");
+
+    Flower* clone() const override {
+        return new Flower(*this);
+    }
 };
 
 class Tree : public Plant {
@@ -93,6 +103,10 @@ protected:
 
 public:
     Tree(const string& name, double price, WateringStrategy* strategy, const string& description = "");
+
+    Tree* clone() const override {
+        return new Tree(*this);
+    }
 };
 
 #endif // PLANT_H

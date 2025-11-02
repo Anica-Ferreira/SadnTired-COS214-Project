@@ -34,27 +34,22 @@ InventoryManager::~InventoryManager() {
  * @param[in,out] keyword [Search keyword]
  * @return [JSON string containing search results]
  */
-string InventoryManager::searchPlants(const string& keyword) {
-    cout << "InventoryManager: Searching plants for keyword: " << keyword << endl;
-
+vector<Plant*> InventoryManager::searchPlantsByKeyword(const string& keyword) {
     vector<Plant*> allPlants = shopInventory->getAll();
     vector<Plant*> results;
 
-    for (Plant* plant : allPlants) {
-        string name = plant->getName();
-        // Simple case-insensitive search
-        string lowerName = name;
-        string lowerKeyword = keyword;
-        for (char& c : lowerName) c = tolower(c);
-        for (char& c : lowerKeyword) c = tolower(c);
+    string lowerKeyword = keyword;
+    for (char &c : lowerKeyword) c = tolower(c);
 
+    for (Plant* plant : allPlants) {
+        string lowerName = plant->getName();
+        for (char &c : lowerName) c = tolower(c);
         if (lowerName.find(lowerKeyword) != string::npos) {
             results.push_back(plant);
         }
     }
 
-    return "{\"action\": \"search\", \"keyword\": \"" + keyword +
-           "\", \"results\": " + plantsToJSON(results) + "}";
+    return results;
 }
 
 /**

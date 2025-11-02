@@ -95,3 +95,10 @@ void ProductBundle::printProduct() const {
     cout << "Bundle: " << getName() << endl;
     cout << "Total Price: R" << getPrice() << endl;
 }
+
+Plant* ProductBundle::getBasePlant() const {
+    if (!items.empty()) {
+        return items.front()->getBasePlant();
+    }
+    return nullptr;
+}

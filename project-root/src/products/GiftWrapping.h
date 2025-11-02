@@ -7,15 +7,10 @@
 
 class GiftWrapping : public ProductDecorator {
     public:
-        enum WrappingType {
-            RED_BOW,
-            BROWN_PAPER,
-            FLORAL_WRAP,
-            NONE
-        };
+        enum WrappingType { RED_BOW, BROWN_PAPER, FLORAL_WRAP, NONE };
 
         GiftWrapping(Product* product, WrappingType type);
-        ~GiftWrapping();
+        ~GiftWrapping() override;
 
         double getPrice() const override;
         string getName() const override;
@@ -27,8 +22,6 @@ class GiftWrapping : public ProductDecorator {
 
     private:
         WrappingType type;
-        
-        
 };
 
 #endif

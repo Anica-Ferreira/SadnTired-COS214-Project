@@ -22,7 +22,7 @@ public:
     ~InventoryManager();
 
     // Plant search and filtering
-    string searchPlants(const string& keyword);
+    vector<Plant*> searchPlantsByKeyword(const string& keyword);
     string filterPlantsByType(const string& plantType);
     string getPlantsByStatus(const string& status);
 

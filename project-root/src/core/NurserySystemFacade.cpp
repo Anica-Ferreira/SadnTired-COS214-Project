@@ -188,7 +188,7 @@ void NurserySystemFacade::resetCustomer() {
         currentCustomer->setPhone("");
     }
     if (currentCart) {
-        currentCart->clear();
+        currentCart->clear(shopInventory);
     }
 }
 
@@ -219,8 +219,8 @@ string NurserySystemFacade::browseAllPlants() {
  * @param[in] keyword [Search keyword]
  * @return [JSON string containing search results]
  */
-string NurserySystemFacade::searchPlants(const string& keyword) {
-    return inventoryManager->searchPlants(keyword);
+vector<Plant*> NurserySystemFacade::getPlantsByKeyword(const string& keyword) {
+    return inventoryManager->searchPlantsByKeyword(keyword);
 }
 
 /**
@@ -261,11 +261,12 @@ string NurserySystemFacade::checkPlantStock(const string& plantName) {
 
 void NurserySystemFacade::addToCart(Product* product) {
     //build the product and convert from plant to an actual product
- 
-    if (currentCart) {
-        currentCart->addProduct(product);
+    if (!currentCart) return;
+    currentCart->addProduct(product);
+    Plant* basePlant = product->getBasePlant();
+    if (basePlant) {
+        shopInventory->removePlant(basePlant);
     }
-
 }
 
 /**
@@ -274,44 +275,51 @@ void NurserySystemFacade::addToCart(Product* product) {
  * @return [JSON string indicating success or failure]
  */
 
- /*
-string NurserySystemFacade::removeFromCart(const string& plantName) {
+ 
+string NurserySystemFacade::removeFromCart(int itemNumber) {
     if (!validateCustomer()) {
-        return "{\"error\": \"No customer set\"}";
+        return "No customer set.";
     }
 
-    if (currentCart) {
-        currentCart->removeItem(plantName);
-        return "{\"status\": \"success\", \"message\": \"Removed " + plantName + " from cart\"}";
+    if (!currentCart) {
+        return "Cart not available.";
     }
 
-    return "{\"error\": \"Cart not available\"}";
-}*/
+    // Remove the product from the cart
+    Product* removedProduct = currentCart->removeProduct(itemNumber);
+    if (!removedProduct) {
+        return "Invalid item number. No product removed.";
+    }
+
+    // Return the plant to the shop if it exists
+    Plant* basePlant = removedProduct->getBasePlant();
+    if (basePlant) {
+        getShopInventory()->addPlant(basePlant);
+    }
+
+    delete removedProduct; // Delete the product wrapper, not the plant
+    return "Removed " + basePlant->getName() + " from cart.";
+}
 
 /**
  * @brief [Views the current shopping cart contents]
  * @return [JSON string containing cart contents]
  */
-/*
+
 string NurserySystemFacade::viewCart() {
     if (!validateCustomer()) {
-        return "{\"error\": \"No customer set\"}";
+        cout << "\033[1;31mError: No customer set.\033[0m\n";
+        return "";
     }
 
     if (!currentCart) {
-        return "{\"error\": \"Cart not available\"}";
+        cout << "\033[1;31mError: No shopping cart available.\033[0m\n";
+        return "";
     }
 
-    // Simple cart representation
-    stringstream cartJson;
-    cartJson << "{\"customer\": \"" << currentCustomer->getName() << "\", \"items\": [";
-
-    // This would use actual cart items in a real implementation
-    cartJson << "{\"plant\": \"Rose\", \"quantity\": 2, \"price\": 19.99}";
-    cartJson << "], \"total\": 39.98}";
-
-    return cartJson.str();
-}*/
+    currentCart->viewCart();
+    return "";
+}
 
 /**
  * @brief [Processes checkout for the current shopping cart]
@@ -328,7 +336,7 @@ string NurserySystemFacade::checkout() {
 
     // Process checkout
     string customerName = currentCustomer->getName();
-    currentCart->clear();
+    //currentCart->clear();
 
     return "{\"status\": \"success\", \"message\": \"Checkout completed for " +
            customerName + "\", \"order_id\": " + to_string(rand() % 1000) + "}";
@@ -608,8 +616,12 @@ string NurserySystemFacade::getCartSummary() {
  */
 void NurserySystemFacade::clearCart() {
     if (currentCart) {
-        currentCart->clear();
+        //currentCart->clear();
     }
+}
+
+ShoppingCart* NurserySystemFacade::getCart() const {
+    return currentCart;
 }
 
 Inventory* NurserySystemFacade::getNurseryInventory() { 

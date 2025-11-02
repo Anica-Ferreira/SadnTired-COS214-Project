@@ -7,9 +7,21 @@
 
 #include "Product.h"
 
+Product::Product() : name(""), price(0.0), description("") {}
+Product::Product(const string& name, double price, const string& description)
+    : name(name), price(price), description(description) {}
+Product::~Product() {}
+
+string Product::getName() const { return name; }
+double Product::getPrice() const { return price; }
+string Product::getDescription() const { return description; }
+
 /**
  * @brief [Prints product information to console]
  */
-void Product::printProduct() const{
-    cout << getName() << " - R" << getPrice() << endl;
+void Product::printProduct() const {
+    cout << "Product: " << getName() 
+         << ", Price: " << getPrice()
+         << ", Description: " << getDescription()
+         << endl;
 }

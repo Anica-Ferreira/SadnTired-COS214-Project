@@ -22,6 +22,8 @@ class ProductBundle : public Product {
         Product* clone() const override;
         void printProduct() const override;
 
+        Plant* getBasePlant() const override;
+
     private:
         vector<Product*> items;
         string name;

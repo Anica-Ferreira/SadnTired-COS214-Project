@@ -11,11 +11,11 @@
  * @brief [Constructs a new ProductDecorator object]
  * @param[in] product [Pointer to the product to decorate]
  */
+
 ProductDecorator::ProductDecorator(Product* product) : product(product) {}
+
 
 /**
  * @brief [Destroys the ProductDecorator object and cleans up resources]
  */
-ProductDecorator::~ProductDecorator() {
-    delete product;
-}
+ProductDecorator::~ProductDecorator() { delete product; }

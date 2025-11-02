@@ -49,17 +49,18 @@ public:
 
     // Plant Shop Operations - USING REAL DATA
     string browseAllPlants();
-    string searchPlants(const string& keyword);
+    vector<Plant*> getPlantsByKeyword(const string& keyword);
     string filterPlantsByType(const string& plantType);
     string getPlantInfo(const string& plantName);
     string checkPlantStock(const string& plantName);
 
     // Shopping Cart Operations
     void addToCart(Product* product);
-    string removeFromCart(const string& plantName);
+    string removeFromCart(int itemNumber);
     string updateCartQuantity(const string& plantName, int newQuantity);
     string viewCart();
     string getCartSummary();
+    ShoppingCart* getCart() const;
     void clearCart();
 
     // Order Management

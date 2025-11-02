@@ -6,21 +6,29 @@
 
 #include <string>
 #include <iostream>
+#include "../greenhouse/Plant.h"
+
 using namespace std;
 
 class Product {
-    public:
-        virtual ~Product() {}
+    protected:
+        string name;
+        double price;
+        string description;
 
-        virtual double getPrice() const = 0;
-        virtual std::string getName() const = 0;
-        virtual std::string getDescription() const = 0;
+    public:
+        Product();
+        Product(const string& name, double price, const string& description);
+        virtual ~Product();
+
         virtual Product* clone() const = 0;
+        virtual Plant* getBasePlant() const { return NULL; }
+
+        virtual string getName() const;
+        virtual double getPrice() const;
+        virtual string getDescription() const;
 
         virtual void printProduct() const;
-
-    private:
-        
 };
 
 #endif

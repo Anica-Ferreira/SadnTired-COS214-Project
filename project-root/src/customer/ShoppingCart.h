@@ -5,6 +5,8 @@
 #include <vector>
 #include <iomanip>
 #include "../products/Product.h"
+#include "../products/ProductDecorator.h"
+#include "../inventory/Inventory.h"
 
 using namespace std;
 
@@ -25,9 +27,9 @@ class ShoppingCart {
         ~ShoppingCart();
 
         void addProduct(Product* product);
-        void removeProduct(int index);
+        Product* removeProduct(int index);
         void viewCart() const;
-        void clear();
+        void clear(Inventory* shopInventory);
         bool isEmpty() const;
 
         std::vector<Product*> getItems() const;

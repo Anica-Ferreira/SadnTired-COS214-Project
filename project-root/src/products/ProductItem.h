@@ -7,19 +7,20 @@
 #include "Product.h"
 
 class ProductItem : public Product {
-    public:
-        ProductItem(const string name, double price, const string description);
-        ~ProductItem();
+    private:
+        Plant* basePlant;
 
-        double getPrice() const override;
-        string getName() const override;
-        string getDescription() const override;
+    public:
+        ProductItem(Plant* plant);
+        ~ProductItem() override;
+
         Product* clone() const override;
 
-    private:
-        string name;
-        double price;
-        string description;
+        string getName() const override;
+        double getPrice() const override;
+        string getDescription() const override;
+
+        Plant* getBasePlant() const override;
 };
 
 #endif

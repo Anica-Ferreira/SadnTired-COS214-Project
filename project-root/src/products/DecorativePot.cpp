@@ -37,7 +37,11 @@ std::string DecorativePot::getName() const{
 }
 
 string DecorativePot::getDescription() const{
-    return product->getDescription() + " Placed in a " + getPotName(type) + ".";
+    string description = product->getDescription();
+    if (type != NONE) {
+        description += " in a " + getPotName(type) + ".";
+    }
+    return description;
 }
 
 /**

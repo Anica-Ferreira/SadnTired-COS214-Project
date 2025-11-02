@@ -37,7 +37,11 @@ string GiftWrapping::getName() const {
 }
 
 string GiftWrapping::getDescription() const {
-    return product->getDescription() + " Wrapped with " + getWrappingName(type) + ".";
+    string description = product->getDescription();
+    if (type != NONE) {
+        description += " Wrapped with " + getWrappingName(type) + ".";
+    }
+    return description;
 }
 
 /**
@@ -54,8 +58,8 @@ Product* GiftWrapping::clone() const {
  */
 string GiftWrapping::getWrappingName(WrappingType type) {
     switch (type) {
-        case RED_BOW: return "Red Bow Wrapping";
-        case BROWN_PAPER: return "Parchment Paper Wrapping";
+        case RED_BOW: return "a Red Bow";
+        case BROWN_PAPER: return "Parchment Paper";
         case FLORAL_WRAP: return "Floral Wrap";
         case NONE: return "No Wrapping";
         default: return "Unknown Wrapping";

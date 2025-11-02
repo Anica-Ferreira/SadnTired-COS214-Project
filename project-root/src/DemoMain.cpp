@@ -85,9 +85,9 @@ int main() {
         clearConsole();
 
         cout << "\033[1;32m";
-        cout << "--------------------------------------\033[0m\n";
+        cout << "======================================\033[0m\n";
         cout << "Welcome to the Plant Nursery Simulator\n";
-        cout << "\033[1;32m--------------------------------------\n\n";
+        cout << "\033[1;32m======================================\n\n";
         cout << "\033[0m";
 
         cout << "\033[1;36m\nSelect a user type:\n\033[0m";
@@ -109,7 +109,7 @@ int main() {
 
                 do {
                     clearConsole();
-                    cout << "\033[1;32m\t      --- Customer Menu ---\n\n\033[0m";
+                    cout << "\033[1;32m\t\t      --- Customer Menu ---\n\n\033[0m";
 
                     cout << "1. Browse Plants  |  2. View Cart  |  3. Search Plants  |   0. <--Back \n\n";
                     cout << "Choice: ";
@@ -124,34 +124,41 @@ int main() {
                             
                             vector<Plant*> shopPlants = nursery.getShopInventory()->getAll();
 
-                            if(shopPlants.empty()) {
-                                cout << "No plants available in the shop.\n";
+                            if (shopPlants.empty()) {
+                                bool waitBack = true;
+                                while (waitBack) {
+                                    clearConsole();
+                                    cout << "\033[1;32m\t    --- Available Plants ---\n\n\033[0m";
+                                    cout << "No plants available in the shop. Come back soon!\n\n";
+                                    cout << "0. <-- Back\n\n";
+                                    cout << "Choice: ";
+                                    int tmp = readInt();
+                                    if (tmp == 0) {
+                                        waitBack = false;
+                                    }
+                                    
+                                }
                                 break;
-                            }
-
-                            //track unique plants
-                            vector<string> displayed;
-
-                            //display plants in shop - NO DUPLICATES ahh
-                            for (size_t i = 0; i < shopPlants.size(); ++i) {
-                                Plant* plant = shopPlants[i];
-                                string name = plant->getName();
-                                double price = plant->getPrice();
-
-                                if (find(displayed.begin(), displayed.end(), name) != displayed.end()) continue;
-                                displayed.push_back(name);
                             }
 
                             bool browsing = true;
                             while (browsing) {
-
+                                
                                 clearConsole();
                                 cout << "\033[1;32m\t    --- Available Plants ---\n\n\033[0m";
-                            
-                                //display all plant cards
-                                for (size_t i = 0; i < displayed.size(); ++i) {
-                                    Plant* plant = nursery.getShopInventory()->get(displayed[i]);
-                                    displayPlantCard(i + 1, plant->getName(), plant->getPrice(), 22, 12);
+
+                                //track unique plants
+                                vector<Plant*> shopPlants = nursery.getShopInventory()->getAll();
+                                vector<Plant*> uniquePlants;
+                                vector<string> displayed;
+
+                                for (Plant* plant : shopPlants) {
+                                    string name = plant->getName();
+                                    if (find(displayed.begin(), displayed.end(), name) != displayed.end()) continue;
+                                    displayed.push_back(name);
+                                    uniquePlants.push_back(plant);
+
+                                    displayPlantCard(uniquePlants.size(), plant->getName(), plant->getPrice(), 22, 12);
                                 }
                                 
                                 cout << "0. <-- Back" << endl;
@@ -164,11 +171,11 @@ int main() {
                                 while (true) {
                                     plantChoice = readInt();
                                     if (plantChoice == 0) {
-                                        browsing = false;  // exit plant browsing
+                                        browsing = false;
                                         break;
                                     }
-                                    if (plantChoice > 0 && plantChoice <= (int)displayed.size()) {
-                                        selectedPlant = nursery.getShopInventory()->get(displayed[plantChoice - 1]);
+                                    if (plantChoice > 0 && plantChoice <= (int)uniquePlants.size()) {
+                                        selectedPlant = uniquePlants[plantChoice - 1];
                                         break;
                                     }
                                 }
@@ -176,8 +183,6 @@ int main() {
                                 //View selected plant
                                 if (selectedPlant) {
                                     clearConsole();
-
-                                    Plant* selectedPlant = nursery.getShopInventory()->get(displayed[plantChoice - 1]);
 
                                     cout << "\033[1;32m\t--- Viewing " << selectedPlant->getName() <<  " details" << " ---\n\n\033[0m";
                                     
@@ -275,10 +280,233 @@ int main() {
                                     }
                                 }
                             }
+                        }break;
+
+                        case 2:
+                        {   
+                            /* ------------------------------------------ VIEW CART ------------------------------------------ */
+                            
+                            bool viewingCart = true;
+                            while (viewingCart) {
+                                clearConsole();
+                                
+                                cout << "\033[1;32m\t\t\t     --- Cart Summary ---\n\n\033[0m";
+                                cout << "\t\t1. Checkout |  2. Remove Item |  0. <-- Back \n\n";
+
+                                nursery.viewCart();
+
+                                cout << "\nChoice: ";
+                                int cartChoice = readInt();
+
+                                switch (cartChoice) {
+                                    case 1:
+                                    {
+                                        cout << "\033[1;32mCart cleared successfully!\033[0m\n";
+                                    }break;
+                                    
+
+                                    case 2:
+                                    {   
+                                        /* ------------------------------------------ REMOVE ITEM FROM CART ------------------------------------------ */
+                                        cout << "Enter the number of the item to remove: ";
+                                        int itemNumber = readInt();
+                                        ShoppingCart* cart = nursery.getCart();
+                                        if(cart) {
+                                            if (itemNumber > 0 && itemNumber <= cart->getItems().size()) {
+                                                Product* removed = cart->removeProduct(itemNumber - 1);
+                                                if (removed) {
+                                                    Plant* basePlant = removed->getBasePlant();
+                                                    if (basePlant) {
+                                                        nursery.getShopInventory()->addPlant(basePlant);
+                                                    }
+                                                    delete removed;
+                                                }
+                                            }
+                                        }
+                                    }break;
+                                        
+                                        
+                                        
+                                    case 0:
+                                        viewingCart = false;
+                                        break;
+                                    default:
+                                        cout << "\033[1;31mInvalid choice. Try again.\033[0m\n";
+                                        break;
+                                }
+
+                            }
                         }
                         break;
 
-                        case 2: cout << "Viewing cart...\n"; break;
+                        /* ------------------------------------------ SEARCH ------------------------------------------ */ 
+                        case 3:
+                        {   
+                            bool backToMenu = false;
+
+                            while (!backToMenu) {
+                                clearConsole();
+                                
+                                cout << "\033[1;32m\t\t      --- Search Plants ---\n\n\033[0m";
+                                cout << "0. <-- Back\n" << endl;
+                                cout << "Enter a keyword to search:";
+                                
+                                string keyword;
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                getline(cin, keyword);
+
+                                if (keyword == "0") {
+                                    backToMenu = true;
+                                    break;
+                                }
+
+                                vector<Plant*> searchResults = nursery.getPlantsByKeyword(keyword);
+
+                                if (searchResults.empty()) {
+                                    cout << "\nNo plants found matching \"" << keyword << "\". Try again.\n";
+                                    cout << "Press Enter to continue...";
+                                    cin.get();
+                                    continue; 
+                                }
+
+                                bool searching = true;
+                                while (searching) {
+                                    clearConsole();
+                                    cout << "\033[1;32m\t--- Search Results for \"" << keyword << "\" ---\n\n\033[0m";
+
+                                    vector<Plant*> uniquePlants;
+                                    vector<string> displayed;
+
+                                    for (Plant* plant : searchResults) {
+                                        string name = plant->getName();
+                                        if (find(displayed.begin(), displayed.end(), name) != displayed.end()) continue;
+                                        displayed.push_back(name);
+                                        uniquePlants.push_back(plant);
+
+                                        displayPlantCard(uniquePlants.size(), plant->getName(), plant->getPrice(), 22, 12);
+                                    }
+
+                                    cout << "0. <-- Back" << endl;
+
+                                    Plant* selectedPlant = nullptr;
+                                    int plantChoice = -1;
+
+                                    cout << "\nSelect a Plant: ";
+                                    while (true) {
+                                        plantChoice = readInt();
+                                        if (plantChoice == 0) {
+                                            searching = false;
+                                            break;
+                                        }
+                                        if (plantChoice > 0 && plantChoice <= (int)uniquePlants.size()) {
+                                            selectedPlant = uniquePlants[plantChoice - 1];
+                                            break;
+                                        }
+                                    }
+
+                                    if (selectedPlant) {
+                                        clearConsole();
+
+                                        cout << "\033[1;32m\t--- Viewing " << selectedPlant->getName() <<  " details" << " ---\n\n\033[0m";
+                                        
+                                        GetPlantInfoCommand infoCmd(selectedPlant->getName(), &nursery);
+                                        infoCmd.execute(NULL);
+
+                                        char addChoice;
+                                        do {
+                                            cout << "Proceed to customisation? (y/n): ";
+                                            cin >> addChoice;
+                                            addChoice = tolower(addChoice);
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                        } while (addChoice != 'y' && addChoice != 'n');
+
+                                        /* ------------------------------------------ CUSTOMIZE PLANT ------------------------------------------ */
+                                        if (addChoice == 'y') {
+                                            
+                                            // STEP 1 CUSTOMIZE POT //
+                                            DecorativePot::PotType selectedPot = DecorativePot::NONE;
+                                            int potChoice = -1;
+
+                                            do {
+                                                clearConsole();
+                                                cout << "\033[1;32m\t  --- Customise your " << selectedPlant->getName() << " ---\n\n\033[0m";
+                                                cout << "\033[1;36mSelect a pot type:\n\033[0m";
+                                                cout << " 0. None\n";
+                                                cout << left << setw(20) << " 1. Classic Pot" << "+R" << DecorativePot::getPotPrice(DecorativePot::CLASSIC) << "\n";
+                                                cout << left << setw(20) << " 2. Rotund Pot" << "+R" << DecorativePot::getPotPrice(DecorativePot::ROTUND) << "\n";
+                                                cout << left << setw(20) << " 3. Square Pot" << "+R" << DecorativePot::getPotPrice(DecorativePot::SQUARE) << "\n";
+                                                cout << left << setw(20) << " 4. Vase Pot" << "+R" << DecorativePot::getPotPrice(DecorativePot::VASE) << "\n\nChoice: ";
+                                    
+                                                potChoice = readInt();
+
+                                                if(potChoice >= 0 && potChoice <= 4) break;
+
+                                            }while (true);
+
+                                            switch (potChoice) {
+                                                case 1: selectedPot = DecorativePot::CLASSIC; break;
+                                                case 2: selectedPot = DecorativePot::ROTUND; break;
+                                                case 3: selectedPot = DecorativePot::SQUARE; break;
+                                                case 4: selectedPot = DecorativePot::VASE; break;
+                                                case 0: selectedPot = DecorativePot::NONE; break;
+                                            }
+
+                                            // STEP 2 CUSTOMIZE WRAPPING //
+                                            GiftWrapping::WrappingType selectedWrap = GiftWrapping::NONE;
+                                            int wrapChoice = -1;
+
+                                            do{
+                                                clearConsole();
+                                                cout << "\033[1;32m\t  --- Customise your " << selectedPlant->getName() << " ---\n\n\033[0m";
+                                                cout << "\033[1;36mSelect a wrapping type:\n\033[0m";
+                                                cout << " 0. None\n";
+                                                cout << left << setw(20) << " 1. Brown Paper" << "R" << GiftWrapping::getWrappingPrice(GiftWrapping::BROWN_PAPER) << "\n";
+                                                cout << left << setw(20) << " 2. Floral Wrap" << "R" << GiftWrapping::getWrappingPrice(GiftWrapping::FLORAL_WRAP) << "\n";
+                                                cout << left << setw(20) << " 3. Red Bow" << "R" << GiftWrapping::getWrappingPrice(GiftWrapping::RED_BOW) << "\n\nChoice: ";
+
+                                                wrapChoice = readInt();
+
+                                                if(wrapChoice >= 0 && wrapChoice <= 3) break;
+
+                                            }while (true);
+
+                                            switch(wrapChoice) {
+                                                case 1: selectedWrap = GiftWrapping::BROWN_PAPER; break;
+                                                case 2: selectedWrap = GiftWrapping::FLORAL_WRAP; break;
+                                                case 3: selectedWrap = GiftWrapping::RED_BOW; break;
+                                                case 0: selectedWrap = GiftWrapping::NONE; break;
+                                            }
+
+                                            /* ------------------------------------------ FINAL PRODUCT ------------------------------------------ */
+                                            
+                                            //build the order finally...
+                                            nursery.startNewOrder();
+                                            nursery.setOrderPlant(selectedPlant);
+                                            nursery.addOrderPot(selectedPot);
+                                            nursery.addOrderWrapping(selectedWrap);
+
+                                            Product* finalProduct = nursery.finalizeOrder();
+
+                                            clearConsole();
+                                            cout << "\033[1;32m\t\t\t--- Your Final Product ---\n\n\033[0m";
+                                            
+                                            
+                                            cout << "\033[1;36m" << left << setw(15) << "Name:" << "\033[0m" << finalProduct->getName() << "\n";
+                                            cout << "\033[1;36m" << left << setw(15) << "Description:" << "\033[0m" << finalProduct->getDescription() << "\n";
+                                            cout << "\033[1;36m" << left << setw(15) << "Total Price:" << "\033[0m" << "R" << fixed << setprecision(2) << finalProduct->getPrice() << "\n\n";
+
+                                            if (promptYesNo("Do you want to add this product to your cart?")) {
+                                                    nursery.addToCart(finalProduct);
+                                                    nursery.getShopInventory()->removePlant(selectedPlant);
+                                                    selectedPlant = NULL;
+                                            }
+                                        }
+                                        searching = false;
+                                    }
+                                }
+                            }
+                        }break;
+
                         case 0: break;
                         default: cout << "\033[1;31mInvalid option\033[0m\n";
                     }

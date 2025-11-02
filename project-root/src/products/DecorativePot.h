@@ -5,27 +5,24 @@
 
 #include "ProductDecorator.h"
 
-using namespace std;
-
 class DecorativePot : public ProductDecorator {
     public:
-        
         enum PotType { CLASSIC, ROTUND, SQUARE, VASE, NONE };
 
         DecorativePot(Product* product, PotType type);
-        ~DecorativePot();
+        ~DecorativePot() override;
 
-        double getPrice() const override; 
+        double getPrice() const override;
         string getName() const override;
         string getDescription() const override;
 
         Product* clone() const override;
+
         static string getPotName(PotType type);
-        static double getPotPrice(PotType type); 
+        static double getPotPrice(PotType type);
 
     private:
         PotType type;
-        
 };
 
 #endif

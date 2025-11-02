@@ -28,7 +28,7 @@ void ConcreteOrderBuilder::setPlant(Plant* plant) {
     }
 
     if (plant) {
-        product = new ProductItem(plant->getName(), plant->getPrice(), plant->getDescription());
+        product = new ProductItem(plant);
     } else {
         product = NULL;
     }

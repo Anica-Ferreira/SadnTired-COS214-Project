@@ -12,11 +12,9 @@
  * @param[in] name [The name of the product item]
  * @param[in] price [The price of the product item]
  */
-ProductItem::ProductItem(const string name, double price, const string description) {
-    this->name = name;
-    this->price = price;
-    this->description = description;
-}
+ProductItem::ProductItem(Plant* plant)
+    : Product(plant->getName(), plant->getPrice(), plant->getDescription()),
+      basePlant(plant) {}
 
 /**
  * @brief [Destroys the ProductItem object]
@@ -28,7 +26,7 @@ ProductItem::~ProductItem() {}
  * @return [The product price]
  */
 double ProductItem::getPrice() const {
-    return price;
+    return basePlant ? basePlant->getPrice() : 0.0;
 }
 
 /**
@@ -36,7 +34,7 @@ double ProductItem::getPrice() const {
  * @return [The product name]
  */
 string ProductItem::getName() const {
-    return name;
+    return basePlant ? basePlant->getName() : "";
 }
 
 /**
@@ -44,7 +42,7 @@ string ProductItem::getName() const {
  * @return [The product name]
  */
 string ProductItem::getDescription() const {
-    return description;
+    return basePlant ? basePlant->getDescription() : "";
 }
 
 /**
@@ -53,4 +51,8 @@ string ProductItem::getDescription() const {
  */
 Product* ProductItem::clone() const {
     return new ProductItem(*this);
+}
+
+Plant* ProductItem::getBasePlant() const{
+    return basePlant;
 }

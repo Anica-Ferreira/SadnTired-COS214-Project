@@ -26,37 +26,94 @@ void ShoppingCart::addProduct(Product* product) {
     }
 }
 
-void ShoppingCart::removeProduct(int index) {
-    if (index >= 0 && index < (int)items.size()) {
-        delete items[index];
-        items.erase(items.begin() + index);
-        cout << "\033[1;33mProduct removed from cart.\033[0m\n";
-    } else {
-        cout << "\033[1;31mInvalid index.\033[0m\n";
-    }
+Product* ShoppingCart::removeProduct(int index) {
+    if (index < 0 || index >= items.size()) return nullptr;
+    Product* p = items[index];
+    items.erase(items.begin() + index);
+    return p;
 }
 
 void ShoppingCart::viewCart() const {
-    cout << "\033[1;36m\n--- Shopping Cart ---\n\033[0m";
+    const string indent = "\t";
+    const int descWidth = 40;
+    const int priceWidth = 12;
+
+    cout << indent << "\033[1;36m==============================================================\033[0m\n";
+    cout << indent << "                      Shopping Cart\n";
+    cout << indent << "\033[1;36m==============================================================\033[0m\n";
+
     if (items.empty()) {
-        cout << "Your cart is empty.\n";
+        cout << indent << "\033[1;31m                    Your cart is empty.\033[0m\n";
+        cout << indent << "\033[1;36m==============================================================\033[0m\n";
         return;
     }
 
     double total = 0.0;
+
+    // Header
+    cout << indent << left << setw(5) << "#" 
+         << setw(descWidth) << "Item Description" 
+         << right << setw(priceWidth) << "Price (R)" << "\n";
+    cout << indent << "\033[1;36m--------------------------------------------------------------\033[0m\n";
+
     for (size_t i = 0; i < items.size(); ++i) {
-        cout << i + 1 << ". " << items[i]->getDescription()
-             << " - R" << fixed << setprecision(2) << items[i]->getPrice() << "\n";
-        total += items[i]->getPrice();
+        string desc = items[i]->getDescription();
+        double price = items[i]->getPrice();
+
+        stringstream priceStream;
+        priceStream << "R" << fixed << setprecision(2) << price;
+        string priceStr = priceStream.str();
+
+        size_t pos = 0;
+        bool firstLine = true;
+        while (pos < desc.length()) {
+            string line = desc.substr(pos, descWidth);
+            pos += descWidth;
+
+            if (firstLine) {
+                cout << indent << left << setw(5) << (i + 1)
+                     << setw(descWidth) << line
+                     << right << setw(priceWidth) << priceStr << "\n";
+                firstLine = false;
+            } else {
+                cout << indent << left << setw(5) << ""
+                     << setw(descWidth) << line
+                     << "\n";
+            }
+        }
+
+        total += price;
     }
 
-    cout << "\nTotal: R" << fixed << setprecision(2) << total << "\n";
+    cout << indent << "\033[1;36m--------------------------------------------------------------\033[0m\n";
+
+    stringstream totalStream;
+    totalStream << "R" << fixed << setprecision(2) << total;
+    string totalStr = totalStream.str();
+
+    cout << indent << left << setw(descWidth + 5) << "\033[1;36mTotal:\033[0m"
+         << right << setw(priceWidth) << "\t\t" << totalStr << "\n";
+
+    cout << indent << "\033[1;36m==============================================================\033[0m\n";
 }
 
-void ShoppingCart::clear() {
-    for (size_t i = 0; i < items.size(); ++i) {
-        delete items[i];
+void ShoppingCart::clear(Inventory* shopInventory) {
+    for (Product* p : items) {
+        Plant* basePlant = nullptr;
+
+        if (auto decorator = dynamic_cast<ProductDecorator*>(p)) {
+            basePlant = decorator->getBasePlant();
+        } else {
+            basePlant = dynamic_cast<Plant*>(p);
+        }
+
+        if (basePlant && shopInventory) {
+            shopInventory->addPlant(basePlant);
+        }
+
+        delete p;
     }
+
     items.clear();
 }
 
