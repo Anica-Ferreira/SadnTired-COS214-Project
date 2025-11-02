@@ -67,9 +67,9 @@ int Inventory::size() const {
 void Inventory::waterAll() {
     for (Plant* plant : plants) {
         plant->water();
-        cout << plant->getName() 
+        /*cout << plant->getName() 
                   << " watered. State: " << plant->getStateName() 
-                  << ", Water Level: " << plant->getWaterLevel() << "\n";
+                  << ", Water Level: " << plant->getWaterLevel() << "\n";*/
     }
 }
 
@@ -79,9 +79,9 @@ void Inventory::waterAll() {
 void Inventory::passTimeAll() {
     for (Plant* plant : plants) {
         plant->passTime();
-        cout << plant->getName() 
+        /*cout << plant->getName() 
                   << " after time passes. State: " << plant->getStateName() 
-                  << ", Water Level: " << plant->getWaterLevel() << "\n";
+                  << ", Water Level: " << plant->getWaterLevel() << "\n";*/
     }
 }
 
@@ -123,21 +123,18 @@ void Inventory::removePlant(Plant* plant) {
  * @brief [Moves ready plants from this inventory to another inventory]
  * @param[in] store [Reference to the destination inventory]
  */
-void Inventory::moveReadyPlantsTo(Inventory& store) {
+void Inventory::moveReadyPlantsTo(Inventory* other){
     vector<Plant*> toMove;
-
-    // Collect ready plants
     for (Plant* plant : plants) {
         if (plant->getStateName() == "Ready for Sale") {
             toMove.push_back(plant);
         }
     }
 
-    // Move plants to the store
+    // Move plants to other inventory
     for (Plant* plant : toMove) {
-        removePlant(plant);
-        store.addPlant(plant);
-        cout << plant->getName() << " moved to store inventory.\n";
+        removePlant(plant);       // remove from this inventory
+        other->addPlant(plant);   // add to other inventory
     }
 }
 

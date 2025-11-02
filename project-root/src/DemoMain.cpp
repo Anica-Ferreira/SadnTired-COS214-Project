@@ -142,11 +142,10 @@ int main() {
     do{
         clearConsole();
 
-        cout << "\033[1;32m";
+        cout << "\033[38;5;34m";
         cout << "======================================\033[0m\n";
         cout << "Welcome to the Plant Nursery Simulator\n";
-        cout << "\033[1;32m======================================\n\n";
-        cout << "\033[0m";
+        cout << "\033[38;5;34m======================================\033[0m\n";
 
         cout << "\033[1;36m\nSelect a user type:\n\033[0m";
         cout << " 1. Customer\n";
@@ -199,7 +198,7 @@ int main() {
                             }
 
                             bool browsing = true;
-                            while (browsing) {
+                            while (browsing){
                                 
                                 clearConsole();
                                 cout << "\033[1;32m\t    --- Available Plants ---\n\n\033[0m";
@@ -735,64 +734,120 @@ int main() {
             /* ------------------------------------------ STAFF MENU ------------------------------------------ */   
             case 2:
             {
-                cout << "\033[1;32m\t--- Staff Menu ---\n\n\033[0m";
-                int staffChoice;
-                do {
+                StaffGardener* gardener = new StaffGardener("Mr. Green");
+                bool gardening = true;
+
+                while (gardening) {
                     clearConsole();
-                    cout << "\033[1;32m\t--- Staff Menu ---\n\n\033[0m";
-                    cout << "Select your role:\n";
-                    cout << " 1. Gardener\n";
-                    cout << " 2. Salesman\n";
-                    cout << " 3. Manager\n";
-                    cout << " 0. Back\nChoice: ";
+                    cout << "\033[1;32m\t\t\t\t--- Gardener Menu ---\033[0m\n\n";
+                    cout << "\033[1;32m|\033[0m 1. Pass Time \033[1;32m|\033[0m 2. Water a Plant \033[1;32m|\033[0m 3. Water All Plants \033[1;32m|\033[0m 4. Move Ready Plants \033[1;32m|\033[0m 0. <-- Back \033[1;32m|\033[0m\n\n";
 
-                    staffChoice = readInt();
+                    vector<Plant*> nurseryPlants = nursery.getNurseryInventory()->getAll();
 
-                    StaffMember* staff = NULL;
-                    switch (staffChoice) {
-                        case 1: staff = new StaffGardener("Gardener"); break;
-                        case 2: staff = new StaffSalesman("Salesman"); break;
-                        case 3: staff = new StaffManager("Manager"); break;
-                        case 0: break;
-                        default:
-                            cout << "\033[1;31mInvalid option. Try again.\033[0m\n";
-                            pressEnterToContinue();
-                            continue;
-                    }
+                    if(nurseryPlants.empty()) {
+                        cout << "No plants currently in the nursery.\n\n";
+                    }else {
+                        cout << "\033[38;5;34m-----------------------------------\033[0m";
+                        cout << "\n        Plants in Nursery\n";
+                        cout << "\033[38;5;34m-----------------------------------\033[0m\n\n";
 
-                    if (staff) {
-                        bool working = true;
-                        while (working) {
-                            clearConsole();
-                            //cout << "\033[1;32m\t--- " << staff->getRole() << " Actions ---\n\n\033[0m";
-                            cout << " 1. Perform Main Duty\n";
-                            cout << " 2. Perform Work Duty\n";
-                            cout << " 3. Perform Sub Duty\n";
-                            cout << " 4. View Tasks / Notifications\n";
-                            cout << " 0. Back\nChoice: ";
+                        int i = 0;
+                        for (Plant* p : nurseryPlants) {
+                            string stateName = p->getStateName();
+                            string coloredState;
 
-                            int actionChoice = readInt();
-                            switch (actionChoice) {
-                                case 1: staff->mainDuty(); break;
-                                case 2: staff->workDuty(); break;
-                                case 3: staff->subDuty(); break;
-                                case 4:
-                                    cout << "\nPending Tasks / Notifications:\n";
-                                    //cout << nursery.getStaffCoordinator()->getStaffNotifications() << "\n";
-                                    pressEnterToContinue();
-                                    break;
-                                case 0: working = false; break;
-                                default:
-                                    cout << "\033[1;31mInvalid choice.\033[0m\n";
-                                    pressEnterToContinue();
+                            if (stateName == "Dry") {
+                                coloredState = "\033[1;31m[" + stateName + "]\033[0m";
+                            } else if (stateName == "Ready for Sale") {
+                                coloredState = "\033[1;32m[" + stateName + "]\033[0m";
+                            } else {
+                                coloredState = "\033[1;34m[" + stateName + "]\033[0m";
                             }
+
+                            cout << i + 1 << ". " << p->getName() << " " << coloredState;
+
+                            if (stateName != "Ready for Sale") {
+                                cout << "  Water lvl: " << (int)p->getWaterLevel();
+                            }
+
+                            cout << "\n";
+                            i++;
                         }
-                        delete staff;
+                        cout << "\n";
                     }
 
-                } while (staffChoice != 0);
+                    cout << "Choice: ";
+                    int gardenerChoice = readInt();
+                    switch (gardenerChoice) {
+
+                    /* ------------------------------------------ SIMULATE TIME ------------------------------------------ */
+                    case 1: {
+                        nursery.getNurseryInventory()->passTimeAll();
+                        cout << "\033[1;32m\nTime has passed for all plants.\n\033[0m";
+                        pressEnterToContinue();
+                        break;
+                    }
+
+                    /* ------------------------------------------ WATER SINGLE PLANT ------------------------------------------ */
+                    case 2: {
+                        if (nurseryPlants.empty()) {
+                            cout << "\nNo plants to water.\n";
+                            pressEnterToContinue();
+                            break;
+                        }
+
+                        int plantChoice = -1;
+                        Plant* selectedPlant = nullptr;
+
+                        while (true) {
+                            cout << "\nSelect a plant to water (0 to go back): ";
+                            plantChoice = readInt();
+                            if (plantChoice == 0) break;
+                            if (plantChoice > 0 && plantChoice <= (int)nurseryPlants.size()) {
+                                selectedPlant = nurseryPlants[plantChoice - 1];
+                                break;
+                            }
+                            cout << "Invalid choice. Try again.\n";
+                        }
+
+                        if (selectedPlant) {
+                            selectedPlant->water(); // <-- actually water the plant
+                            cout << "\033[1;32m\n" << selectedPlant->getName() << " has been watered.\033[0m" << endl;
+
+                        }
+
+                        pressEnterToContinue();
+                        break;
+                    }
+
+                        /* ------------------------------------------ WATER ALL PLANTS ------------------------------------------ */
+                        case 3: 
+                        {
+                            nursery.getNurseryInventory()->waterAll();
+                            cout << "\033[1;32m\nAll plants have been watered.\n\033[0m";
+                            pressEnterToContinue();
+                            break;
+                        }
+
+                        /* ------------------------------------------ MOVE TO STORE ------------------------------------------ */
+                        case 4: 
+                        {
+                            nursery.getNurseryInventory()->moveReadyPlantsTo(nursery.getShopInventory());
+                            cout << "\033[1;32m\nAll ready plants have been moved.\n\033[0m";
+                            pressEnterToContinue();
+                            break;
+                        }
+
+                        /* ------------------------------------------ BACK ------------------------------------------ */
+                        case 0: {
+                            gardening = false;
+                            break;
+                        } 
+                    }
+                }
+                delete gardener;
                 break;
-            }
+            }   
 
             //EXIT
             case 0:

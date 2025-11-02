@@ -16,13 +16,9 @@
 void PlantedState::handleWatering(Plant *plant)
 {
     plant->getStrategy()->water(plant);
-    plant->increaseWateringCount();
-    if (plant->isReadyForSale())
-    {
+    if (plant->isReadyForSale()) {
         plant->setState(new ReadyForSaleState());
-    }
-    else
-    {
+    } else {
         plant->setState(new WateredState());
     }
 }
@@ -33,9 +29,9 @@ void PlantedState::handleWatering(Plant *plant)
  */
 void PlantedState::handlePassTime(Plant *plant)
 {
-    plant->setWaterLevel(plant->getWaterLevel() - 2.0);
-    if (plant->getWaterLevel() <= 0.0)
-    {
+    double newLevel = plant->getWaterLevel() - 2.0;
+    plant->setWaterLevel(newLevel < 0 ? 0 : newLevel);
+    if (plant->getWaterLevel() <= 0.0) {
         plant->setState(new DryState());
     }
 }
@@ -56,10 +52,10 @@ string PlantedState::getStateName() const
 void WateredState::handleWatering(Plant *plant)
 {
     plant->getStrategy()->water(plant);
-    plant->increaseWateringCount();
-    if (plant->isReadyForSale())
-    {
+    if (plant->isReadyForSale()) {
         plant->setState(new ReadyForSaleState());
+    } else {
+        plant->setState(new WateredState());
     }
 }
 
@@ -70,9 +66,8 @@ void WateredState::handleWatering(Plant *plant)
 void WateredState::handlePassTime(Plant *plant)
 {
     double newLevel = plant->getWaterLevel() - 2.0;
-    plant->setWaterLevel(newLevel < 0 ? 0 : newLevel); //for safety so that water level doesn't go under and cause bugs
-    if (plant->getWaterLevel() <= 0.0)
-    {
+    plant->setWaterLevel(newLevel < 0 ? 0 : newLevel);
+    if (plant->getWaterLevel() <= 0.0) {
         plant->setState(new DryState());
     }
 }
@@ -93,13 +88,9 @@ string WateredState::getStateName() const
 void DryState::handleWatering(Plant *plant)
 {
     plant->getStrategy()->water(plant);
-    plant->increaseWateringCount();
-    if (plant->isReadyForSale())
-    {
+    if (plant->isReadyForSale()) {
         plant->setState(new ReadyForSaleState());
-    }
-    else
-    {
+    } else if (plant->getWaterLevel() > 0) {
         plant->setState(new WateredState());
     }
 }

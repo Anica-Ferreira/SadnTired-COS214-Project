@@ -91,7 +91,8 @@ WateringStrategy* Plant::getStrategy() const {
  * @param[in] level [New water level]
  */
 void Plant::setWaterLevel(double level) {
-    waterLevel = level;
+    const double MAX_WATER_LEVEL = 12.0;
+    waterLevel = (level > MAX_WATER_LEVEL) ? MAX_WATER_LEVEL : level;
 }
 
 /**
@@ -109,6 +110,7 @@ void Plant::setState(PlantState* newState) {
  * @brief [Waters the plant using its watering strategy]
  */
 void Plant::water() {
+    increaseWateringCount();
     state->handleWatering(this);
 }
 
@@ -134,7 +136,6 @@ bool Plant::isReadyForSale() const {
     return wateringCount >= getRequiredWaterings();
 }
 
-
 // Succulent
 
 /**
@@ -153,7 +154,7 @@ Succulent::Succulent(const string& name, double price, WateringStrategy* strateg
  * @return [Required waterings count]
  */    
 int Succulent::getRequiredWaterings() const {
-    return 5;  // Succulents need fewer waterings
+    return 3;  // Succulents need fewer waterings
 }
 
 // Flower
@@ -173,7 +174,7 @@ Flower::Flower(const string& name, double price, WateringStrategy* strategy, con
  * @return [Required waterings count]
  */
 int Flower::getRequiredWaterings() const {
-    return 10;  // Flowers need moderate waterings
+    return 5;  // Flowers need moderate waterings
 }
 
 // Tree
@@ -193,7 +194,7 @@ Tree::Tree(const string& name, double price, WateringStrategy* strategy, const s
  * @return [Required waterings count]
  */
 int Tree::getRequiredWaterings() const {
-    return 15;  // Trees need more waterings to mature
+    return 8;  // Trees need more waterings to mature
 }
 
 //Jordan's

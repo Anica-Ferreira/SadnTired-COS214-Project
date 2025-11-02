@@ -124,32 +124,42 @@ void NurserySystemFacade::populateSampleData() {
 
     int totalPlants = 10 + rand() % 11;
 
-    for(int i = 0; i < totalPlants; ++i) {
-        int idx = rand() % plantOptions.size();
-        PlantType p = plantOptions[idx];
+    for (int i = 0; i < totalPlants; ++i) {
+    int idx = rand() % plantOptions.size();
+    PlantType p = plantOptions[idx];
 
-        Plant* plant = nullptr;
-        if(p.category == "Flower"){
-            plant = flowerFactory.createPlant(p.name, 5 + rand() % 15, p.description);
-        }else if (p.category == "Succulent"){
-            plant = succulentFactory.createPlant(p.name, 5 + rand() % 15, p.description);
-        }else if (p.category == "Tree"){
-            plant = treeFactory.createPlant(p.name, 20 + rand() % 40, p.description);
-        }
-        
-        if (rand() % 2 == 0){
-            //set to dry or watered randomly
-            if(rand() % 2 == 0){
-                plant->setState(new WateredState());
-            }else{
+    Plant* plant = nullptr;
+    if (p.category == "Flower") {
+        plant = flowerFactory.createPlant(p.name, 5 + rand() % 15, p.description);
+    } else if (p.category == "Succulent") {
+        plant = succulentFactory.createPlant(p.name, 5 + rand() % 15, p.description);
+    } else if (p.category == "Tree") {
+        plant = treeFactory.createPlant(p.name, 20 + rand() % 40, p.description);
+    }
+
+    if (rand() % 2 == 0) {
+        int randState = rand() % 3;
+        switch (randState) {
+            case 0:
+                plant->setWaterLevel(0.0);
                 plant->setState(new DryState());
-            }
-            nurseryInventory->addPlant(plant);
-        }else{
+                break;
+            case 1:
+                plant->setWaterLevel(5.0 + rand() % 6);
+                plant->setState(new WateredState());
+                break;
+            case 2:
+                plant->setWaterLevel(1.0 + rand() % 3);
+                plant->setState(new PlantedState());
+                break;
+        }
+        nurseryInventory->addPlant(plant);
+        } else {
             plant->setState(new ReadyForSaleState());
             shopInventory->addPlant(plant);
-        } 
+        }
     }
+
 
     createSpecialBundles();
 
