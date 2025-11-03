@@ -26,12 +26,7 @@ Run the following commands:
 
 ## In the /project folder
 
-Run the following commands:
-
-- npm install
-- node server.js
-
-Open http://localhost:3000
+Open  __index.html__  in a preferred browser
 
 # TextDemo
 
@@ -64,7 +59,10 @@ Links links links
       <ul>
         <li>API</li>
         <li>Text-Based Demo</li>
-        <li></li>
+        <li>Composite</li>
+        <li>Builder</li>
+        <li>Decorator</li>
+        <li>Prototype</li>
       </ul>
     </td>
   </tr>
@@ -74,8 +72,10 @@ Links links links
     <td>Chloe Kruger</td>
     <td>
       <ul>
-        <li>Gaming</li>
-        <li>Emotional Support</li>
+        <li>Frontend Connection</li>
+        <li>Facade</li>
+        <li>Command</li>
+        <li>Bridge</li>
       </ul>
     </td>
   </tr>
@@ -85,8 +85,10 @@ Links links links
     <td>Jordan Reddy</td>
     <td>
       <ul>
-        <li>Gaming</li>
-        <li>Emotional Support</li>
+        <li>Observer</li>
+        <li>Mediator</li>
+        <li>Command</li>
+        <li>Template Method</li>
       </ul>
     </td>
   </tr>
@@ -96,8 +98,9 @@ Links links links
     <td>Daniel Stevens</td>
     <td>
       <ul>
-        <li>Gaming</li>
-        <li>Emotional Support</li>
+        <li>State</li>
+        <li>Strategy</li>
+        <li>Factory Method</li>
       </ul>
     </td>
   </tr>
@@ -107,7 +110,7 @@ Links links links
     <td>Anika Coetzer</td>
     <td>
       <ul>
-        <li>Frontend</li>
+        <li>Frontend Design</li>
         <li>ReadMe</li>
       </ul>
     </td>
