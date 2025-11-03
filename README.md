@@ -62,7 +62,6 @@ Run the following commands:
         <li>Composite</li>
         <li>Builder</li>
         <li>Decorator</li>
-        <li>Prototype</li>
       </ul>
     </td>
   </tr>
