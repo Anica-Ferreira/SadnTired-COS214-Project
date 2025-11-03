@@ -41,7 +41,7 @@ Run the following commands:
 
 # Documents
 
-Links links links
+<a href="https://docs.google.com/presentation/d/1Hknoz50js2Lm63BHuinfPLZXW5l5L1gno48nju7HVcM/edit?usp=sharing">Demo Presentation</a>
 
 # Members
 
