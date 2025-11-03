@@ -6,6 +6,7 @@
 #include <vector>
 #include "../core/IColleague.h"
 #include "../core/IMediator.h"
+
 using namespace std;
 
 class CustomerCommand;

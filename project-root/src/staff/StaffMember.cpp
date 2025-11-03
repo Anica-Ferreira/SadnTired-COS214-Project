@@ -13,7 +13,7 @@
  * @param[in,out] role [The role of the staff member]
  */
 StaffMember::StaffMember(std::string name, std::string role) : name_(name), role_(role) {
-    std::cout << "StaffMember created: " << name_ << " (" << role_ << ")" << std::endl;
+    //std::cout << "StaffMember created: " << name_ << " (" << role_ << ")" << std::endl;
 }//init name and role
 
 /**
@@ -33,10 +33,10 @@ void StaffMember::notify(IColleague* sender, std::string request) {//For Mediato
 void StaffMember::Update(std::string message) {//For Observer
     std::cout << name_ << " received notification: " << message << std::endl;
     // Extension: Execute a command for plant need
-    StaffAction* action = new StaffAction();
-    action->setOnStart(new StaffReaction("handle_plant_need"));
-    action->doCommand("plant");
-    delete action;
+    //StaffAction* action = new StaffAction();
+    //action->setOnStart(new StaffReaction("handle_plant_need"));
+    //action->doCommand("plant");
+    //delete action;
 }
 
 /**
@@ -47,7 +47,6 @@ void StaffMember::templateWorkCycle() {
     mainDuty();
     workDuty();
     subDuty();
-    std::cout << "=== Work Cycle Complete ===" << std::endl;
 }
 
 /**

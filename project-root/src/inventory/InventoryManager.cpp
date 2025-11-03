@@ -111,7 +111,7 @@ string InventoryManager::checkStock(const string& plantName) {
         return "Hello! I just checked for you and we currently have " + 
                to_string(count) + " '" + plantName + "' available in the shop.";
     }else {
-        return "Sorry but I'm afraid '" + plantName + "' is currently out of stock. Would you like me to recommend something similar?";
+        return "Sorry but I'm afraid '" + plantName + "' is currently out of stock.";
     }
 }
 
@@ -233,8 +233,6 @@ string InventoryManager::plantsToJSON(const vector<Plant*>& plants) {
     return json.str();
 }
 
-// Keep other methods similar but update to use plant names
-
 /**
  * @brief [Gets plant recommendations based on user conditions]
  * @param[in] sunlight [Sunlight condition]
@@ -243,19 +241,35 @@ string InventoryManager::plantsToJSON(const vector<Plant*>& plants) {
  * @return [JSON string containing plant recommendations]
  */
 string InventoryManager::getRecommendations(const string& sunlight,
-                                          const string& space,
-                                          const string& experience) {
-    // Implementation using real plant data
-    vector<Plant*> allPlants = shopInventory->getAll();
-    vector<Plant*> recommendations;
+                                            const string& space,
+                                            const string& experience) {
+    vector<string> plantNames = {
+        "Rose", "Tulip", "Lavender", "Cactus", "Aloe Vera",
+        "Bonsai", "Maple Tree", "Sunflower", "Snake Plant", "Oak"
+    };
 
-    for (Plant* plant : allPlants) {
-        // Simple recommendation logic based on plant type
-        if (sunlight == "low" && plant->getType() == "Succulent") {
-            recommendations.push_back(plant);
-        }
-        // Add more sophisticated logic here
+    srand((unsigned int)time(nullptr));
+
+    vector<string> temp = plantNames;
+    vector<string> finalRecommendations;
+
+    while (!temp.empty() && finalRecommendations.size() < 3) {
+        int index = rand() % temp.size();
+        finalRecommendations.push_back(temp[index]);
+        temp.erase(temp.begin() + index);
     }
 
-    return "{\"recommendations\": " + plantsToJSON(recommendations) + "}";
+    cout << "\033\n[1;32mHere are your plant recommendations:\033[0m\n";
+    for (auto& name : finalRecommendations) {
+        cout << "- " << name << endl;
+    }
+
+    string json = "{\"recommendations\": [";
+    for (size_t i = 0; i < finalRecommendations.size(); i++) {
+        json += "\"" + finalRecommendations[i] + "\"";
+        if (i != finalRecommendations.size() - 1) json += ",";
+    }
+    json += "]}";
+
+    return json;
 }

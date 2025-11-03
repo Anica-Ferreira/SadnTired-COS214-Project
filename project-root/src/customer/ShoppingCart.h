@@ -21,7 +21,7 @@ struct CartItem {
 
 class ShoppingCart {
     private:
-        std::vector<Product*> items;
+        vector<Product*> items;
 
     public:
         ShoppingCart();
@@ -33,7 +33,7 @@ class ShoppingCart {
         void clear();
         bool isEmpty() const;
 
-        std::vector<Product*> getItems() const;
+        vector<Product*> getItems() const;
 };
 
 #endif

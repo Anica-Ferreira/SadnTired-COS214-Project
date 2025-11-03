@@ -2,10 +2,13 @@
 #define IOBSERVER_H
 
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 class IObserver {
 public:
-    virtual void Update(std::string message) = 0;//when subject notifies, handle update message
+    virtual void Update(string message) = 0;//when subject notifies, handle update message
     virtual ~IObserver() {}
 };
 

@@ -34,7 +34,7 @@ StaffCoordinator::~StaffCoordinator() {
  */
 string StaffCoordinator::handleCustomerQuestion(int customerId, const string& plantName) {
     cout << "\033[1;32m\nStaffCoordinator: Handling question from customer " 
-         << customerId << ": " << plantName << "\033[0m" << endl;
+         << ": " << plantName << "\033[0m" << endl;
 
     return providePlantAdvice(customerId, plantName);
 }
