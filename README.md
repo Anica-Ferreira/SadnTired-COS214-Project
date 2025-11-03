@@ -42,6 +42,7 @@ Run the following commands:
 # Documents
 
 <a href="https://docs.google.com/presentation/d/1Hknoz50js2Lm63BHuinfPLZXW5l5L1gno48nju7HVcM/edit?usp=sharing">Demo Presentation</a>
+<a href="https://docs.google.com/document/d/1HPxxu9CmK-XGPmpwNCYz1Xmc9GYl1Dt6AcmN4H4ljvs/edit?usp=sharing">Project Report Doc</a>
 
 # Members
 
