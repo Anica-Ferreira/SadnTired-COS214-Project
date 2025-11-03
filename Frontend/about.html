@@ -4,260 +4,176 @@
     <meta charset="UTF-8">
     <title>About Us - Melancholy Nursery</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
 
-        body {
-            padding: 0;
-            margin: 0;
-            background-color: rgb(240, 255, 248);
-            font-family: "Kumbh Sans";
-        }
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: rgb(255, 240, 253);
+                font-family: "Kumbh Sans";
+            }
 
-        h1 {
-            text-align: center;
-            font-size: 80px;
-            color: rgb(1, 44, 37);
-            margin: 30px 0;
-        }
+            header {
+                display: grid;
+                grid-template-columns: auto auto;
+                font-size: 64px;
+                background-color: rgb(173, 91, 169);
+                padding: 20px;
+            }
 
-        h2 {
-            font-size: 36px;
-            color: rgb(1, 44, 37);
-            margin: 30px 0 20px 0;
-        }
+            header a {
+                text-decoration: none;
+                color: aliceblue;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
 
-        /* HEADER STYLING */
-        header {
-            display: grid;
-            grid-template-columns: auto auto;
-            font-size: 24px;
-            background-color: rgb(91, 173, 148);
-            padding: 15px;
-            align-items: center;
-        }
+            header a:hover {
+                text-decoration: underline dashed;
+            }
 
-        header a {
-            text-decoration: none;
-            color: aliceblue;
-            padding: 10px 20px;
-            font-weight: bold;
-        }
+            #home {
+                text-align: left;
+            }
 
-        header a:hover {
-            text-decoration: underline;
-        }
+            .memberBlock, #memberHeader {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 32px;
+                text-align: left;
+                border: dashed 1px rgb(139, 34, 121);
+                justify-content: center;
+                align-items: center;
+            }
 
-        #home {
-            text-align: left;
-        }
+            #memberHeader {
+                font-size: 52px;
+            }
 
-        #back {
-            text-align: right;
-        }
+            #memberTable{
+                margin: 32px 320px;
+                display: grid;
+                grid-template-rows: repeat(6, auto);
+                justify-content: center;
+                text-align: center;
+            }
 
-        /* CONTENT STYLING */
-        .content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px;
-            line-height: 1.6;
-        }
+            footer {
+                display: grid;
+                grid-template-columns: 48% 2% 48%;
+                font-size: 64px;
+                background-color: rgb(173, 91, 146);
+                padding: 20px;
+            }
 
-        .intro {
-            font-size: 20px;
-            color: #333;
-            text-align: center;
-            margin-bottom: 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid rgb(91, 173, 148);
-        }
+            footer a {
+                text-decoration: none;
+                color: rgb(255, 240, 254);
+                padding-left: 20px;
+                padding-right: 20px;
+            }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
+            footer a:hover {
+                text-decoration: underline dashed;
+            }
 
-        .feature-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid rgb(91, 173, 148);
-            text-align: center;
-        }
+            #footer1 {
+                text-align: right;
+            }
 
-        .feature-card h3 {
-            color: rgb(1, 44, 37);
-            font-size: 24px;
-            margin: 15px 0;
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 16px;
-        }
-
-        .tech-stack {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
-            border: 3px solid rgb(91, 173, 148);
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .tech-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        .team-section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
-            border: 3px solid rgb(91, 173, 148);
-        }
-
-        /* FOOTER STYLING */
-        footer {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            font-size: 18px;
-            background-color: rgb(91, 173, 148);
-            padding: 20px;
-            align-items: center;
-            margin-top: 50px;
-        }
-
-        footer a {
-            text-decoration: none;
-            color: aliceblue;
-            padding: 0 20px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        #footer1 {
-            text-align: right;
-        }
-
-        #footer2 {
-            text-align: left;
-        }
-
-        footer span {
-            text-align: center;
-            color: white;
-        }
-
-        .system-info {
-            background: #e8f5e8;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 5px solid rgb(91, 173, 148);
-        }
+            #footer2 {
+                text-align: left;
+            }
+            
+            footer span {
+                text-align: center;
+                color: white
+            }
     </style>
 </head>
-<body>
-<header>
-    <a href="index.html" id="home">🏠 Home</a>
-    <a href="javascript:history.back()" id="back">← Back</a>
-</header>
+    <body>
+        <header>
+            <a href="index.html" id="home">< Back To Index</a>
+        </header>
 
-<main>
-    <h1>About Melancholy Nursery</h1>
+        <main>
+            <div id="memberTable">
+                <div id="memberHeader">
+                    <div>Member</div>
+                    <div>Name</div>
+                    <div>Responsibilities</div>
+                </div>
 
-    <div class="content">
-        <div class="intro">
-            <p>Welcome to <strong>Melancholy Nursery</strong> - a comprehensive plant nursery management system built with modern software engineering principles and design patterns.</p>
-            <p>This system demonstrates the practical application of object-oriented design patterns in a real-world scenario.</p>
-        </div>
+                <div class="memberBlock">
+                    <div class="memberIcon"><img src="https://lh3.googleusercontent.com/d/1M_n_4JPXkK4TiLsZRiYobH_X8ruOdOKQ=s200" /></div>
+                    <div class="memberName">Anica Ferreira</div>
+                    <div class="memberTasks">
+                        <ul>
+                            <li>API</li>
+                            <li>Text-Based Demo</li>
+                            <li>Composite</li>
+                            <li>Builder</li>
+                            <li>Decorator</li>
+                            <li>Prototype</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <div class="system-info">
-            <h3>🌿 System Architecture</h3>
-            <p><strong>Backend:</strong> C++ with Crow framework for the REST API</p>
-            <p><strong>Frontend:</strong> HTML, CSS, JavaScript with jQuery</p>
-            <p><strong>Design Patterns:</strong> Factory, Facade, Command, Observer, Strategy, and more</p>
-        </div>
+                <div class="memberBlock">
+                    <div class="memberIcon"><img src="https://lh3.googleusercontent.com/d/1EGkv4JN2Rhh_XT4XU4FpjK_qkdv20055=s200" /></div>
+                    <div class="memberName">Chloe Kruger</div>
+                    <div class="memberTasks">
+                        <ul>
+                            <li>Frontend Connection</li>
+                            <li>Facade</li>
+                            <li>Command</li>
+                            <li>Bridge</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <h2>Key Features</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>🏪 Plant Shop</h3>
-                <p>Browse and purchase from our collection of beautiful plants with real-time inventory management.</p>
+                <div class="memberBlock">
+                    <div class="memberIcon"><img src="https://lh3.googleusercontent.com/d/1bFvD1j0nANzhKSqXLSZ3izgvyrrJTDit=s200" /></div>
+                    <div class="memberName">Jordan Reddy</div>
+                    <div class="memberTasks">
+                        <ul>
+                            <li>Observer</li>
+                            <li>Mediator</li>
+                            <li>Command</li>
+                            <li>Template Method</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="memberBlock">
+                    <div class="memberIcon"><img src="https://lh3.googleusercontent.com/d/1zWFitbhq_9D-C-FIZpz_7vmycwilKcgk=s200" /></div>
+                    <div class="memberName">Daniel Stevens</div>
+                    <div class="memberTasks">
+                        <ul>
+                            <li>State</li>
+                            <li>Strategy</li>
+                            <li>Factory Method</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="memberBlock">
+                    <div class="memberIcon"><img src="https://lh3.googleusercontent.com/d/1062SI6QeG6dessZZnaD11wkV2BtVD-2i=s200" /></div>
+                    <div class="memberName">Anika Coetzer</div>
+                    <div class="memberTasks">
+                        <ul>
+                            <li>Frontend Design</li>
+                            <li>ReadMe</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </main>
 
-            <div class="feature-card">
-                <h3>🌱 Nursery Management</h3>
-                <p>Monitor plant growth, water plants, and move ready plants to the shop with interactive controls.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>👨‍🌾 Staff Dashboard</h3>
-                <p>Manage tasks, track notifications, and oversee nursery operations through an intuitive interface.</p>
-            </div>
-        </div>
-
-        <div class="tech-stack">
-            <h2>Technology Stack</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <strong>C++17</strong><br>Backend Logic
-                </div>
-                <div class="tech-item">
-                    <strong>Crow Framework</strong><br>REST API Server
-                </div>
-                <div class="tech-item">
-                    <strong>HTML5/CSS3</strong><br>Frontend Interface
-                </div>
-                <div class="tech-item">
-                    <strong>JavaScript/jQuery</strong><br>Client-side Logic
-                </div>
-                <div class="tech-item">
-                    <strong>Design Patterns</strong><br>Software Architecture
-                </div>
-                <div class="tech-item">
-                    <strong>JSON API</strong><br>Data Communication
-                </div>
-            </div>
-        </div>
-
-        <div class="team-section">
-            <h2>Development Team</h2>
-            <p>This project was developed as part of COS214 - Software Engineering at the University of Pretoria.</p>
-            <p>The system showcases proper software engineering practices, clean architecture, and the implementation of various design patterns to solve real-world problems in plant nursery management.</p>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project"
-               style="background: rgb(91, 173, 148); color: white; padding: 15px 30px;
-                              text-decoration: none; border-radius: 10px; font-size: 18px;">
-                📁 View on GitHub
-            </a>
-        </div>
-    </div>
-</main>
-
-<footer>
-    <a href="about.html" id="footer1">About Us</a>
-    <span>|</span>
-    <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
-</footer>
-</body>
+        <footer>
+            <a href="about.html" id="footer1">About Us</a>
+            <span>|</span>
+            <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
+        </footer>
+    </body>
 </html>

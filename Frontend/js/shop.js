@@ -32,12 +32,13 @@ function displayPlants(plants) {
     if (Array.isArray(plants)) {
         plants.forEach(function(plant, index) {
             const plantId = plant.id || index + 1;
+
             const plantCard = `
                 <div class="cardItem" id="plant${plantId}">
-                    <div class="plant-placeholder">🌱 ${plant.name}</div>
+                    <img src="media/Plant` + plantId + `.png" class="plantImg"/>
                     <h2 class="plantName">${plant.name}</h2>
                     <p class="plantDesc">${plant.description || 'Beautiful plant'}</p>
-                    <p class="plantPrice">Price: $${plant.price || '9.99'}</p>
+                    <p class="plantPrice">Price: R ${plant.price || '9.99'}</p>
                     <p class="plantCount">In Stock: <span class="countLoc">${plant.quantity || plant.stockQuantity || 10}</span></p>
                     <button onclick="addToCart(${plantId}, '${plant.name}')">Add to Cart</button>
                 </div>

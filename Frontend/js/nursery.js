@@ -32,7 +32,7 @@ function displayPlants(plants) {
             const plantId = plant.id || index + 1;
             const plantCard = `
                 <div class="cardItem" id="plant${plantId}">
-                    <div class="plant-placeholder">🌿 ${plant.name}</div>
+                    <img src="media/Plant` + plantId + `.png" class="plantImg"/>
                     <h2 class="plantName">${plant.name}</h2>
                     <p class="plantStatus">Status: ${plant.status || "Healthy"}</p>
                     <p class="plantCount">In Stock: <span class="countLoc">${plant.quantity || 10}</span></p>

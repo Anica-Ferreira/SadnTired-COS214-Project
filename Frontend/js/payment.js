@@ -12,7 +12,7 @@ function loadCartItems() {
         cart.forEach(function(item, index) {
             const listItem = `
                 <li>
-                    <div class="plant-placeholder-small">🌱</div>
+                    <img src="media/Plant` + (index + 1) + `.png" class="plantImg"/>
                     <div class="details">
                         <h2>${item.name}</h2>
                         <p>Quantity: <span>${item.quantity}</span></p>
@@ -32,7 +32,7 @@ function loadCartSummary() {
     const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    $('#totalAmount').text(`$${total.toFixed(2)}`);
+    $('#totalAmount').text(`R${total.toFixed(2)}`);
     $('#itemCount').text(itemCount);
 }
 

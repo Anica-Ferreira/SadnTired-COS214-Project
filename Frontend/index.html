@@ -1,143 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Melancholy Nursery</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
-
-        body {
-            padding: 0;
-            margin: 0;
-            background-color: rgb(240, 255, 248);
-            font-family: "Kumbh Sans";
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 100px;
-            color: rgb(1, 44, 37);
-            margin: 50px 0;
-        }
-
-        .nav-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            padding: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            text-decoration: none;
-            color: rgb(1, 44, 37);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 3px solid rgb(91, 173, 148);
-        }
-
-        .nav-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            text-decoration: none;
-        }
-
-        .nav-card h2 {
-            font-size: 32px;
-            margin: 20px 0;
-        }
-
-        .nav-card p {
-            font-size: 18px;
-            color: #666;
-        }
-
-        .shop-card { border-color: darkred; }
-        .nursery-card { border-color: forestgreen; }
-        .staff-card { border-color: rgb(126, 91, 173); }
-
-        .system-status {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 600px;
-            border: 2px solid #ccc;
-        }
-
-        .status-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .status-item:last-child {
-            border-bottom: none;
-        }
-    </style>
-</head>
-<body>
-<h1>🌿 Melancholy Nursery</h1>
-
-<div class="system-status" id="systemStatus">
-    <h3>System Status</h3>
-    <div class="status-item">
-        <span>Backend:</span>
-        <span id="backendStatus">Checking...</span>
-    </div>
-    <div class="status-item">
-        <span>Nursery Plants:</span>
-        <span id="nurseryCount">-</span>
-    </div>
-    <div class="status-item">
-        <span>Shop Plants:</span>
-        <span id="shopCount">-</span>
-    </div>
-</div>
-
-<div class="nav-container">
-    <a href="shop.html" class="nav-card shop-card">
-        <h2>🛍️ Shop</h2>
-        <p>Browse and purchase beautiful plants</p>
-    </a>
-
-    <a href="nursery.html" class="nav-card nursery-card">
-        <h2>🌱 Nursery</h2>
-        <p>Manage and care for growing plants</p>
-    </a>
-
-    <a href="staff.html" class="nav-card staff-card">
-        <h2>👨‍🌾 Staff Dashboard</h2>
-        <p>Monitor tasks and notifications</p>
-    </a>
-</div>
-
-<footer style="margin-top: 50px; padding: 20px; background-color: rgb(91, 173, 148); color: white;">
-    <a href="about.html" style="color: white; margin: 0 20px;">About Us</a> |
-    <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" style="color: white; margin: 0 20px;">GitHub Repo</a>
-</footer>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Check system status
-        $.get("http://localhost:8080/system/status")
-            .done(function(data) {
-                const status = JSON.parse(data);
-                $('#backendStatus').html('✅ Connected');
-                $('#nurseryCount').html(status.nursery_count + ' plants');
-                $('#shopCount').html(status.shop_count + ' plants');
-            })
-            .fail(function() {
-                $('#backendStatus').html('❌ Disconnected');
-                $('#systemStatus').css('border-color', 'red');
-            });
-    });
-</script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Melancholy Nursery</title>
+        <style>
+            body {
+                background-image: url("media/Index.png");
+                height: 1000px;
+                width: 1920px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/index.js"></script>
+    </body>
 </html>
