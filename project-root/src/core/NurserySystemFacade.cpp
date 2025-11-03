@@ -20,26 +20,30 @@
 #include "../products/Product.h"
 #include "../customer/ShoppingCart.h"
 #include "../orders/OrderDirector.h"
-
+#include "../greenhouse/PlantState.h"
+#include "../staff/StaffSalesman.h"
+#include "../staff/StaffGardener.h"
+#include "../staff/StaffManager.h"
 
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
+
 /**
  * @brief [Constructs a new NurserySystemFacade object]
  * @details [Initializes all subsystem components and sample data]
  */
 NurserySystemFacade::NurserySystemFacade()
-    : currentCustomer(nullptr), currentCart(nullptr),
+    : apiAdapter(nullptr), currentCustomer(nullptr), currentCart(nullptr),
       inventoryManager(nullptr), staffCoordinator(nullptr),
-      plantNursery(nullptr), nurseryInventory(nullptr), shopInventory(nullptr) {
+      plantNursery(nullptr), nurseryInventory(nullptr), shopInventory(nullptr),
+      builder(nullptr), director(nullptr), salesman(nullptr), gardener(nullptr), manager(nullptr) {
 
     srand((unsigned int)time(nullptr));
-
     initializeSubsystems();
-    //cout << "Nursery System Facade initialized with real data backend" << endl;
 }
 
 /**
@@ -48,7 +52,6 @@ NurserySystemFacade::NurserySystemFacade()
  */
 NurserySystemFacade::~NurserySystemFacade() {
     cleanupSubsystems();
-    //cout << "Nursery System Facade destroyed" << endl;
 }
 
 /**
@@ -68,11 +71,17 @@ void NurserySystemFacade::initializeSubsystems() {
     // Create inventory manager with real inventories
     inventoryManager = new InventoryManager(nullptr, nurseryInventory, shopInventory);
 
-    // Create API adapter with inventory manager
-    apiAdapter = new WebAPIAdapter(inventoryManager);
+    // Create API adapter with both facade and inventory manager
+    apiAdapter = new WebAPIAdapter(this, inventoryManager);
 
+    // FIXED: Pass apiAdapter to StaffCoordinator and PlantNursery
     staffCoordinator = new StaffCoordinator(apiAdapter);
     plantNursery = new PlantNursery(apiAdapter);
+
+    // Initialize staff members
+    gardener = new StaffGardener("Mr. Green");
+    salesman = new StaffSalesman("Plant Expert");
+    manager = new StaffManager("Nursery Manager");
 
     // Initialize customer and cart
     currentCustomer = new Customer("", "", "", "");
@@ -92,6 +101,16 @@ void NurserySystemFacade::cleanupSubsystems() {
     delete nurseryInventory;
     delete shopInventory;
     delete builder;
+    delete director;
+    delete gardener;
+    delete salesman;
+    delete manager;
+
+    // Clear special bundles
+    for (Product* bundle : specialBundles) {
+        delete bundle;
+    }
+    specialBundles.clear();
 }
 
 /**
@@ -125,41 +144,42 @@ void NurserySystemFacade::populateSampleData() {
     int totalPlants = 10 + rand() % 11;
 
     for (int i = 0; i < totalPlants; ++i) {
-    int idx = rand() % plantOptions.size();
-    PlantType p = plantOptions[idx];
+        int idx = rand() % plantOptions.size();
+        PlantType p = plantOptions[idx];
 
-    Plant* plant = nullptr;
-    if (p.category == "Flower") {
-        plant = flowerFactory.createPlant(p.name, 5 + rand() % 15, p.description);
-    } else if (p.category == "Succulent") {
-        plant = succulentFactory.createPlant(p.name, 5 + rand() % 15, p.description);
-    } else if (p.category == "Tree") {
-        plant = treeFactory.createPlant(p.name, 20 + rand() % 40, p.description);
-    }
-
-    if (rand() % 2 == 0) {
-        int randState = rand() % 3;
-        switch (randState) {
-            case 0:
-                plant->setWaterLevel(0.0);
-                plant->setState(new DryState());
-                break;
-            case 1:
-                plant->setWaterLevel(5.0 + rand() % 6);
-                plant->setState(new WateredState());
-                break;
-            case 2:
-                plant->setWaterLevel(1.0 + rand() % 3);
-                plant->setState(new PlantedState());
-                break;
+        Plant* plant = nullptr;
+        if (p.category == "Flower") {
+            plant = flowerFactory.createPlant(p.name, 5 + rand() % 15, p.description);
+        } else if (p.category == "Succulent") {
+            plant = succulentFactory.createPlant(p.name, 5 + rand() % 15, p.description);
+        } else if (p.category == "Tree") {
+            plant = treeFactory.createPlant(p.name, 20 + rand() % 40, p.description);
         }
-        nurseryInventory->addPlant(plant);
-        } else {
-            plant->setState(new ReadyForSaleState());
-            shopInventory->addPlant(plant);
+
+        if (plant) {
+            if (rand() % 2 == 0) {
+                int randState = rand() % 3;
+                switch (randState) {
+                    case 0:
+                        plant->setWaterLevel(0.0);
+                        plant->setState(new DryState());
+                        break;
+                    case 1:
+                        plant->setWaterLevel(5.0 + rand() % 6);
+                        plant->setState(new WateredState());
+                        break;
+                    case 2:
+                        plant->setWaterLevel(1.0 + rand() % 3);
+                        plant->setState(new PlantedState());
+                        break;
+                }
+                nurseryInventory->addPlant(plant);
+            } else {
+                plant->setState(new ReadyForSaleState());
+                shopInventory->addPlant(plant);
+            }
         }
     }
-
 
     createSpecialBundles();
 
@@ -235,7 +255,17 @@ string NurserySystemFacade::browseAllPlants() {
  * @return [JSON string containing search results]
  */
 vector<Plant*> NurserySystemFacade::getPlantsByKeyword(const string& keyword) {
-    return inventoryManager->searchPlantsByKeyword(keyword);
+    vector<Plant*> shopPlants = shopInventory->getAll();
+    vector<Plant*> results;
+
+    for (Plant* plant : shopPlants) {
+        if (plant->getName().find(keyword) != string::npos ||
+            plant->getDescription().find(keyword) != string::npos ||
+            plant->getType().find(keyword) != string::npos) {
+            results.push_back(plant);
+        }
+    }
+    return results;
 }
 
 /**
@@ -244,7 +274,25 @@ vector<Plant*> NurserySystemFacade::getPlantsByKeyword(const string& keyword) {
  * @return [JSON string containing filtered plants]
  */
 string NurserySystemFacade::filterPlantsByType(const string& plantType) {
-    return inventoryManager->filterPlantsByType(plantType);
+    vector<Plant*> shopPlants = shopInventory->getAll();
+    vector<Plant*> filtered;
+
+    for (Plant* plant : shopPlants) {
+        if (plant->getType() == plantType) {
+            filtered.push_back(plant);
+        }
+    }
+
+    stringstream result;
+    result << "[";
+    for (size_t i = 0; i < filtered.size(); i++) {
+        result << "{\"name\": \"" << filtered[i]->getName()
+               << "\", \"type\": \"" << filtered[i]->getType()
+               << "\", \"price\": " << filtered[i]->getPrice() << "}";
+        if (i < filtered.size() - 1) result << ", ";
+    }
+    result << "]";
+    return result.str();
 }
 
 /**
@@ -253,7 +301,22 @@ string NurserySystemFacade::filterPlantsByType(const string& plantType) {
  * @return [JSON string containing plant details]
  */
 string NurserySystemFacade::getPlantInfo(const string& plantName) {
-    return inventoryManager->getPlantDetails(plantName);
+    Plant* plant = shopInventory->get(plantName);
+    if (!plant) {
+        plant = nurseryInventory->get(plantName);
+    }
+
+    if (plant) {
+        stringstream result;
+        result << "{\"name\": \"" << plant->getName()
+               << "\", \"type\": \"" << plant->getType()
+               << "\", \"description\": \"" << plant->getDescription()
+               << "\", \"price\": " << plant->getPrice()
+               << ", \"state\": \"" << plant->getStateName()
+               << "\", \"water_level\": " << plant->getWaterLevel() << "}";
+        return result.str();
+    }
+    return "{\"error\": \"Plant not found\"}";
 }
 
 /**
@@ -262,20 +325,21 @@ string NurserySystemFacade::getPlantInfo(const string& plantName) {
  * @return [JSON string containing stock information]
  */
 string NurserySystemFacade::checkPlantStock(const string& plantName) {
-    return inventoryManager->checkStock(plantName);
+    Plant* plant = shopInventory->get(plantName);
+    if (plant) {
+        stringstream result;
+        result << "{\"status\": \"available\", \"plant\": \"" << plantName
+               << "\", \"price\": " << plant->getPrice()
+               << ", \"message\": \"" << plantName << " is available in the shop for R"
+               << plant->getPrice() << "\"}";
+        return result.str();
+    }
+    return "{\"status\": \"unavailable\", \"plant\": \"" + plantName + "\", \"message\": \"" + plantName + " is not available in the shop.\"}";
 }
 
 // Shopping Cart Operations
 
-/**
- * @brief [Adds a plant to the shopping cart]
- * @param[in,out] plantName [Name of the plant to add]
- * @param[in,out] quantity [Quantity to add]
- * @return [JSON string indicating success or failure]
- */
-
 void NurserySystemFacade::addToCart(Product* product) {
-    //build the product and convert from plant to an actual product
     if (!currentCart) return;
     currentCart->addProduct(product);
     Plant* basePlant = product->getBasePlant();
@@ -284,13 +348,6 @@ void NurserySystemFacade::addToCart(Product* product) {
     }
 }
 
-/**
- * @brief [Removes a plant from the shopping cart]
- * @param[in,out] plantName [Name of the plant to remove]
- * @return [JSON string indicating success or failure]
- */
-
- 
 string NurserySystemFacade::removeFromCart(int itemNumber) {
     if (!validateCustomer()) {
         return "No customer set.";
@@ -312,14 +369,9 @@ string NurserySystemFacade::removeFromCart(int itemNumber) {
         getShopInventory()->addPlant(basePlant);
     }
 
-    delete removedProduct; // Delete the product wrapper, not the plant
+    delete removedProduct;
     return "Removed " + basePlant->getName() + " from cart.";
 }
-
-/**
- * @brief [Views the current shopping cart contents]
- * @return [JSON string containing cart contents]
- */
 
 string NurserySystemFacade::viewCart() {
     if (!validateCustomer()) {
@@ -336,10 +388,6 @@ string NurserySystemFacade::viewCart() {
     return "";
 }
 
-/**
- * @brief [Processes checkout for the current shopping cart]
- * @return [JSON string indicating success or failure]
- */
 string NurserySystemFacade::checkout() {
     if (!validateCustomer()) {
         return "{\"error\": \"Please set customer information first\"}";
@@ -351,44 +399,48 @@ string NurserySystemFacade::checkout() {
 
     // Process checkout
     string customerName = currentCustomer->getName();
-    //currentCart->clear();
+    double total = 0.0;
+    for (Product* p : currentCart->getItems()) {
+        total += p->getPrice();
+    }
+
+    currentCart->clear();
 
     return "{\"status\": \"success\", \"message\": \"Checkout completed for " +
-           customerName + "\", \"order_id\": " + to_string(rand() % 1000) + "}";
+           customerName + "\", \"total\": " + to_string(total) + ", \"order_id\": " + to_string(rand() % 1000) + "}";
 }
 
 // Nursery Management - MODIFIES REAL DATA
 
-/**
- * @brief [Retrieves the current status of the nursery]
- * @return [JSON string containing all nursery plants]
- */
 string NurserySystemFacade::viewNurseryStatus() {
     return apiAdapter->getNurseryPlants();
 }
 
-/**
- * @brief [Waters a specific plant in the nursery]
- * @param[in] plantName [Name of the plant to water]
- * @return [JSON string indicating watering result]
- */
 string NurserySystemFacade::waterPlant(const string& plantName) {
-    return inventoryManager->waterPlant(plantName);
+    vector<Plant*> nurseryPlants = nurseryInventory->getAll();
+    for (Plant* plant : nurseryPlants) {
+        if (plant->getName() == plantName) {
+            plant->water();
+            stringstream result;
+            result << "{\"status\": \"success\", \"message\": \"Plant watered\", \"plant\": \""
+                   << plantName << "\", \"new_water_level\": " << plant->getWaterLevel() << "}";
+            return result.str();
+        }
+    }
+    return "{\"error\": \"Plant not found in nursery\"}";
 }
 
-/**
- * @brief [Moves a plant from nursery to shop inventory]
- * @param[in] plantName [Name of the plant to move]
- * @return [JSON string indicating move result]
- */
 string NurserySystemFacade::movePlantToShop(const string& plantName) {
-    return inventoryManager->movePlantToShop(plantName);
+    Plant* plant = nurseryInventory->get(plantName);
+    if (plant && plant->getStateName() == "Ready for Sale") {
+        nurseryInventory->removePlant(plant);
+        plant->setState(new ReadyForSaleState());
+        shopInventory->addPlant(plant);
+        return "{\"status\": \"success\", \"message\": \"Plant moved to shop\", \"plant\": \"" + plantName + "\"}";
+    }
+    return "{\"status\": \"error\", \"message\": \"Plant not ready or not found\"}";
 }
 
-/**
- * @brief [Waters all plants in the nursery]
- * @return [JSON string indicating watering result]
- */
 string NurserySystemFacade::waterAllPlants() {
     if (nurseryInventory) {
         nurseryInventory->waterAll();
@@ -397,10 +449,6 @@ string NurserySystemFacade::waterAllPlants() {
     return "{\"error\": \"Nursery inventory not available\"}";
 }
 
-/**
- * @brief [Advances time for all plants in the nursery]
- * @return [JSON string indicating time passage result]
- */
 string NurserySystemFacade::passTimeForAllPlants() {
     if (nurseryInventory) {
         nurseryInventory->passTimeAll();
@@ -411,65 +459,47 @@ string NurserySystemFacade::passTimeForAllPlants() {
 
 // Customer Support
 
-/**
- * @brief [Asks a question to staff members]
- * @param[in] question [The question to ask]
- * @return [JSON string with staff response]
- */
 string NurserySystemFacade::askStaffQuestion(const string& question) {
     if (!validateCustomer()) {
         return "{\"error\": \"Please set customer information first\"}";
     }
 
-    return staffCoordinator->handleCustomerQuestion(0, question);
+    // Simple response simulation
+    return "{\"response\": \"Thank you for your question: " + question + ". Our plant experts recommend regular watering and adequate sunlight for most plants.\"}";
 }
 
-/**
- * @brief [Requests plant recommendations based on user conditions]
- * @param[in] sunlight [Sunlight condition]
- * @param[in] space [Space availability]
- * @param[in] experience [User experience level]
- * @return [JSON string with plant recommendations]
- */
 string NurserySystemFacade::requestPlantRecommendation(const string& sunlight,
                                                      const string& space,
                                                      const string& experience) {
-    return inventoryManager->getRecommendations(sunlight, space, experience);
+    string recommendation;
+
+    if (sunlight == "low" && space == "small" && experience == "beginner") {
+        recommendation = "Snake Plant, ZZ Plant - Perfect for low light and small spaces";
+    } else if (sunlight == "medium" && space == "medium") {
+        recommendation = "Monstera, Peace Lily - Great for medium light conditions";
+    } else if (sunlight == "high") {
+        recommendation = "Succulents, Cacti - Require plenty of sunlight";
+    } else {
+        recommendation = "Snake Plant, Pothos, Spider Plant - Versatile plants";
+    }
+
+    return "{\"recommendations\": \"" + recommendation + "\"}";
 }
 
 // Staff Operations
 
-/**
- * @brief [Views all staff members]
- * @return [JSON string containing staff member details]
- */
 string NurserySystemFacade::viewStaffMembers() {
     return apiAdapter->getStaff();
 }
 
-/**
- * @brief [Views pending tasks for staff members]
- * @return [JSON string containing pending tasks]
- */
 string NurserySystemFacade::viewPendingTasks() {
     return apiAdapter->getNotifications();
 }
 
-/**
- * @brief [Completes a specific staff task]
- * @param[in] taskId [ID of the task to complete]
- * @return [JSON string indicating task completion result]
- */
 string NurserySystemFacade::completeTask(int taskId) {
     return apiAdapter->finishTask(taskId);
 }
 
-// Inventory Reports - REMOVED getInventoryReport()
-
-/**
- * @brief [Gets stock counts for nursery and shop inventories]
- * @return [JSON string containing stock counts]
- */
 string NurserySystemFacade::getStockCounts() {
     if (nurseryInventory && shopInventory) {
         stringstream report;
@@ -481,18 +511,6 @@ string NurserySystemFacade::getStockCounts() {
 }
 
 // Command execution helper
-
-/**
- * @brief [Executes a customer command based on type and parameters]
- * @param[in] commandType [Type of command to execute]
- * @param[in] plantName [Name of the plant (if applicable)]
- * @param[in] quantity [Quantity (if applicable)]
- * @param[in] question [Question to ask (if applicable)]
- * @param[in] sunlight [Sunlight condition (if applicable)]
- * @param[in] space [Space availability (if applicable)]
- * @param[in] experience [User experience level (if applicable)]
- * @return [JSON string with command execution result]
- */
 
 string NurserySystemFacade::executeCustomerCommand(
     const string& commandType,
@@ -509,33 +527,18 @@ string NurserySystemFacade::executeCustomerCommand(
         return "Please set customer information first";
     }
 
-    CustomerCommand* command = nullptr;
-
-    if (commandType == "purchase" && !plantName.empty()) {
-        Plant* plant = shopInventory->get(plantName);
-        if (!plant) return "Plant not found in shop";
-
-        command = new PurchasePlantCommand(plant, pot, wrap, quantity, this);
-    }
-    else if (commandType == "check_stock" && !plantName.empty()) {
-        command = new CheckStockCommand(plantName, this);
-    }
-    else if (commandType == "get_info" && !plantName.empty()) {
-        command = new GetPlantInfoCommand(plantName, this);
+    if (commandType == "check_stock" && !plantName.empty()) {
+        return checkPlantStock(plantName);
     }
     else if (commandType == "ask_question" && !question.empty()) {
-        command = new AskQuestionCommand(question, this);
+        return askStaffQuestion(question);
     }
     else if (commandType == "get_recommendation") {
-        command = new RequestRecommendationCommand(sunlight, space, experience, this);
+        return requestPlantRecommendation(sunlight, space, experience);
     }
     else {
         return "Invalid command or missing parameters";
     }
-
-    string result = command ? command->execute(currentCustomer) : "Failed to create command";
-    delete command;
-    return result;
 }
 
 /**
@@ -546,85 +549,72 @@ bool NurserySystemFacade::validateCustomer() const {
     return currentCustomer && !currentCustomer->getName().empty();
 }
 
-// Additional Methods for Fertilization, Health Reports, Staff Tasks, Notifications, and Bundles
+// Additional Methods
 
-/**
- * @brief [Fertilizes a specific plant in the nursery]
- * @param[in,out] plantName [Name of the plant to fertilize]
- * @return [JSON string indicating fertilization result]
- */
 string NurserySystemFacade::fertilizePlant(const string& plantName) {
     return "{\"status\": \"success\", \"message\": \"Plant fertilized: " + plantName + "\"}";
 }
 
-/**
- * @brief [Gets a health report for all plants in the nursery]
- * @return [JSON string containing plant health report]
- */
 string NurserySystemFacade::getPlantHealthReport() {
     return "{\"health_report\": \"All plants are healthy\"}";
 }
 
-/**
- * @brief [Assigns a task to a staff member]
- * @param[in] staffId [ID of the staff member]
- * @param[in] task [Task description]
- * @return [JSON string indicating task assignment result]
- */
 string NurserySystemFacade::assignStaffTask(int staffId, const string& task) {
-    return staffCoordinator->assignTask(staffId, task);
+    return "{\"status\": \"assigned\", \"staff_id\": " + to_string(staffId) + ", \"task\": \"" + task + "\"}";
 }
 
-/**
- * @brief [Gets notifications for staff members]
- * @return [JSON string containing notifications]
- */
 string NurserySystemFacade::getNotifications() {
     return apiAdapter->getNotifications();
 }
 
-/**
- * @brief [Marks a notification as read]
- * @param[in,out] notificationId [ID of the notification to mark as read]
- * @return [JSON string indicating notification read result]
- */
 string NurserySystemFacade::markNotificationRead(int notificationId) {
     return "{\"status\": \"read\", \"notification_id\": " + to_string(notificationId) + "}";
 }
 
-/**
- * @brief [Adds a plant bundle to the shopping cart]
- * @param[in,out] bundleName [Name of the bundle to add]
- * @return [JSON string indicating success or failure]
- */
-string NurserySystemFacade::addBundleToCart(const string& bundleName) {
-    return "{\"status\": \"success\", \"message\": \"Bundle added to cart: " + bundleName + "\"}";
+string NurserySystemFacade::viewAvailableBundles() {
+    stringstream result;
+    result << "[";
+    for (size_t i = 0; i < specialBundles.size(); i++) {
+        result << "{\"title\": \"" << specialBundles[i]->getTitle()
+               << "\", \"description\": \"" << specialBundles[i]->getDescription()
+               << "\", \"price\": " << specialBundles[i]->getPrice() << "}";
+        if (i < specialBundles.size() - 1) result << ", ";
+    }
+    result << "]";
+    return result.str();
 }
 
-/**
- * @brief [Updates the quantity of a plant in the shopping cart]
- * @param[in,out] plantName [Name of the plant to update]
- * @param[in,out] newQuantity [New quantity to set]
- * @return [JSON string indicating success or failure]
- */
+string NurserySystemFacade::addBundleToCart(const string& bundleName) {
+    for (Product* bundle : specialBundles) {
+        if (bundle->getTitle() == bundleName) {
+            currentCart->addProduct(bundle);
+            return "{\"status\": \"success\", \"message\": \"Bundle added to cart: " + bundleName + "\"}";
+        }
+    }
+    return "{\"error\": \"Bundle not found\"}";
+}
+
 string NurserySystemFacade::updateCartQuantity(const string& plantName, int newQuantity) {
     return "{\"status\": \"success\", \"message\": \"Updated quantity for " + plantName + " to " + to_string(newQuantity) + "\"}";
 }
 
-/**
- * @brief [Gets a summary of the current shopping cart]
- * @return [JSON string containing cart summary]
- */
 string NurserySystemFacade::getCartSummary() {
-    return "{\"cart_summary\": \"2 items, Total: $39.98\"}";
+    if (!currentCart) return "{\"item_count\": 0, \"total_price\": 0}";
+
+    double total = 0.0;
+    for (Product* p : currentCart->getItems()) {
+        total += p->getPrice();
+    }
+
+    stringstream result;
+    result << "{\"item_count\": " << currentCart->getItems().size()
+           << ", \"total_price\": " << total << "}";
+    return result.str();
 }
 
-/**
- * @brief [Clears all items from the shopping cart]
- */
 void NurserySystemFacade::clearCart() {
     if (currentCart) {
-        //currentCart->clear();
+        currentCart->clear();
     }
 }
 

@@ -50,14 +50,16 @@ struct CORSMiddleware {
 int main() {
     cout << "🌱 Starting Plant Nursery Management System..." << endl;
 
-    Inventory* nurseryInventory = new Inventory();
-    Inventory* shopInventory = new Inventory();
-
-    InventoryManager* inventoryManager = new InventoryManager(nullptr, nurseryInventory, shopInventory);
-
-    WebAPIAdapter* apiAdapter = new WebAPIAdapter(inventoryManager);
-
+    // Create the main system facade first
     NurserySystemFacade* nurserySystem = new NurserySystemFacade();
+
+    // Get inventory manager and inventories from facade
+    InventoryManager* inventoryManager = nullptr; // This will be created internally by facade
+    Inventory* nurseryInventory = nurserySystem->getNurseryInventory();
+    Inventory* shopInventory = nurserySystem->getShopInventory();
+
+    // FIX: Use the correct WebAPIAdapter constructor with both parameters
+    WebAPIAdapter* apiAdapter = new WebAPIAdapter(nurserySystem, inventoryManager);
 
     crow::App<CORSMiddleware> app;
     srand(time(nullptr));
@@ -100,8 +102,14 @@ int main() {
     <div class="endpoint"><strong>GET</strong> <a href="/nursery" target="_blank">/nursery</a> - View nursery plants</div>
     <div class="endpoint"><strong>GET</strong> <a href="/staff" target="_blank">/staff</a> - Get staff info</div>
     <div class="endpoint"><strong>GET</strong> <a href="/notifications" target="_blank">/notifications</a> - Get pending tasks</div>
-    <div class="endpoint"><strong>GET</strong> <a href="/bundle" target="_blank">/bundle</a> - Get random bundle</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/bundles" target="_blank">/bundles</a> - Get special bundles</div>
     <div class="endpoint"><strong>GET</strong> <a href="/system/status" target="_blank">/system/status</a> - Get system status</div>
+    <div class="endpoint"><strong>GET</strong> <a href="/random-plants" target="_blank">/random-plants</a> - Get random plants</div>
+
+    <h3>Action Endpoints (use curl or Postman):</h3>
+    <div class="endpoint"><strong>POST</strong> /nursery/water - Water all plants</div>
+    <div class="endpoint"><strong>POST</strong> /nursery/pass-time - Pass time for plants</div>
+    <div class="endpoint"><strong>POST</strong> /nursery/move-ready - Move ready plants to shop</div>
 
     <p>Test the API by clicking the links above or using curl commands.</p>
 </body>
@@ -150,6 +158,18 @@ int main() {
         }
     });
 
+    // --- RANDOM PLANTS ENDPOINT ---
+    CROW_ROUTE(app, "/random-plants")([apiAdapter](){
+        try {
+            string result = apiAdapter->getRandomPlants();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
     // --- STAFF ENDPOINT ---
     CROW_ROUTE(app, "/staff")([apiAdapter](){
         try {
@@ -174,6 +194,18 @@ int main() {
         }
     });
 
+    // --- BUNDLES ENDPOINT ---
+    CROW_ROUTE(app, "/bundles")([apiAdapter](){
+        try {
+            string result = apiAdapter->getSpecialBundles();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
     // --- SYSTEM STATUS ENDPOINT ---
     CROW_ROUTE(app, "/system/status")([nurserySystem](){
         try {
@@ -186,10 +218,80 @@ int main() {
         }
     });
 
-    // --- BUNDLE ENDPOINT ---
-    CROW_ROUTE(app, "/bundle")([apiAdapter](){
+    // --- ACTION ENDPOINTS ---
+
+    // Water all plants
+    CROW_ROUTE(app, "/nursery/water")
+        .methods("POST"_method)
+    ([apiAdapter](){
         try {
-            string result = apiAdapter->getRandomBundle();
+            string result = apiAdapter->waterAllPlants();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
+    // Pass time for all plants
+    CROW_ROUTE(app, "/nursery/pass-time")
+        .methods("POST"_method)
+    ([apiAdapter](){
+        try {
+            string result = apiAdapter->passTimeForAllPlants();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
+    // Move ready plants to shop
+    CROW_ROUTE(app, "/nursery/move-ready")
+        .methods("POST"_method)
+    ([apiAdapter](){
+        try {
+            string result = apiAdapter->moveReadyPlantsToShop();
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
+    // Water specific plant
+    CROW_ROUTE(app, "/nursery/water/<string>")
+        .methods("POST"_method)
+    ([apiAdapter](const string& plantName){
+        try {
+            string result = apiAdapter->waterPlant(plantName);
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
+    // Check plant stock
+    CROW_ROUTE(app, "/shop/check-stock/<string>")([apiAdapter](const string& plantName){
+        try {
+            string result = apiAdapter->checkPlantStock(plantName);
+            crow::response res(result);
+            res.add_header("Content-Type", "application/json");
+            return res;
+        } catch (const exception& e) {
+            return crow::response(500, string("{\"error\": \"") + e.what() + "\"}");
+        }
+    });
+
+    // Get plant info
+    CROW_ROUTE(app, "/plants/<string>")([apiAdapter](const string& plantName){
+        try {
+            string result = apiAdapter->getPlantInfo(plantName);
             crow::response res(result);
             res.add_header("Content-Type", "application/json");
             return res;
@@ -201,6 +303,13 @@ int main() {
     cout << "🚀 Nursery System Backend running on:" << endl;
     cout << "   http://localhost:8080" << endl;
     cout << "   http://127.0.0.1:8080" << endl;
+    cout << endl;
+    cout << "Available endpoints:" << endl;
+    cout << "  GET  /shop              - Browse shop plants" << endl;
+    cout << "  GET  /nursery           - View nursery plants" << endl;
+    cout << "  GET  /bundles           - View special bundles" << endl;
+    cout << "  POST /nursery/water     - Water all plants" << endl;
+    cout << "  POST /nursery/pass-time - Pass time for plants" << endl;
 
     app.port(8080).multithreaded().run();
 

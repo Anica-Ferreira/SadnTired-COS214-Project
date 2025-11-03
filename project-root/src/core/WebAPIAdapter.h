@@ -1,50 +1,83 @@
-// WebAPIAdapter.h - UPDATED
 #ifndef WEB_API_ADAPTER_H
 #define WEB_API_ADAPTER_H
 
 #include <string>
 #include <vector>
-#include <iostream>
- 
-#include "../greenhouse/Plant.h"
-
 using namespace std;
 
 class InventoryManager;
+class Plant;
+class NurserySystemFacade;
+class ShoppingCart;
+class Product;
 
 class WebAPIAdapter {
-    private:
-        InventoryManager* inventoryManager;
-        
+private:
+    NurserySystemFacade* nurseryFacade;
+    InventoryManager* inventoryManager;
 
-    public:
-        WebAPIAdapter(InventoryManager* invManager);
-        ~WebAPIAdapter();
+public:
+    WebAPIAdapter(NurserySystemFacade* facade, InventoryManager* invManager);
+    ~WebAPIAdapter();
 
-        // Shop endpoints - SERVES REAL DATA
-        string getShopProducts();
-        string getRandomPlants();
+    // Inventory endpoints
+    string getShopProducts();
+    string getNurseryPlants();
+    string getRandomPlants();
 
-        // Nursery endpoints - SERVES REAL DATA
-        string getNurseryPlants();
-        string waterPlant(const string& plantName);
-        string movePlantToShop(const string& plantName);
+    // Plant management endpoints
+    string waterPlant(const string& plantName);
+    string waterAllPlants();
+    string movePlantToShop(const string& plantName);
+    string moveReadyPlantsToShop();
+    string passTimeForAllPlants();
 
-        // Staff endpoints
-        string getStaff();
-        string getNotifications();
-        string finishTask(int taskId);
+    // Plant search and browsing
+    string searchPlants(const string& keyword);
+    string getPlantInfo(const string& plantName);
+    string getPlantsByKeyword(const string& keyword);
 
-        // Customer endpoints
-        string createCustomer(const string& name, const string& email);
-        string executeCustomerCommand(const string& commandType, const string& params);
-        string getCustomerCart(int customerId);
+    // Customer support endpoints
+    string checkPlantStock(const string& plantName);
+    string getPlantAdvice(const string& plantName, const string& question);
+    string getPlantRecommendation(const string& sunlight, const string& space, const string& experience);
 
-        // Bundle endpoints
-        string getRandomBundle();
+    // Shopping cart endpoints
+    string addToCart(const string& plantName);
+    string addCustomizedToCart(const string& plantName, int potType, int wrapType);
+    string viewCart();
+    string removeFromCart(int itemIndex);
+    string checkout();
+    string getCartSummary();
 
-    private:
-        string inventoryToJSON(const vector<Plant*>& plants);
+    // Special bundles
+    string getSpecialBundles();
+    string addBundleToCart(int bundleIndex);
+
+    // Order customization
+    string startNewOrder();
+    string setOrderPlant(const string& plantName);
+    string addOrderPot(int potType);
+    string addOrderWrapping(int wrapType);
+    string finalizeOrder();
+
+    // Staff operations
+    string getStaff();
+    string getNotifications();
+    string finishTask(int taskId);
+
+    // Customer management
+    string createCustomer(const string& name, const string& email);
+    string executeCustomerCommand(const string& commandType, const string& plantName,
+                                     const string& sunlight = "", const string& space = "",
+                                     const string& experience = "", const string& question = "");
+    string getCustomerCart(int customerId);
+
+private:
+    string inventoryToJSON(const vector<Plant*>& plants);
+    string cartToJSON(ShoppingCart* cart);
+    string productsToJSON(const vector<Product*>& products);
+    string plantToJSON(Plant* plant);
 };
 
 #endif
