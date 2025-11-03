@@ -36,6 +36,10 @@ string GiftWrapping::getName() const {
     return product->getName() + " + " + getWrappingName(type);
 }
 
+/**
+ * @brief [Gets the combined description of product and wrapping]
+ * @return [Combined description string]
+ */
 string GiftWrapping::getDescription() const {
     string description = product->getDescription();
     if (type != NONE) {

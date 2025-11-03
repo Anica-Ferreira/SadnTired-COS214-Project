@@ -53,6 +53,10 @@ Product* ProductItem::clone() const {
     return new ProductItem(*this);
 }
 
+/**
+ * @brief [Gets the base plant from the product item]
+ * @return [Pointer to the base Plant object]
+ */
 Plant* ProductItem::getBasePlant() const{
     return basePlant;
 }

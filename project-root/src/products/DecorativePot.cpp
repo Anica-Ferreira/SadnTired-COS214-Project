@@ -36,6 +36,10 @@ std::string DecorativePot::getName() const{
     return product->getName() + " + " + getPotName(type);
 }
 
+/**
+ * @brief [Gets the combined description of product and pot]
+ * @return [Combined description string]
+ */
 string DecorativePot::getDescription() const{
     string description = product->getDescription();
     if (type != NONE) {

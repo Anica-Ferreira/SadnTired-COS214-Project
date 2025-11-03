@@ -46,6 +46,11 @@ Plant* Inventory::get(int index) const {
     return nullptr;
 }
 
+/**
+ * @brief [Gets a plant by name]
+ * @param[in] name [Name of the plant to retrieve]
+ * @return [Pointer to the plant with specified name, or nullptr if not found]
+ */
 Plant* Inventory::get(const string& name) const {
     for (Plant* plant : plants) {
         if (plant->getName() == name) return plant;
@@ -138,6 +143,11 @@ void Inventory::moveReadyPlantsTo(Inventory* other){
     }
 }
 
+/**
+ * @brief [Gets the quantity of a specific plant by name]
+ * @param[in] plantName [Name of the plant to count]
+ * @return [Quantity of the specified plant in inventory]
+ */
 int Inventory::getQuantity(const std::string& plantName) const {
     int count = 0;
     for (Plant* plant : plants) {

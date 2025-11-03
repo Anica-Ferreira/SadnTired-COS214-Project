@@ -79,6 +79,10 @@ string ProductBundle::getTitle() const {
     return name;
 }
 
+/**
+ * @brief [Gets the detailed description of the product bundle]
+ * @return [The combined descriptions of all items in the bundle]
+ */
 string ProductBundle::getDescription() const {
     string desc;
     for (size_t i = 0; i < items.size(); i++) {
@@ -109,6 +113,10 @@ void ProductBundle::printProduct() const {
     cout << "Total Price: R" << getPrice() << endl;
 }
 
+/**
+ * @brief [Gets the base plant from the first item in the bundle]
+ * @return [Pointer to the base Plant object, or nullptr if none]
+ */
 Plant* ProductBundle::getBasePlant() const {
     if (!items.empty()) {
         return items.front()->getBasePlant();

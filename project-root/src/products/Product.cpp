@@ -7,13 +7,37 @@
 
 #include "Product.h"
 
+/**
+ * @brief [Constructs a new Product object with default values]
+ */
 Product::Product() : name(""), price(0.0), description("") {}
+
+/**
+ * @brief [Constructs a new Product object with specified values]
+ * @param[in] name [Name of the product]
+ * @param[in] price [Price of the product]
+ * @param[in] description [Description of the product]
+ */
 Product::Product(const string& name, double price, const string& description)
     : name(name), price(price), description(description) {}
 Product::~Product() {}
 
+/**
+ * @brief [Gets the name of the product]
+ * @return [Name string]
+ */
 string Product::getName() const { return name; }
+
+/**
+ * @brief [Gets the price of the product]
+ * @return [Price value]
+ */
 double Product::getPrice() const { return price; }
+
+/**
+ * @brief [Gets the description of the product]
+ * @return [Description string]
+ */
 string Product::getDescription() const { return description; }
 
 /**

@@ -8,8 +8,14 @@
 #include "ShoppingCart.h"
 #include <iomanip>
 
+/**
+ * @brief [Constructs a new ShoppingCart object]
+ */
 ShoppingCart::ShoppingCart() {}
 
+/**
+ * @brief [Destroys the ShoppingCart object and cleans up resources]
+ */
 ShoppingCart::~ShoppingCart() {
     for (size_t i = 0; i < items.size(); ++i) {
         delete items[i];
@@ -17,6 +23,10 @@ ShoppingCart::~ShoppingCart() {
     items.clear();
 }
 
+/**
+ * @brief [Adds a product to the shopping cart]
+ * @param[in] product [Pointer to the product to add]
+ */
 void ShoppingCart::addProduct(Product* product) {
     if (product) {
         items.push_back(product->clone());
@@ -26,6 +36,11 @@ void ShoppingCart::addProduct(Product* product) {
     }
 }
 
+/**
+ * @brief [Removes a product from the shopping cart by index]
+ * @param[in] index [Index of the product to remove]
+ * @return [Pointer to the removed product, or nullptr if index is invalid]
+ */
 Product* ShoppingCart::removeProduct(int index) {
     if (index < 0 || index >= items.size()) return nullptr;
     Product* p = items[index];
@@ -33,6 +48,9 @@ Product* ShoppingCart::removeProduct(int index) {
     return p;
 }
 
+/**
+ * @brief [Displays the contents of the shopping cart]
+ */
 void ShoppingCart::viewCart() const {
     const string indent = "\t";
     const int descWidth = 44;
@@ -116,7 +134,9 @@ void ShoppingCart::viewCart() const {
          << reset << "\n";
 }
 
-
+/**
+ * @brief [Clears all items from the shopping cart]
+ */
 void ShoppingCart::clear() {
     for (Product* p : items) {
         delete p;
@@ -125,10 +145,18 @@ void ShoppingCart::clear() {
     items.clear();
 }
 
+/**
+ * @brief [Checks if the shopping cart is empty]
+ * @return [True if the cart is empty, false otherwise]
+ */
 bool ShoppingCart::isEmpty() const {
     return items.empty();
 }
 
+/**
+ * @brief [Gets the list of items in the shopping cart]
+ * @return [Vector of pointers to products in the cart]
+ */
 vector<Product*> ShoppingCart::getItems() const {
     return items;
 }

@@ -13,26 +13,47 @@
 
 using namespace std;
 
+/**
+ * @brief [Constructs a new WebAPIAdapter object]
+ * @param[in] facade [Pointer to the NurserySystemFacade backend]
+ * @param[in] invManager [Pointer to the InventoryManager]
+ */
 WebAPIAdapter::WebAPIAdapter(NurserySystemFacade* facade, InventoryManager* invManager)
     : nurseryFacade(facade), inventoryManager(invManager) {
     cout << "WebAPIAdapter initialized with NurserySystemFacade backend" << endl;
 }
 
+/**
+ * @brief [Destroys the WebAPIAdapter object]
+ */
 WebAPIAdapter::~WebAPIAdapter() {
     cout << "WebAPIAdapter destroyed" << endl;
 }
 
 // Inventory endpoints
+
+/**
+ * @brief [Gets all products available in the shop]
+ * @return [JSON string of shop products]
+ */
 string WebAPIAdapter::getShopProducts() {
     vector<Plant*> shopPlants = nurseryFacade->getShopInventory()->getAll();
     return inventoryToJSON(shopPlants);
 }
 
+/**
+ * @brief [Gets all plants in the nursery]
+ * @return [JSON string of nursery plants]
+ */
 string WebAPIAdapter::getNurseryPlants() {
     vector<Plant*> nurseryPlants = nurseryFacade->getNurseryInventory()->getAll();
     return inventoryToJSON(nurseryPlants);
 }
 
+/**
+ * @brief [Gets a selection of random plants from the shop]
+ * @return [JSON string of random shop plants]
+ */
 string WebAPIAdapter::getRandomPlants() {
     // Return a subset of shop plants as "random"
     vector<Plant*> shopPlants = nurseryFacade->getShopInventory()->getAll();
@@ -44,6 +65,12 @@ string WebAPIAdapter::getRandomPlants() {
 }
 
 // Plant management endpoints
+
+/**
+ * @brief [Waters a specific plant in the nursery]
+ * @param[in] plantName [Name of the plant to water]
+ * @return [JSON string with watering result]
+ */
 string WebAPIAdapter::waterPlant(const string& plantName) {
     vector<Plant*> nurseryPlants = nurseryFacade->getNurseryInventory()->getAll();
     for (Plant* plant : nurseryPlants) {
@@ -58,11 +85,20 @@ string WebAPIAdapter::waterPlant(const string& plantName) {
     return "{\"status\": \"error\", \"message\": \"Plant not found in nursery\"}";
 }
 
+/**
+ * @brief [Waters all plants in the nursery]
+ * @return [JSON string with watering result]
+ */
 string WebAPIAdapter::waterAllPlants() {
     nurseryFacade->getNurseryInventory()->waterAll();
     return "{\"status\": \"success\", \"message\": \"All plants watered\"}";
 }
 
+/**
+ * @brief [Moves a plant from the nursery to the shop if ready for sale]
+ * @param[in] plantName [Name of the plant to move]
+ * @return [JSON string with move result]
+ */
 string WebAPIAdapter::movePlantToShop(const string& plantName) {
     // This would need to be implemented in NurserySystemFacade
     // For now, return success if plant exists in nursery
@@ -77,22 +113,41 @@ string WebAPIAdapter::movePlantToShop(const string& plantName) {
     return "{\"status\": \"error\", \"message\": \"Plant not ready or not found\"}";
 }
 
+/**
+ * @brief [Moves all ready plants from nursery to shop]
+ * @return [JSON string with move result]
+ */
 string WebAPIAdapter::moveReadyPlantsToShop() {
     nurseryFacade->getNurseryInventory()->moveReadyPlantsTo(nurseryFacade->getShopInventory());
     return "{\"status\": \"success\", \"message\": \"Ready plants moved to shop\"}";
 }
 
+/**
+ * @brief [Advances time for all plants in the nursery]
+ * @return [JSON string with time passage result]
+ */
 string WebAPIAdapter::passTimeForAllPlants() {
     nurseryFacade->getNurseryInventory()->passTimeAll();
     return "{\"status\": \"success\", \"message\": \"Time passed for all plants\"}";
 }
 
 // Plant search and browsing
+
+/**
+ * @brief [Searches for plants by keyword in name or type]
+ * @param[in] keyword [Keyword to search for]
+ * @return [JSON string of matching plants]
+ */
 string WebAPIAdapter::searchPlants(const string& keyword) {
     vector<Plant*> results = nurseryFacade->getPlantsByKeyword(keyword);
     return inventoryToJSON(results);
 }
 
+/**
+ * @brief [Gets detailed information about a specific plant]
+ * @param[in] plantName [Name of the plant]
+ * @return [JSON string with plant details]
+ */
 string WebAPIAdapter::getPlantInfo(const string& plantName) {
     Plant* plant = nurseryFacade->getShopInventory()->get(plantName);
     if (!plant) {
@@ -105,12 +160,23 @@ string WebAPIAdapter::getPlantInfo(const string& plantName) {
     return "{\"status\": \"error\", \"message\": \"Plant not found\"}";
 }
 
+/**
+ * @brief [Gets plants matching a keyword]
+ * @param[in] keyword [Search keyword]
+ * @return [JSON string of matching plants]
+ */
 string WebAPIAdapter::getPlantsByKeyword(const string& keyword) {
     vector<Plant*> results = nurseryFacade->getPlantsByKeyword(keyword);
     return inventoryToJSON(results);
 }
 
 // Customer support endpoints
+
+/**
+ * @brief [Checks stock availability for a specific plant]
+ * @param[in] plantName [Name of the plant]
+ * @return [JSON string with stock information]
+ */
 string WebAPIAdapter::checkPlantStock(const string& plantName) {
     Plant* plant = nurseryFacade->getShopInventory()->get(plantName);
     if (plant) {
@@ -124,6 +190,12 @@ string WebAPIAdapter::checkPlantStock(const string& plantName) {
     return "{\"status\": \"unavailable\", \"plant\": \"" + plantName + "\", \"message\": \"" + plantName + " is not available in the shop.\"}";
 }
 
+/**
+ * @brief [Provides expert advice for a specific plant and question]
+ * @param[in] plantName [Name of the plant]
+ * @param[in] question [Customer question]
+ * @return [JSON string with expert advice]
+ */
 string WebAPIAdapter::getPlantAdvice(const string& plantName, const string& question) {
     // Simulate plant advice - in real implementation, this would use expert system
     stringstream json;
@@ -132,6 +204,13 @@ string WebAPIAdapter::getPlantAdvice(const string& plantName, const string& ques
     return json.str();
 }
 
+/**
+ * @brief [Provides plant recommendations based on customer criteria]
+ * @param[in] sunlight [Preferred sunlight level]
+ * @param[in] space [Available space]
+ * @param[in] experience [Gardening experience level]
+ * @return [JSON string with plant recommendations]
+ */
 string WebAPIAdapter::getPlantRecommendation(const string& sunlight, const string& space, const string& experience) {
     // Simulate recommendation logic based on demo
     string recommendation;
@@ -155,6 +234,12 @@ string WebAPIAdapter::getPlantRecommendation(const string& sunlight, const strin
 }
 
 // Shopping cart endpoints
+
+/**
+ * @brief [Adds a plant to the shopping cart]
+ * @param[in] plantName [Name of the plant to add]
+ * @return [JSON string with add to cart result]
+ */
 string WebAPIAdapter::addToCart(const string& plantName) {
     Plant* plant = nurseryFacade->getShopInventory()->get(plantName);
     if (plant) {
@@ -172,6 +257,13 @@ string WebAPIAdapter::addToCart(const string& plantName) {
     return "{\"status\": \"error\", \"message\": \"Plant not available\"}";
 }
 
+/**
+ * @brief [Adds a customized plant to the shopping cart]
+ * @param[in] plantName [Name of the plant to customize]
+ * @param[in] potType [Type of decorative pot]
+ * @param[in] wrapType [Type of gift wrapping]
+ * @return [JSON string with add to cart result]
+ */
 string WebAPIAdapter::addCustomizedToCart(const string& plantName, int potType, int wrapType) {
     Plant* plant = nurseryFacade->getShopInventory()->get(plantName);
     if (plant) {
@@ -190,6 +282,10 @@ string WebAPIAdapter::addCustomizedToCart(const string& plantName, int potType, 
     return "{\"status\": \"error\", \"message\": \"Plant not available\"}";
 }
 
+/**
+ * @brief [Views the current shopping cart]
+ * @return [JSON string of cart contents]
+ */
 string WebAPIAdapter::viewCart() {
     ShoppingCart* cart = nurseryFacade->getCart();
     if (cart) {
@@ -198,6 +294,11 @@ string WebAPIAdapter::viewCart() {
     return "{\"status\": \"error\", \"message\": \"Cart not available\"}";
 }
 
+/**
+ * @brief [Removes an item from the shopping cart]
+ * @param[in] itemIndex [Index of the item to remove (1-based)]
+ * @return [JSON string with removal result]
+ */
 string WebAPIAdapter::removeFromCart(int itemIndex) {
     ShoppingCart* cart = nurseryFacade->getCart();
     if (cart && itemIndex > 0 && itemIndex <= cart->getItems().size()) {
@@ -214,6 +315,10 @@ string WebAPIAdapter::removeFromCart(int itemIndex) {
     return "{\"status\": \"error\", \"message\": \"Failed to remove item\"}";
 }
 
+/**
+ * @brief [Checks out the shopping cart and completes the purchase]
+ * @return [JSON string with checkout result]
+ */
 string WebAPIAdapter::checkout() {
     ShoppingCart* cart = nurseryFacade->getCart();
     if (cart && !cart->getItems().empty()) {
@@ -231,6 +336,10 @@ string WebAPIAdapter::checkout() {
     return "{\"status\": \"error\", \"message\": \"Cart is empty\"}";
 }
 
+/**
+ * @brief [Gets a summary of the shopping cart]
+ * @return [JSON string containing cart summary]
+ */
 string WebAPIAdapter::getCartSummary() {
     ShoppingCart* cart = nurseryFacade->getCart();
     if (cart) {
@@ -248,11 +357,21 @@ string WebAPIAdapter::getCartSummary() {
 }
 
 // Special bundles
+
+/**
+ * @brief [Gets the list of special product bundles]
+ * @return [JSON string of special bundles]
+ */
 string WebAPIAdapter::getSpecialBundles() {
     vector<Product*> bundles = nurseryFacade->getSpecialBundles();
     return productsToJSON(bundles);
 }
 
+/**
+ * @brief [Adds a special product bundle to the shopping cart]
+ * @param[in] bundleIndex [Index of the bundle to add (1-based)]
+ * @return [JSON string with add to cart result]
+ */
 string WebAPIAdapter::addBundleToCart(int bundleIndex) {
     vector<Product*> bundles = nurseryFacade->getSpecialBundles();
     if (bundleIndex > 0 && bundleIndex <= bundles.size()) {
@@ -268,11 +387,21 @@ string WebAPIAdapter::addBundleToCart(int bundleIndex) {
 }
 
 // Order customization
+
+/**
+ * @brief [Starts a new order using the builder pattern]
+ * @return [JSON string confirming new order]
+ */
 string WebAPIAdapter::startNewOrder() {
     nurseryFacade->startNewOrder();
     return "{\"status\": \"success\", \"message\": \"New order started\"}";
 }
 
+/**
+ * @brief [Sets the plant for the current order]
+ * @param[in] plantName [Name of the plant]
+ * @return [JSON string confirming plant set]
+ */
 string WebAPIAdapter::setOrderPlant(const string& plantName) {
     Plant* plant = nurseryFacade->getShopInventory()->get(plantName);
     if (plant) {
@@ -282,16 +411,30 @@ string WebAPIAdapter::setOrderPlant(const string& plantName) {
     return "{\"status\": \"error\", \"message\": \"Plant not found\"}";
 }
 
+/**
+ * @brief [Adds a decorative pot to the current order]
+ * @param[in] potType [Type of decorative pot]
+ * @return [JSON string confirming pot addition]
+ */
 string WebAPIAdapter::addOrderPot(int potType) {
     nurseryFacade->addOrderPot(static_cast<DecorativePot::PotType>(potType));
     return "{\"status\": \"success\", \"message\": \"Pot added to order\"}";
 }
 
+/**
+ * @brief [Adds gift wrapping to the current order]
+ * @param[in] wrapType [Type of gift wrapping]
+ * @return [JSON string confirming wrapping addition]
+ */
 string WebAPIAdapter::addOrderWrapping(int wrapType) {
     nurseryFacade->addOrderWrapping(static_cast<GiftWrapping::WrappingType>(wrapType));
     return "{\"status\": \"success\", \"message\": \"Wrapping added to order\"}";
 }
 
+/**
+ * @brief [Finalizes the current order and retrieves the product]
+ * @return [JSON string with finalized product details]
+ */
 string WebAPIAdapter::finalizeOrder() {
     Product* product = nurseryFacade->finalizeOrder();
     if (product) {
@@ -306,23 +449,55 @@ string WebAPIAdapter::finalizeOrder() {
 }
 
 // Staff operations (stubs - would need Staff system implementation)
+
+/**
+ * @brief [Gets the list of staff members]
+ * @return [JSON string of staff members]
+ */
 string WebAPIAdapter::getStaff() {
     return "{\"staff\": [{\"name\": \"Mr. Green\", \"role\": \"Gardener\"}]}";
 }
 
+/**
+ * @brief [Gets notifications for staff members]
+ * @return [JSON string containing notifications]
+ */
 string WebAPIAdapter::getNotifications() {
     return "{\"notifications\": []}";
 }
 
+/**
+ * @brief [Assigns a task to a staff member]
+ * @param[in] staffId [ID of the staff member]
+ * @param[in] task [Task description]
+ * @return [JSON string confirming task assignment]
+ */
 string WebAPIAdapter::finishTask(int taskId) {
     return "{\"status\": \"completed\", \"task_id\": " + to_string(taskId) + "}";
 }
 
 // Customer management
+
+/**
+ * @brief [Creates a new customer profile]
+ * @param[in] name [Customer name]
+ * @param[in] email [Customer email]
+ * @return [JSON string confirming customer creation]
+ */
 string WebAPIAdapter::createCustomer(const string& name, const string& email) {
     return "{\"status\": \"created\", \"customer_name\": \"" + name + "\"}";
 }
 
+/**
+ * @brief [Executes a customer command based on type and parameters]
+ * @param[in] commandType [Type of command to execute]
+ * @param[in] plantName [Name of the plant (if applicable)]
+ * @param[in] sunlight [Preferred sunlight level (if applicable)]
+ * @param[in] space [Available space (if applicable)]
+ * @param[in] experience [Gardening experience level (if applicable)]
+ * @param[in] question [Customer question (if applicable)]
+ * @return [JSON string containing command result]
+ */
 string WebAPIAdapter::executeCustomerCommand(const string& commandType, const string& plantName,
                                            const string& sunlight, const string& space,
                                            const string& experience, const string& question) {
@@ -338,12 +513,23 @@ string WebAPIAdapter::executeCustomerCommand(const string& commandType, const st
     return "{\"status\": \"error\", \"message\": \"Unknown command type\"}";
 }
 
+/**
+ * @brief [Gets the shopping cart for a specific customer]
+ * @param[in] customerId [ID of the customer]
+ * @return [JSON string of the customer's cart]
+ */
 string WebAPIAdapter::getCustomerCart(int customerId) {
     // In a real system, this would get cart for specific customer
     return viewCart();
 }
 
 // Private helper methods
+
+/**
+ * @brief [Converts a list of Plant objects to a JSON string]
+ * @param[in] plants [Vector of Plant pointers]
+ * @return [JSON string representing the list of plants]
+ */
 string WebAPIAdapter::inventoryToJSON(const vector<Plant*>& plants) {
     stringstream json;
     json << "[";
@@ -361,6 +547,11 @@ string WebAPIAdapter::inventoryToJSON(const vector<Plant*>& plants) {
     return json.str();
 }
 
+/**
+ * @brief [Converts a ShoppingCart object to a JSON string]
+ * @param[in] cart [Pointer to the ShoppingCart object]
+ * @return [JSON string representing the shopping cart]
+ */
 string WebAPIAdapter::cartToJSON(ShoppingCart* cart) {
     stringstream json;
     json << "{\"items\": [";
@@ -382,6 +573,11 @@ string WebAPIAdapter::cartToJSON(ShoppingCart* cart) {
     return json.str();
 }
 
+/**
+ * @brief [Converts a list of Product objects to a JSON string]
+ * @param[in] products [Vector of Product pointers]
+ * @return [JSON string representing the list of products]
+ */
 string WebAPIAdapter::productsToJSON(const vector<Product*>& products) {
     stringstream json;
     json << "[";
@@ -402,6 +598,11 @@ string WebAPIAdapter::productsToJSON(const vector<Product*>& products) {
     return json.str();
 }
 
+/**
+ * @brief [Converts a Plant object to a JSON string]
+ * @param[in] plant [Pointer to the Plant object]
+ * @return [JSON string representing the plant]
+ */
 string WebAPIAdapter::plantToJSON(Plant* plant) {
     stringstream json;
     json << "{"

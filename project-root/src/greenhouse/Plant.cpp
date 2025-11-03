@@ -233,6 +233,11 @@ void Plant::signalNeed(string need) {
     Notify();
 }//set need and call notify, extension
 
+
+/**
+ * @brief [Prints a summary of the plant's details]
+ * @param[in] stock [Current stock level of the plant]
+ */
 void Plant::printSummary(int stock) const {
     const string color = "\033[96m";
     const string reset = "\033[0m";

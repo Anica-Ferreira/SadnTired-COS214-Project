@@ -11,7 +11,6 @@
  * @brief [Constructs a new ProductDecorator object]
  * @param[in] product [Pointer to the product to decorate]
  */
-
 ProductDecorator::ProductDecorator(Product* product) : product(product) {}
 
 
