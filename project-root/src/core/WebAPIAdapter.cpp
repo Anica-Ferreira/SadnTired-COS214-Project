@@ -27,7 +27,7 @@ WebAPIAdapter::WebAPIAdapter(NurserySystemFacade* facade, InventoryManager* invM
  * @brief [Destroys the WebAPIAdapter object]
  */
 WebAPIAdapter::~WebAPIAdapter() {
-    cout << "WebAPIAdapter destroyed" << endl;
+    //cout << "WebAPIAdapter destroyed" << endl;
 }
 
 // Inventory endpoints
