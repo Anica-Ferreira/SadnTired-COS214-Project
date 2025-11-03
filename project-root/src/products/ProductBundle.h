@@ -1,0 +1,33 @@
+// Composite 
+
+#ifndef PRODUCTBUNDLE_H
+#define PRODUCTBUNDLE_H
+
+#include "Product.h"
+#include <vector>
+
+using namespace std;
+
+class ProductBundle : public Product {
+    public:
+        ProductBundle(string name = "");
+        ProductBundle(const ProductBundle& other);
+        ~ProductBundle();
+
+        void add(Product* item);
+        string getName() const override;
+        double getPrice() const override;
+        string getDescription() const override;
+        string getTitle() const;
+
+        Product* clone() const override;
+        void printProduct() const override;
+
+        Plant* getBasePlant() const override;
+
+    private:
+        vector<Product*> items;
+        string name;
+};
+
+#endif

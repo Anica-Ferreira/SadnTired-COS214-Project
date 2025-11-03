@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Dashboard - Melancholy Nursery</title>
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: rgb(247, 240, 255);
+                font-family: "Kumbh Sans";
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 100px;
+                color: rgb(25, 1, 44);
+            }
+
+            /*HEADER STYLING*/
+            header {
+                display: grid;
+                grid-template-columns: auto auto;
+                font-size: 64px;
+                background-color: rgb(126, 91, 173);
+                padding: 20px;
+            }
+
+            header a {
+                text-decoration: none;
+                color: rgb(248, 240, 255);
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            header a:hover {
+                text-decoration: underline dashed;
+            }
+
+            #home {
+                text-align: left;
+            }
+
+            #nursery {
+                text-align: right;
+            }
+
+            /*DASHBOARD STYLING*/
+
+            #staffZone {
+                display: grid;
+                grid-template-columns: 60% 40%;
+            }
+
+            #profile {
+                border: solid 4px rgb(92, 34, 139);
+                border-radius: 20px;
+                margin: 32px;
+                display: grid;
+                grid-template-rows: repeat(4, auto);
+                justify-content: center;
+                text-align: center;
+                background-color: rgb(222, 191, 243);
+                width: 80%;
+            }
+
+            #personalIcon {
+                border-radius: 100%;
+                width: 300px;
+                height: 300px;
+            }
+
+            /*NOTIFICATION STYLING*/
+
+            h2 {
+                font-size: 64px;
+            }
+
+            #alerts {
+                padding: 32px;
+            }
+
+            ul {
+                border: solid 2px rebeccapurple;
+                border-radius: 20px;
+            }
+
+            li {
+                border: solid 2px rebeccapurple;
+                border-radius: 10px;
+                list-style: url("media/alert.ico");
+                margin: 20px;
+                padding: 20px;
+                font-size: 28px;
+            }
+
+            button {
+                margin: 10px;
+                padding: 10px;
+                font-size: 20px;
+                background-color: rebeccapurple;
+                border: none;
+                border-radius: 10px;
+                color: white;
+            }
+
+            /*FOOTER STYLING*/
+
+            footer {
+                display: grid;
+                grid-template-columns: 48% 2% 48%;
+                font-size: 64px;
+                background-color: rgb(126, 91, 173);
+                padding: 20px;
+            }
+
+            footer a {
+                text-decoration: none;
+                color: aliceblue;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            footer a:hover {
+                text-decoration: underline dashed;
+            }
+
+            #footer1 {
+                text-align: right;
+            }
+
+            #footer2 {
+                text-align: left;
+            }
+            
+            footer span {
+                text-align: center;
+                color: white
+            }
+        </style>
+</head>
+<body>
+<header>
+    <a href="index.html" id="home">< Home</a>
+    <a href="nursery.html" id="nursery">Nursery ></a>
+</header>
+
+<main>
+    <h1>Staff Dashboard</h1>
+
+    <div id="staffZone">
+        <div id="alerts">
+            <h2>Notifications</h2>
+            <div id="notifList">
+                <div class="loading">Loading notifications...</div>
+            </div>
+        </div>
+
+        <div id="profile">
+            <h3 id="staffName">Staff Member</h3>
+            <img id="personalIcon" src="media/tempIcon.png" alt="Staff Icon" />
+            <p id="role">Role: Loading...</p>
+            <p id="since">Since: Loading...</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <a href="about.html" id="footer1">About Us</a>
+    <span>|</span>
+    <a href="https://github.com/Anica-Ferreira/SadnTired-COS214-Project" id="footer2">GitHub Repo</a>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/staff.js"></script>
+</body>
+</html>
